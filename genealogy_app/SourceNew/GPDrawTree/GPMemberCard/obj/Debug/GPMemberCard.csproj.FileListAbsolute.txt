@@ -1,0 +1,12 @@
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\bin\Debug\GPMemberCard.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\bin\Debug\GPMemberCard.pdb
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.MemberCardTemplFull.resources
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.MemberCardTemplInput.resources
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.MemberCardTemplShort.resources
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.MemberCardTemplTall.resources
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.MemberCardTemplVeryShort.resources
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.csproj.GenerateResource.cache
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.pdb
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPMemberCard\obj\Debug\GPMemberCard.csprojAssemblyReference.cache

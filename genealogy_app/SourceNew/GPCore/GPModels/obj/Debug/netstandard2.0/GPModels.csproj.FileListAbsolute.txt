@@ -1,0 +1,9 @@
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\bin\Debug\netstandard2.0\GPModels.deps.json
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\bin\Debug\netstandard2.0\GPModels.dll
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\bin\Debug\netstandard2.0\GPModels.pdb
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.AssemblyInfoInputs.cache
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.AssemblyInfo.cs
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.dll
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.pdb
+D:\GIAPHA_APP\SourceNew\GPCore\GPModels\obj\Debug\netstandard2.0\GPModels.csprojAssemblyReference.cache

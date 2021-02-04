@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="login128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DBRestore16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DBRestore16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="useradd64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\useradd64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="office_girl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\office_girl.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="log_in22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\log_in22.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemberSearch32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberSearch32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddChild" xml:space="preserve">
+    <value>Thêm con</value>
+  </data>
+  <data name="DBBackup32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DBBackup32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Statistic16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Statistic16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemberInfo32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberInfo32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemberAdd16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberAdd16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddYoSis" xml:space="preserve">
+    <value>Thêm em gái</value>
+  </data>
+  <data name="back_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MSWord" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MSWord.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddBroSisFromList" xml:space="preserve">
+    <value>Chọn anh/chị/em từ danh sách</value>
+  </data>
+  <data name="StrAddBro" xml:space="preserve">
+    <value>Thêm anh</value>
+  </data>
+  <data name="NewImg_Mo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_Mo.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemberAdd32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberAdd32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrRefreshGeneration" xml:space="preserve">
+    <value>Cập nhật lại thứ bậc</value>
+  </data>
+  <data name="plus24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plus24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\star_delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_B" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_B.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrDelFaMoRel" xml:space="preserve">
+    <value>Hủy quan hệ cha mẹ hiện tại</value>
+  </data>
+  <data name="Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FamilyTree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FamilyTree.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrDelFromRoot" xml:space="preserve">
+    <value>Không phải tổ phụ</value>
+  </data>
+  <data name="StrFaMo" xml:space="preserve">
+    <value>Cha mẹ</value>
+  </data>
+  <data name="Excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Excel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pdficon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pdficon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseBoxRed24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close_box_red-24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="passchg128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\passchg128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddKidFromList" xml:space="preserve">
+    <value>Thêm con từ danh sách</value>
+  </data>
+  <data name="StrAddMother" xml:space="preserve">
+    <value>Thêm mẹ</value>
+  </data>
+  <data name="BgFemale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BgFemale.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gender_man16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gender_man16.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_user.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\information.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeS1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeS1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logout32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddFamilyHead" xml:space="preserve">
+    <value>Đặt làm trưởng họ</value>
+  </data>
+  <data name="medal_gold_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medal_gold_add.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gender_unknown16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gender_unknown16.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_contents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help-contents.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddRoot" xml:space="preserve">
+    <value>Đặt làm tổ phụ</value>
+  </data>
+  <data name="StrAddHusWif" xml:space="preserve">
+    <value>Thêm mới vợ/chồng</value>
+  </data>
+  <data name="StrAddAdoptChild" xml:space="preserve">
+    <value>Thêm con nuôi</value>
+  </data>
+  <data name="AKBlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AKB logo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FamilyInfo16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FamilyInfo16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="keys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keys.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BgMale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BgMale.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddFaMoFromList" xml:space="preserve">
+    <value>Chọn cha mẹ từ danh sách</value>
+  </data>
+  <data name="DBBackup16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DBBackup16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrKids" xml:space="preserve">
+    <value>Con cái</value>
+  </data>
+  <data name="StrAddAdoptMother" xml:space="preserve">
+    <value>Thêm mẹ nuôi</value>
+  </data>
+  <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddDaughter" xml:space="preserve">
+    <value>Thêm con gái</value>
+  </data>
+  <data name="login_icon100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login_icon100.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star_add2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\star_add2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printer32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printer24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeView32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeView32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserInfo16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserInfo16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddHusWifFromList" xml:space="preserve">
+    <value>Thêm mới vợ/chồng từ danh sách</value>
+  </data>
+  <data name="user_male_white_blue_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_male_white_blue_black.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="no_avatar_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\no_avatar_f.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_Fa_36_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_Fa_36-48.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrBros" xml:space="preserve">
+    <value>Anh em</value>
+  </data>
+  <data name="question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\question.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddSon" xml:space="preserve">
+    <value>Thêm con trai</value>
+  </data>
+  <data name="NewImg_B_36_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_B_36-48.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddYoBro" xml:space="preserve">
+    <value>Thêm em trai</value>
+  </data>
+  <data name="TreeView16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeView16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="medal_gold_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medal_gold_delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrPersonInfo" xml:space="preserve">
+    <value>Thông tin cá nhân</value>
+  </data>
+  <data name="TreeS1Ver32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeS1Ver32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plus16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrDelHusWifRel" xml:space="preserve">
+    <value>Hủy bỏ quan hệ vợ chồng</value>
+  </data>
+  <data name="pic_frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pic_frame.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HusbandWife16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HusbandWife16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="task_done" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\task-done.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddAdoptFather" xml:space="preserve">
+    <value>Thêm cha nuôi</value>
+  </data>
+  <data name="StrDelFromFamilyHead" xml:space="preserve">
+    <value>Loại khỏi danh sách trưởng họ</value>
+  </data>
+  <data name="MemberSearch24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberSearch24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noavatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noavatar.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Help16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Help16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_add.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemberSearch16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemberSearch16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tree" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tree.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrNewMem" xml:space="preserve">
+    <value>Thêm mới thành viên</value>
+  </data>
+  <data name="StrHusWif" xml:space="preserve">
+    <value>Vợ chồng</value>
+  </data>
+  <data name="medal_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medal_red.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeS1Hoz32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeS1Hoz32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="no_avatar_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\no_avatar_m.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pass_change" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pass_change.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_G" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_G.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_Mo_36_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_Mo_36-48.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PersionalInfo16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PersionalInfo16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddChilds48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddChilds48.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gender_woman16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gender_woman16.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UnknownMember" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UnknownMember.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TreeS2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TreeS2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_G_36_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_G_36-48.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddSis" xml:space="preserve">
+    <value>Thêm chị</value>
+  </data>
+  <data name="UserInfo32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserInfo32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewImg_Fa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewImg_Fa.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="binary_tree_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\binary_tree_32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrAddFather" xml:space="preserve">
+    <value>Thêm cha</value>
+  </data>
+  <data name="couple64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\couple64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StrDelMember" xml:space="preserve">
+    <value>Xóa thông tin thành viên này</value>
+  </data>
+  <data name="user_female_white_pink_brown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_female_white_pink_brown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="setting32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\setting32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GPMemberCard</RootNamespace>
+    <AssemblyName>GPMemberCard</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MCBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTFull.Designer.cs">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCTInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTInput.Designer.cs">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCTShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTShort.Designer.cs">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCTTall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTTall.Designer.cs">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCTVeryShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTVeryShort.Designer.cs">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCTVeryShortTurnRight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MCTVeryShortTurnRight.Designer.cs">
+      <DependentUpon>MCTVeryShortTurnRight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RotateLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MCTFull.resx">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCTInput.resx">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCTShort.resx">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCTTall.resx">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCTVeryShort.resx">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GPMain\GPMain.csproj">
+      <Project>{F8CFB431-F262-470F-B871-4AC5D361F652}</Project>
+      <Name>GPMain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GPUI\MaterialSkin\MaterialSkin.csproj">
+      <Project>{8EB7611B-68CD-4B8B-987A-11717E2B250C}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

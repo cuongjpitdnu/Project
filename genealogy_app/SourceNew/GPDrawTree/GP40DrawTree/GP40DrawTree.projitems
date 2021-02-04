@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>e1eb9986-fcfc-474e-93de-fe39870a1637</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>GP40DrawTree</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)clsCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)clsConst.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)clsFamilyMember.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)clsFInputTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawCommon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawInputTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawListMember.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawExpandTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawSimpleTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawTreeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GenDataMemberTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawCardBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTFull.Designer.cs">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTInput.Designer.cs">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTShort.Designer.cs">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTTall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTTall.Designer.cs">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShort.Designer.cs">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShortTurnLeft.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShortTurnLeft.Designer.cs">
+      <DependentUpon>MCTVeryShortTurnLeft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShortTurnRight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShortTurnRight.Designer.cs">
+      <DependentUpon>MCTVeryShortTurnRight.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTFull.resx">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTInput.resx">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTShort.resx">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTTall.resx">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShort.resx">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MemberCard\MCTVeryShortTurnLeft.resx">
+      <DependentUpon>MCTVeryShortTurnLeft.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

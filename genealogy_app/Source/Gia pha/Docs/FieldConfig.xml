@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<FieldLocation>
+<Field gender="MEMBER_NAME">
+<Row>1</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="ALIAS_NAME">
+<Row>2</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="BIRTH_DAY">
+<Row>5</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="BIRTH_PLACE">
+<Row>7</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="DECEASED_DATE">
+<Row>10</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="BURY_PLACE">
+<Row>14</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="AVATAR_PATH">
+<Row>1</Row>
+<Column>4</Column>
+</Field>
+<Field gender="HOMETOWN">
+<Row>8</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="HOME_ADD">
+<Row>9</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="PHONENUM1">
+<Row>10</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="MAIN_REMARK">
+<Row>24</Row>
+<Column>1</Column>
+</Field>  
+<Field gender="CONTACT_REMARK">
+<Row>24</Row>
+<Column>1</Column>
+</Field>  
+<Field gender="EDUCATION">
+<Row>20</Row>
+<Column>1</Column>
+</Field>  
+<Field gender="CAREER">
+<Row>20</Row>
+<Column>1</Column>
+</Field>
+<Field gender="FACT">
+<Row>22</Row>
+<Column>1</Column>
+</Field>  
+<Field gender="BIRTH_DAY_LUNAR">
+<Row>6</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="PARENTS">
+<Row>16</Row>
+<Column>1</Column>
+</Field>  
+<Field gender="BROS">
+<Row>16</Row>
+<Column>2</Column>
+</Field>  
+<Field gender="DECEASED_DATE_SUN">
+<Row>12</Row>
+<Column>3</Column>
+</Field>  
+<Field gender="DECEASED_DATE_LUNAR">
+<Row>13</Row>
+<Column>3</Column>
+</Field>
+<Field gender="SPOUSE">
+<Row>18</Row>
+<Column>1</Column>
+</Field>
+<Field gender="CHILDREN">
+<Row>18</Row>
+<Column>2</Column>
+</Field>
+<Field gender="GENERATION">
+<Row>3</Row>
+<Column>3</Column>
+</Field>
+</FieldLocation>

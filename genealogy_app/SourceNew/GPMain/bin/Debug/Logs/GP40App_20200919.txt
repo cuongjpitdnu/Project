@@ -1,0 +1,963 @@
+2020-09-19 11:51:44.898 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:45.400 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:45.615 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:45.826 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:47.676 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:48.170 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:48.352 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:53.488 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:54.434 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:54.688 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:51:55.195 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:52:08.618 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:52:08.811 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:52:08.984 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:52:09.285 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:53:46.181 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:53:47.175 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:53:47.381 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:53:47.666 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:55:38.385 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:57:37.705 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:57:38.305 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:57:38.432 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 11:57:38.620 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.AddNewAlbum' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 13:21:21.851 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\giapha.db' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at LiteDB.Engine.FileStreamFactory.GetStream(Boolean canWrite, Boolean sequencial)
+   at LiteDB.Engine.StreamPool.<>c__DisplayClass3_0.<.ctor>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at LiteDB.Engine.DiskService..ctor(EngineSettings settings, Int32[] memorySegmentSizes)
+   at LiteDB.Engine.LiteEngine..ctor(EngineSettings settings)
+   at LiteDB.ConnectionString.CreateEngine()
+   at LiteDB.LiteDatabase..ctor(ConnectionString connectionString, BsonMapper mapper)
+   at LiteDB.LiteDatabase..ctor(String connectionString, BsonMapper mapper)
+   at GPMain.Common.Database.LiteDBManager..ctor(String pathDB, String password) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Database\LiteDBManager.cs:line 21
+   at GPMain.AppManager.get_DBManager() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 85
+   at GPMain.Common.GenerateData.CreateDataMTypeName() in D:\GIAPHA_APP\SourceNew\GPMain\Common\GenerateData.cs:line 17
+   at GPMain.Views.LoginPage..ctor(NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Views\LoginPage.cs:line 24
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 13:53:20.290 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 68
+2020-09-19 13:53:53.329 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 68
+2020-09-19 14:44:02.478 [ERR] GPMain.Program.Main
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 25
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 41
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 14:44:15.870 [ERR] GPMain.Program.Main
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 25
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 41
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 14:48:27.956 [ERR] GPMain.Program.Main
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 25
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 41
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 14:56:40.843 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GPModels.TFamilyAlbum
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 29
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 41
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 14:57:01.929 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GPModels.TFamilyAlbum
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 29
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 41
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 15:59:07.445 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 73
+2020-09-19 15:59:25.699 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 73
+2020-09-19 15:59:38.228 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 73
+2020-09-19 16:01:15.983 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.btnAddNewAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 32
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:01:29.163 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:02:34.408 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:03:52.433 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:04:56.476 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:23:36.713 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.btnAddNewAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 32
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:23:47.345 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:23:56.551 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:25:15.731 [ERR] GPMain.Program.Main
+System.IO.FileNotFoundException: D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\GiaPha.png
+   at System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   at System.Drawing.Image.FromFile(String filename)
+   at GPMain.Views.FamilyInfo.ItemFamilyImage..ctor(TFamilyAlbum objAlbum) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\ItemFamilyImage.cs:line 30
+   at GPMain.Views.FamilyInfo.FamilyImage.xLoadListAlbum() in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 46
+   at GPMain.Views.FamilyInfo.FamilyImage.FamilyImage_Load(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyImage.cs:line 26
+   at System.Windows.Forms.UserControl.OnLoad(EventArgs e)
+   at System.Windows.Forms.UserControl.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.ControlCollection.Add(Control value)
+   at System.Windows.Forms.TabPage.TabPageControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabMainFamily_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 238
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 91
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 16:26:28.294 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\giapha.db' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at LiteDB.Engine.FileStreamFactory.GetStream(Boolean canWrite, Boolean sequencial)
+   at LiteDB.Engine.StreamPool.<>c__DisplayClass3_0.<.ctor>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at LiteDB.Engine.DiskService..ctor(EngineSettings settings, Int32[] memorySegmentSizes)
+   at LiteDB.Engine.LiteEngine..ctor(EngineSettings settings)
+   at LiteDB.ConnectionString.CreateEngine()
+   at LiteDB.LiteDatabase..ctor(ConnectionString connectionString, BsonMapper mapper)
+   at LiteDB.LiteDatabase..ctor(String connectionString, BsonMapper mapper)
+   at GPMain.Common.Database.LiteDBManager..ctor(String pathDB, String password) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Database\LiteDBManager.cs:line 21
+   at GPMain.AppManager.get_DBManager() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 85
+   at GPMain.Common.GenerateData.CreateDataMTypeName() in D:\GIAPHA_APP\SourceNew\GPMain\Common\GenerateData.cs:line 17
+   at GPMain.Views.LoginPage..ctor(NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Views\LoginPage.cs:line 24
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 16:26:36.280 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\giapha.db' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at LiteDB.Engine.FileStreamFactory.GetStream(Boolean canWrite, Boolean sequencial)
+   at LiteDB.Engine.StreamPool.<>c__DisplayClass3_0.<.ctor>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at LiteDB.Engine.DiskService..ctor(EngineSettings settings, Int32[] memorySegmentSizes)
+   at LiteDB.Engine.LiteEngine..ctor(EngineSettings settings)
+   at LiteDB.ConnectionString.CreateEngine()
+   at LiteDB.LiteDatabase..ctor(ConnectionString connectionString, BsonMapper mapper)
+   at LiteDB.LiteDatabase..ctor(String connectionString, BsonMapper mapper)
+   at GPMain.Common.Database.LiteDBManager..ctor(String pathDB, String password) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Database\LiteDBManager.cs:line 21
+   at GPMain.AppManager.get_DBManager() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 85
+   at GPMain.Common.GenerateData.CreateDataMTypeName() in D:\GIAPHA_APP\SourceNew\GPMain\Common\GenerateData.cs:line 17
+   at GPMain.Views.LoginPage..ctor(NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Views\LoginPage.cs:line 24
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 31
+2020-09-19 17:13:51.295 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:13:59.723 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:14:35.454 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:15:44.639 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:19:07.113 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:19:46.812 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:20:28.002 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:20:55.613 [ERR] GPMain.Program.Main
+System.ArgumentException: Cannot add 'FamilyImage' to TabControl.  Only TabPages can be directly added to TabControls.
+   at System.Windows.Forms.TabControl.ControlCollection.Add(Control value)
+   at GPMain.Views.FamilyInfo.FamilyInfoFullPage.tabmainfamily_selectedindexchanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\FamilyInfoFullPage.cs:line 239
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 27
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 163
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20
+2020-09-19 17:22:12.891 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 78
+2020-09-19 17:24:39.460 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 78
+2020-09-19 17:25:05.948 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 78
+2020-09-19 17:31:19.286 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at System.Drawing.Image.Save(String filename)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 83
+2020-09-19 17:33:47.899 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at System.Drawing.Image.Save(String filename)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 83
+2020-09-19 17:35:46.534 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at System.Drawing.Image.Save(String filename)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-19 17:39:36.464 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 84
+2020-09-19 17:41:18.002 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 84
+2020-09-19 17:44:29.649 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 79
+2020-09-19 17:44:53.085 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 79
+2020-09-19 17:47:45.432 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:47:46.008 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:49:20.646 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:49:37.316 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:49:56.683 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:50:36.304 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:50:53.265 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialogWithParam
+System.MissingMethodException: Constructor on type 'GPMain.Views.FamilyInfo.FamilyAlbumDetail' not found.
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   at System.Activator.CreateInstance(Type type, Object[] args)
+   at GPMain.Common.Navigation.NavigationService.ShowDialogWithParam[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 76
+2020-09-19 17:56:23.964 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.Runtime.InteropServices.ExternalException (0x80004005): A generic error occurred in GDI+.
+   at System.Drawing.Image.Save(String filename, ImageCodecInfo encoder, EncoderParameters encoderParams)
+   at System.Drawing.Image.Save(String filename, ImageFormat format)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-19 17:57:31.942 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\hare-1631435.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 77
+2020-09-19 18:07:55.185 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Thumbnail\'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 72

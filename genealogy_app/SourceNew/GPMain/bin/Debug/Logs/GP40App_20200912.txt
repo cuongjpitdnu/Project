@@ -1,0 +1,593 @@
+2020-09-12 11:37:52.422 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:37:53.855 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:40:46.883 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:40:46.931 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:40:46.933 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:41:46.921 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:42:44.334 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:13.528 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:13.573 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:43:13.701 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:13.702 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:43:13.761 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:13.796 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:13.798 [ERR] GPMain.Core.ProgressBarManager.fncStartProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Core.ProgressBarManager.fncStartProgressBar(Boolean blnShowDialog) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\ProgressBarManager.cs:line 128
+2020-09-12 11:43:14.740 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:43:14.770 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'ProgressBarCommon'.
+   at System.Windows.Forms.Control.MarshaledInvoke(Control caller, Delegate method, Object[] args, Boolean synchronous)
+   at System.Windows.Forms.Control.Invoke(Delegate method, Object[] args)
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 53
+2020-09-12 11:43:25.776 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Value Dispose() cannot be called while doing CreateHandle().
+   at System.Windows.Forms.Control.Dispose(Boolean disposing)
+   at System.Windows.Forms.Form.Dispose(Boolean disposing)
+   at GPMain.Views.OnlyShowBarForm.Dispose(Boolean disposing) in D:\GIAPHA_APP\SourceNew\GPMain\Views\OnlyShowBarForm.designer.cs:line 20
+   at System.ComponentModel.Component.Dispose()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 42
+2020-09-12 11:43:55.975 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:44:05.773 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:44:05.773 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:44:05.803 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:44:13.848 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:46:25.710 [ERR] GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.DoEvents()
+   at GPMain.Common.Dialog.WaitForm.fncUpdateProgressBar(Int32 intProgress) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Dialog\WaitForm.cs:line 56
+2020-09-12 11:48:23.165 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:48:23.176 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:48:35.555 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:50:33.960 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:50:34.005 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:51:39.335 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:51:39.407 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:51:45.715 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:51:53.183 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:51:53.192 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:52:38.608 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41
+2020-09-12 11:52:38.609 [ERR] GPMain.Common.Navigation.NavigationService.ShowDialog
+System.InvalidOperationException: Cross-thread operation not valid: Control 'OnlyShowBarForm' accessed from a thread other than the thread it was created on.
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Control.PointToClientInternal(Point p)
+   at System.Windows.Forms.Control.PointToClient(Point p)
+   at MaterialSkin.Controls.MaterialForm.OnGlobalMouseMove(Object sender, MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 654
+   at System.Windows.Forms.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at MaterialSkin.Controls.MouseMessageFilter.PreFilterMessage(Message& m) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialForm.cs:line 986
+   at System.Windows.Forms.Application.ThreadContext.ProcessFilters(MSG& msg, Boolean& modified)
+   at System.Windows.Forms.Application.ThreadContext.PreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FPreTranslateMessage(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.RunDialog(Form form)
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at GPMain.Common.Navigation.NavigationService.ShowDialog[TPage](NavigationParameters parameters, ModeForm mode) in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 41

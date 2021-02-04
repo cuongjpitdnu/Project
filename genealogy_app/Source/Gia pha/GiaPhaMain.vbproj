@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC46BDA3-AEAD-4A0A-A3A0-BB9383A4D164}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>GiaPha</RootNamespace>
+    <AssemblyName>Phan mem quan ly Gia Pha</AssemblyName>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>Resources\FamilyTree.ico</ApplicationIcon>
+    <OptionStrict>Off</OptionStrict>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://akb.com.vn/CompanyInfo/phan-mem-quan-ly-gia-pha.html</SupportUrl>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>Phan mem Quan ly Gia pha</ProductName>
+    <PublisherName>AKB Software</PublisherName>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.1.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Phan mem quan ly Gia Pha.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Phan mem quan ly Gia Pha.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Build\Debug\</OutputPath>
+    <DocumentationFile>Phan mem quan ly Gia Pha.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DocumentationFile>Phan mem quan ly Gia Pha.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E522E91F2B0189D4629A8787417B34CE2F12FFD2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Gia Pha_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AMS.Profile, Version=2.0.4387.19207, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\system32\AMS.Profile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>lib\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\system32\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\system32\PdfSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VietnameseCalendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\system32\VietnameseCalendar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\clsProgressBar.vb" />
+    <Compile Include="Common\clsCoordinate.vb" />
+    <Compile Include="Common\basCommon.vb" />
+    <Compile Include="Common\basConst.vb" />
+    <Compile Include="Common\basMain.vb" />
+    <Compile Include="Common\clsDbAccess.vb" />
+    <Compile Include="Common\clsDbCore.vb" />
+    <Compile Include="Common\clsDefine.vb" />
+    <Compile Include="Common\clsDraw.vb" />
+    <Compile Include="Common\clsExcel.vb" />
+    <Compile Include="Common\clsLunarCalendar.vb" />
+    <Compile Include="Common\clsPdf.vb" />
+    <Compile Include="Common\clsReplication.vb" />
+    <Compile Include="Common\clsRightMenu.vb" />
+    <Compile Include="Common\clsSelection.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\clsWord.vb" />
+    <Compile Include="Common\frmPdfOption.Designer.vb">
+      <DependentUpon>frmPdfOption.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Common\frmPdfOption.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\frmProgressBarCommon.Designer.vb">
+      <DependentUpon>frmProgressBarCommon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Common\frmProgressBarCommon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\pnTreePanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\clsDrawCard.vb" />
+    <Compile Include="FamilyControls\clsDrawTree1.vb" />
+    <Compile Include="FamilyControls\clsDrawTreeA1.vb" />
+    <Compile Include="FamilyControls\clsDrawTreeS2.vb" />
+    <Compile Include="FamilyControls\clsMovingEffect.vb" />
+    <Compile Include="FamilyControls\clsDrawTreeS1.vb" />
+    <Compile Include="FamilyControls\clsDrawTreeS3.vb" />
+    <Compile Include="FamilyControls\clsDrawTreeSS.vb" />
+    <Compile Include="FamilyControls\usrMemberCard3.Designer.vb">
+      <DependentUpon>usrMemberCard3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberCard3.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyCard.Designer.vb">
+      <DependentUpon>FamilyCard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyCard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyBaseControl.designer.vb">
+      <DependentUpon>FamilyBaseControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyBaseControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyForm.Designer.vb">
+      <DependentUpon>FamilyForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyLine.Designer.vb">
+      <DependentUpon>FamilyLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\FamilyLine.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\frmConfirm.Designer.vb">
+      <DependentUpon>frmConfirm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\frmConfirm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\frmCropImage.designer.vb">
+      <DependentUpon>frmCropImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\frmCropImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\frmOption.Designer.vb">
+      <DependentUpon>frmOption.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\frmOption.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrSpouseItem.Designer.vb">
+      <DependentUpon>usrSpouseItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrSpouseItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrLine.Designer.vb">
+      <DependentUpon>usrLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrLine.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberCard1.Designer.vb">
+      <DependentUpon>usrMemberCard1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberCard1.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberCard2.Designer.vb">
+      <DependentUpon>usrMemberCard2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberCard2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberDetail.Designer.vb">
+      <DependentUpon>usrMemberDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemberDetail.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemCardBase.Designer.vb">
+      <DependentUpon>usrMemCardBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrMemCardBase.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\usrSpouseList.Designer.vb">
+      <DependentUpon>usrSpouseList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FamilyControls\usrSpouseList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Family\frmFamilyInfo.Designer.vb">
+      <DependentUpon>frmFamilyInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Family\frmFamilyInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Family\frmFamilyInital.Designer.vb">
+      <DependentUpon>frmFamilyInital.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Family\frmFamilyInital.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActiveKey.Designer.vb">
+      <DependentUpon>frmActiveKey.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmActiveKey.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\ExifWorks.vb" />
+    <Compile Include="Person\frmViewImage.Designer.vb">
+      <DependentUpon>frmViewImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmViewImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\usrPic.Designer.vb">
+      <DependentUpon>usrPic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\usrPic.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\frmConfirmDrawTree.Designer.vb">
+      <DependentUpon>frmConfirmDrawTree.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmConfirmDrawTree.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrint.Designer.vb">
+      <DependentUpon>frmPrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWord.Designer.vb">
+      <DependentUpon>frmWord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmWord.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmPersonalAnniversary.Designer.vb">
+      <DependentUpon>frmPersonalAnniversary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmPersonalAnniversary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmPersonInfo.Designer.vb">
+      <DependentUpon>frmPersonInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmPersonInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmPersonList.Designer.vb">
+      <DependentUpon>frmPersonList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmPersonList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmRelationMem.Designer.vb">
+      <DependentUpon>frmRelationMem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmRelationMem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmSpouseList.Designer.vb">
+      <DependentUpon>frmSpouseList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmSpouseList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintPreview.Designer.vb">
+      <DependentUpon>PrintPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrintPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.vb" />
+    <Compile Include="System\frmAbout.Designer.vb">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmCalendar.Designer.vb">
+      <DependentUpon>frmCalendar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmCalendar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmCalendarVN.Designer.vb">
+      <DependentUpon>frmCalendarVN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmCalendarVN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Person\frmChildsManager.Designer.vb">
+      <DependentUpon>frmChildsManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Person\frmChildsManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmImage.Designer.vb">
+      <DependentUpon>frmImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmProgress.Designer.vb">
+      <DependentUpon>frmProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmProgress.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmPassChange.Designer.vb">
+      <DependentUpon>frmPassChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmPassChange.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmProgressBar.Designer.vb">
+      <DependentUpon>frmProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmProgressBar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmRestore.Designer.vb">
+      <DependentUpon>frmRestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmRestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmSearch.Designer.vb">
+      <DependentUpon>frmSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\frmStatistics.Designer.vb">
+      <DependentUpon>frmStatistics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="System\frmStatistics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FamilyControls\SplitContainerExt.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Common\frmPdfOption.resx">
+      <DependentUpon>frmPdfOption.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\frmProgressBarCommon.resx">
+      <DependentUpon>frmProgressBarCommon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrMemberCard3.resx">
+      <DependentUpon>usrMemberCard3.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\FamilyBaseControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FamilyBaseControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\FamilyCard.resx">
+      <DependentUpon>FamilyCard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\FamilyForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FamilyForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\FamilyLine.resx">
+      <DependentUpon>FamilyLine.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\frmConfirm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConfirm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\frmCropImage.resx">
+      <DependentUpon>frmCropImage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\frmOption.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmOption.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrLine.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrLine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrMemberCard1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrMemberCard1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrMemberCard2.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrMemberCard2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrMemberDetail.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrMemberDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrMemCardBase.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrMemCardBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrSpouseItem.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrSpouseItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\usrSpouseList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>usrSpouseList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Family\frmFamilyInfo.resx">
+      <DependentUpon>frmFamilyInfo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Family\frmFamilyInital.resx">
+      <DependentUpon>frmFamilyInital.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmActiveKey.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmActiveKey.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmViewImage.resx">
+      <DependentUpon>frmViewImage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\usrPic.resx">
+      <DependentUpon>usrPic.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmConfirmDrawTree.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConfirmDrawTree.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWord.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmWord.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmPersonalAnniversary.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPersonalAnniversary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmPersonInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPersonInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmPersonList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPersonList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmRelationMem.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRelationMem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmSpouseList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSpouseList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintPreview.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PrintPreview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmAbout.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmCalendar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCalendar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmCalendarVN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCalendarVN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Person\frmChildsManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChildsManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmImage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmProgress.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProgress.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmLogin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmPassChange.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPassChange.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmProgressBar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmRestore.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRestore.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmSearch.resx">
+      <DependentUpon>frmSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\frmStatistics.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmStatistics.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FamilyControls\SplitContainerExt.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplitContainerExt.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Gia Pha_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNew.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\binary_tree_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_clear32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back-icon16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log_in22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_icon100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\passchg32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\passchg16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\passchg128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OK-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddChilds.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddChilds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddChilds48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Event32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log_in-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_box_red-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_box_red-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_box_red-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BgFemale.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BgMale.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group_add_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_Mo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_B.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_Fa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_G.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_Mo_36-48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_Fa_36-48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_G_36-48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewImg_B_36-48.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pass_change.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-128.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_user.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\useradd64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Find16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserInfo16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DBBackup16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DBRestore16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PersionalInfo16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TreeView16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MakeTree16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberAdd16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FamilyInfo16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HusbandWife16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Statistic16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberAdd32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberSearch16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberSearch32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserInfo32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberInfo32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemberSearch24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TreeView32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MakeTree32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\giaphadb.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\FieldConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\frames\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\no_avatar_f.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Docs\no_avatar_m.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\AMS.Profile.dll" />
+    <Content Include="lib\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="lib\PdfSharp.dll" />
+    <Content Include="lib\VietnameseCalendar.dll" />
+    <Content Include="lib\WinWordControl.dll" />
+    <None Include="Docs\FamilyMemberList2.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\guide.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\PhaHe.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\template.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\template.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\TempMemberInfo.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\refresh32.png" />
+    <None Include="Resources\MSWord.png" />
+    <Content Include="Resources\save1.png" />
+    <None Include="Resources\setting32.png" />
+    <Content Include="Resources\sort_down_green.png" />
+    <Content Include="Resources\sort_up_green.png" />
+    <None Include="Resources\TreeS1.png" />
+    <None Include="Resources\TreeS2.png" />
+    <None Include="Resources\TreeS1Hoz32.png" />
+    <None Include="Resources\TreeS1Ver32.png" />
+    <Content Include="Resources\UnknownMember.jpg" />
+    <None Include="Resources\couple64.png" />
+    <None Include="Resources\keys.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\noavatar.gif" />
+    <None Include="app.config" />
+    <None Include="Resources\medal_red.png" />
+    <None Include="Resources\help-contents.png" />
+    <None Include="Resources\AKB logo.png" />
+    <None Include="Resources\tree.png" />
+    <None Include="Resources\medal_gold_add.png" />
+    <None Include="Resources\medal_gold_delete.png" />
+    <None Include="Resources\star_add2.png" />
+    <None Include="Resources\star_delete.png" />
+    <None Include="Resources\pdficon.png" />
+    <None Include="Resources\Excel.png" />
+    <None Include="Resources\pdfdraaien.png" />
+    <None Include="Resources\edit_add.png" />
+    <None Include="Resources\user_female_white_pink_brown.png" />
+    <None Include="Resources\unknown.png" />
+    <None Include="Resources\user_male_white_blue_black.png" />
+    <None Include="Resources\office_girl.png" />
+    <None Include="Resources\Binary tree.png" />
+    <None Include="Resources\no_avatar_f.jpg" />
+    <None Include="Resources\no_avatar_m.jpg" />
+    <None Include="Resources\DBBackup32.png" />
+    <None Include="Resources\pic_frame.png" />
+    <None Include="Resources\task-done.png" />
+    <None Include="Resources\question.jpg" />
+    <None Include="Resources\sidebar.jpg" />
+    <None Include="Resources\FamilyTree.ico" />
+    <None Include="Resources\no_avatar.jpg" />
+    <None Include="Resources\Gender_unknown16.gif" />
+    <None Include="Resources\Gender_man16.jpg" />
+    <None Include="Resources\Gender_woman16.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Config\Config.csproj">
+      <Project>{90fb4739-392d-4f48-93fc-722ba4442c0e}</Project>
+      <Name>Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Updater\Updater.csproj">
+      <Project>{8c2245b4-0309-4e2b-9285-fdaf31fa5226}</Project>
+      <Name>Updater</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

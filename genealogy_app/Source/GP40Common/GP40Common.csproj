@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{058CFDD7-CA5D-413A-BD1B-CBC596DD4507}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GP40Common</RootNamespace>
+    <AssemblyName>GP40Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="SkiaSharp, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.1.68.2.1\lib\net45\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Extended.Svg, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SkiaSharp.Svg.1.60.0\lib\netstandard2.0\SkiaSharp.Extended.Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsCipher.cs" />
+    <Compile Include="clsCommon.cs" />
+    <Compile Include="clsConst.cs" />
+    <Compile Include="clsFamilyMember.cs" />
+    <Compile Include="clsLunarCalendar.cs" />
+    <Compile Include="Forms\frmCalendarVNEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCalendarVNEvent.Designer.cs">
+      <DependentUpon>frmCalendarVNEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCard\MCTInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberCard\MCTInput.Designer.cs">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\Calendar\Calendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar\CalendarEvent.cs" />
+    <Compile Include="UC\Calendar\CoolButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar\CoolButton.Designer.cs" />
+    <Compile Include="UC\Calendar\CustomEvent.cs" />
+    <Compile Include="UC\Calendar\CustomRecurringFunctionAttribute.cs" />
+    <Compile Include="UC\Calendar\EventComparer.cs" />
+    <Compile Include="UC\Calendar\EventDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar\EventDetails.Designer.cs" />
+    <Compile Include="UC\Calendar\EventToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar\EventToolTip.Designer.cs" />
+    <Compile Include="UC\Calendar\HolidayEvent.cs" />
+    <Compile Include="UC\Calendar\IEvent.cs" />
+    <Compile Include="UC\Calendar\RectangleComparer.cs" />
+    <Compile Include="UC\Calendar\RoundedRectangle.cs" />
+    <Compile Include="UC\Calendar\ScrollPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar\ScrollPanel.Designer.cs" />
+    <Compile Include="Forms\frmCalendarVN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCalendarVN.Designer.cs">
+      <DependentUpon>frmCalendarVN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\NumericTB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UC\NumericTB.Designer.cs">
+      <DependentUpon>NumericTB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCard\MCTTall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberCard\MCTTall.Designer.cs">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCard\MCTVeryShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberCard\MCTVeryShort.Designer.cs">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCard\MCTShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberCard\MCTShort.Designer.cs">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCard\MCTFull.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberCard\MCTFull.Designer.cs">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmCalendarVNEvent.resx">
+      <DependentUpon>frmCalendarVNEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberCard\MCTInput.resx">
+      <DependentUpon>MCTInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\Calendar\Calendar.resx" />
+    <EmbeddedResource Include="UC\Calendar\CoolButton.resx" />
+    <EmbeddedResource Include="UC\Calendar\EventDetails.resx" />
+    <EmbeddedResource Include="UC\Calendar\EventToolTip.resx" />
+    <EmbeddedResource Include="UC\Calendar\ScrollPanel.resx" />
+    <EmbeddedResource Include="Forms\frmCalendarVN.resx">
+      <DependentUpon>frmCalendarVN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberCard\MCTTall.resx">
+      <DependentUpon>MCTTall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberCard\MCTVeryShort.resx">
+      <DependentUpon>MCTVeryShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberCard\MCTShort.resx">
+      <DependentUpon>MCTShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberCard\MCTFull.resx">
+      <DependentUpon>MCTFull.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SkiaSharp.1.68.2.1\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.2.1\build\net45\SkiaSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.1.68.2.1\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.1.68.2.1\build\net45\SkiaSharp.targets'))" />
+  </Target>
+</Project>

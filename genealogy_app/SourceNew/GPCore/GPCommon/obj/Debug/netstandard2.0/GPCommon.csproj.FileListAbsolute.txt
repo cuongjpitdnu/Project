@@ -1,0 +1,9 @@
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\bin\Debug\netstandard2.0\GPCommon.deps.json
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\bin\Debug\netstandard2.0\GPCommon.dll
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\bin\Debug\netstandard2.0\GPCommon.pdb
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.AssemblyInfoInputs.cache
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.AssemblyInfo.cs
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.dll
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.pdb
+D:\GIAPHA_APP\SourceNew\GPCore\GPCommon\obj\Debug\netstandard2.0\GPCommon.csprojAssemblyReference.cache

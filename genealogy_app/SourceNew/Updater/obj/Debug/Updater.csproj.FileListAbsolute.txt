@@ -1,0 +1,12 @@
+D:\GIAPHA_APP\Source\Build\Debug\Updater.exe.config
+D:\GIAPHA_APP\Source\Build\Debug\Updater.exe
+D:\GIAPHA_APP\Source\Build\Debug\Updater.pdb
+D:\GIAPHA_APP\Source\Updater\obj\Debug\Updater.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\Source\Updater\obj\Debug\Updater.exe
+D:\GIAPHA_APP\Source\Updater\obj\Debug\Updater.pdb
+D:\GIAPHA_APP\SourceNew\Build\Debug\Updater.exe.config
+D:\GIAPHA_APP\SourceNew\Build\Debug\Updater.exe
+D:\GIAPHA_APP\SourceNew\Build\Debug\Updater.pdb
+D:\GIAPHA_APP\SourceNew\Updater\obj\Debug\Updater.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\Updater\obj\Debug\Updater.exe
+D:\GIAPHA_APP\SourceNew\Updater\obj\Debug\Updater.pdb

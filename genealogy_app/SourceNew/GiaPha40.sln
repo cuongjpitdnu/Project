@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPMain", "GPMain\GPMain.csproj", "{F8CFB431-F262-470F-B871-4AC5D361F652}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GPCore", "GPCore", "{B1322717-CD76-4610-8E58-B86AF155DC7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GPCommon", "GPCore\GPCommon\GPCommon.csproj", "{1402339D-E662-430B-838A-2DE2F867525D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GPModels", "GPCore\GPModels\GPModels.csproj", "{BBB416D0-2D4E-4BF3-93EC-1040605B8697}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GPDrawTree", "GPDrawTree", "{3EA1BD79-D8EB-4128-A8CF-079EB00480A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GPSync", "GPSync", "{279CA95E-AF74-424E-AA5B-0306FE2A39AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialSkin", "GPUI\MaterialSkin\MaterialSkin.csproj", "{8EB7611B-68CD-4B8B-987A-11717E2B250C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GPTree", "GPDrawTree\GPTree\GPTree.csproj", "{DD353C76-CC94-40B3-8C3C-D0C7F5A48521}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GPTreeWorkerService", "GPDrawTree\GPTreeWorkerService\GPTreeWorkerService.csproj", "{5B882F45-638C-4E3F-959A-AB84CBFFD6FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPMemberCard", "GPDrawTree\GPMemberCard\GPMemberCard.csproj", "{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GP40DrawTree", "GPDrawTree\GP40DrawTree\GP40DrawTree.shproj", "{E1EB9986-FCFC-474E-93DE-FE39870A1637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{8C2245B4-0309-4E2B-9285-FDAF31FA5226}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		GPDrawTree\GP40DrawTree\GP40DrawTree.projitems*{e1eb9986-fcfc-474e-93de-fe39870a1637}*SharedItemsImports = 13
+		GPDrawTree\GP40DrawTree\GP40DrawTree.projitems*{f8cfb431-f262-470f-b871-4ac5d361f652}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8CFB431-F262-470F-B871-4AC5D361F652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8CFB431-F262-470F-B871-4AC5D361F652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8CFB431-F262-470F-B871-4AC5D361F652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8CFB431-F262-470F-B871-4AC5D361F652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1402339D-E662-430B-838A-2DE2F867525D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1402339D-E662-430B-838A-2DE2F867525D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1402339D-E662-430B-838A-2DE2F867525D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1402339D-E662-430B-838A-2DE2F867525D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB416D0-2D4E-4BF3-93EC-1040605B8697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB416D0-2D4E-4BF3-93EC-1040605B8697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB416D0-2D4E-4BF3-93EC-1040605B8697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB416D0-2D4E-4BF3-93EC-1040605B8697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB7611B-68CD-4B8B-987A-11717E2B250C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB7611B-68CD-4B8B-987A-11717E2B250C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB7611B-68CD-4B8B-987A-11717E2B250C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB7611B-68CD-4B8B-987A-11717E2B250C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD353C76-CC94-40B3-8C3C-D0C7F5A48521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD353C76-CC94-40B3-8C3C-D0C7F5A48521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD353C76-CC94-40B3-8C3C-D0C7F5A48521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD353C76-CC94-40B3-8C3C-D0C7F5A48521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B882F45-638C-4E3F-959A-AB84CBFFD6FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B882F45-638C-4E3F-959A-AB84CBFFD6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B882F45-638C-4E3F-959A-AB84CBFFD6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B882F45-638C-4E3F-959A-AB84CBFFD6FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2245B4-0309-4E2B-9285-FDAF31FA5226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2245B4-0309-4E2B-9285-FDAF31FA5226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2245B4-0309-4E2B-9285-FDAF31FA5226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2245B4-0309-4E2B-9285-FDAF31FA5226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1402339D-E662-430B-838A-2DE2F867525D} = {B1322717-CD76-4610-8E58-B86AF155DC7A}
+		{BBB416D0-2D4E-4BF3-93EC-1040605B8697} = {B1322717-CD76-4610-8E58-B86AF155DC7A}
+		{DD353C76-CC94-40B3-8C3C-D0C7F5A48521} = {3EA1BD79-D8EB-4128-A8CF-079EB00480A5}
+		{5B882F45-638C-4E3F-959A-AB84CBFFD6FD} = {3EA1BD79-D8EB-4128-A8CF-079EB00480A5}
+		{64C1B1C6-C1A1-44F3-A446-B186A4EE8DB8} = {3EA1BD79-D8EB-4128-A8CF-079EB00480A5}
+		{E1EB9986-FCFC-474E-93DE-FE39870A1637} = {3EA1BD79-D8EB-4128-A8CF-079EB00480A5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {142B31CE-9E8C-4179-8919-953A49E36F5E}
+	EndGlobalSection
+EndGlobal

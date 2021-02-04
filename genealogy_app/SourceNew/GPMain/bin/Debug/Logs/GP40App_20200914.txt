@@ -1,0 +1,25 @@
+2020-09-14 09:29:21.399 [ERR] GPMain.Program.Main
+System.FormatException: Index (zero based) must be greater than or equal to zero and less than the size of the argument list.
+   at System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   at System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   at System.String.Format(String format, Object arg0, Object arg1)
+   at GPMain.Views.Config.ConfigCommon.LoadDataInfoVersion() in D:\GIAPHA_APP\SourceNew\GPMain\Views\Config\ConfigCommon.cs:line 764
+   at GPMain.Views.Config.ConfigCommon.tabMain_SelectedIndexChanged(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\Config\ConfigCommon.cs:line 62
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at System.Windows.Forms.TabControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Windows.Forms.TabControl.WmSelChange()
+   at System.Windows.Forms.TabControl.set_SelectedIndex(Int32 value)
+   at MaterialSkin.Controls.MaterialTabSelector.OnMouseUp(MouseEventArgs e) in D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\Controls\MaterialTabSelector.cs:line 167
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at GPMain.Common.Navigation.NavigationService.RunApp[TFormTheme]() in D:\GIAPHA_APP\SourceNew\GPMain\Common\Navigation\NavigationService.cs:line 88
+   at GPMain.AppManager.RunAppIfLogin() in D:\GIAPHA_APP\SourceNew\GPMain\AppManager.cs:line 161
+   at GPMain.Program.Main() in D:\GIAPHA_APP\SourceNew\GPMain\Program.cs:line 20

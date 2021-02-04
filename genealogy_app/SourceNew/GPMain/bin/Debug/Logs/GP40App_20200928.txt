@@ -1,0 +1,66 @@
+2020-09-28 09:02:33.559 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f71429e25b4cd1d2c1b5ed6.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 09:07:27.009 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f71429e25b4cd1d2c1b5ed6.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 09:35:17.091 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f71429e25b4cd1d2c1b5ed6.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-28 09:38:29.546 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f71429e25b4cd1d2c1b5ed6.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-28 09:38:39.436 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f71429e25b4cd1d2c1b5ed6.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-28 09:49:05.790 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f714e2725b4cd1958f84823.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 09:49:30.004 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f714e2725b4cd1958f84823.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 09:49:46.116 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f714e2725b4cd1958f84823.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 09:57:07.130 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f7150df25b4cd336053db95.jpg' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 153
+2020-09-28 10:11:21.164 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f7152c425b4cd32d465b083.png' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e)
+2020-09-28 10:22:12.742 [ERR] GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click
+System.IO.IOException: The process cannot access the file 'D:\GIAPHA_APP\SourceNew\GPMain\bin\Debug\Data\Album\thumbnail\5f7152c425b4cd32d465b083.png' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalDelete(String path, Boolean checkHost)
+   at System.IO.File.Delete(String path)
+   at GPMain.Views.FamilyInfo.AddNewAlbum.btnSaveAlbum_Click(Object sender, EventArgs e) in D:\GIAPHA_APP\SourceNew\GPMain\Views\FamilyInfo\AddNewAlbum.cs:line 158

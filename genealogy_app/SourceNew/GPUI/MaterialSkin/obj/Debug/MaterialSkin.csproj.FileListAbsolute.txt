@@ -1,0 +1,11 @@
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\bin\Debug\MaterialSkin.dll
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\bin\Debug\MaterialSkin.pdb
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.Controls.FlexibleMaterialForm.resources
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.Controls.MaterialForm.resources
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\GPMain.Views.Config.RoundButton.resources
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.Properties.Resources.resources
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.csproj.GenerateResource.cache
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.dll
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.pdb
+D:\GIAPHA_APP\SourceNew\GPUI\MaterialSkin\obj\Debug\MaterialSkin.csprojAssemblyReference.cache

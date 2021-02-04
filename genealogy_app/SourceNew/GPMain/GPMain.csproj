@@ -1,0 +1,1005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8CFB431-F262-470F-B871-4AC5D361F652}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GPMain</RootNamespace>
+    <AssemblyName>GPMain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="Common\AppConst.cs" />
+    <Compile Include="Common\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Database\StatisticsData.cs" />
+    <Compile Include="Common\CalendarDialog\Calendar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\CalendarEvent.cs" />
+    <Compile Include="Common\Dialog\CalendarVN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Dialog\CalendarVN.Designer.cs">
+      <DependentUpon>CalendarVN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\CoolButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\CoolButton.Designer.cs">
+      <DependentUpon>CoolButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\CustomRecurringFunctionAttribute.cs" />
+    <Compile Include="Common\CalendarDialog\EventComparer.cs" />
+    <Compile Include="Common\CalendarDialog\EventDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\EventDetails.Designer.cs">
+      <DependentUpon>EventDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\EventToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\EventToolTip.designer.cs">
+      <DependentUpon>EventToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\HolidayEvent.cs" />
+    <Compile Include="Common\CalendarDialog\IEvent.cs" />
+    <Compile Include="Common\CalendarDialog\RoundedRectangle.cs" />
+    <Compile Include="Common\CalendarDialog\ScrollPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\CalendarDialog\ScrollPanel.Designer.cs">
+      <DependentUpon>ScrollPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Events\AddFamilyEvent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Events\AddFamilyEvent.Designer.cs">
+      <DependentUpon>AddFamilyEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Events\CalendarShort.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Events\CalendarShort.Designer.cs">
+      <DependentUpon>CalendarShort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Excel\EventExcelEntity.cs" />
+    <Compile Include="Common\Events\EventForShowGridView.cs" />
+    <Compile Include="Common\Excel\ExcelCommon.cs" />
+    <Compile Include="Common\Excel\ExportExcelForEvent.cs" />
+    <Compile Include="Common\Excel\ExportExcelForFamilyPopup.cs" />
+    <Compile Include="Common\Excel\ExportExcelListMember.cs" />
+    <Compile Include="Common\Excel\FamilyPopupExcelEntity.cs" />
+    <Compile Include="Common\Excel\InfoMemberForExportExcel.cs" />
+    <Compile Include="Common\Excel\ListMemberExcelEntity.cs" />
+    <Compile Include="Common\Helper\MemberRelationHelper.cs" />
+    <Compile Include="Views\Events.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Events.Designer.cs">
+      <DependentUpon>Events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Helper\BindingHelper.cs" />
+    <Compile Include="Common\Database\ReposityLiteTable.cs" />
+    <Compile Include="Common\Dialog\ProgressBarManager.cs" />
+    <Compile Include="Common\Dialog\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Dialog\ColorPicker.designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Dialog\DialogManager.cs" />
+    <Compile Include="Common\Dialog\MessagePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Dialog\MessagePage.designer.cs">
+      <DependentUpon>MessagePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Dialog\ProgressBarCommon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\Dialog\ProgressBarCommon.Designer.cs">
+      <DependentUpon>ProgressBarCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Dialog\WaitForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Dialog\WaitForm.designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\GenerateData.cs" />
+    <Compile Include="Common\Helper\FileHelper.cs" />
+    <Compile Include="Common\Interface\IDataMember.cs" />
+    <Compile Include="Common\Interface\IDialog.cs" />
+    <Compile Include="Common\Interface\ILog.cs" />
+    <Compile Include="Common\Interface\INavigation.cs" />
+    <Compile Include="Common\Database\LiteDBManager.cs" />
+    <Compile Include="Common\Interface\ISKControl.cs" />
+    <Compile Include="Common\Helper\LogHelper.cs" />
+    <Compile Include="Common\Navigation\NavigationParameters.cs" />
+    <Compile Include="Common\Navigation\NavigationResult.cs" />
+    <Compile Include="Common\Navigation\NavigationService.cs" />
+    <Compile Include="Common\Helper\UIHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TinyIoC.cs" />
+    <Compile Include="Views\About.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\ConfigCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\ConfigCommon.Designer.cs">
+      <DependentUpon>ConfigCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\popupAddNewRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\popupAddNewRelation.Designer.cs">
+      <DependentUpon>popupAddNewRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\popupNRT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\popupNRT.Designer.cs">
+      <DependentUpon>popupNRT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ContextMenuStripManager.cs" />
+    <Compile Include="Views\Controls\DataBuffer.cs" />
+    <Compile Include="Views\Controls\DataGridTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\DataGridViewIconColumn.cs" />
+    <Compile Include="Views\Controls\DataGridViewIconColumn.Designer.cs">
+      <DependentUpon>DataGridViewIconColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\ItemBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\MenuItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\MenuItem.designer.cs">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\MenuMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\MenuMember.designer.cs">
+      <DependentUpon>MenuMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\SKControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\SKGLControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\MemberCardForMenuMember.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ExportListMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ExportListMember.Designer.cs">
+      <DependentUpon>ExportListMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\AddFamilyHead.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\AddFamilyHead.Designer.cs">
+      <DependentUpon>AddFamilyHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyDocument.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyDocument.Designer.cs">
+      <DependentUpon>FamilyDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\AddNewAlbum.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\AddNewAlbum.Designer.cs">
+      <DependentUpon>AddNewAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyAlbumDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyAlbumDetail.Designer.cs">
+      <DependentUpon>FamilyAlbumDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyDocumentList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyDocumentList.Designer.cs">
+      <DependentUpon>FamilyDocumentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyImage.Designer.cs">
+      <DependentUpon>FamilyImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoFullPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoFullPage.Designer.cs">
+      <DependentUpon>FamilyInfoFullPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoNewPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoNewPage.Designer.cs">
+      <DependentUpon>FamilyInfoNewPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyPopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyPopup.Designer.cs">
+      <DependentUpon>FamilyPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyTimeline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyTimeline.Designer.cs">
+      <DependentUpon>FamilyTimeline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ImageTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ImageTemplate.Designer.cs">
+      <DependentUpon>ImageTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ItemFamilyImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ItemFamilyImage.Designer.cs">
+      <DependentUpon>ItemFamilyImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ItemImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\ItemImage.Designer.cs">
+      <DependentUpon>ItemImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LoginPage.designer.cs">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\addMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\addMember.Designer.cs">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\AddMemberRelationFromList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\AddMemberRelationFromList.Designer.cs">
+      <DependentUpon>AddMemberRelationFromList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\InfoMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\InfoMember.Designer.cs">
+      <DependentUpon>InfoMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\ListMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\ListMember.Designer.cs">
+      <DependentUpon>ListMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\ListMemberRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\ListMemberRelation.Designer.cs">
+      <DependentUpon>ListMemberRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\popupAddRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\popupAddRelation.Designer.cs">
+      <DependentUpon>popupAddRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuForm.designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OnlyShowBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OnlyShowBarForm.designer.cs">
+      <DependentUpon>OnlyShowBarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OptionExportPDF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\OptionExportPDF.Designer.cs">
+      <DependentUpon>OptionExportPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrintPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PrintPage.Designer.cs">
+      <DependentUpon>PrintPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowImageAlbum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShowImageAlbum.Designer.cs">
+      <DependentUpon>ShowImageAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\Build\BuildViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\Build\BuildViewer.Designer.cs">
+      <DependentUpon>BuildViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\Build\BuildTree.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\Helper\MemberHelper.cs" />
+    <Compile Include="Views\Tree\Build\MemberCardForBuildTree.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\DrawTreeManager.cs" />
+    <Compile Include="Views\Tree\ExtendMethodModel.cs" />
+    <Compile Include="Views\Tree\MenuItems\BackgroundItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\BackgroundItem.Designer.cs">
+      <DependentUpon>BackgroundItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\OptionDrawTreeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\OptionDrawTreeItem.Designer.cs">
+      <DependentUpon>OptionDrawTreeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowBirthDateItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowBirthDateItem.Designer.cs">
+      <DependentUpon>ShowBirthDateItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowDeathDayItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowDeathDayItem.Designer.cs">
+      <DependentUpon>ShowDeathDayItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowImageItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowImageItem.Designer.cs">
+      <DependentUpon>ShowImageItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\FrameItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\FrameItem.Designer.cs">
+      <DependentUpon>FrameItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\LineItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\LineItem.Designer.cs">
+      <DependentUpon>LineItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowLevelInFamilyItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\ShowLevelInFamilyItem.Designer.cs">
+      <DependentUpon>ShowLevelInFamilyItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\SpaceItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\SpaceItem.Designer.cs">
+      <DependentUpon>SpaceItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\TextItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\TextItem.Designer.cs">
+      <DependentUpon>TextItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\TreeModeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\MenuItems\TreeModeItem.Designer.cs">
+      <DependentUpon>TreeModeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\TreeViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\TreeViewer.designer.cs">
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Common\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CalendarDialog\Calendar.resx">
+      <DependentUpon>Calendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CalendarDialog\EventDetails.resx">
+      <DependentUpon>EventDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Dialog\CalendarVN.resx">
+      <DependentUpon>CalendarVN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Dialog\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CalendarDialog\EventToolTip.resx">
+      <DependentUpon>EventToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Dialog\MessagePage.resx">
+      <DependentUpon>MessagePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Dialog\WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Events\AddFamilyEvent.resx">
+      <DependentUpon>AddFamilyEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Events\CalendarShort.resx">
+      <DependentUpon>CalendarShort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Events.resx">
+      <DependentUpon>Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\ConfigCommon.resx">
+      <DependentUpon>ConfigCommon.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\popupAddNewRelation.resx">
+      <DependentUpon>popupAddNewRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\popupNRT.resx">
+      <DependentUpon>popupNRT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\MenuItem.resx">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\MenuMember.resx">
+      <DependentUpon>MenuMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ExportListMember.resx">
+      <DependentUpon>ExportListMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\AddFamilyHead.resx">
+      <DependentUpon>AddFamilyHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyDocument.resx">
+      <DependentUpon>FamilyDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\AddNewAlbum.resx">
+      <DependentUpon>AddNewAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyAlbumDetail.resx">
+      <DependentUpon>FamilyAlbumDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyDocumentList.resx">
+      <DependentUpon>FamilyDocumentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyImage.resx">
+      <DependentUpon>FamilyImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyInfoFullPage.resx">
+      <DependentUpon>FamilyInfoFullPage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyInfoNewPage.resx">
+      <DependentUpon>FamilyInfoNewPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyPopup.resx">
+      <DependentUpon>FamilyPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyTimeline.resx">
+      <DependentUpon>FamilyTimeline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\ImageTemplate.resx">
+      <DependentUpon>ImageTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\ItemFamilyImage.resx">
+      <DependentUpon>ItemFamilyImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\ItemImage.resx">
+      <DependentUpon>ItemImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginPage.resx">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\addMember.resx">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\AddMemberRelationFromList.resx">
+      <DependentUpon>AddMemberRelationFromList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\InfoMember.resx">
+      <DependentUpon>InfoMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\ListMember.resx">
+      <DependentUpon>ListMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\ListMemberRelation.resx">
+      <DependentUpon>ListMemberRelation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\popupAddRelation.resx">
+      <DependentUpon>popupAddRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OnlyShowBarForm.resx">
+      <DependentUpon>OnlyShowBarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OptionExportPDF.resx">
+      <DependentUpon>OptionExportPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PrintPage.resx">
+      <DependentUpon>PrintPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShowImageAlbum.resx">
+      <DependentUpon>ShowImageAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\Build\BuildViewer.resx">
+      <DependentUpon>BuildViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\BackgroundItem.resx">
+      <DependentUpon>BackgroundItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\OptionDrawTreeItem.resx">
+      <DependentUpon>OptionDrawTreeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\ShowBirthDateItem.resx">
+      <DependentUpon>ShowBirthDateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\ShowDeathDayItem.resx">
+      <DependentUpon>ShowDeathDayItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\ShowImageItem.resx">
+      <DependentUpon>ShowImageItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\FrameItem.resx">
+      <DependentUpon>FrameItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\LineItem.resx">
+      <DependentUpon>LineItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\ShowLevelInFamilyItem.resx">
+      <DependentUpon>ShowLevelInFamilyItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\SpaceItem.resx">
+      <DependentUpon>SpaceItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\TextItem.resx">
+      <DependentUpon>TextItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\MenuItems\TreeModeItem.resx">
+      <DependentUpon>TreeModeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Tree\TreeViewer.resx">
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\Docs\FamilyMemberList2.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\guide.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\PhaHe.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\template.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\template.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\TempMemberInfo.doc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\TempMemberInfo.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\EventsTemplate.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\EventsTemplate.xltx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\ListMemberTemplate.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\ListMemberTemplate.xltx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\MemberEventTemplate.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Excel\MemberEventTemplate.xltx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GPCore\GPCommon\GPCommon.csproj">
+      <Project>{1402339d-e662-430b-838a-2de2f867525d}</Project>
+      <Name>GPCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPCore\GPModels\GPModels.csproj">
+      <Project>{bbb416d0-2d4e-4bf3-93ec-1040605b8697}</Project>
+      <Name>GPModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPUI\MaterialSkin\MaterialSkin.csproj">
+      <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Docs\about.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\FieldConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\male.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\noavatar.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\no_avatar_f.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\no_avatar_m.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\pic_frame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon_app.ico" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\word.png" />
+    <None Include="Resources\medal plus.png" />
+    <None Include="Resources\starplus.png" />
+    <None Include="Resources\starminus.png" />
+    <None Include="Resources\medalminus.png" />
+    <None Include="Resources\infoRelate.png" />
+    <None Include="Resources\userinfo.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\incense.png" />
+    <None Include="Resources\schedule.png" />
+    <None Include="Resources\star.png" />
+    <None Include="Resources\time.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\imageNext.png" />
+    <None Include="Resources\imagePre.png" />
+    <None Include="Resources\hidden.png" />
+    <None Include="Resources\logo_login.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\restore.png" />
+    <None Include="Resources\next page2.png" />
+    <None Include="Resources\next page.png" />
+    <None Include="Resources\list3.png" />
+    <None Include="Resources\listcheck.png" />
+    <None Include="Resources\list2.png" />
+    <None Include="Resources\list.png" />
+    <None Include="Resources\male2.png" />
+    <None Include="Resources\female2.png" />
+    <None Include="Resources\baby-boy.png" />
+    <None Include="Resources\add-user.png" />
+    <None Include="Resources\add-user2.png" />
+    <None Include="Resources\back page.png" />
+    <None Include="Resources\back page2.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\focus.png" />
+    <None Include="Resources\diskette.png" />
+    <None Include="Resources\add-event.png" />
+    <None Include="Resources\calendar-on-day-17.png" />
+    <None Include="Resources\diskette1.png" />
+    <None Include="Resources\eventNormal.png" />
+    <None Include="Resources\eventImportant.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\birthday-cake.png" />
+    <None Include="Resources\FramePrint.jpg" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\addrelate.png" />
+    <None Include="Resources\familyHead.png" />
+    <None Include="Resources\excel128.png" />
+    <None Include="Resources\close.png" />
+    <Content Include="Resources\grid_icon_delete.png" />
+    <Content Include="Resources\grid_icon_edit.png" />
+    <None Include="Resources\plus_Male.png" />
+    <None Include="Resources\plus_FeMale.png" />
+    <None Include="Resources\x-icon-15.jpg" />
+    <None Include="Resources\unknown.png" />
+    <None Include="Resources\root.png" />
+    <None Include="Resources\female.png" />
+    <None Include="Resources\male.png" />
+    <None Include="Resources\no_avata.png" />
+    <None Include="Resources\edit_icon.png" />
+    <None Include="Resources\ok_icon.png" />
+    <None Include="Resources\error_icon.png" />
+    <None Include="Resources\warn_icon.png" />
+    <None Include="Resources\question_icon.png" />
+    <None Include="Resources\compary-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB, Version=5.0.9.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.5.0.9\lib\net45\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.0.1\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.0.1.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.0.1\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.10.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.1.68.3\lib\net45\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Extended.Svg, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Svg.1.60.0\lib\netstandard2.0\SkiaSharp.Extended.Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.1.68.3\lib\net45\SkiaSharp.Views.Desktop.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WindowsForms, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WindowsForms.1.68.3\lib\net45\SkiaSharp.Views.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.1\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.1\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\GPDrawTree\GP40DrawTree\GP40DrawTree.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\Pdfium.Net.SDK.4.37.2704\build\Pdfium.Net.SDK.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Pdfium.Net.SDK.4.37.2704\build\Pdfium.Net.SDK.targets'))" />
+  </Target>
+  <Import Project="..\packages\Pdfium.Net.SDK.4.37.2704\build\Pdfium.Net.SDK.targets" Condition="Exists('..\packages\Pdfium.Net.SDK.4.37.2704\build\Pdfium.Net.SDK.targets')" />
+</Project>

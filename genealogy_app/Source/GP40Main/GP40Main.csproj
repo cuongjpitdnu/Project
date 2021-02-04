@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{016C8B38-A9A2-447C-BD19-8E09B3F36FCF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GP40Main</RootNamespace>
+    <AssemblyName>GP40Main</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB, Version=5.0.8.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.5.0.8\lib\net45\LiteDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=3.2.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.3.2\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.3.1.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.1.68.3\lib\net45\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Extended.Svg, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Svg.1.60.0\lib\netstandard2.0\SkiaSharp.Extended.Svg.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Desktop, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.1.68.3\lib\net45\SkiaSharp.Views.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Desktop.Common, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Desktop.Common.1.68.3\lib\net45\SkiaSharp.Views.Desktop.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.Gtk, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.Gtk2.1.68.3\lib\net45\SkiaSharp.Views.Gtk.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WindowsForms, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WindowsForms.1.68.3\lib\net45\SkiaSharp.Views.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.Views.WPF, Version=1.68.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\SkiaSharp.Views.WPF.1.68.3\lib\net45\SkiaSharp.Views.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1179\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1179\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.4.7.0.1179\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Document.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\AppConst.cs" />
+    <Compile Include="Core\AppManager.cs" />
+    <Compile Include="Core\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\BaseUserControl.Designer.cs">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\clsProgressBar.cs" />
+    <Compile Include="Core\IRepositoryTable.cs" />
+    <Compile Include="Core\IDBManager.cs" />
+    <Compile Include="Core\BaseModel.cs" />
+    <Compile Include="Models\DBManagerJson.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\ExEntity.cs" />
+    <Compile Include="Core\LiteDBManager.cs" />
+    <Compile Include="Models\GenerateData.cs" />
+    <Compile Include="Models\MemberContact.cs" />
+    <Compile Include="Models\MFamilyTimeline.cs" />
+    <Compile Include="Models\MFamilyInfo.cs" />
+    <Compile Include="Models\MNationality.cs" />
+    <Compile Include="Models\MRelation.cs" />
+    <Compile Include="Models\MReligion.cs" />
+    <Compile Include="Models\MSocialNetwork.cs" />
+    <Compile Include="Models\MTypeName.cs" />
+    <Compile Include="Core\ReposityLiteTable.cs" />
+    <Compile Include="Models\OldDBEntity.cs" />
+    <Compile Include="Models\ThemeConfig.cs" />
+    <Compile Include="Models\TMember.cs" />
+    <Compile Include="Models\MUser.cs" />
+    <Compile Include="Models\RepositoryJsonTable.cs" />
+    <Compile Include="Models\TMemberEvent.cs" />
+    <Compile Include="Models\TMemberJob.cs" />
+    <Compile Include="Models\TMemberRelation.cs" />
+    <Compile Include="Models\TMemberSchool.cs" />
+    <Compile Include="Models\VNDateTime.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Dialog\DialogManager.cs" />
+    <Compile Include="Services\Dialog\MessagePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Services\Dialog\MessagePage.Designer.cs">
+      <DependentUpon>MessagePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Navigation\NavigationParameters.cs" />
+    <Compile Include="Services\Navigation\NavigationResult.cs" />
+    <Compile Include="Services\Navigation\NavigationService.cs" />
+    <Compile Include="Themes\ContextMenuStripManager.cs" />
+    <Compile Include="Themes\Controls\DataGridTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Themes\Controls\DataGridTemplate.Designer.cs">
+      <DependentUpon>DataGridTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Controls\Menu\ItemBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Themes\Controls\Menu\MenuItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Themes\Controls\Menu\MenuItem.Designer.cs">
+      <DependentUpon>MenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Controls\Menu\MenuMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Themes\Controls\Menu\MenuMember.Designer.cs">
+      <DependentUpon>MenuMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\LogHelper.cs" />
+    <Compile Include="Services\Dialog\ColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Services\Dialog\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ObjectExtend.cs" />
+    <Compile Include="Utility\UIHelper.cs" />
+    <Compile Include="Utility\ValidatorHelper.cs" />
+    <Compile Include="Views\Config\ConfigCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\ConfigCommon.Designer.cs">
+      <DependentUpon>ConfigCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\popupAddNewRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\popupAddNewRelation.Designer.cs">
+      <DependentUpon>popupAddNewRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Config\popupNRT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Config\popupNRT.Designer.cs">
+      <DependentUpon>popupNRT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\addMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\addMember.Designer.cs">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Themes\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\OnlyShowBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Themes\OnlyShowBarForm.Designer.cs">
+      <DependentUpon>OnlyShowBarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\BindingHelper.cs" />
+    <Compile Include="Utility\ConfigHelper.cs" />
+    <Compile Include="Utility\ConvertHelper.cs" />
+    <Compile Include="Utility\EncryptHelper.cs" />
+    <Compile Include="Utility\Threading\ProcessQueueItemHandler.cs" />
+    <Compile Include="Utility\Threading\QueueProcessorThread.cs" />
+    <Compile Include="Utility\VietnameseCalendar.cs" />
+    <Compile Include="Views\DemoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DemoUserControl.Designer.cs">
+      <DependentUpon>DemoUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoFullPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoFullPage.Designer.cs">
+      <DependentUpon>FamilyInfoFullPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoNewPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyInfoNewPage.Designer.cs">
+      <DependentUpon>FamilyInfoNewPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyTimeline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FamilyInfo\FamilyTimeline.Designer.cs">
+      <DependentUpon>FamilyTimeline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\AddMemberRelationFromList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\AddMemberRelationFromList.Designer.cs">
+      <DependentUpon>AddMemberRelationFromList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\InfoMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\InfoMember.Designer.cs">
+      <DependentUpon>InfoMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\ListMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\ListMember.Designer.cs">
+      <DependentUpon>ListMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LoginPage.Designer.cs">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\ListMemberRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\ListMemberRelation.Designer.cs">
+      <DependentUpon>ListMemberRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Member\popupAddRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Member\popupAddRelation.Designer.cs">
+      <DependentUpon>popupAddRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItems\BackgroundItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MenuItems\BackgroundItem.Designer.cs">
+      <DependentUpon>BackgroundItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItems\FrameItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MenuItems\FrameItem.Designer.cs">
+      <DependentUpon>FrameItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItems\LineItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MenuItems\LineItem.Designer.cs">
+      <DependentUpon>LineItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItems\SpaceItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MenuItems\SpaceItem.Designer.cs">
+      <DependentUpon>SpaceItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuItems\TextItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\MenuItems\TextItem.Designer.cs">
+      <DependentUpon>TextItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Controls\ProgressBarCommon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Themes\Controls\ProgressBarCommon.Designer.cs">
+      <DependentUpon>ProgressBarCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TreeViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\TreeViewer.Designer.cs">
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Dialog\WaitForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Services\Dialog\WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Core\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\BaseUserControl.resx">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Dialog\MessagePage.resx">
+      <DependentUpon>MessagePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\Controls\DataGridTemplate.resx">
+      <DependentUpon>DataGridTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Dialog\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\Controls\Menu\MenuMember.resx">
+      <DependentUpon>MenuMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\ConfigCommon.resx">
+      <DependentUpon>ConfigCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\popupAddNewRelation.resx">
+      <DependentUpon>popupAddNewRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Config\popupNRT.resx">
+      <DependentUpon>popupNRT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\addMember.resx">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\OnlyShowBarForm.resx">
+      <DependentUpon>OnlyShowBarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DemoUserControl.resx">
+      <DependentUpon>DemoUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyInfoFullPage.resx">
+      <DependentUpon>FamilyInfoFullPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyInfoNewPage.resx">
+      <DependentUpon>FamilyInfoNewPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FamilyInfo\FamilyTimeline.resx">
+      <DependentUpon>FamilyTimeline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\AddMemberRelationFromList.resx">
+      <DependentUpon>AddMemberRelationFromList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\InfoMember.resx">
+      <DependentUpon>InfoMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\ListMember.resx">
+      <DependentUpon>ListMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginPage.resx">
+      <DependentUpon>LoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\ListMemberRelation.resx">
+      <DependentUpon>ListMemberRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Member\popupAddRelation.resx">
+      <DependentUpon>popupAddRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuItems\BackgroundItem.resx">
+      <DependentUpon>BackgroundItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuItems\FrameItem.resx">
+      <DependentUpon>FrameItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuItems\LineItem.resx">
+      <DependentUpon>LineItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuItems\SpaceItem.resx">
+      <DependentUpon>SpaceItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuItems\TextItem.resx">
+      <DependentUpon>TextItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TreeViewer.resx">
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Services\Dialog\WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\Docs\TempMemberInfo.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warn_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compary-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_avata.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Docs\female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\08.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\09.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\frames\12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Docs\male.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon_app.ico" />
+    <None Include="Resources\nodata-available2.jpg" />
+    <None Include="Resources\nodata-available.jpg" />
+    <None Include="Resources\nodata.jpeg" />
+    <None Include="Resources\unknown.png" />
+    <None Include="Resources\male2.png" />
+    <None Include="Resources\female32.png" />
+    <None Include="Resources\male.png" />
+    <None Include="Resources\female.png" />
+    <None Include="Resources\leader.png" />
+    <None Include="Resources\root.png" />
+    <None Include="Resources\next.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\send.png" />
+    <None Include="Resources\back.png" />
+    <None Include="Resources\menu.png" />
+    <None Include="Data\Docs\noavatar.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Docs\no_avatar_m.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">
+      <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\GP40DrawTree\GP40DrawTree.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>; Move all assemblies and related files to Lib folder
+ROBOCOPY "$(TargetDir) " "$(TargetDir)Lib\ " /XF *.exe *.config *.manifest /XD Lib Logs Data /E /IS /MOVE
+if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.1.68.3\build\net45\SkiaSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.4.7.0.1179\build\Xamarin.Forms.targets')" />
+</Project>

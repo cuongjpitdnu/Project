@@ -1,0 +1,14 @@
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPTree.deps.json
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPTree.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPTree.pdb
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPCommon.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPModels.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPCommon.pdb
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\bin\Debug\netstandard2.0\GPModels.pdb
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.csprojAssemblyReference.cache
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.csproj.CoreCompileInputs.cache
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.AssemblyInfoInputs.cache
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.AssemblyInfo.cs
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.csproj.CopyComplete
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.dll
+D:\GIAPHA_APP\SourceNew\GPDrawTree\GPTree\obj\Debug\netstandard2.0\GPTree.pdb
