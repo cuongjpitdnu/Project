@@ -1,0 +1,24 @@
+select {
+	width: 180px;
+	height: 27px;
+}
+
+input[type="text"] {
+	width: 180px;
+}
+
+.input-file-width {
+	width: 500px !important;
+}
+
+.pageunit {
+	line-height: 35px;
+}
+
+.pageunit-width {
+	width: 70px !important;
+}
+
+.td-mw-108 {
+	min-width: 108px;
+}
