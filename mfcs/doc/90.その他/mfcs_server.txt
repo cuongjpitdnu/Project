@@ -1,0 +1,4 @@
+Server Info:
+1. Remote: 192.168.1.123 - Administrator/@kb1564ltt
+2. Sql Server: 192.168.1.123 - akbadmin/admin_1564
+3. Redis Server: 192.168.1.123 port 6379
