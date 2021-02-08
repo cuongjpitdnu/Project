@@ -1,0 +1,10 @@
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\bin\Release\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\bin\Release\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.PlotterGraphPaneEx.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.PlotterDisplayEx.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.PlotterGraphSelectCurvesForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.PrintPreviewForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\ClassLibrary1.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Release\GraphLib.pdb

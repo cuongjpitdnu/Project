@@ -1,0 +1,769 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GraphType1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GraphType1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GraphType2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GraphType2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GraphType3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GraphType3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FOMAT_MSG_BLANK" xml:space="preserve">
+    <value>Please input {0} password</value>
+  </data>
+  <data name="FOMAT_MSG_BLANK_USER" xml:space="preserve">
+    <value>Please input {0}</value>
+  </data>
+  <data name="LOGIN_BTN_EXIT" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="LOGIN_BTN_LOGIN" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LOGIN_PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LOGIN_TITLE" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LOGIN_USERNAME" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="MSG_CHANGE_PASS_ERR" xml:space="preserve">
+    <value>Change password fail</value>
+  </data>
+  <data name="MSG_CHANGE_PASS_SUCCESS" xml:space="preserve">
+    <value>Change password success</value>
+  </data>
+  <data name="MSG_COMFIRM_DELETE" xml:space="preserve">
+    <value>Are you sure you want to delete user?</value>
+  </data>
+  <data name="MSG_ERR_LOGIN" xml:space="preserve">
+    <value>You have entered incorrect username or password!</value>
+  </data>
+  <data name="MSG_ERR_PASS_BLANK" xml:space="preserve">
+    <value>Please input password.</value>
+  </data>
+  <data name="MSG_ERR_USER_BLANK" xml:space="preserve">
+    <value>Please input username.</value>
+  </data>
+  <data name="MSG_PASS_NOT_SAME" xml:space="preserve">
+    <value>Password does not match the confirm password</value>
+  </data>
+  <data name="MAIN_BTN_DATA" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="MAIN_BTN_DEVICE" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="MAIN_BTN_LANGUAGE" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="MAIN_BTN_UPDATE" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="MAIN_BTN_USER" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="MAIN_TITLE" xml:space="preserve">
+    <value>DSF602 Software Monitor</value>
+  </data>
+  <data name="LANGUAGE_BTN_AGREE" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="LANGUAGE_BTN_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="LANGUAGE_HEADER" xml:space="preserve">
+    <value>Select display language:</value>
+  </data>
+  <data name="LANGUAGE_TITLE" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="MAIN_TAB_GRAPH" xml:space="preserve">
+    <value>GRAPH</value>
+  </data>
+  <data name="MAIN_TAB_MAP" xml:space="preserve">
+    <value>MAP</value>
+  </data>
+  <data name="USERS_BTN_CREATEUSER" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+  <data name="USERS_BTN_SAVECHANGE" xml:space="preserve">
+    <value>Save Change</value>
+  </data>
+  <data name="USERS_BTN_SAVEUSER" xml:space="preserve">
+    <value>Save User</value>
+  </data>
+  <data name="USERS_CURRENTPASS" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="USERS_EMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="USERS_FULLNAME" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="USERS_NEWPASS" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="USERS_PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="USERS_RETYPEPASS" xml:space="preserve">
+    <value>Re-type password</value>
+  </data>
+  <data name="USERS_ROLE" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="USERS_TAB_CHANGEPASSWORD" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="USERS_TAB_USERS" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="USERS_TITLE" xml:space="preserve">
+    <value>System Users Management</value>
+  </data>
+  <data name="USERS_USERNAME" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="MSG_RESET_SETTING_ERR" xml:space="preserve">
+    <value>Reset setting fail</value>
+  </data>
+  <data name="MSG_SAVE_SETTING_ERR" xml:space="preserve">
+    <value>Save setting fail</value>
+  </data>
+  <data name="MSG_SAVE_SETTING_SUCCESS" xml:space="preserve">
+    <value>Save setting success</value>
+  </data>
+  <data name="DEVICE_BTN_CLEAR" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="DEVICE_BTN_RESETDEFAULT" xml:space="preserve">
+    <value>Reset Default</value>
+  </data>
+  <data name="DEVICE_BTN_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DEVICE_BTN_SAVESETTING" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DEVICE_GRP_BLOCKSETTING" xml:space="preserve">
+    <value>Block Setting</value>
+  </data>
+  <data name="DEVICE_LBL_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="DEVICE_LBL_ACTIVESENSOR" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="DEVICE_LBL_ALARMVALUE" xml:space="preserve">
+    <value>Alarm Value</value>
+  </data>
+  <data name="DEVICE_LBL_BLOCKNAME" xml:space="preserve">
+    <value>Block Name</value>
+  </data>
+  <data name="DEVICE_LBL_HEADERTEXT" xml:space="preserve">
+    <value>List sensor of block</value>
+  </data>
+  <data name="DEVICE_LBL_IPADDRESS" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="DEVICE_LBL_ORDINALDISPLAY" xml:space="preserve">
+    <value>Ordinal Display</value>
+  </data>
+  <data name="DEVICE_LBL_PORT" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="DEVICE_LBL_SENSORNAME" xml:space="preserve">
+    <value>Sensor Name</value>
+  </data>
+  <data name="DEVICE_LBL_SENSORSETTING" xml:space="preserve">
+    <value>Sensor Setting</value>
+  </data>
+  <data name="DEVICE_CBO_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="DEVICE_CBO_DEACTIVE" xml:space="preserve">
+    <value>Deactive</value>
+  </data>
+  <data name="DEVICE_COL_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="DEVICE_COL_ALARMVALUE" xml:space="preserve">
+    <value>Alarm Value</value>
+  </data>
+  <data name="DEVICE_COL_SENSORNAME" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="MSG_ERR_CURRENT" xml:space="preserve">
+    <value>current</value>
+  </data>
+  <data name="MSG_ERR_NEW" xml:space="preserve">
+    <value>new</value>
+  </data>
+  <data name="MSG_ERR_RETYPENEW" xml:space="preserve">
+    <value>re-type new</value>
+  </data>
+  <data name="USERS_CBOROLE_ADMIN" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="USERS_CBOROLE_USER" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="USERS_COL_FULLNAME" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="USERS_COL_ROLE" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="USERS_COL_USERNAME" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="COMFIRM_MSG_DELETE" xml:space="preserve">
+    <value>Do you want delete this record?</value>
+  </data>
+  <data name="MEASURE_BTN_EXCEL" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="MEASURE_BTN_FILTER" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="MEASURE_BTN_SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="MEASURE_COL_ALARMVALUE" xml:space="preserve">
+    <value>Alarm Value</value>
+  </data>
+  <data name="MEASURE_COL_ENDTIME" xml:space="preserve">
+    <value>End Time</value>
+  </data>
+  <data name="MEASURE_COL_RESULT" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MEASURE_COL_RESULTDETAIL" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MEASURE_COL_SENSORNAME" xml:space="preserve">
+    <value>Sensor Name</value>
+  </data>
+  <data name="MEASURE_COL_STARTTIME" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="MEASURE_COL_TIMEDETAIL" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="MEASURE_COL_USER" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="MEASURE_COL_VALUEDETAIL" xml:space="preserve">
+    <value>Value (V)</value>
+  </data>
+  <data name="MEASURE_LBL_DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="MEASURE_LBL_RESULT" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MEASURE_LBL_TEXT" xml:space="preserve">
+    <value>Only show the voltage exceeds the threshold</value>
+  </data>
+  <data name="MEASURE_LBL_TIME" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="MEASURE_LBL_TYPE" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="MEASURE_LBL_USERS" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="MEASURE_TITLE" xml:space="preserve">
+    <value>Measurment Management</value>
+  </data>
+  <data name="MSG_COMFIRM_EXCEL" xml:space="preserve">
+    <value>Do you want open file report?</value>
+  </data>
+  <data name="MSG_ERR_EXCEL" xml:space="preserve">
+    <value>Export excel errors.</value>
+  </data>
+  <data name="MSG_ERR_PROCESS" xml:space="preserve">
+    <value>Has erros in process.</value>
+  </data>
+  <data name="MSG_WAR_DATA" xml:space="preserve">
+    <value>Data not found.</value>
+  </data>
+  <data name="MSG_WAR_EXCEL" xml:space="preserve">
+    <value>Please select 1 row data to export excel.</value>
+  </data>
+  <data name="MSG_WAR_EXCELTEMPLATE" xml:space="preserve">
+    <value>Excel template not found.</value>
+  </data>
+  <data name="ALARM_TEST" xml:space="preserve">
+    <value>Alarm Test</value>
+  </data>
+  <data name="MEASURE_RESULT_FAIL" xml:space="preserve">
+    <value>Fail</value>
+  </data>
+  <data name="MEASURE_RESULT_PASS" xml:space="preserve">
+    <value>Pass</value>
+  </data>
+  <data name="SELECT_ALL_SHOW" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="FOMAT_MSG_EXIST_USER" xml:space="preserve">
+    <value>User name already exists</value>
+  </data>
+  <data name="MSG_UPDATE_ERR" xml:space="preserve">
+    <value>Update error</value>
+  </data>
+  <data name="APP_VERSION" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="line_chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\line-chart.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\report.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_list.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="language" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\language.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="queryfist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\queryfist.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="MAIN_LOCATION" xml:space="preserve">
+    <value>LOCATION</value>
+  </data>
+  <data name="MAIN_VIEW" xml:space="preserve">
+    <value>VIEW</value>
+  </data>
+  <data name="FOMAT_MSG_INPUT_NUMBER" xml:space="preserve">
+    <value>Please input {0} is a number than 0</value>
+  </data>
+  <data name="MSG_COMFIRM_RESET" xml:space="preserve">
+    <value>Are you sure you want to reset device current?</value>
+  </data>
+  <data name="FOMAT_MSG_BLOCKNAME_VALIDATE" xml:space="preserve">
+    <value>Block name cannot be more than 8 characters</value>
+  </data>
+  <data name="MAP_HEADER" xml:space="preserve">
+    <value>Location (Block)</value>
+  </data>
+  <data name="MSG_SETTING" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="FOMAT_MSG_EXIST_BLOCKNAME" xml:space="preserve">
+    <value>Block name already exists</value>
+  </data>
+  <data name="FOMAT_MSG_EXIST_SENSORNAME" xml:space="preserve">
+    <value>Sensor name already exists</value>
+  </data>
+  <data name="MAIN_BTN_RESET" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="MEASURE_COL_BLOCKNAME" xml:space="preserve">
+    <value>Block Name</value>
+  </data>
+  <data name="MEASURE_COL_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="MEASURE_LBL_BLOCK" xml:space="preserve">
+    <value>Block</value>
+  </data>
+  <data name="MEASURE_LBL_SENSOR" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="USERS_COL_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\setting.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UPDATEVERSION_TITLE" xml:space="preserve">
+    <value>Update Management</value>
+  </data>
+  <data name="UPDATE_BTN_CLOSE" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UPDATE_BTN_RESTORE" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="UPDATE_BTN_UPLOAD" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UPDATE_LBL_CONTENT" xml:space="preserve">
+    <value>A new version is availble</value>
+  </data>
+  <data name="UPDATE_LBL_CONTENT_NOVERSION" xml:space="preserve">
+    <value>App is up to date</value>
+  </data>
+  <data name="UPDATE_LBL_INFO" xml:space="preserve">
+    <value>DSF602 {0} is now available (you have {1}). Would you like to download the new version now?</value>
+  </data>
+  <data name="UPDATE_LBL_INFO_NOVERSION" xml:space="preserve">
+    <value>You are already the latest version, there are no new updates available at this moment</value>
+  </data>
+  <data name="UPDATE_DOWNLOADED_TEXT" xml:space="preserve">
+    <value>Downloaded</value>
+  </data>
+  <data name="UPDATE_LBL_CONTENT_DOWNLOADED" xml:space="preserve">
+    <value>Download complete</value>
+  </data>
+  <data name="UPDATE_LBL_INFO_DOWNLOAD" xml:space="preserve">
+    <value>Download Starting...</value>
+  </data>
+  <data name="UPDATE_LBL_PROGRESS" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="UPDATE_MESSAGEBOX_MSG" xml:space="preserve">
+    <value>Restart and update the application</value>
+  </data>
+  <data name="logoSSD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logossd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UPDATE_MESSAGE_SENDER" xml:space="preserve">
+    <value>Please wait while the program is processing...</value>
+  </data>
+  <data name="UPDATE_BTN_CHECK" xml:space="preserve">
+    <value>CheckVersion</value>
+  </data>
+  <data name="UPDATE_TITLE_SENDER" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="RESTOREVERSION_TITLE" xml:space="preserve">
+    <value>Restore Version</value>
+  </data>
+  <data name="RESTORE_BTN_AGREE" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="RESTORE_BTN_CLOSE" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="UPDATE_CHECK_CONTENT" xml:space="preserve">
+    <value>Check update and restore</value>
+  </data>
+  <data name="UPDATE_CHECK_INFO" xml:space="preserve">
+    <value>The current version is {0} !</value>
+  </data>
+  <data name="RESTORE_LBL_HEADER" xml:space="preserve">
+    <value>Select version:</value>
+  </data>
+  <data name="ERROR_MESSAGE_HEADER" xml:space="preserve">
+    <value>Error Message:</value>
+  </data>
+  <data name="ERROR_MESSAGE_TITLE" xml:space="preserve">
+    <value>Error Message Manager</value>
+  </data>
+  <data name="ERROR_MESSAGE_CONTENT_1" xml:space="preserve">
+    <value>Unable to connect to the block: {0} - {1}</value>
+  </data>
+  <data name="ERROR_MESSAGE_CONTENT_2" xml:space="preserve">
+    <value>No data: {0} - {1}</value>
+  </data>
+  <data name="MSG_ERROR_CHECKCONNECTION" xml:space="preserve">
+    <value>Check the connection again.</value>
+  </data>
+  <data name="MSG_ERROR_TITLE" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="DEVICE_CONFIRM_MSG" xml:space="preserve">
+    <value>Are you sure you want to change device settings?</value>
+  </data>
+  <data name="DEVICE_CONFIRM_MSG_TITLE" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="MAIN_TAB_ERR" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="APPCLOSE_CONFIRM_MSG" xml:space="preserve">
+    <value>Are you sure you want to close?</value>
+  </data>
+  <data name="APPCLOSE_CONFIRM_MSG_TITLE" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="LICENSE_BTN_ACTIVE" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="LICENSE_BTN_LOAD_FILE" xml:space="preserve">
+    <value>Load File</value>
+  </data>
+  <data name="LICENSE_LBL_CONTENT1" xml:space="preserve">
+    <value>This Machine is not activated!</value>
+  </data>
+  <data name="LICENSE_LBL_CONTENT2" xml:space="preserve">
+    <value>Please send the Machine Code  to System Admin!</value>
+  </data>
+  <data name="LICENSE_LBL_KEY" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="LICENSE_LBL_MACHINECODE" xml:space="preserve">
+    <value>Machine Code</value>
+  </data>
+  <data name="LICENSE_TITLE" xml:space="preserve">
+    <value>STATIRON DSF602 Control Software</value>
+  </data>
+  <data name="MSG_ACTIVATE_ERR" xml:space="preserve">
+    <value>Activate machine fail! Please contact system Admin!</value>
+  </data>
+  <data name="MSG_KEY_BLANLK" xml:space="preserve">
+    <value>Please input key active!</value>
+  </data>
+  <data name="BLOCK_LINE" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="BLOCK_PRODUCT" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="BLOCK_SENSORS" xml:space="preserve">
+    <value>sensors</value>
+  </data>
+  <data name="BLOCK_STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="SENSOR_ALARM" xml:space="preserve">
+    <value>Alarm!</value>
+  </data>
+  <data name="SENSOR_NOUSE" xml:space="preserve">
+    <value>No use</value>
+  </data>
+  <data name="SENSOR_RUNNING" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="MEASURE_MODE_VOLT" xml:space="preserve">
+    <value>Volt</value>
+  </data>
+  <data name="MEASURE_MODE_ION" xml:space="preserve">
+    <value>IB</value>
+  </data>
+  <data name="MEASURE_TYPE" xml:space="preserve">
+    <value>Measure Type</value>
+  </data>
+  <data name="TITLE_DEFAULT_VALUES" xml:space="preserve">
+    <value>Set default values</value>
+  </data>
+  <data name="ALARM_ALL_CONFIRM" xml:space="preserve">
+    <value>Do you want changed the alarm value to all sensor ?</value>
+  </data>
+  <data name="ABOUT" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AKBlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AKBlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ALARM_TAB" xml:space="preserve">
+    <value>Alarm Report</value>
+  </data>
+  <data name="CUSTOMER" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="logo_systech3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_systech3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ABOUT_RESET_ALERT" xml:space="preserve">
+    <value>ResetKey, ResetApp will restart application!</value>
+  </data>
+  <data name="SOFTWARE" xml:space="preserve">
+    <value>Software</value>
+  </data>
+  <data name="ABOUT_RESETAPP" xml:space="preserve">
+    <value>Reset App</value>
+  </data>
+  <data name="ABOUT_RESETKEY" xml:space="preserve">
+    <value>Reset Key</value>
+  </data>
+  <data name="MEASURE_MODE_DECAY" xml:space="preserve">
+    <value>Decay &amp; IB</value>
+  </data>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TIME_INCORRECT_FORMAT" xml:space="preserve">
+    <value>Time format is incorrect</value>
+  </data>
+  <data name="MSG_OUTOF_RANGE" xml:space="preserve">
+    <value>{0} must be {1} to {2}</value>
+  </data>
+  <data name="DAY_FRI" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="DAY_MON" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="DAY_SAT" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="DAY_SUN" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="DAY_THU" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="DAY_TUE" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="DAY_WED" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="TITLE_DECAY" xml:space="preserve">
+    <value>Decay Time</value>
+  </data>
+  <data name="TITLE_DECAY_AUTO" xml:space="preserve">
+    <value>Auto Measure Time</value>
+  </data>
+  <data name="TITLE_DECAY_COL_COUNT" xml:space="preserve">
+    <value>Measure count</value>
+  </data>
+  <data name="TITLE_DECAY_IBSTOPTIME" xml:space="preserve">
+    <value>Stop IB Measure</value>
+  </data>
+  <data name="TITLE_DECAY_IBVAL" xml:space="preserve">
+    <value>Alarm Peak Voltage</value>
+  </data>
+  <data name="TITLE_DECAY_LOWVAL" xml:space="preserve">
+    <value>Decay To</value>
+  </data>
+  <data name="TITLE_DECAY_STOPTIME" xml:space="preserve">
+    <value>Stop Decay</value>
+  </data>
+  <data name="TITLE_DECAY_TIME" xml:space="preserve">
+    <value>Decay Alarm</value>
+  </data>
+  <data name="TITLE_DECAY_UPVAL" xml:space="preserve">
+    <value>Charging</value>
+  </data>
+  <data name="TITLE_IB" xml:space="preserve">
+    <value>Ion Balance</value>
+  </data>
+  <data name="TITLE_VOLT" xml:space="preserve">
+    <value>Voltage</value>
+  </data>
+</root>

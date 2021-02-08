@@ -1,0 +1,53 @@
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Excel Template\en-US_Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Excel Template\ja-JP_Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Excel Template\Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Excel Template\ReportWalking.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Language\en_US.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Language\ja_JP.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Language\vi_VN.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\DSF602.exe.config
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\DSF602.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\DSF602.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\BaseCommon.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Dapper.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\EPPlus.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Hime.Redist.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Karambolo.Common.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Karambolo.PO.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\KeyCipher.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Newtonsoft.Json.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\System.Data.SQLite.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\NModbus4.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\KeyCipher.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\BaseCommon.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\DSF602Driver.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Dapper.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\EPPlus.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Hime.Redist.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Hime.Redist.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\Newtonsoft.Json.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\System.Data.SQLite.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Release\NModbus4.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\BaseCommon.ControlTemplate.DeviceLayout.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.DeviceManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.GraphLayout.DisplaySensor.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.GraphLayout.GraphType1.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.GraphLayout.GraphType2.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.GraphLayout.GraphType3.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.GraphLayout.MapLocation.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.Language.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\BaseCommon.LicenseForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.LoginForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.MainForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.MeasureManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.RestoreVersion.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.UpdateVersion.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.View.UserManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Release\DSF602.pdb

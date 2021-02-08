@@ -1,0 +1,5 @@
+D:\CONG VIEC\Source_DSFV601_V2\KeyCipher\bin\Debug\KeyCipher.dll.config
+D:\CONG VIEC\Source_DSFV601_V2\KeyCipher\bin\Debug\KeyCipher.dll
+D:\CONG VIEC\Source_DSFV601_V2\KeyCipher\bin\Debug\KeyCipher.pdb
+D:\CONG VIEC\Source_DSFV601_V2\KeyCipher\obj\Debug\KeyCipher.dll
+D:\CONG VIEC\Source_DSFV601_V2\KeyCipher\obj\Debug\KeyCipher.pdb

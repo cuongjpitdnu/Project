@@ -1,0 +1,14 @@
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\bin\Release\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\bin\Release\DSF602Driver.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\bin\Release\NModbus4.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\bin\Release\NModbus4.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\obj\Release\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\obj\Release\DSF602Driver.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602Driver\obj\Release\DSF602Driver.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\bin\Release\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\bin\Release\DSF602Driver.pdb
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\bin\Release\NModbus4.dll
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\bin\Release\NModbus4.xml
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\obj\Release\DSF602Driver.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\obj\Release\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\DFS02_ToolSetIP\DSF602Driver\obj\Release\DSF602Driver.pdb

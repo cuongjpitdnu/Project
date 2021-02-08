@@ -1,0 +1,21 @@
+D:\project\DSF602\GraphLib\bin\Debug\GraphLib.dll
+D:\project\DSF602\GraphLib\bin\Debug\GraphLib.pdb
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.PlotterGraphPaneEx.resources
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.PlotterDisplayEx.resources
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.PlotterGraphSelectCurvesForm.resources
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.PrintPreviewForm.resources
+D:\project\DSF602\GraphLib\obj\Debug\ClassLibrary1.Properties.Resources.resources
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.csproj.GenerateResource.Cache
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.dll
+D:\project\DSF602\GraphLib\obj\Debug\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\bin\Debug\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\bin\Debug\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.PlotterGraphPaneEx.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.PlotterDisplayEx.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.PlotterGraphSelectCurvesForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.PrintPreviewForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\ClassLibrary1.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\GraphLib\obj\Debug\GraphLib.csprojResolveAssemblyReference.cache

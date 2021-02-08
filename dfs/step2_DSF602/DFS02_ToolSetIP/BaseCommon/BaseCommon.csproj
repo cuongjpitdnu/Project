@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98E656F2-4D32-4DBE-B691-81C642527207}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BaseCommon</RootNamespace>
+    <AssemblyName>BaseCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlTemplate\ButtonTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlTemplate\ButtonTemplate.Designer.cs">
+      <DependentUpon>ButtonTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlTemplate\DataGridViewTemplate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlTemplate\DataGridViewTemplate.Designer.cs">
+      <DependentUpon>DataGridViewTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\AppCore.cs" />
+    <Compile Include="Core\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Core\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Core\BaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\BaseUserControl.Designer.cs">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Threading\ProcessQueueItemHandler.cs" />
+    <Compile Include="Threading\QueueProcessorThread.cs" />
+    <Compile Include="Utility\BindingHelper.cs" />
+    <Compile Include="Utility\ConfigHelper.cs" />
+    <Compile Include="Utility\ConvertHelper.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ControlTemplate\ButtonTemplate.resx">
+      <DependentUpon>ButtonTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlTemplate\DataGridViewTemplate.resx">
+      <DependentUpon>DataGridViewTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\BaseUserControl.resx">
+      <DependentUpon>BaseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

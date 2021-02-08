@@ -1,0 +1,257 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"PO-Revision-Date: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Language: ja_JP\n"
+
+msgid "Please input {0} password"
+msgstr "パスワード{0}を入力してください"
+
+msgid "Please input {0}"
+msgstr "{0}を入力してください"
+
+msgid "Exit"
+msgstr "エグジット"
+
+msgid "Login"
+msgstr "ログイン"
+
+msgid "UserName"
+msgstr "ユーザー名"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Are you sure you want to delete user?"
+msgstr "本当に削除しますか？"
+
+msgid "Change password fail"
+msgstr "パスワードの変更に失敗しました"
+
+msgid "Change password success"
+msgstr "パスワードが正常に変更されました"
+
+msgid "You have entered incorrect username or password!"
+msgstr "間違ったユーザー名またはパスワードを入力しました！"
+
+msgid "Please input password."
+msgstr "パスワードを入力してください"
+
+msgid "Please input username."
+msgstr "ユーザー名を入力してください。"
+
+msgid "Password does not match the confirm password"
+msgstr "パスワードが確認パスワードと一致しません"
+
+msgid "Main"
+msgstr "メイン"
+
+msgid "Device"
+msgstr "デバイス"
+
+msgid "Data"
+msgstr "データ"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Language"
+msgstr "ランゲージ"
+
+msgid "Update"
+msgstr "アップデイト"
+
+msgid "GRAPH"
+msgstr "グラフ"
+
+msgid "MAP"
+msgstr "マップ"
+
+msgid "Select display language:"
+msgstr "表示言語を選択："
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Agree"
+msgstr "同意する"
+
+msgid "System Users Management"
+msgstr "システムユーザー管理"
+
+msgid "Users"
+msgstr "ユーザー"
+
+msgid "Change Password"
+msgstr "パスワードを変更する"
+
+msgid "Role"
+msgstr "役割"
+
+msgid "Re-type password"
+msgstr "パスワードを再入力してください"
+
+msgid "New password"
+msgstr "新しいパスワード"
+
+msgid "Full Name"
+msgstr "フルネーム"
+
+msgid "Email"
+msgstr "メール"
+
+msgid "Current password"
+msgstr "現在のパスワード"
+
+msgid "Save User"
+msgstr "ユーザーを保存"
+
+msgid "Save Change"
+msgstr "変更を保存する"
+
+msgid "Create User"
+msgstr "ユーザーを作成"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Block Name"
+msgstr "ブロック名"
+
+msgid "Block Setting"
+msgstr "ブロック設定"
+
+msgid "Active"
+msgstr "アクティブ"
+
+msgid "IP Address"
+msgstr "IPアドレス"
+
+msgid "Port"
+msgstr "ポート"
+
+msgid "Save"
+msgstr "セーブ"
+
+msgid "List sensor of block"
+msgstr "ブロックのリストセンサー"
+
+msgid "Sensor Setting"
+msgstr "センサー設定"
+
+msgid "Sensor Name"
+msgstr "センサー名"
+
+msgid "Ordinal Display"
+msgstr "順序表示"
+
+msgid "Alarm Value"
+msgstr "アラーム値"
+
+msgid "Clear"
+msgstr "クリア"
+
+msgid "Reset Default"
+msgstr "リセット"
+
+msgid "Sensor"
+msgstr "センサー"
+
+msgid "Deactive"
+msgstr "非アクティブ"
+
+msgid "current"
+msgstr "現在"
+
+msgid "new"
+msgstr "新しい"
+
+msgid "re-type new"
+msgstr "再入力"
+
+msgid "Admin"
+msgstr "管理者"
+
+msgid "Result"
+msgstr "結果"
+
+msgid "Type"
+msgstr "タイプ"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Search"
+msgstr "サーチ"
+
+msgid "Excel"
+msgstr "エクセル"
+
+msgid "Time"
+msgstr "時間"
+
+msgid "Filter"
+msgstr "フィルタ"
+
+msgid "Only show the voltage exceeds the threshold"
+msgstr "電圧がしきい値を超えていることのみを表示"
+
+msgid "Start Time"
+msgstr "始まる時間"
+
+msgid "End Time"
+msgstr "終了時間"
+
+msgid "Value (V)"
+msgstr "値（V）"
+
+msgid "All"
+msgstr "全"
+
+msgid "Pass"
+msgstr "パス"
+
+msgid "Fail"
+msgstr "失敗"
+
+msgid "Alarm Test"
+msgstr "アラームテスト"
+
+msgid "User name already exists"
+msgstr "ユーザー名は既に存在します"
+
+msgid "LOCATION"
+msgstr "ロケーション"
+
+msgid "VIEW"
+msgstr "眺望"
+
+msgid "Location (Block)"
+msgstr "ロケーション （ブロック）"
+
+msgid "Setting"
+msgstr "セッティング"
+
+msgid "Block"
+msgstr "ブロック"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Delete"
+msgstr "デリート"
+
+msgid "Sensor name already exists"
+msgstr "センサー名は既に存在します"
+
+msgid "Save setting success"
+msgstr "設定の保存を成功させる"

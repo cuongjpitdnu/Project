@@ -1,0 +1,1047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainLayout.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="dgvMeasureDetail.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <metadata name="NoDetail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="NoDetail.HeaderText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoDetail.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <metadata name="colTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colTime.HeaderText" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="colTime.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <metadata name="ValueDetail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ValueDetail.HeaderText" xml:space="preserve">
+    <value>Value (V)</value>
+  </data>
+  <data name="ValueDetail.Width" type="System.Int32, mscorlib">
+    <value>130</value>
+  </data>
+  <metadata name="ResultDetail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ResultDetail.HeaderText" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dgvMeasureDetail.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dgvMeasureDetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 395</value>
+  </data>
+  <data name="dgvMeasureDetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1150, 184</value>
+  </data>
+  <data name="dgvMeasureDetail.TabIndex" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasureDetail.Name" xml:space="preserve">
+    <value>dgvMeasureDetail</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasureDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasureDetail.Parent" xml:space="preserve">
+    <value>MainLayout</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasureDetail.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvMeasure.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <metadata name="No.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="No.HeaderText" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="No.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <metadata name="MeasureID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MeasureID.HeaderText" xml:space="preserve">
+    <value>MeasureID</value>
+  </data>
+  <data name="MeasureID.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="DeviceName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="DeviceName.HeaderText" xml:space="preserve">
+    <value>Device Name</value>
+  </data>
+  <metadata name="AlarmValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="AlarmValue.HeaderText" xml:space="preserve">
+    <value>AlarmValue</value>
+  </data>
+  <metadata name="FailLevel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="FailLevel.HeaderText" xml:space="preserve">
+    <value>FailLevel</value>
+  </data>
+  <metadata name="colPeriod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colPeriod.HeaderText" xml:space="preserve">
+    <value>Period (s)</value>
+  </data>
+  <metadata name="StartTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="StartTime.HeaderText" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="StartTime.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="EndTime.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="EndTime.HeaderText" xml:space="preserve">
+    <value>EndTime</value>
+  </data>
+  <data name="EndTime.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="MeasureType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MeasureType.HeaderText" xml:space="preserve">
+    <value>Measure Type</value>
+  </data>
+  <data name="MeasureType.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
+  <metadata name="Result.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Result.HeaderText" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <metadata name="device_id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="device_id.HeaderText" xml:space="preserve">
+    <value>device_id</value>
+  </data>
+  <data name="device_id.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <metadata name="colDelete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="colDelete.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colDelete.MinimumWidth" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="colDelete.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="dgvMeasure.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvMeasure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 104</value>
+  </data>
+  <data name="dgvMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1150, 207</value>
+  </data>
+  <data name="dgvMeasure.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasure.Name" xml:space="preserve">
+    <value>dgvMeasure</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasure.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasure.Parent" xml:space="preserve">
+    <value>MainLayout</value>
+  </data>
+  <data name="&gt;&gt;dgvMeasure.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>753, 29</value>
+  </data>
+  <data name="btnExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 37</value>
+  </data>
+  <data name="btnExport.TabIndex" type="System.Int32, mscorlib">
+    <value>155</value>
+  </data>
+  <data name="btnExport.Text" xml:space="preserve">
+    <value> Excel</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Name" xml:space="preserve">
+    <value>btnExport</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExport.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnExport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnSearch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>644, 29</value>
+  </data>
+  <data name="btnSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 37</value>
+  </data>
+  <data name="btnSearch.TabIndex" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Name" xml:space="preserve">
+    <value>btnSearch</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnSearch.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>343, 53</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>153</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cmbResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 50</value>
+  </data>
+  <data name="cmbResult.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cmbResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 28</value>
+  </data>
+  <data name="cmbResult.TabIndex" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="&gt;&gt;cmbResult.Name" xml:space="preserve">
+    <value>cmbResult</value>
+  </data>
+  <data name="&gt;&gt;cmbResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbResult.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cmbResult.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 53</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>151</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cmbType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 50</value>
+  </data>
+  <data name="cmbType.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cmbType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 28</value>
+  </data>
+  <data name="cmbType.TabIndex" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <data name="&gt;&gt;cmbType.Name" xml:space="preserve">
+    <value>cmbType</value>
+  </data>
+  <data name="&gt;&gt;cmbType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbType.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;cmbType.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 19</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 20</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>324, 21</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 20</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>~</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="dtpEnd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 16</value>
+  </data>
+  <data name="dtpEnd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 26</value>
+  </data>
+  <data name="dtpEnd.TabIndex" type="System.Int32, mscorlib">
+    <value>147</value>
+  </data>
+  <data name="&gt;&gt;dtpEnd.Name" xml:space="preserve">
+    <value>dtpEnd</value>
+  </data>
+  <data name="&gt;&gt;dtpEnd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpEnd.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;dtpEnd.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="dtpStart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="dtpStart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 26</value>
+  </data>
+  <data name="dtpStart.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="&gt;&gt;dtpStart.Name" xml:space="preserve">
+    <value>dtpStart</value>
+  </data>
+  <data name="&gt;&gt;dtpStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpStart.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;dtpStart.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1150, 95</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>MainLayout</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1027, 18</value>
+  </data>
+  <data name="btnFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 37</value>
+  </data>
+  <data name="btnFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>163</value>
+  </data>
+  <data name="btnFilter.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.Name" xml:space="preserve">
+    <value>btnFilter</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboSubSecondE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>937, 6</value>
+  </data>
+  <data name="cboSubSecondE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubSecondE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubSecondE.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondE.Name" xml:space="preserve">
+    <value>cboSubSecondE</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondE.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondE.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cboSubSecondS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>455, 6</value>
+  </data>
+  <data name="cboSubSecondS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubSecondS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubSecondS.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondS.Name" xml:space="preserve">
+    <value>cboSubSecondS</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondS.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubSecondS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cboSubMimuteE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>868, 6</value>
+  </data>
+  <data name="cboSubMimuteE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubMimuteE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubMimuteE.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteE.Name" xml:space="preserve">
+    <value>cboSubMimuteE</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteE.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteE.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="cboSubMimuteS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 6</value>
+  </data>
+  <data name="cboSubMimuteS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubMimuteS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubMimuteS.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteS.Name" xml:space="preserve">
+    <value>cboSubMimuteS</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteS.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubMimuteS.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="cboSubHourE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>799, 6</value>
+  </data>
+  <data name="cboSubHourE.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubHourE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubHourE.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourE.Name" xml:space="preserve">
+    <value>cboSubHourE</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourE.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourE.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="cboSubHourS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>317, 6</value>
+  </data>
+  <data name="cboSubHourS.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="cboSubHourS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 28</value>
+  </data>
+  <data name="cboSubHourS.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourS.Name" xml:space="preserve">
+    <value>cboSubHourS</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourS.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;cboSubHourS.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 9</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 20</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>161</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>523, 12</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 20</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>160</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>~</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="dtpSubDateE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 6</value>
+  </data>
+  <data name="dtpSubDateE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 26</value>
+  </data>
+  <data name="dtpSubDateE.TabIndex" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateE.Name" xml:space="preserve">
+    <value>dtpSubDateE</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateE.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateE.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="dtpSubDateS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 6</value>
+  </data>
+  <data name="dtpSubDateS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 26</value>
+  </data>
+  <data name="dtpSubDateS.TabIndex" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateS.Name" xml:space="preserve">
+    <value>dtpSubDateS</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateS.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;dtpSubDateS.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="chkView.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 42</value>
+  </data>
+  <data name="chkView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>298, 24</value>
+  </data>
+  <data name="chkView.TabIndex" type="System.Int32, mscorlib">
+    <value>157</value>
+  </data>
+  <data name="chkView.Text" xml:space="preserve">
+    <value>Only show the voltage exceeds the threshold</value>
+  </data>
+  <data name="&gt;&gt;chkView.Name" xml:space="preserve">
+    <value>chkView</value>
+  </data>
+  <data name="&gt;&gt;chkView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkView.Parent" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;chkView.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="pnlFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 317</value>
+  </data>
+  <data name="pnlFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1150, 72</value>
+  </data>
+  <data name="pnlFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>146</value>
+  </data>
+  <data name="&gt;&gt;pnlFilter.Name" xml:space="preserve">
+    <value>pnlFilter</value>
+  </data>
+  <data name="&gt;&gt;pnlFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlFilter.Parent" xml:space="preserve">
+    <value>MainLayout</value>
+  </data>
+  <data name="&gt;&gt;pnlFilter.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="MainLayout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MainLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MainLayout.RowCount" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="MainLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1156, 582</value>
+  </data>
+  <data name="MainLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>145</value>
+  </data>
+  <data name="&gt;&gt;MainLayout.Name" xml:space="preserve">
+    <value>MainLayout</value>
+  </data>
+  <data name="&gt;&gt;MainLayout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainLayout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainLayout.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MainLayout.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="dgvMeasureDetail" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvMeasure" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlFilter" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,101,Absolute,213,Absolute,78,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>8, 20</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1156, 582</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 12pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Measurment Management</value>
+  </data>
+  <data name="&gt;&gt;No.Name" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="&gt;&gt;No.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureID.Name" xml:space="preserve">
+    <value>MeasureID</value>
+  </data>
+  <data name="&gt;&gt;MeasureID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeviceName.Name" xml:space="preserve">
+    <value>DeviceName</value>
+  </data>
+  <data name="&gt;&gt;DeviceName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AlarmValue.Name" xml:space="preserve">
+    <value>AlarmValue</value>
+  </data>
+  <data name="&gt;&gt;AlarmValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FailLevel.Name" xml:space="preserve">
+    <value>FailLevel</value>
+  </data>
+  <data name="&gt;&gt;FailLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colPeriod.Name" xml:space="preserve">
+    <value>colPeriod</value>
+  </data>
+  <data name="&gt;&gt;colPeriod.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartTime.Name" xml:space="preserve">
+    <value>StartTime</value>
+  </data>
+  <data name="&gt;&gt;StartTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndTime.Name" xml:space="preserve">
+    <value>EndTime</value>
+  </data>
+  <data name="&gt;&gt;EndTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MeasureType.Name" xml:space="preserve">
+    <value>MeasureType</value>
+  </data>
+  <data name="&gt;&gt;MeasureType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Result.Name" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="&gt;&gt;Result.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;device_id.Name" xml:space="preserve">
+    <value>device_id</value>
+  </data>
+  <data name="&gt;&gt;device_id.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colDelete.Name" xml:space="preserve">
+    <value>colDelete</value>
+  </data>
+  <data name="&gt;&gt;colDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NoDetail.Name" xml:space="preserve">
+    <value>NoDetail</value>
+  </data>
+  <data name="&gt;&gt;NoDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colTime.Name" xml:space="preserve">
+    <value>colTime</value>
+  </data>
+  <data name="&gt;&gt;colTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ValueDetail.Name" xml:space="preserve">
+    <value>ValueDetail</value>
+  </data>
+  <data name="&gt;&gt;ValueDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ResultDetail.Name" xml:space="preserve">
+    <value>ResultDetail</value>
+  </data>
+  <data name="&gt;&gt;ResultDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MeasureManagement</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>BaseCommon.BaseForm, BaseCommon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+</root>

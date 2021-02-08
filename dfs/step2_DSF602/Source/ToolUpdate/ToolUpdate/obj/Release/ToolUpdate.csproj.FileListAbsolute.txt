@@ -1,0 +1,33 @@
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe.config
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.pdb
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.dll
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.xml
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.frmUpdate.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.Properties.Resources.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.GenerateResource.Cache
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.pdb
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe.config
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.pdb
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.frmUpdate.resources
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.Properties.Resources.resources
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.CopyComplete
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.exe
+C:\Users\Admin\Desktop\Update\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.pdb
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe.config
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.exe
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.pdb
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.pdb
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.dll
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.xml
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csprojResolveAssemblyReference.cache
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.frmUpdate.resources
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.Properties.Resources.resources
+C:\Users\2NF001\Desktop\UPDATE DSF\upd\ToolUpdate1\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.GenerateResource.Cache

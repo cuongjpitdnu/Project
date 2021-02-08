@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DSF602</RootNamespace>
+    <AssemblyName>DSF602</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>appicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hime.Redist, Version=3.4.0.0, Culture=neutral, PublicKeyToken=984dd3a5d55ca89c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hime.Redist.3.4.0\lib\net20\Hime.Redist.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Karambolo.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=496b38436bb9edeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Karambolo.Common.3.1.2\lib\net45\Karambolo.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Karambolo.PO, Version=1.5.0.0, Culture=neutral, PublicKeyToken=496b38436bb9edeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Karambolo.PO.1.5.1\lib\net45\Karambolo.PO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.1\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppManager.cs" />
+    <Compile Include="Class\clsConst.cs" />
+    <Compile Include="Class\clsExportReport.cs" />
+    <Compile Include="Class\clsCommon.cs" />
+    <Compile Include="Class\clsSupportGraph.cs" />
+    <Compile Include="Class\DBCoreDapper.cs" />
+    <Compile Include="Language\LanguageHelper.cs" />
+    <Compile Include="Model\DBManager.cs" />
+    <Compile Include="Model\DBManagerChild.cs" />
+    <Compile Include="Model\ExEntity.cs" />
+    <Compile Include="Model\SQLiteManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlLayout\DeviceLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ControlLayout\DeviceLayout.Designer.cs">
+      <DependentUpon>DeviceLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlLayout\NumericTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\ControlLayout\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\ControlLayout\DataGridViewMaskedTextColumn.cs" />
+    <Compile Include="View\DefaultSettingPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DefaultSettingPopup.Designer.cs">
+      <DependentUpon>DefaultSettingPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChargingConfirmPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChargingConfirmPopup.Designer.cs">
+      <DependentUpon>ChargingConfirmPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeviceManagement.Designer.cs">
+      <DependentUpon>DeviceManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\AlarmReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\AlarmReport.Designer.cs">
+      <DependentUpon>AlarmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\BlockView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\BlockView.Designer.cs">
+      <DependentUpon>BlockView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\DisplaySensor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\DisplaySensor.Designer.cs">
+      <DependentUpon>DisplaySensor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType1.Designer.cs">
+      <DependentUpon>GraphType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType2.Designer.cs">
+      <DependentUpon>GraphType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphType3.Designer.cs">
+      <DependentUpon>GraphType3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphTypeBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\GraphTypeBase.Designer.cs">
+      <DependentUpon>GraphTypeBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\MapLocation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\MapLocation.Designer.cs">
+      <DependentUpon>MapLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraphLayout\SensorItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GraphLayout\SensorItem.Designer.cs">
+      <DependentUpon>SensorItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Language.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Language.Designer.cs">
+      <DependentUpon>Language.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LicenseForm.Designer.cs">
+      <DependentUpon>LicenseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapDevices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MapDevices.Designer.cs">
+      <DependentUpon>MapDevices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MeasureManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MeasureManagement.Designer.cs">
+      <DependentUpon>MeasureManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\PromptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PromptDialog.Designer.cs">
+      <DependentUpon>PromptDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RestoreVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RestoreVersion.Designer.cs">
+      <DependentUpon>RestoreVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SwitchButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SwitchButton.Designer.cs">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UpdateVesionManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UpdateVesionManagement.Designer.cs">
+      <DependentUpon>UpdateVesionManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ControlLayout\DeviceLayout.resx">
+      <DependentUpon>DeviceLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DefaultSettingPopup.resx">
+      <DependentUpon>DefaultSettingPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChargingConfirmPopup.resx">
+      <DependentUpon>ChargingConfirmPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DeviceManagement.resx">
+      <DependentUpon>DeviceManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\AlarmReport.resx">
+      <DependentUpon>AlarmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\BlockView.resx">
+      <DependentUpon>BlockView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\DisplaySensor.resx">
+      <DependentUpon>DisplaySensor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\GraphType1.resx">
+      <DependentUpon>GraphType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\GraphType2.resx">
+      <DependentUpon>GraphType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\GraphType3.resx">
+      <DependentUpon>GraphType3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\MapLocation.resx">
+      <DependentUpon>MapLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GraphLayout\SensorItem.resx">
+      <DependentUpon>SensorItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Language.resx">
+      <DependentUpon>Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LicenseForm.resx">
+      <DependentUpon>LicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MapDevices.resx">
+      <DependentUpon>MapDevices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MeasureManagement.resx">
+      <DependentUpon>MeasureManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PromptDialog.resx">
+      <DependentUpon>PromptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RestoreVersion.resx">
+      <DependentUpon>RestoreVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SwitchButton.resx">
+      <DependentUpon>SwitchButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UpdateVesionManagement.resx">
+      <DependentUpon>UpdateVesionManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Excel Template\en-US_Report.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel Template\ja-JP_Report.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel Template\Report.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel Template\ReportWalking.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Language\en_US.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Language\ja_JP.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Language\vi_VN.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseCommon\BaseCommon.csproj">
+      <Project>{98e656f2-4d32-4dbe-b691-81c642527207}</Project>
+      <Name>BaseCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DSF602Driver\DSF602Driver.csproj">
+      <Project>{5177790a-c290-4dc0-a7ce-7dac28f5d67e}</Project>
+      <Name>DSF602Driver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GraphLib\GraphLib.csproj">
+      <Project>{0c0a1f4d-1363-4544-a7c5-196c76d26cca}</Project>
+      <Name>GraphLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Source_DSFV601_V2\KeyCipher\KeyCipher.csproj">
+      <Project>{c2982888-9d37-40fa-8ce4-502a734cccfd}</Project>
+      <Name>KeyCipher</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appicon.ico" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\logo_systech3.png" />
+    <None Include="Resources\AKBlogo.png" />
+    <None Include="Resources\logossd.jpg" />
+    <None Include="Resources\setting.ico" />
+    <None Include="Resources\queryfist.sql" />
+    <None Include="Resources\report.ico" />
+    <None Include="Resources\user_list.ico" />
+    <None Include="Resources\line-chart.ico" />
+    <None Include="Resources\login.ico" />
+    <None Include="Resources\language.ico" />
+    <None Include="Resources\GraphType3.png" />
+    <None Include="Resources\GraphType2.png" />
+    <None Include="Resources\GraphType1.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.1\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.1\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.1\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.1\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>

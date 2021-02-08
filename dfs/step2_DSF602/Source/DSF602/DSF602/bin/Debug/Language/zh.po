@@ -1,0 +1,392 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"PO-Revision-Date: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 2.4.2\n"
+
+msgid "Please input {0} password"
+msgstr "Please input {0} password"
+
+msgid "Please input {0}"
+msgstr "Please input {0}"
+
+msgid "Exit"
+msgstr "Thoát"
+
+msgid "Login"
+msgstr "登录"
+
+msgid "UserName"
+msgstr "登录"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Are you sure you want to delete user?"
+msgstr "Are you sure you want to delete user?"
+
+msgid "Change password fail"
+msgstr "Change password fail"
+
+msgid "Change password success"
+msgstr "Change password success"
+
+msgid "You have entered incorrect username or password!"
+msgstr "You have entered incorrect username or password!"
+
+msgid "Please input password."
+msgstr "Please input password."
+
+msgid "Please input username."
+msgstr "Please input username."
+
+msgid "Password does not match the confirm password"
+msgstr "Password does not match the confirm password"
+
+msgid "Main"
+msgstr "Main"
+
+msgid "Device"
+msgstr "Device"
+
+msgid "Data"
+msgstr "Data"
+
+msgid "User"
+msgstr "User"
+
+msgid "Language"
+msgstr "Language"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "GRAPH"
+msgstr "登录"
+
+msgid "MAP"
+msgstr "MAP"
+
+msgid "Select display language:"
+msgstr "Select display language:"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Agree"
+msgstr "Agree"
+
+msgid "System Users Management"
+msgstr "System Users Management"
+
+msgid "Users"
+msgstr "Users"
+
+msgid "Change Password"
+msgstr "Change Password"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Re-type password"
+msgstr "Re-type password"
+
+msgid "New password"
+msgstr "New password"
+
+msgid "Full Name"
+msgstr "Full Name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Current password"
+msgstr "Current password"
+
+msgid "Save User"
+msgstr "Save User"
+
+msgid "Save Change"
+msgstr "Save Change"
+
+msgid "Create User"
+msgstr "Create User"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Block Name"
+msgstr "Block Name"
+
+msgid "Block Setting"
+msgstr "Block Setting"
+
+msgid "Active"
+msgstr "Active"
+
+msgid "IP Address"
+msgstr "IP Address"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "List sensor of block"
+msgstr "List sensor of block"
+
+msgid "Sensor Setting"
+msgstr "Sensor Setting"
+
+msgid "Sensor Name"
+msgstr "Sensor Name"
+
+msgid "Ordinal Display"
+msgstr "Ordinal Display"
+
+msgid "Alarm Value"
+msgstr "Alarm Value"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Reset Default"
+msgstr "Reset Default"
+
+msgid "Sensor"
+msgstr "Sensor"
+
+msgid "current"
+msgstr "current"
+
+msgid "new"
+msgstr "new"
+
+msgid "re-type new"
+msgstr "re-type new"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Do you want delete this record?"
+msgstr "Do you want delete this record?"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Excel"
+msgstr "Excel"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Result"
+msgstr "Result"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Time"
+msgstr "Time"
+
+msgid "Only show the voltage exceeds the threshold"
+msgstr "Only show the voltage exceeds the threshold"
+
+msgid "Measurment Management"
+msgstr "Measurment Management"
+
+msgid "Start Time"
+msgstr "Start Time"
+
+msgid "End Time"
+msgstr "End Time"
+
+msgid "Has erros in process."
+msgstr "Has erros in process."
+
+msgid "Data not found."
+msgstr "Data not found."
+
+msgid "Please select 1 row data to export excel."
+msgstr "Please select 1 row data to export excel."
+
+msgid "Excel template not found."
+msgstr "Excel template not found."
+
+msgid "Do you want open file report?"
+msgstr "Do you want open file report?"
+
+msgid "Export excel errors."
+msgstr "Export excel errors."
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Value (V)"
+msgstr "Value (V)"
+
+msgid "All"
+msgstr "All"
+
+msgid "Pass"
+msgstr "Pass"
+
+msgid "Fail"
+msgstr "Fail"
+
+msgid "Alarm Test"
+msgstr "Alarm Test"
+
+msgid "User name already exists"
+msgstr "User name already exists"
+
+msgid "LOCATION"
+msgstr "LOCATION"
+
+msgid "VIEW"
+msgstr "VIEW"
+
+msgid "Location (Block)"
+msgstr "Location (Block)"
+
+msgid "Setting"
+msgstr "Setting"
+
+msgid "Block name already exists"
+msgstr "Block name already exists"
+
+msgid "Sensor name already exists"
+msgstr "Sensor name already exists"
+
+msgid "Block"
+msgstr "Block"
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Save setting success"
+msgstr "Save setting success"
+
+msgid "Upload"
+msgstr "Upload"
+
+msgid "Restore"
+msgstr "Restore"
+
+msgid "A new version is availble"
+msgstr "A new version is availble"
+
+msgid "DSF602 {0} is now available (you have {1}). Would you like to download the new version now?"
+msgstr "DSF602 {0} is now available (you have {1}). Would you like to download the new version now?"
+
+msgid "App is up to date"
+msgstr "App is up to date"
+
+msgid "You are already the latest version, there are no new updates available at this moment"
+msgstr "You are already the latest version, there are no new updates available at this moment"
+
+msgid "Download Starting..."
+msgstr "Download Starting..."
+
+msgid "Completed"
+msgstr "Completed"
+
+msgid "Download complete"
+msgstr "Download complete"
+
+msgid "Downloaded"
+msgstr "Downloaded"
+
+msgid "Restart and update the application"
+msgstr "Restart and update the application"
+
+msgid "Update Management"
+msgstr "Update Management"
+
+msgid "Please wait while the program is processing..."
+msgstr "Please wait while the program is processing..."
+
+msgid "CheckVersion"
+msgstr "CheckVersion"
+
+msgid "Restore Version"
+msgstr "Restore Version"
+
+msgid "Check update and restore"
+msgstr "Check update and restore"
+
+msgid "The current version is {0} !"
+msgstr "The current version is {0} !"
+
+msgid "Select version:"
+msgstr "Select version:"
+
+msgid "Error Message Manager"
+msgstr "Error Message Manager"
+
+msgid "Error Message:"
+msgstr "Error Message:"
+
+msgid "Unable to connect to the block: {0} - {1}"
+msgstr "Unable to connect to the block: {0} - {1}"
+
+msgid "No data: {0} - {1}"
+msgstr "No data: {0} - {1}"
+
+msgid "Check the connection again."
+msgstr "Check the connection again."
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Are you sure you want to change device settings?"
+msgstr "Are you sure you want to change device settings?"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Are you sure you want to close?"
+msgstr "Are you sure you want to close?"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Deactive"
+msgstr "Deactive"
+
+msgid "Block name cannot be more than 8 characters"
+msgstr "Block name cannot be more than 8 characters"
+
+msgid "Please input {0} is a number than 0"
+msgstr "Please input {0} is a number than 0"
+
+msgid "DSF602 Software Monitor"
+msgstr "DSF602 Software Monitor"
+
+msgid "Are you sure you want to reset device current?"
+msgstr "Are you sure you want to reset device current?"
+
+msgid "Reset setting fail"
+msgstr "Reset setting fail"
+
+msgid "Save setting fail"
+msgstr "Save setting fail"
+
+msgid "Update errror"
+msgstr "Update errror"

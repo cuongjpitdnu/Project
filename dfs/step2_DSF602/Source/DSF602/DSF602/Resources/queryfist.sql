@@ -1,0 +1,122 @@
+BEGIN;
+CREATE TABLE IF NOT EXISTS MUser (UserId INTEGER PRIMARY KEY AUTOINCREMENT, UserName TEXT, Password TEXT,FullName TEXT,Email TEXT, UpdateTime DATETIME,Role INTEGER);
+CREATE TABLE IF NOT EXISTS Block (BlockId INTEGER PRIMARY KEY AUTOINCREMENT, BlockName TEXT, Ip_Address TEXT,Port INTEGER,Active INTEGER, DefaultParams TEXT, UpdateTime DATETIME,UpdateBy INTEGER);
+CREATE TABLE IF NOT EXISTS Sensors (SensorId INTEGER PRIMARY KEY AUTOINCREMENT, SensorName TEXT, Alarm_Value INTEGER, Ordinal_Display INTERGER,OfBlock INTEGER,Active INTEGER, UpdateTime DATETIME,UpdateBy INTEGER,MeasureType INTEGER, DecayUpperValue INTEGER, DecayLowerValue INTEGER, DecayTimeCheck INTEGER, DecayStopTime INTEGER, IonValueCheck INTEGER, IonTimeCheck INTEGER, AutoCheckFlag INTEGER, AutoCheckTime TEXT, AutoCheckDays TEXT);
+CREATE TABLE IF NOT EXISTS Measure (MeasureId INTEGER PRIMARY KEY AUTOINCREMENT, SensorId INTEGER, Measure_Type INTEGER, Alarm_Value INTEGER,Start_time DATETIME, End_time DATETIME, Measure_Result INTEGER, UserId INTEGER, UpdateTime DATETIME, Delete_Flag INTEGER);
+CREATE TABLE IF NOT EXISTS Measure_Detail (DetailId INTEGER PRIMARY KEY AUTOINCREMENT, MeasureId INTEGER, Actual_Value INTEGER, Samples_time DATETIME, Detail_Result INTEGER);
+END;
+
+INSERT INTO MUser (UserId, UserName, Password,FullName,Email, UpdateTime,Role) SELECT 1, 'admin', 'admin','Admin','admin@gmail.com', DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT 1 FROM MUser LIMIT 1);
+
+BEGIN;
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 1, 'Block 1', '192.168.0.1', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 1 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 2, 'Block 2', '192.168.0.2', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 2 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 3, 'Block 3', '192.168.0.3', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 3 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 4, 'Block 4', '192.168.0.4', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 4 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 5, 'Block 5', '192.168.0.5', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 5 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 6, 'Block 6', '192.168.0.6', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 6 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 7, 'Block 7', '192.168.0.7', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 7 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 8, 'Block 8', '192.168.0.8', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 8 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 9, 'Block 9', '192.168.0.9', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 9 LIMIT 1);
+INSERT INTO Block (BlockId, BlockName, Ip_Address, Port, Active, UpdateTime, UpdateBy) SELECT 10, 'Block 10', '192.168.0.10', 502, 0, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT BlockId FROM Block WHERE BlockId = 10 LIMIT 1);
+END;
+
+BEGIN;
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 1, 'Sensor 1', 100, 1, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 1 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 2, 'Sensor 2', 100, 2, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 2 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 3, 'Sensor 3', 100, 3, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 3 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 4, 'Sensor 4', 100, 4, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 4 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 5, 'Sensor 5', 100, 5, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 5 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 6, 'Sensor 6', 100, 6, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 6 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 7, 'Sensor 7', 100, 7, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 7 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 8, 'Sensor 8', 100, 8, 1, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 8 LIMIT 1);
+
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 9, 'Sensor 1', 100, 1, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 9 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 10, 'Sensor 2', 100, 2, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 10 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 11, 'Sensor 3', 100, 3, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 11 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 12, 'Sensor 4', 100, 4, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 12 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 13, 'Sensor 5', 100, 5, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 13 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 14, 'Sensor 6', 100, 6, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 14 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 15, 'Sensor 7', 100, 7, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 15 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 16, 'Sensor 8', 100, 8, 2, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 16 LIMIT 1);
+END;
+
+BEGIN;
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 17, 'Sensor 1', 100, 1, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 17 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 18, 'Sensor 2', 100, 2, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 18 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 19, 'Sensor 3', 100, 3, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 19 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 20, 'Sensor 4', 100, 4, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 20 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 21, 'Sensor 5', 100, 5, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 21 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 22, 'Sensor 6', 100, 6, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 22 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 23, 'Sensor 7', 100, 7, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 23 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 24, 'Sensor 8', 100, 8, 3, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 24 LIMIT 1);
+
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 25, 'Sensor 1', 100, 1, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 25 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 26, 'Sensor 2', 100, 2, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 26 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 27, 'Sensor 3', 100, 3, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 27 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 28, 'Sensor 4', 100, 4, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 28 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 29, 'Sensor 5', 100, 5, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 29 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 30, 'Sensor 6', 100, 6, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 30 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 31, 'Sensor 7', 100, 7, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 31 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 32, 'Sensor 8', 100, 8, 4, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 32 LIMIT 1);
+END;
+
+BEGIN;
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 33, 'Sensor 1', 100, 1, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 33 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 34, 'Sensor 2', 100, 2, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 34 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 35, 'Sensor 3', 100, 3, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 35 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 36, 'Sensor 4', 100, 4, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 36 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 37, 'Sensor 5', 100, 5, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 37 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 38, 'Sensor 6', 100, 6, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 38 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 39, 'Sensor 7', 100, 7, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 39 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 40, 'Sensor 8', 100, 8, 5, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 40 LIMIT 1);
+
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 41, 'Sensor 1', 100, 1, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 41 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 42, 'Sensor 2', 100, 2, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 42 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 43, 'Sensor 3', 100, 3, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 43 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 44, 'Sensor 4', 100, 4, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 44 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 45, 'Sensor 5', 100, 5, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 45 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 46, 'Sensor 6', 100, 6, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 46 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 47, 'Sensor 7', 100, 7, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 47 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 48, 'Sensor 8', 100, 8, 6, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 48 LIMIT 1);
+END;
+
+BEGIN;
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 49, 'Sensor 1', 100, 1, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 49 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 50, 'Sensor 2', 100, 2, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 50 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 51, 'Sensor 3', 100, 3, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 51 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 52, 'Sensor 4', 100, 4, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 52 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 53, 'Sensor 5', 100, 5, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 53 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 54, 'Sensor 6', 100, 6, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 54 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 55, 'Sensor 7', 100, 7, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 55 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 56, 'Sensor 8', 100, 8, 7, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 56 LIMIT 1);
+
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 57, 'Sensor 1', 100, 1, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 57 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 58, 'Sensor 2', 100, 2, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 58 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 59, 'Sensor 3', 100, 3, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 59 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 60, 'Sensor 4', 100, 4, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 60 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 61, 'Sensor 5', 100, 5, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 61 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 62, 'Sensor 6', 100, 6, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 62 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 63, 'Sensor 7', 100, 7, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 63 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 64, 'Sensor 8', 100, 8, 8, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 64 LIMIT 1);
+END;
+
+BEGIN;
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 65, 'Sensor 1', 100, 1, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 65 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 66, 'Sensor 2', 100, 2, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 66 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 67, 'Sensor 3', 100, 3, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 67 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 68, 'Sensor 4', 100, 4, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 68 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 69, 'Sensor 5', 100, 5, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 69 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 70, 'Sensor 6', 100, 6, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 70 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 71, 'Sensor 7', 100, 7, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 71 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 72, 'Sensor 8', 100, 8, 9, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 72 LIMIT 1);
+
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 73, 'Sensor 1', 100, 1, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 73 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 74, 'Sensor 2', 100, 2, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 74 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 75, 'Sensor 3', 100, 3, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 75 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 76, 'Sensor 4', 100, 4, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 76 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 77, 'Sensor 5', 100, 5, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 77 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 78, 'Sensor 6', 100, 6, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 78 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 79, 'Sensor 7', 100, 7, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 79 LIMIT 1);
+INSERT INTO Sensors (SensorId, SensorName, Alarm_Value, Ordinal_Display, OfBlock, Active, UpdateTime, UpdateBy) SELECT 80, 'Sensor 8', 100, 8, 10, 1, DATETIME('now','localtime'),1 WHERE NOT EXISTS (SELECT SensorId FROM Sensors WHERE SensorId = 80 LIMIT 1);
+END;

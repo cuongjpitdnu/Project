@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Modbustool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ComPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
+    <Setting Name="Address" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="StopBit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1 stop</Value>
+    </Setting>
+    <Setting Name="Baud" Type="System.String" Scope="User">
+      <Value Profile="(Default)">19200</Value>
+    </Setting>
+    <Setting Name="Parity" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Even</Value>
+    </Setting>
+    <Setting Name="IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.0.1</Value>
+    </Setting>
+    <Setting Name="PortNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">502</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

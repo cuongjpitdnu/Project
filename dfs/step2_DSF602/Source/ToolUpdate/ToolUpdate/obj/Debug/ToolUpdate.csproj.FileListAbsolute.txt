@@ -1,0 +1,11 @@
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Debug\ToolUpdate.exe.config
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Debug\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Debug\ToolUpdate.pdb
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.frmUpdate.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.Properties.Resources.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.csproj.GenerateResource.Cache
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.pdb
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Debug\ToolUpdate.csprojResolveAssemblyReference.cache
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Debug\Newtonsoft.Json.dll
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Debug\Newtonsoft.Json.xml

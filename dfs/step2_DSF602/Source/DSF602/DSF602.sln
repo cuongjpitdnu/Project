@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSF602", "DSF602\DSF602.csproj", "{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphLib", "GraphLib\GraphLib.csproj", "{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseCommon", "BaseCommon\BaseCommon.csproj", "{98E656F2-4D32-4DBE-B691-81C642527207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSF602Driver", "DSF602Driver\DSF602Driver.csproj", "{5177790A-C290-4DC0-A7CE-7DAC28F5D67E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolUpdate", "ToolUpdate\ToolUpdate.csproj", "{5CD0ACFA-4C7F-490A-8EE9-0DE4880FA813}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyCipher", "..\..\..\Source_DSFV601_V2\KeyCipher\KeyCipher.csproj", "{C2982888-9D37-40FA-8CE4-502A734CCCFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7B7FEEA-0A6A-4E82-8C6B-917D4BA07DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0A1F4D-1363-4544-A7C5-196C76D26CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E656F2-4D32-4DBE-B691-81C642527207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E656F2-4D32-4DBE-B691-81C642527207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E656F2-4D32-4DBE-B691-81C642527207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E656F2-4D32-4DBE-B691-81C642527207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5177790A-C290-4DC0-A7CE-7DAC28F5D67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5177790A-C290-4DC0-A7CE-7DAC28F5D67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5177790A-C290-4DC0-A7CE-7DAC28F5D67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5177790A-C290-4DC0-A7CE-7DAC28F5D67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD0ACFA-4C7F-490A-8EE9-0DE4880FA813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD0ACFA-4C7F-490A-8EE9-0DE4880FA813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD0ACFA-4C7F-490A-8EE9-0DE4880FA813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD0ACFA-4C7F-490A-8EE9-0DE4880FA813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2982888-9D37-40FA-8CE4-502A734CCCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2982888-9D37-40FA-8CE4-502A734CCCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2982888-9D37-40FA-8CE4-502A734CCCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2982888-9D37-40FA-8CE4-502A734CCCFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9602EBD-6961-4DF1-BA4F-4741C88310A9}
+	EndGlobalSection
+EndGlobal

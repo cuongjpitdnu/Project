@@ -1,0 +1,20 @@
+D:\project\DSF602\BaseCommon\bin\Debug\BaseCommon.dll
+D:\project\DSF602\BaseCommon\bin\Debug\BaseCommon.pdb
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.csprojResolveAssemblyReference.cache
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.ControlTemplate.btn.resources
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.ControlTemplate.dgv.resources
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.Core.BaseForm.resources
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.Core.BaseUserControl.resources
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.csproj.GenerateResource.Cache
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.dll
+D:\project\DSF602\BaseCommon\obj\Debug\BaseCommon.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\bin\Debug\BaseCommon.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\bin\Debug\BaseCommon.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.ControlTemplate.btn.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.ControlTemplate.dgv.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.Core.BaseForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.Core.BaseUserControl.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\BaseCommon\obj\Debug\BaseCommon.csprojResolveAssemblyReference.cache

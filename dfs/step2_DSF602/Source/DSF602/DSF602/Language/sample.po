@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_US\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"PO-Revision-Date: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 2.2.4\n"
+
+msgid "FOMAT_MSG_BLANK"
+msgstr "Please input {0} password"
+
+msgid "FOMAT_MSG_BLANK_USER"
+msgstr "Please input {0}"
+
+msgid "LOGIN_BTN_EXIT"
+msgstr "Exit"
+
+msgid "LOGIN_BTN_LOGIN"
+msgstr "Login"
+
+msgid "LOGIN_TITLE"
+msgstr "Login"
+
+msgid "LOGIN_USERNAME"
+msgstr "UserName"
+
+msgid "MSG_COMFIRM_DELETE"
+msgstr "Are you sure you want to delete user?"
+
+msgid "MSG_CHANGE_PASS_ERR"
+msgstr "Change password fail"
+
+msgid "MSG_CHANGE_PASS_SUCCESS"
+msgstr "Change password success"
+
+msgid "MSG_ERR_LOGIN"
+msgstr "You have entered incorrect username or password!"
+
+msgid "MSG_ERR_PASS_BLANK"
+msgstr "Please input password."
+
+msgid "MSG_ERR_USER_BLANK"
+msgstr "Please input username."
+
+msgid "MSG_PASS_NOT_SAME"
+msgstr "Password does not match the confirm password"

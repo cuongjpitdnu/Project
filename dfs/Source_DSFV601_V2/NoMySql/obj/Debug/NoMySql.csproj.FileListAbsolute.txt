@@ -1,0 +1,21 @@
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\MeaDSF601v2.exe.config
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\Excel Template\Report.xlsx
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\Excel Template\ReportWalking.xlsx
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\MeaDSF601v2.exe
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\MeaDSF601v2.pdb
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\BaseCommon.dll
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\ManagedWifi.dll
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\GraphLib.dll
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\EPPlus.dll
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\KeyCipher.dll
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\BaseCommon.pdb
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\GraphLib.pdb
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\EPPlus.xml
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\bin\Debug\KeyCipher.pdb
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\NoMySql.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\NoMySql.Management.resources
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\NoMySql.MeasureManagement.resources
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\NoMySql.Properties.Resources.resources
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\NoMySql.csproj.GenerateResource.Cache
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\MeaDSF601v2.exe
+D:\CONG VIEC\Source_DSFV601_V2\NoMySql\obj\Debug\MeaDSF601v2.pdb

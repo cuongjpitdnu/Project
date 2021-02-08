@@ -1,0 +1,103 @@
+D:\project\DSF602\DSF602\bin\Debug\DSF602.exe.config
+D:\project\DSF602\DSF602\obj\Debug\DSF602.exe
+D:\project\DSF602\DSF602\obj\Debug\DSF602.pdb
+D:\project\DSF602\DSF602\bin\Debug\Excel Template\en-US_Report.xlsx
+D:\project\DSF602\DSF602\bin\Debug\Excel Template\ja-JP_Report.xlsx
+D:\project\DSF602\DSF602\bin\Debug\Excel Template\Report.xlsx
+D:\project\DSF602\DSF602\bin\Debug\Excel Template\ReportWalking.xlsx
+D:\project\DSF602\DSF602\bin\Debug\Language\en_US.po
+D:\project\DSF602\DSF602\bin\Debug\Language\ja_JP.po
+D:\project\DSF602\DSF602\bin\Debug\Language\vi_VN.po
+D:\project\DSF602\DSF602\bin\Debug\DSF602.exe
+D:\project\DSF602\DSF602\bin\Debug\DSF602.pdb
+D:\project\DSF602\DSF602\bin\Debug\BaseCommon.dll
+D:\project\DSF602\DSF602\bin\Debug\Dapper.dll
+D:\project\DSF602\DSF602\bin\Debug\DSF602Driver.dll
+D:\project\DSF602\DSF602\bin\Debug\EPPlus.dll
+D:\project\DSF602\DSF602\bin\Debug\GraphLib.dll
+D:\project\DSF602\DSF602\bin\Debug\Hime.Redist.dll
+D:\project\DSF602\DSF602\bin\Debug\Karambolo.Common.dll
+D:\project\DSF602\DSF602\bin\Debug\Karambolo.PO.dll
+D:\project\DSF602\DSF602\bin\Debug\Newtonsoft.Json.dll
+D:\project\DSF602\DSF602\bin\Debug\System.Data.SQLite.dll
+D:\project\DSF602\DSF602\bin\Debug\NModbus4.dll
+D:\project\DSF602\DSF602\bin\Debug\BaseCommon.pdb
+D:\project\DSF602\DSF602\bin\Debug\DSF602Driver.pdb
+D:\project\DSF602\DSF602\bin\Debug\GraphLib.pdb
+D:\project\DSF602\DSF602\bin\Debug\Dapper.xml
+D:\project\DSF602\DSF602\bin\Debug\EPPlus.xml
+D:\project\DSF602\DSF602\bin\Debug\Hime.Redist.pdb
+D:\project\DSF602\DSF602\bin\Debug\Hime.Redist.xml
+D:\project\DSF602\DSF602\bin\Debug\Newtonsoft.Json.xml
+D:\project\DSF602\DSF602\bin\Debug\System.Data.SQLite.xml
+D:\project\DSF602\DSF602\bin\Debug\NModbus4.xml
+D:\project\DSF602\DSF602\obj\Debug\DSF602.csprojResolveAssemblyReference.cache
+D:\project\DSF602\DSF602\obj\Debug\DSF602.Properties.Resources.resources
+D:\project\DSF602\DSF602\obj\Debug\BaseCommon.ControlTemplate.DeviceLayout.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.DeviceManagement.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.DisplaySensor.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType1.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType2.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType3.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.MapLocation.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.Language.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.LoginForm.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.MainForm.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.MeasureManagement.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.RestoreVersion.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.UpdateVersion.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.View.UserManagement.resources
+D:\project\DSF602\DSF602\obj\Debug\DSF602.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Excel Template\en-US_Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Excel Template\ja-JP_Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Excel Template\Report.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Excel Template\ReportWalking.xlsx
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Language\en_US.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Language\ja_JP.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Language\vi_VN.po
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\DSF602.exe.config
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\DSF602.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\DSF602.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\BaseCommon.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Dapper.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\DSF602Driver.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\EPPlus.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\GraphLib.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Hime.Redist.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Karambolo.Common.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Karambolo.PO.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\KeyCipher.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Newtonsoft.Json.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\System.Data.SQLite.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\NModbus4.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\KeyCipher.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\BaseCommon.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\DSF602Driver.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\GraphLib.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Dapper.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\EPPlus.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Hime.Redist.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Hime.Redist.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\Newtonsoft.Json.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\System.Data.SQLite.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\bin\Debug\NModbus4.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\BaseCommon.ControlTemplate.DeviceLayout.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.DeviceManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.DisplaySensor.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType1.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType2.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.GraphType3.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.GraphLayout.MapLocation.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.Language.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\BaseCommon.LicenseForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.LoginForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.MainForm.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.MeasureManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.RestoreVersion.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.UpdateVersion.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.View.UserManagement.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\DSF602\obj\Debug\DSF602.pdb

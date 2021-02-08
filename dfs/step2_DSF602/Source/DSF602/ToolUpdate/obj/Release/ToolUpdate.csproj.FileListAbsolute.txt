@@ -1,0 +1,11 @@
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\bin\Release\ToolUpdate.exe.config
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\bin\Release\ToolUpdate.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\bin\Release\ToolUpdate.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\bin\Release\Newtonsoft.Json.dll
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\bin\Release\Newtonsoft.Json.xml
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.frmUpdate.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.csproj.GenerateResource.Cache
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.exe
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.pdb
+D:\CONG VIEC\step2_DSF602\Source\DSF602\ToolUpdate\obj\Release\ToolUpdate.csprojResolveAssemblyReference.cache

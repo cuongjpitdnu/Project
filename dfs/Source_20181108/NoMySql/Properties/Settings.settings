@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NoMySql.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="xAxis" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="yAxis" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ipAddress1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.0.1</Value>
+    </Setting>
+    <Setting Name="ipAddress2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.0.1</Value>
+    </Setting>
+    <Setting Name="port1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10001</Value>
+    </Setting>
+    <Setting Name="port2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10001</Value>
+    </Setting>
+    <Setting Name="AlarmValue1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="AlarmValue2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="Period1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="Period2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="FailLevel1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">700</Value>
+    </Setting>
+    <Setting Name="FailLevel2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">700</Value>
+    </Setting>
+    <Setting Name="Samples1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="Samples2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="ipAddressDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">192.168.0.1</Value>
+    </Setting>
+    <Setting Name="portDefault" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10001</Value>
+    </Setting>
+    <Setting Name="AlarmValueDefault" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="PeriodDefault" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="FailLevelDefault" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">700</Value>
+    </Setting>
+    <Setting Name="SamplesDefault" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="Active1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Active2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DeviceName1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Device 1</Value>
+    </Setting>
+    <Setting Name="DeviceName2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Device 2</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

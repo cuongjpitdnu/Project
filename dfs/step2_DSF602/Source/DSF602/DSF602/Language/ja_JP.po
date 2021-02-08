@@ -1,0 +1,500 @@
+msgid ""
+msgstr ""
+"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"PO-Revision-Date: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Language: ja_JP\n"
+
+msgid "Please input {0} password"
+msgstr "パスワード{0}を入力してください"
+
+msgid "Please input {0}"
+msgstr "{0}を入力してください"
+
+msgid "Exit"
+msgstr "エグジット"
+
+msgid "Login"
+msgstr "ログイン"
+
+msgid "UserName"
+msgstr "ユーザー名"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Are you sure you want to delete user?"
+msgstr "本当に削除しますか？"
+
+msgid "Change password fail"
+msgstr "パスワードの変更に失敗しました"
+
+msgid "Change password success"
+msgstr "パスワードが正常に変更されました"
+
+msgid "You have entered incorrect username or password!"
+msgstr "間違ったユーザー名またはパスワードを入力しました！"
+
+msgid "Please input password."
+msgstr "パスワードを入力してください"
+
+msgid "Please input username."
+msgstr "ユーザー名を入力してください。"
+
+msgid "Password does not match the confirm password"
+msgstr "パスワードが確認パスワードと一致しません"
+
+msgid "Main"
+msgstr "メイン"
+
+msgid "Device"
+msgstr "デバイス"
+
+msgid "Data"
+msgstr "データ"
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Language"
+msgstr "ランゲージ"
+
+msgid "Update"
+msgstr "アップデイト"
+
+msgid "GRAPH"
+msgstr "グラフ"
+
+msgid "MAP"
+msgstr "マップ"
+
+msgid "Select display language:"
+msgstr "表示言語を選択："
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Agree"
+msgstr "同意する"
+
+msgid "System Users Management"
+msgstr "システムユーザー管理"
+
+msgid "Users"
+msgstr "ユーザー"
+
+msgid "Change Password"
+msgstr "パスワードを変更する"
+
+msgid "Role"
+msgstr "役割"
+
+msgid "Re-type password"
+msgstr "パスワードを再入力してください"
+
+msgid "New password"
+msgstr "新しいパスワード"
+
+msgid "Full Name"
+msgstr "フルネーム"
+
+msgid "Email"
+msgstr "メール"
+
+msgid "Current password"
+msgstr "現在のパスワード"
+
+msgid "Save User"
+msgstr "ユーザーを保存"
+
+msgid "Save Change"
+msgstr "変更を保存する"
+
+msgid "Create User"
+msgstr "ユーザーを作成"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Block Name"
+msgstr "ブロック名"
+
+msgid "Block Setting"
+msgstr "ブロック設定"
+
+msgid "Active"
+msgstr "アクティブ"
+
+msgid "IP Address"
+msgstr "IPアドレス"
+
+msgid "Port"
+msgstr "ポート"
+
+msgid "Save"
+msgstr "セーブ"
+
+msgid "List sensor of block"
+msgstr "ブロックのリストセンサー"
+
+msgid "Sensor Setting"
+msgstr "センサー設定"
+
+msgid "Sensor Name"
+msgstr "センサー名"
+
+msgid "Ordinal Display"
+msgstr "順序表示"
+
+msgid "Alarm Value"
+msgstr "アラーム値"
+
+msgid "Clear"
+msgstr "クリア"
+
+msgid "Reset Default"
+msgstr "リセット"
+
+msgid "Sensor"
+msgstr "センサー"
+
+msgid "Deactive"
+msgstr "非活性"
+
+msgid "current"
+msgstr "現在"
+
+msgid "new"
+msgstr "新しい"
+
+msgid "re-type new"
+msgstr "再入力"
+
+msgid "Admin"
+msgstr "管理者"
+
+msgid "Result"
+msgstr "結果"
+
+msgid "Type"
+msgstr "タイプ"
+
+msgid "Date"
+msgstr "日付"
+
+msgid "Search"
+msgstr "サーチ"
+
+msgid "Excel"
+msgstr "エクセル"
+
+msgid "Time"
+msgstr "時間"
+
+msgid "Filter"
+msgstr "フィルタ"
+
+msgid "Only show the voltage exceeds the threshold"
+msgstr "電圧がしきい値を超えていることのみを表示"
+
+msgid "Start Time"
+msgstr "始まる時間"
+
+msgid "End Time"
+msgstr "終了時間"
+
+msgid "Value (V)"
+msgstr "値（V）"
+
+msgid "All"
+msgstr "全"
+
+msgid "Pass"
+msgstr "パス"
+
+msgid "Fail"
+msgstr "失敗"
+
+msgid "Alarm Test"
+msgstr "アラームテスト"
+
+msgid "User name already exists"
+msgstr "ユーザー名は既に存在します"
+
+msgid "LOCATION"
+msgstr "ロケーション"
+
+msgid "VIEW"
+msgstr "眺望"
+
+msgid "Location (Block)"
+msgstr "ロケーション （ブロック）"
+
+msgid "Setting"
+msgstr "セッティング"
+
+msgid "Block"
+msgstr "ブロック"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Delete"
+msgstr "デリート"
+
+msgid "Sensor name already exists"
+msgstr "センサー名は既に存在します"
+
+msgid "Save setting success"
+msgstr "設定の保存を成功させる"
+
+msgid "Upload"
+msgstr "アップロード"
+
+msgid "Restore"
+msgstr "リストア"
+
+msgid "A new version is availble"
+msgstr "新しいバージョンが利用可能です"
+
+msgid "DSF602 {0} is now available (you have {1}). Would you like to download the new version now?"
+msgstr "DSF602 {0}が利用可能になりました（{1}があります）。 今すぐ新しいバージョンをダウンロードしますか？"
+
+msgid "App is up to date"
+msgstr "アプリは最新です"
+
+msgid "You are already the latest version, there are no new updates available at this moment"
+msgstr "あなたはすでに最新バージョンです。現時点では新しいアップデートはありません"
+
+msgid "Download Starting..."
+msgstr "ダウンロードを開始..."
+
+msgid "Completed"
+msgstr "完了しました"
+
+msgid "Download complete"
+msgstr "ダウンロード完了"
+
+msgid "Downloaded"
+msgstr "ダウンロード済み"
+
+msgid "Restart and update the application"
+msgstr "アプリケーションを再起動して更新する"
+
+msgid "Update Management"
+msgstr "更新管理"
+
+msgid "Please wait while the program is processing..."
+msgstr "プログラムの処理中です。しばらくお待ちください"
+
+msgid "CheckVersion"
+msgstr "バージョンを確認"
+
+msgid "Restore Version"
+msgstr "バージョンを復元"
+
+msgid "Check update and restore"
+msgstr "更新の確認と復元"
+
+msgid "The current version is {0} !"
+msgstr "現在のバージョンは {0} !"
+
+msgid "Select version:"
+msgstr "バージョンを選択："
+
+msgid "Error Message Manager"
+msgstr "エラーメッセージマネージャー"
+
+msgid "Error Message:"
+msgstr "エラーメッセージ:"
+
+msgid "Unable to connect to the block: {0} - {1}"
+msgstr "ブロックに接続できません: {0} - {1}"
+
+msgid "No data: {0} - {1}"
+msgstr "データなし: {0} - {1}"
+
+msgid "Check the connection again."
+msgstr "接続をもう一度確認してください。"
+
+msgid "Message"
+msgstr "メッセージ"
+
+msgid "Are you sure you want to change device settings?"
+msgstr "デバイスの設定を変更してもよろしいですか？"
+
+msgid "Information"
+msgstr "情報"
+
+msgid "ERROR"
+msgstr "エラー"
+
+msgid "Are you sure you want to close?"
+msgstr "閉じてもよろしいですか？"
+
+msgid "Version"
+msgstr "バージョン"
+
+msgid "Block name cannot be more than 8 characters"
+msgstr "ブロック名は8文字以下にする必要があります"
+
+msgid "Please input {0} is a number than 0"
+msgstr "{0}は0よりも大きい数値を入力してください"
+
+msgid "DSF602 Software Monitor"
+msgstr "DSF602ソフトウェアモニター"
+
+msgid "Are you sure you want to reset device current?"
+msgstr "現在のデバイスをリセットしてもよろしいですか？"
+
+msgid "Reset setting fail"
+msgstr "設定のリセットに失敗しました"
+
+msgid "Save setting fail"
+msgstr "設定の保存に失敗しました"
+
+msgid "Update error"
+msgstr "更新エラー"
+
+msgid "STATIRON DSF602 Control Software"
+msgstr "STATIRON DSF602制御ソフトウェア"
+
+msgid "This Machine is not activated!"
+msgstr "このマシンはアクティブ化されていません！"
+
+msgid "Please send the Machine Code  to System Admin!"
+msgstr "マシンコードをシステム管理者に送信してください！"
+
+msgid "Machine Code"
+msgstr "機械コード"
+
+msgid "Key"
+msgstr "キー"
+
+msgid "Load File"
+msgstr "ファイルをロード"
+
+msgid "Activate"
+msgstr "活性化"
+
+msgid "Line"
+msgstr "ライン"
+
+msgid "sensors"
+msgstr "センサー"
+
+msgid "Product"
+msgstr "製品"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Alarm!"
+msgstr "アラーム"
+
+msgid "Running"
+msgstr "ランニング"
+
+msgid "VOLT"
+msgstr "電圧"
+
+msgid "No use"
+msgstr "利用なし"
+
+msgid "IB"
+msgstr "IB"
+
+msgid "Measure Type"
+msgstr "計測タイプ"
+
+msgid "Apply all"
+msgstr "全部適用"
+
+msgid "Do you want changed the alarm value to all sensor ?"
+msgstr "すべてのセンサーに対して警告値を変更してもよろしいでしょうか"
+
+msgid "About"
+msgstr "について"
+
+msgid "Alarm Report"
+msgstr "アラムレポート"
+
+msgid "Software"
+msgstr "ソフトウエア"
+
+msgid "Customer"
+msgstr "カスタマー"
+
+msgid "ResetKey, ResetApp will restart application!"
+msgstr "「キーをリセットする」, 「アプリをリセットする」を押したらアプリが再起動されます。"
+
+msgid "Reset Key"
+msgstr "キーをリセットする"
+
+msgid "Reset App"
+msgstr "アプリをリセットする"
+
+msgid "Set default values"
+msgstr "Cài mặc định"
+
+msgid "Voltage"
+msgstr "ボルテージ"
+
+msgid "Ion Balance"
+msgstr "イオンバランス"
+
+msgid "Decay Time"
+msgstr "ディケイタイム"
+
+msgid "Charging"
+msgstr "充電"
+
+msgid "Decay To"
+msgstr "Giới hạn dưới"
+
+msgid "Decay Alarm"
+msgstr "ディケイアラーム"
+
+msgid "Stop Decay"
+msgstr "ディケイストップ"
+
+msgid "Alarm Peak Voltage"
+msgstr "アラーム値"
+
+msgid "Stop IB Measure"
+msgstr "Thời gian đo"
+
+msgid "Measure count"
+msgstr "STT"
+
+msgid "Mon"
+msgstr "T2"
+
+msgid "Tue"
+msgstr "T3"
+
+msgid "Wed"
+msgstr "T4"
+
+msgid "Thu"
+msgstr "T5"
+
+msgid "Fri"
+msgstr "T6"
+
+msgid "Sat"
+msgstr "T7"
+
+msgid "Sun"
+msgstr "CN"
+
+msgid "Auto Measure Time"
+msgstr "Lịch đo tự động"

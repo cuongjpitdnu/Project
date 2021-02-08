@@ -1,0 +1,529 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"PO-Revision-Date: 2019-11-15 16:35+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi_VN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# should be skipped
+msgid "Please input {0} password"
+msgstr "Vui lòng nhập mật khẩu {0}"
+
+msgid "Please input {0}"
+msgstr "Vui lòng nhập {0}"
+
+msgid "Exit"
+msgstr "Thoát"
+
+msgid "Login"
+msgstr "Đăng nhập"
+
+msgid "UserName"
+msgstr "Tên đăng nhập"
+
+msgid "Password"
+msgstr "Mật khẩu"
+
+msgid "Are you sure you want to delete user?"
+msgstr "Bạn chắc chắn muốn xóa tài khoản?"
+
+msgid "Change password fail"
+msgstr "Thay đổi mật khẩu thất bại"
+
+msgid "Change password success"
+msgstr "Thay đổi mật khẩu thành công"
+
+msgid "You have entered incorrect username or password!"
+msgstr "Tài khoản đăng nhập hoặc mật khẩu không đúng"
+
+msgid "Please input password."
+msgstr "Vui lòng nhập mật khẩu."
+
+msgid "Please input username."
+msgstr "Vui lòng nhập tên đăng nhập."
+
+msgid "Password does not match the confirm password"
+msgstr "Mật khẩu không trùng khớp"
+
+msgid "Main"
+msgstr "Main"
+
+msgid "Device"
+msgstr "Thiết bị"
+
+msgid "Data"
+msgstr "Báo cáo"
+
+msgid "User"
+msgstr "Người dùng"
+
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+msgid "Update"
+msgstr "Cập nhật"
+
+msgid "GRAPH"
+msgstr "Đồ thị"
+
+msgid "MAP"
+msgstr "Bản đồ"
+
+msgid "Select display language:"
+msgstr "Chọn ngôn ngữ:"
+
+msgid "Cancel"
+msgstr "Hủy"
+
+msgid "Agree"
+msgstr "Đồng ý"
+
+msgid "System Users Management"
+msgstr "Quản lý người dùng"
+
+msgid "Users"
+msgstr "Tài khoản"
+
+msgid "Change Password"
+msgstr "Thay đổi mật khẩu"
+
+msgid "Role"
+msgstr "Quyền"
+
+msgid "Re-type password"
+msgstr "Nhập lại mật khẩu"
+
+msgid "New password"
+msgstr "Mật khẩu mới"
+
+msgid "Full Name"
+msgstr "Tên đầy đủ"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Current password"
+msgstr "Mật khẩu hiện tại"
+
+msgid "Save User"
+msgstr "Lưu"
+
+msgid "Save Change"
+msgstr "Lưu"
+
+msgid "Create User"
+msgstr "Tạo mới"
+
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+msgid "Block Name"
+msgstr "Tên thiết bị"
+
+msgid "Block Setting"
+msgstr "Cài đặt thiết bị"
+
+msgid "Active"
+msgstr "Kích hoạt"
+
+msgid "IP Address"
+msgstr "Địa chỉ IP"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Save"
+msgstr "Lưu"
+
+msgid "List sensor of block"
+msgstr "Danh sách sensor"
+
+msgid "Sensor Setting"
+msgstr "Cài đặt sensor"
+
+msgid "Sensor Name"
+msgstr "Tên sensor"
+
+msgid "Ordinal Display"
+msgstr "Vị trí"
+
+msgid "Alarm Value"
+msgstr "Giá trị ngưỡng"
+
+msgid "Clear"
+msgstr "Hủy nhập"
+
+msgid "Reset Default"
+msgstr "Cài đặt gốc"
+
+msgid "Sensor"
+msgstr "Sensor"
+
+msgid "current"
+msgstr "hiện tại"
+
+msgid "new"
+msgstr "mới"
+
+msgid "re-type new"
+msgstr "mới lần nữa"
+
+msgid "Admin"
+msgstr "Quản trị viên"
+
+msgid "Do you want delete this record?"
+msgstr "Bạn muốn xóa bản ghi này?"
+
+msgid "Search"
+msgstr "Tìm kiếm"
+
+msgid "Excel"
+msgstr "Excel"
+
+msgid "Date"
+msgstr "Thời gian"
+
+msgid "Result"
+msgstr "Kết quả"
+
+msgid "Type"
+msgstr "Kiểu"
+
+msgid "Time"
+msgstr "Thời gian"
+
+msgid "Only show the voltage exceeds the threshold"
+msgstr "Chỉ hiển thị điện áp vượt ngưỡng"
+
+msgid "Measurment Management"
+msgstr "Báo cáo"
+
+msgid "Start Time"
+msgstr "Thời gian bắt đầu"
+
+msgid "End Time"
+msgstr "Thời gian kết thúc"
+
+msgid "Has erros in process."
+msgstr "Xảy ra lỗi."
+
+msgid "Data not found."
+msgstr "Không có dữ liệu."
+
+msgid "Please select 1 row data to export excel."
+msgstr "Vui lòng chọn 1 dòng để xuất Excel."
+
+msgid "Excel template not found."
+msgstr "Không có mẫu file Excel."
+
+msgid "Do you want open file report?"
+msgstr "Bạn có muốn mở file báo cáo?"
+
+msgid "Export excel errors."
+msgstr "Xuất excel xảy ra lỗi."
+
+msgid "Filter"
+msgstr "Lọc"
+
+msgid "Value (V)"
+msgstr "Giá trị (V)"
+
+msgid "All"
+msgstr "Tất cả"
+
+msgid "Pass"
+msgstr "Hợp lệ"
+
+msgid "Fail"
+msgstr "Sai"
+
+msgid "Alarm Test"
+msgstr "Alarm Test"
+
+msgid "User name already exists"
+msgstr "Tên đăng nhập đã tồn tại"
+
+msgid "LOCATION"
+msgstr "Vị trí"
+
+msgid "VIEW"
+msgstr "VIEW"
+
+msgid "Location (Block)"
+msgstr "Thiết bị"
+
+msgid "Setting"
+msgstr "Cài đặt"
+
+msgid "Block name already exists"
+msgstr "Tên thiết bị đã tồn tại"
+
+msgid "Sensor name already exists"
+msgstr "Tên sensor đã tồn tại"
+
+msgid "Block"
+msgstr "Thiết bị"
+
+msgid "Reset"
+msgstr "Cài đặt lại"
+
+msgid "Delete"
+msgstr "Xóa"
+
+msgid "Save setting success"
+msgstr "Lưu thành công"
+
+msgid "Upload"
+msgstr "Upload"
+
+msgid "Restore"
+msgstr "Khôi phục"
+
+msgid "A new version is availble"
+msgstr "Có phiên bản mới"
+
+msgid "DSF602 {0} is now available (you have {1}). Would you like to download the new version now?"
+msgstr "DSF602 {0} is now available (you have {1}). Would you like to download the new version now?"
+
+msgid "App is up to date"
+msgstr "Ứng dụng được cập nhật"
+
+msgid "You are already the latest version, there are no new updates available at this moment"
+msgstr "Phiên bản đang dùng là mới nhất, không có bản cập nhật nào khác"
+
+msgid "Download Starting..."
+msgstr "Bắt đầu tải..."
+
+msgid "Completed"
+msgstr "Hoàn thành"
+
+msgid "Download complete"
+msgstr "Tải xong"
+
+msgid "Downloaded"
+msgstr "Tải xong"
+
+msgid "Restart and update the application"
+msgstr "Khởi động và cập nhật ứng dụng"
+
+msgid "Update Management"
+msgstr "Quản lý phiên bản"
+
+msgid "Please wait while the program is processing..."
+msgstr "Vui lòng đợi..."
+
+msgid "CheckVersion"
+msgstr "Kiểm tra phiên bản"
+
+msgid "Restore Version"
+msgstr "Khôi phục phiên bản"
+
+msgid "Check update and restore"
+msgstr "Kiểm tra phiên bản và khôi phục"
+
+msgid "The current version is {0} !"
+msgstr "Phiên bản hiện tại là {0} !"
+
+msgid "Select version:"
+msgstr "Lựa chọn phiên bản:"
+
+msgid "Error Message Manager"
+msgstr "Quan lý thông báo lỗi"
+
+msgid "Error Message:"
+msgstr "Lỗi:"
+
+msgid "Unable to connect to the block: {0} - {1}"
+msgstr "Không thể kết nối tới thiết bị: {0} - {1}"
+
+msgid "No data: {0} - {1}"
+msgstr "Không có dữ liệu: {0} - {1}"
+
+msgid "Check the connection again."
+msgstr "Vui lòng kiểm tra lại kết nối."
+
+msgid "Message"
+msgstr "Tin nhắn"
+
+msgid "Are you sure you want to change device settings?"
+msgstr "Bạn chắc chắn muốn thay đổi thông tin thiết bị?"
+
+msgid "Information"
+msgstr "Thông tin"
+
+msgid "ERROR"
+msgstr "Thông báo lỗi"
+
+msgid "Are you sure you want to close?"
+msgstr "Bạn chắc chắn muốn thoát?"
+
+msgid "Version"
+msgstr "Phiên bản"
+
+msgid "Deactive"
+msgstr "Dừng"
+
+msgid "Block name cannot be more than 8 characters"
+msgstr "Tên thiết bị không được dài hơn 8 kí tự"
+
+msgid "Please input {0} is a number than 0"
+msgstr "{0} phải là số lớn hơn 0"
+
+msgid "DSF602 Software Monitor"
+msgstr "DSF602 Software Monitor"
+
+msgid "Are you sure you want to reset device current?"
+msgstr "Bạn chắc chắn muốn khôi phục cài đặt gốc cho thiết bị hiện tại?"
+
+msgid "Reset setting fail"
+msgstr "Khôi phục cài đặt gốc xảy ra lỗi"
+
+msgid "Save setting fail"
+msgstr "Xảy ra lỗi"
+
+msgid "Update error"
+msgstr "Cập nhật xảy ra lỗi"
+
+msgid "STATIRON DSF602 Control Software"
+msgstr "USTATIRON DSF602 Control Software"
+
+msgid "This Machine is not activated!"
+msgstr "This Machine is not activated!"
+
+msgid "Please send the Machine Code  to System Admin!"
+msgstr "Please send the Machine Code  to System Admin!"
+
+msgid "Machine Code"
+msgstr "Machine Code"
+
+msgid "Key"
+msgstr "Key"
+
+msgid "Load File"
+msgstr "Tải file"
+
+msgid "Activate"
+msgstr "Kích hoạt"
+
+msgid "Line"
+msgstr "Line"
+
+msgid "sensors"
+msgstr "sensors"
+
+msgid "Product"
+msgstr "Product"
+
+msgid "Status"
+msgstr "Trạng thái"
+
+msgid "Alarm!"
+msgstr "Cảnh báo!"
+
+msgid "Running"
+msgstr "Đang chạy"
+
+msgid "VOLT"
+msgstr "VOLT"
+
+msgid "No use"
+msgstr "Không sử dụng"
+
+msgid "IB"
+msgstr "IB"
+
+msgid "Measure Type"
+msgstr "Kiểu đo"
+
+msgid "Apply all"
+msgstr "Apply all"
+
+msgid "Do you want changed the alarm value to all sensor ?"
+msgstr "Do you want changed the alarm value to all sensor ?"
+
+msgid "About"
+msgstr "Giới thiệu"
+
+msgid "Alarm Report"
+msgstr "Báo cáo vượt ngưỡng"
+
+msgid "Software"
+msgstr "Phần mềm"
+
+msgid "Customer"
+msgstr "Khách hàng"
+
+msgid "ResetKey, ResetApp will restart application!"
+msgstr "ResetKey, ResetApp sẽ phải khởi động lại chương trình"
+
+msgid "Reset Key"
+msgstr "Reset Key"
+
+msgid "Reset App"
+msgstr "Reset App"
+
+msgid "Set default values"
+msgstr "Cài mặc định"
+
+msgid "Voltage"
+msgstr "Đo điện áp"
+
+msgid "Ion Balance"
+msgstr "Đo Ion"
+
+msgid "Decay Time"
+msgstr "Đo decay"
+
+msgid "Charging"
+msgstr "Giới hạn trên"
+
+msgid "Decay To"
+msgstr "Giới hạn dưới"
+
+msgid "Decay Alarm"
+msgstr "Decay hợp lệ"
+
+msgid "Stop Decay"
+msgstr "Decay tối đa"
+
+msgid "Alarm Peak Voltage"
+msgstr "Giá trị ngưỡng"
+
+msgid "Stop IB Measure"
+msgstr "Thời gian đo"
+
+msgid "Measure count"
+msgstr "STT"
+
+msgid "Mon"
+msgstr "T2"
+
+msgid "Tue"
+msgstr "T3"
+
+msgid "Wed"
+msgstr "T4"
+
+msgid "Thu"
+msgstr "T5"
+
+msgid "Fri"
+msgstr "T6"
+
+msgid "Sat"
+msgstr "T7"
+
+msgid "Sun"
+msgstr "CN"
+
+msgid "Auto Measure Time"
+msgstr "Lịch đo tự động"

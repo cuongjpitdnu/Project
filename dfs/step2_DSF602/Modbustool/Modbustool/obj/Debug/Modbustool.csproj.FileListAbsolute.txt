@@ -1,0 +1,4 @@
+D:\CONG VIEC\step2_DSF602\Modbustool\Modbustool\bin\Debug\Modbustool.exe.config
+D:\CONG VIEC\step2_DSF602\Modbustool\Modbustool\obj\Debug\Modbustool.csprojResolveAssemblyReference.cache
+D:\CONG VIEC\step2_DSF602\Modbustool\Modbustool\obj\Debug\Modbustool.Properties.Resources.resources
+D:\CONG VIEC\step2_DSF602\Modbustool\Modbustool\obj\Debug\Modbustool.csproj.GenerateResource.Cache
