@@ -1,0 +1,153 @@
+<div class="clearfix">
+    <div class="in-line col-md-6">
+        <div class="clearfix">
+            <div class="in-line float-left title text-white">
+                <div>関西エアポートからのお知らせ</div>
+               
+            </div>
+            <div class="in-line col-right">
+                <input type="button" class="tbtn  tbtn-defaut right-20" onclick="loadModal('announce_edit.html')" value="新規登録">
+                <div class="select-container">
+                    <select class="select-150 ">
+                        <option>2020/01</option>
+                        <option>2019/12</option>
+                        <option>2019/11</option>
+                        <option>2019/10</option>
+                        <option>2019/09</option>
+                        <option>2019/08</option>
+                        <option>2019/07</option>
+                        <option>2019/06</option>
+                        <option>2019/05</option>
+                        <option>2019/04</option>
+                        <option>2019/03</option>
+                        <option>2019/02</option>
+                        <option>2019/01</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="cont-table ">
+            <div class="t-row">
+                <div class="t-col-md-3">日時</div>
+                <div class="t-col-md-2">タイトル</div>
+                
+            </div>
+            
+            <div class="info-cont1">
+                <div class="t-row">
+                
+                	<div class="t-col-md-3 ">2020/03/03 08:45</div>
+                    <div class="t-col-md-2 "><a href="#" onclick="loadModal('announce_view.html')">コロナウイルスの対応について</a></div>
+                    
+                    
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/02/27 09:00</div>
+                    <div class="t-col-md-2"><a href="#" onclick="loadModal('announce_view.html')">計画停電について</a></div>
+                    
+                </div>
+
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/02/26 15:30</div>
+                    <div class="t-col-md-2"><a href="#" onclick="loadModal('announce_view.html')">踏切事故について</a></div>
+                    
+                </div>
+
+                <div class="t-row">
+                    <div class="t-col-md-3">2019/12/31 15:00</div>
+                    <div class="t-col-md-2"<a href="#" onclick="loadModal('announce_view.html')">年末年始の対応について</a></div>
+                   
+                   
+                </div>
+                
+
+                
+            </div>
+            
+            
+        </div>
+        <img src="img/kix.jpg" alt="" width="100%" class="top-10 img-map" >
+
+        <div class="title text-white mar-tl-10">掲示板</div>
+
+        <div class="cont-table">
+            <div class="t-row">
+                <div class="t-col-md-3">発生日</div>
+                <div class="t-col-md-3">業務名</div>
+                <div class="t-col-md-3">インシデント件名</div>
+            </div>
+            <div class="t-body-table">
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 12:00</div>
+                    <div class="t-col-md-3">急患等</div>
+                    <div class="t-col-md-3"><a href="#" onclick="loadModal('bulletin_board_view.html')">急病者発生</a></div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 10:40</div>
+                    <div class="t-col-md-3">迷惑行為</div>
+                    <div class="t-col-md-3"><a href="#" onclick="loadModal('bulletin_board_view.html')" >迷惑行為その１</a></div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                    <div class="t-col-md-3">土木・道路</div>
+                    <div class="t-col-md-3"><a href="#" onclick="loadModal('bulletin_board_view.html')" >路面剥離</a></div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+                <div class="t-row">
+                    <div class="t-col-md-3">2020/10/02 09:35</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="in-line col-md-6">
+        <div class="pad-left-20">
+            <div class="title text-white">関係機関からの問い合わせ</div>
+            <div class="chat-cont">
+                <div class="chat"></div>
+                <div class="chat-control  mar-tl-10">
+                    <div class="in-line mar-tl-10">
+                        全表示 <input type="radio" name="gender" value="male" checked>
+                        <span class="pad-left-20">24時間表示</span><input type="radio" name="gender" value="female">
+                    </div>
+                    <div class="in-line col-right">
+                        <button class="tbtn tbtn-defaut" onclick="loadModal('query_view.html')">問い合わせ</button>
+                    </div>
+                </div>
+            </div>
+  
+
+            <div class="title text-white mar-tl-10">各社へのリンク情報</div>
+
+            <div class="cont-table1">
+                <div class="t-row">
+                　	<input type="button" class="tbtn  tbtn-defaut right-20" onclick="loadModal('link_view.html')" value="気象各社">　
+                	<input type="button" class="tbtn  tbtn-defaut right-20" onclick="loadModal('link_view.html')" value="交通各社">　
+                	<input type="button" class="tbtn  tbtn-defaut right-20" onClick="window.open('https://www.kansai-airport.or.jp','_blank')"  value="フライト情報">
+                    
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".chat").load("msg_history.html");
+
+
+</script>

@@ -1,0 +1,24 @@
+<div>
+    <?php
+    require_once ('portal_proc.php');
+    if(count($infomationList) >0){
+        foreach ($infomationList as $item){
+            $tilte = $item['TITLE'.$endLang];
+            if(!$tilte){
+                $untra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $tilte = $item['TITLE_ENG'];
+                }else{
+                    $tilte = $item['TITLE_JPN'];
+                }
+            }
+            ?>
+            <div class="t-row">
+                <div class="t-col-md-3"><?= date('Y-m-d H:i:s',strtotime($item['REG_DATE']))?></div>
+                <div class="t-col-md-3"><a href="#" onclick="loadModalAnonView(<?= $item['ANNOUNCE_NO'] ?>)"><?= htmlspecialchars($tilte)?></a></div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>

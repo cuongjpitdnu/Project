@@ -1,0 +1,95 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン画面 (仮)ページ
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+//セッションスタート
+if(!isset($_SESSION))
+{
+    session_start();
+}
+
+//エラーメッセージ確認
+$strLoginError = '';
+if(isset($_SESSION['LOGIN_ERROR'])){
+	$strLoginError = $_SESSION['LOGIN_ERROR'];
+
+	session_unset();
+}
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><?php echo HEADER_PAGE_TITLE;?></title>
+		<meta name="csrf-token" content="<?php echo $csrf; ?>">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	    <link rel="stylesheet" type="text/css" href="css/table.css">
+	    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+	    <script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+	    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
+	    <script src="js/bootstrap.min.js"></script>
+		<script src="js/common.js"></script>
+		<script language="javascript">
+		<!--
+			//初期フォーカス
+			function fncLoad(){
+				document.frmLogin.user_id.focus();
+			}
+
+			//IDの入力を確認.
+			function fncInputId(keyCode){
+				if(keyCode == 13){
+					if(document.frmLogin.txtUserId.value != ""){
+						document.frmLogin.txtPassword.focus();
+					}
+				}
+			}
+
+			//パスワードの入力を確認.
+			function fncInputPass(keyCode){
+				if(keyCode == 13){
+					if(document.frmLogin.txtPassword.value != ""){
+						fncLogin();
+					}
+				}
+			}
+
+			//ログイン
+			function fncLogin(){
+				document.frmLogin.action = "login_proc.php";
+				document.frmLogin.submit();
+			}
+
+		-->
+	</script>
+	</head>
+	<body>
+<?php
+if($strLoginError != ''){
+?>
+		<font color="red"><?php echo $strLoginError;?></font>
+<?php
+}
+?>
+		<form id="frmLogin" name="frmLogin" onsubmit="return false;" method="post">
+			ユーザID：
+			<input type="text" id="txtUserId" name="txtUserId" onkeydown="fncInputId(event.keyCode);" />
+			<br />
+			パスワード
+			<input type="password" id="txtPassword" name="txtPassword" onkeydown="fncInputPass(event.keyCode);" />
+			<br />
+			<input type="button" value="ログイン" onClick="fncLogin();">
+		</form>
+	</body>
+</html>

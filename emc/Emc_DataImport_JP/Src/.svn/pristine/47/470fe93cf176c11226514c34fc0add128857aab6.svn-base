@@ -1,0 +1,265 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	:
+//	create		: 2020/02/17 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+require_once('common/validate_user.php');
+
+$arrMSG = [
+    'PORTAL_TEXT_001',
+    'PORTAL_TEXT_002',
+    'PORTAL_TEXT_003',
+    'PORTAL_TEXT_004',
+    'PORTAL_TEXT_005',
+    'PORTAL_TEXT_006',
+    'PORTAL_TEXT_007',
+    'PORTAL_TEXT_008',
+    'PORTAL_TEXT_009',
+    'PORTAL_TEXT_010',
+    'PORTAL_TEXT_011',
+    'PORTAL_TEXT_012',
+    'PORTAL_TEXT_013',
+    'PORTAL_TEXT_014',
+    'PORTAL_TEXT_015',
+    'PORTAL_TEXT_016',
+    'PORTAL_TEXT_017',
+
+    'PORTAL_DAILY_BUTTON_001',
+    'PORTAL_DAILY_TEXT_001',
+    'PUBLIC_BUTTON_001',
+    'PORTAL_DAILY_TEXT_002',
+    'PORTAL_DAILY_TEXT_003',
+    'PORTAL_DAILY_TEXT_004',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_006',
+    'PORTAL_DAILY_TEXT_007',
+    'PORTAL_DAILY_BUTTON_002',
+    'PORTAL_DAILY_TEXT_008',
+    'PORTAL_DAILY_TEXT_009',
+    'PORTAL_DAILY_TEXT_010',
+    'PORTAL_DAILY_TEXT_011',
+    'PORTAL_DAILY_TEXT_012',
+
+    'PUBLIC_TEXT_001',
+    'PUBLIC_TEXT_002',
+    'PUBLIC_TEXT_003',
+    'PUBLIC_TEXT_004',
+    'PUBLIC_TEXT_005',
+    'PUBLIC_TEXT_006',
+    'PUBLIC_TEXT_007',
+    'PUBLIC_TEXT_008',
+
+    'PUBLIC_MSG_042',
+
+    'USER_PERM_MSG_001',
+];
+//Define data untranslate
+$untra = 0;
+
+$arrayText = getListTextTranslate($arrMSG,$objLoginUserInfo->intLanguageType);
+
+if(@$_POST['action']=='load_info'){
+    $infomationList = get_annouce();
+    tranInfo($infomationList,$objLoginUserInfo);
+    return $infomationList;
+}elseif(@$_POST['action']=='load_bull'){
+    $bullUntran = bullUntran();
+    tranBul($bullUntran,$objLoginUserInfo);
+    $incident = count(get_incident_case());
+    $bullList = get_query_bulletin();
+    return $bullList;
+}else{
+    $infomationList = get_annouce();
+    tranInfo($infomationList,$objLoginUserInfo);
+    $bullUntran = bullUntran();
+    tranBul($bullUntran,$objLoginUserInfo);
+    $bullList = get_query_bulletin();
+    $incident = count(get_incident_case());
+    $linkCategory = get_link_category();
+    $viewLog = 'ポータル画面 画面表示 (ユーザID = '.$objLoginUserInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+    fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+}
+
+
+$time = time();
+$check = $time+date("Z",$time);
+$utcTime = strftime("%m/%d %H:%M:%S UTC", $check);
+
+
+function get_annouce(){
+    $strSQL = '';
+    $strSQL .= ' SELECT * FROM t_announce ';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' COMP_DATE IS NULL';
+    $strSQL .= ' ORDER BY reg_date DESC';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = 'ポータル画面'.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+function tranInfo($annoList,$objLoginUserInfo){
+    if($objLoginUserInfo->intLanguageType && count($annoList)>0){
+        $strTitle = '';
+        $strContent = '';
+        $idArray = array();
+        foreach ($annoList as $item){
+            if(!$item['UNTRANSLATED']){
+                if($strTitle){
+                    $strTitle .= ' [KBSMARCODE] '.$item['TITLE_JPN'];
+                }else{
+                    $strTitle .= $item['TITLE_JPN'];
+                }
+
+                if($strContent){
+                    $strContent .= ' [KBSMARCODE] '.$item['CONTENTS_JPN'];
+                }else{
+                    $strContent .= $item['CONTENTS_JPN'];
+                }
+
+                $idArray[] = $item['ANNOUNCE_NO'];
+            }
+        }
+        if(count($idArray)){
+            $tranTitle = tranAmazon($strTitle);
+            $tranContent = tranAmazon($strContent);
+            $tranTitleArr = explode(' [KBSMARCODE] ',$tranTitle);
+            $tranContentArr = explode(' [KBSMARCODE] ',$tranContent);
+
+            foreach ($idArray as $key => $id){
+                $date = date('Y-m-d H:i:s');
+                $strSQL = '';
+                $strSQL .= ' UPDATE t_announce SET ';
+                $strSQL .= ' TITLE_ENG = :TITLE_ENG, ';
+                $strSQL .= ' CONTENTS_ENG = :CONTENTS_ENG, ';
+                $strSQL .= ' UP_USER_NO = :UP_USER_NO, ';
+                $strSQL .= ' UP_DATE = :UP_DATE, ';
+                $strSQL .= ' UNTRANSLATED = 1 ';
+                $strSQL .= ' WHERE ANNOUNCE_NO = :ANNOUNCE_NO; ';
+                $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                $objStmt->bindParam(':TITLE_ENG', $tranTitleArr[$key]);
+                $objStmt->bindParam(':CONTENTS_ENG', $tranContentArr[$key]);
+                $objStmt->bindParam(':UP_USER_NO', $objLoginUserInfo->intUserNo);
+                $objStmt->bindParam(':UP_DATE', $date);
+                $objStmt->bindParam(':ANNOUNCE_NO',$id);
+                $strLogSql = 'ポータル画面'.$strSQL;
+                $strLogSql = str_replace(':TITLE_ENG', $tranTitleArr[$key],$strLogSql);
+                $strLogSql = str_replace(':CONTENTS_ENG', $tranContentArr[$key],$strLogSql);
+                $strLogSql = str_replace(':ANNOUNCE_NO', $id,$strLogSql);
+                $strLogSql = str_replace(':UP_USER_NO', $objLoginUserInfo->intUserNo,$strLogSql);
+                $strLogSql = str_replace(':UP_DATE', $date,$strLogSql);
+                fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                $objStmt->execute();
+            }
+        }
+    }
+}
+
+function tranBul($list,$objLoginUserInfo){
+    if($objLoginUserInfo->intLanguageType && count($list)>0){
+        $strContent = '';
+        $idArray = array();
+        foreach ($list as $item){
+            if(!$item['UNTRANSLATED']){
+                if($strContent){
+                    $strContent .= ' [KBSMARCODE] '.$item['INCIDENT_NAME_JPN'];
+                }else{
+                    $strContent .= $item['INCIDENT_NAME_JPN'];
+                }
+                $idArray[] = $item['BULLETIN_BOARD_NO'];
+            }
+        }
+        if(count($idArray)){
+            $tranContent = tranAmazon($strContent);
+            $tranContentArr = explode(' [KBSMARCODE] ',$tranContent);
+
+            foreach ($idArray as $key => $id){
+                $updated = date('Y-m-d H:i:s');
+                $strSQL = '';
+                $strSQL .= ' UPDATE t_bulletin_board SET ';
+                $strSQL .= ' INCIDENT_NAME_ENG = :INCIDENT_NAME_ENG, ';
+                $strSQL .= ' UP_USER_NO = :UP_USER_NO, ';
+                $strSQL .= ' UP_DATE = :UP_DATE, ';
+                $strSQL .= ' UNTRANSLATED = 1 ';
+                $strSQL .= ' WHERE BULLETIN_BOARD_NO = :BULLETIN_BOARD_NO; ';
+                $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                $objStmt->bindParam(':INCIDENT_NAME_ENG', $tranContentArr[$key]);
+                $objStmt->bindParam(':UP_USER_NO', $objLoginUserInfo->intUserNo);
+                $objStmt->bindParam(':UP_DATE', $updated);
+                $objStmt->bindParam(':BULLETIN_BOARD_NO',$id);
+                $strLogSql = 'ポータル画面'.$strSQL;
+                $strLogSql = str_replace(':CONTENTS_ENG', $tranContentArr[$key],$strLogSql);
+                $strLogSql = str_replace(':UP_USER_NO', $objLoginUserInfo->intUserNo,$strLogSql);
+                $strLogSql = str_replace(':UP_DATE', $updated,$strLogSql);
+                $strLogSql = str_replace(':BULLETIN_BOARD_NO', $id,$strLogSql);
+                fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                $objStmt->execute();
+            }
+        }
+    }
+}
+
+function get_query_bulletin(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_bulletin_board ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = 'ポータル画面'.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+function get_link_category(){
+
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_link_category ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = $strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+function get_incident_case(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_incident_case ';
+    $strSQL .= ' WHERE COMP_DATE IS NULL ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = 'ポータル画面'.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+function bullUntran(){
+    $unstra = 0;
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_bulletin_board ';
+    $strSQL .= ' WHERE UNTRANSLATED = :UNTRANSLATED ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':UNTRANSLATED', $unstra);
+    $strLogSql = 'ポータル画面'.$strSQL;
+    $strLogSql = str_replace(':UNTRANSLATED', 0,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+?>

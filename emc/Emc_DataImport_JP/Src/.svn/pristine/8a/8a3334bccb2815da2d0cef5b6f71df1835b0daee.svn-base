@@ -1,0 +1,257 @@
+<?php 
+
+require_once('common/common.php');
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+//DB接続
+if(fncConnectDB() == false){
+	echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+$_SESSION['errStr'] = '';
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+fncWriteLog(LogLevel['Info'] , LogPattern['View'] , 'ユーザ別権限設定画面　画面表示 (ユーザID = '.$userInfo->strUserID.')');
+
+// get list text translate
+$arrTitle =  array(
+    'USER_PERM_TEXT_001',
+    'USER_PERM_TEXT_002',
+    'USER_PERM_TEXT_003',
+    'USER_PERM_TEXT_004',
+    'USER_PERM_TEXT_005',
+    'USER_PERM_TEXT_006',
+    'USER_PERM_TEXT_007',
+    'USER_PERM_TEXT_008',
+    'USER_PERM_TEXT_009',
+    'USER_PERM_TEXT_010',
+    'USER_PERM_TEXT_011',
+    'USER_PERM_TEXT_012',
+    'USER_PERM_TEXT_013',
+    'USER_PERM_TEXT_014',
+    'USER_PERM_TEXT_015',
+    'USER_PERM_TEXT_016',
+    'USER_PERM_TEXT_017',
+    'USER_PERM_TEXT_018',
+    'USER_PERM_TEXT_019',
+    'USER_PERM_TEXT_020',
+    'USER_PERM_MSG_001',
+
+
+    'PUBLIC_BUTTON_003',
+    'PUBLIC_BUTTON_013',
+
+
+    'PUBLIC_MSG_009',
+    'PUBLIC_TEXT_006',
+    'PUBLIC_TEXT_007',
+
+
+    
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+
+
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?",
+    [$userInfo->intUserNo], 'ユーザ別権限設定画面');
+if(!$user){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+
+//redirect if dont have permission
+if($userInfo->intMenuPerm == 0){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+
+
+if(isset($_POST['id'])){
+    if($_POST['id'] != 0){
+        //process edit company
+        $row = fncSelectOne("SELECT 
+        m_user.USER_NO,
+        m_user.USER_ID,
+        m_user.PERM_FLAG,
+        m_user.ANNOUNCE_REG_PERM,
+        m_user.BULLETIN_BOARD_REG_PERM,
+        m_user.QUERY_REG_PERM,
+        m_user.INCIDENT_CASE_REG_PERM,
+        m_user.REQUEST_REG_PERM,
+        m_user.INFORMATION_REG_PERM,
+        m_user.MENU_PERM,
+        m_user.ANNOUNCE_MAIL,
+        m_user.BULLETIN_BOARD_MAIL,
+        m_user.INCIDENT_CASE_MAIL,
+        m_user.REQUEST_CONTENTS_MAIL,
+        m_group.ADMIN_FLAG,
+        ".iff($userInfo->intLanguageType, " COMPANY_NAME_ENG as COMPANY_NAME", " COMPANY_NAME_JPN as COMPANY_NAME")."
+
+
+        FROM m_user 
+        LEFT JOIN m_company ON m_user.COMPANY_NO = m_company.COMPANY_NO
+        INNER JOIN m_group ON m_user.GROUP_NO = m_group.GROUP_NO
+        
+        WHERE USER_NO=?", [$_POST['id']], 'ユーザ別権限設定画面');
+        if(!$row){
+            // print_r($row);
+            //user not exist, return error msg
+            $errMsg = $arrTextTranslate['USER_EDIT_MSG_014'];
+
+?>
+
+    <script>
+        alert('<?php echo $errMsg; ?>');
+
+        $('#myModal').modal('hide');
+
+    </script>
+
+
+<?php
+            exit();
+        }
+    }
+    // print_r($row);
+    //continue to edit company
+?>
+
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title"><?php echo $arrTextTranslate['USER_PERM_TEXT_001']; ?></div>
+        <div class="edit-error" style="color:red;"></div>
+        <div class="form-body">
+            <form class="formEdit" action="user_perm_proc.php">
+            <input type="hidden" name="mode" class="t-input t-input-250" value="1">
+            <input type="hidden" name="user_no" class="t-input t-input-250" value="<?php if(isset($row['USER_NO'])) echo $row['USER_NO']; ?>">
+            <input type="hidden" name="X-CSRF-TOKEN" value="<?php if(isset($_SESSION['csrf'])) echo $_SESSION['csrf']; ?>">
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th rowspan="3" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_002']; ?></th>
+                        <th rowspan="3" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_003']; ?></th>
+                        <th colspan="7" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_004']; ?></th>
+                        <th colspan="6" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_014']; ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_005']; ?></th>
+                        <th colspan="3" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_006']; ?></th>
+                        <th rowspan="2" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_013']; ?></th>
+                        <th colspan="2" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_015']; ?></th>
+                        <th colspan="2" align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_016']; ?></th>
+                    </tr>
+                    <tr class="text-center">
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_007']; ?></th>
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_008']; ?></th>
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_009']; ?></th>
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_010']; ?></th>
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_011']; ?></th>
+                        <th align="center" class="text-center"><?php echo $arrTextTranslate['USER_PERM_TEXT_012']; ?></th>
+                        <th align="center" class="text-center"><?php echo html_entity_decode($arrTextTranslate['USER_PERM_TEXT_017']); ?></th>
+                        <th align="center" class="text-center"><?php echo html_entity_decode($arrTextTranslate['USER_PERM_TEXT_018']); ?></th>
+                        <th align="center" class="text-center"><?php echo html_entity_decode($arrTextTranslate['USER_PERM_TEXT_019']); ?></th>
+                        <th align="center" class="text-center"><?php echo html_entity_decode($arrTextTranslate['USER_PERM_TEXT_020']); ?></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="13" align="right">
+                            <button type="submit" class="tbtn tbtn-defaut btn-save-edit"><?php echo $arrTextTranslate['PUBLIC_BUTTON_013']; ?></button>
+                            <button type="submit" class="tbtn-cancel tbtn-defaut" id="close-setting" data-dismiss="modal"><?php echo $arrTextTranslate['PUBLIC_BUTTON_003']; ?></button>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><?php echo fncHtmlSpecialChars($row['USER_ID']); ?></td>
+                        <td class="text-center"><?php echo fncHtmlSpecialChars($row['COMPANY_NAME']); ?></td>
+                        <td align="center"><input type="checkbox" name="ANNOUNCE_REG_PERM"
+                        <?php echo $row['ADMIN_FLAG'] ? ($row['PERM_FLAG'] ? ($row['ANNOUNCE_REG_PERM'] ? 'checked': '') : 'checked') : 'disabled' ; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="BULLETIN_BOARD_REG_PERM"
+                        <?php echo $row['ADMIN_FLAG'] ? ($row['PERM_FLAG'] ? ($row['BULLETIN_BOARD_REG_PERM'] ? 'checked': '') : 'checked') : 'disabled' ; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="QUERY_REG_PERM"
+                        <?php echo $row['PERM_FLAG'] ? ($row['QUERY_REG_PERM'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="INCIDENT_CASE_REG_PERM"
+                        <?php echo $row['ADMIN_FLAG'] ? ($row['PERM_FLAG'] ? ($row['INCIDENT_CASE_REG_PERM'] ? 'checked': '') : 'checked') : 'disabled' ; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="REQUEST_REG_PERM"
+                        <?php echo $row['PERM_FLAG'] ? ($row['REQUEST_REG_PERM'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="INFORMATION_REG_PERM"
+                        <?php echo $row['PERM_FLAG'] ? ($row['INFORMATION_REG_PERM'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="MENU_PERM"
+                        <?php echo $row['ADMIN_FLAG'] ? ($row['PERM_FLAG'] ? ($row['MENU_PERM'] ? 'checked': '') : 'checked') : 'disabled' ; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="ANNOUNCE_MAIL"
+                        <?php echo $row['PERM_FLAG'] ? ($row['ANNOUNCE_MAIL'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="BULLETIN_BOARD_MAIL"
+                        <?php echo $row['PERM_FLAG'] ? ($row['BULLETIN_BOARD_MAIL'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="INCIDENT_CASE_MAIL"
+                        <?php echo $row['PERM_FLAG'] ? ($row['INCIDENT_CASE_MAIL'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                        <td align="center"><input type="checkbox" name="REQUEST_CONTENTS_MAIL"
+                        <?php echo $row['PERM_FLAG'] ? ($row['REQUEST_CONTENTS_MAIL'] ? 'checked': '') : 'checked'; ?>
+                        ></td>
+                    </tr>
+                </tbody>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .modal-lg {
+        width: 1205px !important;
+    }
+</style>
+<script>
+    var confirmMsg = '<?php echo $arrTextTranslate['USER_PERM_MSG_001']; ?>'
+</script>
+<?php 
+
+}else{
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."/".PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+    exit();
+}
+?>

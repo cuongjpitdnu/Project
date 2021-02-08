@@ -1,0 +1,49 @@
+<?php
+/*
+* @portal_proc.php
+*
+* @create 2020/02/17 KBS Tam.nv
+* @update
+*/
+
+
+require_once('portal_function.php');
+//thang
+if(isset($_REQUEST['tab'])){
+    $_SESSION['tab'] = $_REQUEST['tab'];
+    exit();
+}
+//end thang
+if(@$_POST['action']=='load_info'){
+    $_SESSION["SES_TIME"] = date( "Y/m/d H:i:s", time() );
+    $dtmDate = $_POST['dtmDateFilter'];
+    $arrInfo = get_annouce($dtmDate);
+    tranInfo($arrInfo,$objLoginUserInfo);
+    return $arrInfo;
+}elseif(@$_POST['action']=='load_bull'){
+    $_SESSION["SES_TIME"] = date( "Y/m/d H:i:s", time() );
+    $arrBullUntran = bullUntran();
+    tranBul($arrBullUntran,$objLoginUserInfo);
+    $arrBulletin = get_query_bulletin();
+    return $arrBulletin;
+}else{
+    fncSessionTimeOutCheck();
+    $arrInfo = get_annouce();
+    tranInfo($arrInfo,$objLoginUserInfo);
+    $arrBullUntran = bullUntran();
+    tranBul($arrBullUntran,$objLoginUserInfo);
+    $arrBulletin = get_query_bulletin();
+    $intIncident = count(get_incident_case());
+    $arrLinkCategory = get_link_category();
+
+    if(!$intIncident && $objLoginUserInfo->intIncidentCaseRegPerm){
+        $intShowBtn = 1;
+    }else{
+        $intShowBtn = 0;
+    }
+    $strViewLog = 'ポータル画面 画面表示 (ユーザID = '.$objLoginUserInfo->strUserID.') '.
+        (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+    fncWriteLog(LogLevel['Info'] , LogPattern['View'], $strViewLog);
+}
+
+?>

@@ -1,0 +1,118 @@
+<?php
+/*
+*	@login.php
+*
+*	@create	2020/03/11 KBS T.Mausda
+*	@update	
+*/
+
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+//エラーメッセージ確認
+$strLoginError = '';
+if(isset($_SESSION['LOGIN_ERROR'])){
+	$strLoginError = $_SESSION['LOGIN_ERROR'];
+	unset($_SESSION['LOGIN_ERROR']);
+
+}
+if(isset($_SESSION['LOGINUSER_INFO'])){
+    unset($_SESSION['LOGINUSER_INFO']);
+}
+//-----------------------------------------
+//  2020/03/18 KBS S.Tasaki
+//  セッションタイムアウト用のセッションがあれば削除する処理を追加
+//-----------------------------------------
+if(isset($_SESSION['SES_TIME'])){
+    unset($_SESSION['SES_TIME']);
+}
+//  2020/03/18 KBS S.Tasaki セッションタイムアウト用のセッションがあれば削除する処理を追加
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="csrf-token" content="<?php echo $strCsrf; ?>">
+		<title><?php echo HEADER_PAGE_TITLE;?></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	    <link rel="stylesheet" type="text/css" href="css/table.css">
+	    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+	    <script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+	    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
+	    <script src="js/bootstrap.min.js"></script>
+		<script src="js/common.js"></script>
+		<script language="javascript">
+		<!--
+			//初期フォーカス
+			window.onload = function(){
+				document.frmLogin.txtUserId.focus();
+			}
+
+			//IDの入力を確認.
+			function fncInputId(keyCode){
+				if(keyCode == 13){
+					if(document.frmLogin.txtUserId.value != ""){
+						document.frmLogin.txtPassword.focus();
+					}
+				}
+			}
+
+			//パスワードの入力を確認.
+			function fncInputPass(keyCode){
+				if(keyCode == 13){
+					if(document.frmLogin.txtPassword.value != ""){
+						fncLogin();
+					}
+				}
+			}
+
+			//ログイン
+			function fncLogin(){
+				document.frmLogin.action = "login_proc.php";
+				document.frmLogin.submit();
+			}
+
+		-->
+	</script>
+	</head>
+	<body>
+	<div class="main-content">
+        <div class="main-form">
+			<div class="form-title">LOGIN</div>
+			<?php if(isset($strLoginError)) {
+			    echo '<font color="red" class="error">'.$strLoginError.'</font>';
+			    unset($strLoginError);
+			}else{
+				echo '<font color="red" class="error"></font>';
+			}
+			?>
+		</div>
+	</div>
+
+	<div class="form-body">
+    	<div class="cont-title">
+            <form id="frmLogin" name="frmLogin" onsubmit="return false;" method="post">
+                <div class="form-body-70 top-20">
+                    <div class=" in-line">
+                        <div class="lb-left" >User ID:</div>
+                        <span class="ip-span"><input type="text" id="txtUserId" name="txtUserId"  class="t-input" onkeydown="fncInputId(event.keyCode);" ></span>
+                    </div>
+                    <div class="in-line">
+                        <div class="lb-left" >Password：</div>
+                        <span class="ip-span"><input type="password" id="txtPassword" name="txtPassword"  class="t-input" onkeydown="fncInputPass(event.keyCode);" ></span>
+                    </div>
+                    <div class="form-footer top-20 text-right">
+                    	<input type="button" value="Login" class="tbtn tbtn-defaut" onClick="fncLogin();">
+                    </div>
+                </div>
+        	</form>
+        </div>
+    </div>
+	</body>
+</html>

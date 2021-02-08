@@ -1,0 +1,22 @@
+<?php
+/*
+* @incident_request_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+    require_once ('portal_function.php');
+    $arrRequest = get_request();
+    if($arrRequest){
+        foreach ($arrRequest as $item){
+            echo '<div class="t-row">';
+                echo '<div class="t-col-md-6 ">
+                <a href="#" onclick=\'loadView("request_view.php",'
+                    .$item['REQUEST_NO'].')\' >' . $item['TITLE'.$strEndLang].' </a></div>';
+                echo '<div class="t-col-md-6 ">'
+                    .date('Y/m/d H:i:s',strtotime($item['REG_DATE'])).'　</div>';
+            echo '</div>';
+        }
+    }
+?>
+

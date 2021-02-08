@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>インシデント事案</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">JCMG事案</div>
+            <div class="form-body">
+                <div class="error-messeage">
+                    <div>※本メッセージにおける英語表記は、自動翻訳機能により生成された文章です。</div>
+                <div>This English is translated by the automatic translator system.</div>
+                </div>
+                <div class="col-right in-lineblock right-20">
+                        <button type="button" class="tbtn tbtn-defaut" id="btn-edit" onclick="loadModal('incident_case_edit.html')">編集</button>
+                </div>
+                    
+                <div class="cont-title">
+                    <div class="in-line">日付</div>
+                    <div class="in-line ">2019/11/30 12:30</div>
+	            </div>
+	            <br>
+                
+
+                <div>
+                
+                    <p style="background-color:#4169e1">
+                 	<legend>タイトル/Title </legend>
+                	</p>
+                    <div class="info-left">
+                        <div class="line">
+                            <div class="in-line tlabel">(原文/Original)</div>
+                            <div class="in-line text-input text-bold">＊＊＊＊＊＊＊＊＊＊＊＊<?php echo @$chat[0]['text']?></div>
+                        </div>
+                        <div class="line">
+                            <div class="in-line tlabel">(翻訳/・・・)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="background-color:#4169e1">
+                 	<legend>内容/Contents</legend>
+                	</p>
+                <div class="info">
+                    <div class="line">
+                        <div >(原文/Original)</div>
+                        <div class="text-input text-bold">
+                            ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊ ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="line">
+                        <div >(翻訳/・・・)</div>
+                        <div class="text-input text-bold">
+                            abcabcabcabcabcabc abcabcabcabcabcabc abcabcabcabcabcabc
+                            abcabcabcabcabcabc abcabcabcabcabcabc abcabcabcabcabcabc
+                            abcabcabcabcabcabc abcabcabcabcabcabc abcabcabcabcabcabc
+                            abcabcabcabcabcabc abcabcabcabcabcabc abcabcabcabcabcabc
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer text-right right-20">
+                    <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

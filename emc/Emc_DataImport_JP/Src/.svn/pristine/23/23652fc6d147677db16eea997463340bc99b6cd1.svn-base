@@ -1,0 +1,25 @@
+<div>
+    <?php
+    require_once ('portal_proc.php');
+    if(count(@$bullList) >0){
+        foreach ($bullList as $item){
+            $name = $item['INCIDENT_NAME'.$endLang];
+            if(!$name){
+                $untra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $name = $item['INCIDENT_NAME_ENG'];
+                }else{
+                    $name = $item['INCIDENT_NAME_JPN'];
+                }
+            }
+            ?>
+            <div class="t-row">
+                <div class="t-col-md-3"><?= date('Y-m-d H:i:s',strtotime($item['REG_DATE']))?></div>
+                <div class="t-col-md-3"><?= htmlspecialchars($item['BUSINESS_NAME'])?></div>
+                <div class="t-col-md-3"><a href="#" onclick="loadView('bulletin_board_view.php',<?= $item['BULLETIN_BOARD_NO'] ?>)"><?= htmlspecialchars($name)?></a></div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>

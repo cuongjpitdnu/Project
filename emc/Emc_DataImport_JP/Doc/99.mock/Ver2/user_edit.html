@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザ登録編集</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">ユーザ登録編集</div>
+        <div class="form-body">
+            <div class="clearfix">
+                <div class="in-line tcol-md-6 " style="float: left">
+                    <div class="label-short">ユーザID <span class="txt-red">※</span></div>
+                    <input type="text" class="t-input t-input-250" value="User0100"><br/>
+
+                    <div class="label-short">有効期限 <span class="txt-red">※</span></div>
+                    <input type="text" class="t-input t-input-115" id="date_start" value="2019/11/01"> ~
+                    <input type="text" class="t-input t-input-115" id="date_end" value="2021/03/31"><br/>
+
+                    <div class="label-short">会社名 <span class="txt-red">※</span></div>
+                    <div class="select-container">
+                        <select>
+                            <option value="ja">○○株式会社</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div><br/>
+
+                    <div class="label-short">組織 </div>
+                    <input type="text" class="t-input t-input-250" value="〇〇部○○課"><br/>
+
+                    <div class="label-short">担当者名 </div>
+                    <input type="text" class="t-input t-input-250" value="〇〇　△△"><br/>
+
+                    <div class="label-short">電話</div>
+                    <input type="text" class="t-input t-input-250" value="06-999-9999"><br/>
+                </div>
+
+                <div class="in-line tcol-md-6">
+                    <div class="label-short">ﾊﾟｽﾜｰﾄﾞ <span class="txt-red">※</span></div>
+                    <input type="password" class="t-input t-input-250" value="helo"><br/>
+
+                    <div class="cont-radio">
+                        <div class="label-short">言語 <span class="txt-red">※</span></div>
+                        <label class="container-radio">日本語
+                            <input type="radio" checked="checked" name="radio">
+                            <span class="checkmark checkmark-radio"></span>
+                        </label>
+                        <label class="container-radio">英語
+                            <input type="radio" name="radio">
+                            <span class="checkmark checkmark-radio"></span>
+                        </label><br/>
+                    </div>
+
+                    <div class="in-line">
+                        <div class="label-short">略称名</div>
+                        <input type="text" class="t-input t-input-60" value="" disabled>
+                    </div>
+                    <div class="in-line">
+                        <div class="label-100">機関カテゴリ</div>
+                        <input type="text" class="t-input" value="" style="width: 78px" disabled><br/>
+                    </div>
+
+                    <div class="label-short">グループ <span class="txt-red">※</span></div>
+                    <input type="text" class="t-input t-input-250" value="アクセス機関" disabled><br/>
+
+                    <div class="label-short">メール <span class="txt-red">※</span></div>
+                    <input type="text" class="t-input t-input-250" value="××@××.com"><br/>
+
+                    <div class="label-short">ＦＡＸ</div>
+                    <input type="text" class="t-input t-input-250" value="06-999-9999"><br/>
+                </div>
+            </div>
+
+
+            <div class="label-short">〒 </div>
+            <input type="text" class="t-input t-input-125" value="539-0000"><br/>
+
+            <div class="label-short">住所 </div>
+            <textarea class="t-input-500"  rows="2" cols="200"></textarea><br/>
+
+			<div class="label-short">備考 </div>
+            <textarea class="t-input-500"  rows="2" cols="200"></textarea>
+
+
+            <div class="form-footer text-right right-20">
+                <button type="submit" class="tbtn-cancel tbtn-defaut "  data-dismiss="modal">登録</button> 
+                <button type="submit" class="tbtn-cancel tbtn-defaut "  data-dismiss="modal">閉じる</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#date_start').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'yy/mm/dd'
+    });
+
+    $('#date_end').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'yy/mm/dd'
+    });
+</script>
+</html>

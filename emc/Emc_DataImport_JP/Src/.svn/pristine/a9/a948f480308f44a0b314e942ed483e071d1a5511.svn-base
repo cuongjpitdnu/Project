@@ -1,0 +1,132 @@
+.form-title{
+    background-color: #002060;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.form-body-90{
+    width: 90%;
+    margin: 0 auto;
+}
+.title{
+    font-weight: 600;
+}
+.cont-title{
+    margin: 20px 0;
+}
+.form-body{
+    padding: 10px;
+}
+.tlabel{
+    margin-right: 10px;
+}
+
+.error-messeage{
+    color: red;
+    margin-bottom: 10px;
+    font-size: 85%;
+}
+.info{
+    width: 85%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.info-left{
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.in-line{
+    display: inline;
+}
+.float-left{
+    float: left;
+}
+.in-lineblock{
+    display: inline-block;
+}
+.label-50{
+    width: 50%;
+    min-width: 300px;
+}
+
+.label-input{
+    width:230px;
+    display:inline-block;
+}
+.label-short{
+    width:140px;
+    display:inline-block;
+}
+
+
+.text-bold{
+    font-weight: 600;
+}
+.tbtn{
+    padding: 6px 25px;
+    border: solid 1px #000;
+}
+.tbtn-cancel{
+    padding: 4px 25px;
+    border: solid 1px #000;
+    padding-bottom: 3px;
+}
+.tbtn-defaut{
+    background-color: #e1e1e1;
+}
+.text-right{
+    text-align: right;
+}
+
+.col-right{
+    float: right;
+}
+.link{
+    font-size: 120%;
+}
+.text-link{
+    color: blue;
+}
+.right-20{
+    margin-right: 20px;
+}
+
+.form-control{
+    width: 100%;
+    padding: 6px 0;
+    margin: 5px 0;
+}
+.t-input{
+    padding: 6px 0;
+    margin: 5px 0;
+}
+.txt-red{
+    color: red;
+}
+.select-control{
+    padding: 5px;
+}
+
+.cont-time{
+    margin: 30px;
+    border: solid 1px;
+    padding: 5px 10px;
+    padding-top: 4px;
+}
+.top-20{
+    margin-top: 20px
+}
+
+.clearfix{
+    overflow: auto;
+}
+.tcol-md-6{
+    width: 50%;
+}
+.files{
+    margin-bottom: 5px;
+}
+.text-gray{
+    color: gray;
+}

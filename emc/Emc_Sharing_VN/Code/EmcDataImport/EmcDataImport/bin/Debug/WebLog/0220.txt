@@ -1,0 +1,9 @@
+2020/02/21 10:03:53 INFO  SELECT         m_user.user_no       , m_user.user_id       , m_user.language_type       , m_user.company_no       , m_company.company_name_jpn       , m_company.company_name_eng       , m_company.group_no       , m_user.user_name       , m_user.announce_reg_perm       , m_user.bulletin_board_reg_perm       , m_user.query_reg_perm       , m_user.incident_case_reg_perm       , m_user.request_reg_perm       , m_user.information_reg_perm       , m_user.menu_perm    FROM m_user   INNER JOIN m_company           ON m_user.company_no = m_company.company_no   WHERE m_user.user_id = admin2     AND m_user.password = kbs 
+
+2020/02/21 10:11:22 INFO SELECT t_link.LINK_NO, t_link.LINK_CATEGORY_NO, t_link.LINK_NAME_ENG as LINK_NAME, m_link_category.LINK_CATEGORY_NAME_ENG as LINK_CATEGORY_NAME, t_link.URL, t_link.CORRECTION_FLAG, t_link.DEL_FLAG FROM t_link INNER JOIN m_link_category ON m_link_category.LINK_CATEGORY_NO=t_link.LINK_CATEGORY_NO WHERE t_link.DEL_FLAG=0 ORDER BY m_link_category.SORT_NO ASC, t_link.SORT_NO ASC
+
+2020/02/21 10:18:14 INFO SELECT * FROM t_link
+                WHERE SORT_NO>3 AND LINK_CATEGORY_NO=1 ORDER BY SORT_NO ASC
+
+2020/02/21 10:22:19 INFO SELECT t_link.LINK_NO, t_link.LINK_CATEGORY_NO, t_link.LINK_NAME_ENG as LINK_NAME, m_link_category.LINK_CATEGORY_NAME_ENG as LINK_CATEGORY_NAME, t_link.URL, t_link.CORRECTION_FLAG, t_link.DEL_FLAG FROM t_link INNER JOIN m_link_category ON m_link_category.LINK_CATEGORY_NO=t_link.LINK_CATEGORY_NO WHERE t_link.DEL_FLAG=0 ORDER BY m_link_category.SORT_NO ASC, t_link.SORT_NO ASC
+

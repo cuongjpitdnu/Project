@@ -1,0 +1,946 @@
+<?php
+    /*
+     * @announce_mng_proc.php
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     */
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    define('DISPLAY_TITLE', 'お知らせ管理画面');
+
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        $strShow = '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'");';
+        $strShow .= ' window.location.href="login.php";</script> ';
+        echo $strShow;
+        exit;
+    }
+
+    if((isset($_POST['action']) && $_POST['action'] == 'checkNumDataReduct')
+        || (isset($_POST['mode']) && $_POST['mode'] == 1)
+        || (isset($_POST['mode']) && $_POST['mode'] == 2)
+        || (isset($_POST['mode']) && $_POST['mode'] == 4)) {
+        fncSessionTimeOutCheck(1);
+    } else {
+        fncSessionTimeOutCheck();
+    }
+
+    // check if ajax or export csv -> do something | access this file directly -> stop
+    if(!(isset($_POST['mode']) && $_POST['mode'] == 3) &&
+       !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+       strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+        exit;
+    }
+
+    // ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg =  array(
+        'ANNOUNCE_MNG_TEXT_011',
+        'ANNOUNCE_MNG_TEXT_005',
+        'ANNOUNCE_MNG_TEXT_006',
+        'ANNOUNCE_MNG_TEXT_007',
+        'ANNOUNCE_MNG_TEXT_008',
+        'ANNOUNCE_MNG_TEXT_009',
+        'PUBLIC_BUTTON_007',
+        'PUBLIC_BUTTON_010',
+        'PUBLIC_TEXT_016',
+        'PUBLIC_BUTTON_011',
+        'PUBLIC_BUTTON_012',
+        'PUBLIC_BUTTON_015',
+        'ANNOUNCE_MNG_MSG_003',
+        'ANNOUNCE_MNG_MSG_004',
+        // get data grid fail
+        'PUBLIC_MSG_001',
+        'PUBLIC_MSG_003',
+        'PUBLIC_MSG_004',
+        'PUBLIC_MSG_005',
+        'PUBLIC_MSG_007',
+        // csv title
+        'ANNOUNCE_MNG_TEXT_012',
+        'ANNOUNCE_MNG_TEXT_013',
+        'ANNOUNCE_MNG_TEXT_014',
+        'ANNOUNCE_MNG_TEXT_015',
+        'ANNOUNCE_MNG_TEXT_016',
+        'PUBLIC_TEXT_011',
+        'PUBLIC_TEXT_012',
+        'PUBLIC_TEXT_013',
+        'PUBLIC_TEXT_014',
+        'PUBLIC_TEXT_015',
+    );
+
+    // get list text translate
+    $arrTxtTrans = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    /**
+     * get data search
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     * @param string $strTitle
+     * @param string $strSDate
+     * @param string $strEDate
+     * @param string $strChkDone
+     * @param integer $intLang
+     * @param integer $intPage
+     * @param boolean $blnPaging
+     * @param boolean $blnGetAll
+     * @return array $arrResult
+     */
+    function fncGetData($strTitle = '', $strSDate = '',
+                        $strEDate = '', $strChkDone = '',
+                        $intLang, $intPage,
+                        $blnPaging = false, $blnGetAll = false) {
+        try {
+            $strSuffixes = ($intLang == 0) ? '_JPN' : '_ENG';
+            $strTitleSelect = 'title'.$strSuffixes;
+
+            if(!$blnGetAll) {
+                $strSQL = ' SELECT '
+                        . '     ta.announce_no, '
+                        . '     ta.reg_date, '
+                        . '     ta.comp_date, '
+                        . $strTitleSelect.' AS title, '
+                        . '     ta.title_jpn, '
+                        . '     ta.title_eng, '
+                        . '     mu.user_name '
+                        . ' FROM '
+                        . '     t_announce AS ta ';
+            } else {
+                $strSQL = ' SELECT '
+                        . '     ta.*, '
+                        . '     mu.user_name '
+                        . ' FROM '
+                        . '     t_announce AS ta ';
+            }
+
+            $strSQL .= ' INNER JOIN m_user AS mu ON ta.reg_user_no = mu.user_no ';
+
+            $arrCondition = array();
+            $blnHaveAnd = false;
+            if(trim($strTitle) != '') {
+                // $strSQL .= ' WHERE ta.'.$strTitleSelect.' LIKE ? ';
+                $strSQL .= ' WHERE CASE WHEN ta.title_jpn IS NOT NULL ';
+                $strSQL .= ' AND ta.title_eng IS NOT NULL THEN ta.'.$strTitleSelect;
+                $strSQL .= ' WHEN ta.title_eng IS NULL THEN ta.title_jpn ';
+                $strSQL .= ' ELSE ta.title_eng END LIKE ? ESCAPE \'!\' ';
+                $strTitle = str_replace('%', '!%%', $strTitle);
+                $strTitle = str_replace('!', '!!', $strTitle);
+                $strTitle = str_replace('_', '!_', $strTitle);
+                $arrCondition[] = '%'.$strTitle.'%';
+                $blnHaveAnd = true;
+            }
+            if(trim($strSDate) != '') {
+                if($blnHaveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                $strSQL .= ' CAST(ta.reg_date AS DATE) >= ? ';
+                $arrCondition[] = $strSDate;
+                $blnHaveAnd = true;
+            }
+            if(trim($strEDate) != '') {
+                if($blnHaveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                $strSQL .= ' CAST(ta.comp_date AS DATE) <= ? ';
+                $arrCondition[] = $strEDate;
+                $blnHaveAnd = true;
+            }
+            if(trim($strChkDone) != '' && trim($strChkDone) == 1) {
+                if($blnHaveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                $strSQL .= ' ta.comp_date IS NOT NULL ';
+                $blnHaveAnd = true;
+            }
+
+            $strSQL .= ' ORDER BY ta.reg_date DESC ';
+
+            $arrResult = fncSelectData($strSQL, $arrCondition, $intPage,
+                                        $blnPaging, DISPLAY_TITLE);
+            return $arrResult;
+        } catch (\Exception $e) {
+            // <エラー発生時>
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTxtTrans['PUBLIC_MSG_001']);
+            $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_001'];
+            return 0;
+        }
+    }
+
+    if(isset($_POST)) {
+        if(isset($_POST['mode'])) {
+            $strFilePathAttactmentRoot = SHARE_FOLDER.'/'.ANNOUNCE_ATTACHMENT_FOLDER;
+            // set Done data
+            if($_POST['mode'] == 1) {
+                // 完了していないか確認する。
+                $strSQL = ' UPDATE t_announce SET t_announce.comp_date = CURRENT_TIMESTAMP ';
+                $strSQL .= ' WHERE t_announce.announce_no = :announceNo ';
+                $strSQL .= ' AND t_announce.comp_date IS NULL ';
+                $GLOBALS['g_dbaccess']->funcBeginTransaction();
+                try {
+                    $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                    $query->bindParam(':announceNo', $_POST['announce_no']);
+
+                    $strLogSql = $strSQL;
+                    $strLogSql = str_replace(':announceNo', $_POST['announce_no'], $strLogSql);
+
+                    $strLogButton = DISPLAY_TITLE.'　完了(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                    fncWriteLog(LogLevel['Info'], LogPattern['Button'], $strLogButton);
+
+                    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], DISPLAY_TITLE.'  '.$strLogSql);
+                    $query->execute();
+                    $GLOBALS['g_dbaccess']->funcCommit();
+
+                    // send mail
+                    $arrUser = getDataMUserSendMail('ANNOUNCE_MAIL', DISPLAY_TITLE);
+                    if($arrUser == 0) {
+                        echo 2;
+                        exit;
+                    } else {
+                        $arrMail = array(
+                            'jpn' => array(),
+                            'eng' => array(),
+                        );
+
+                        $arrTempMailJP = array();
+                        $arrTempMailEN = array();
+                        foreach($arrUser as $user) {
+                            if($user['language_type'] == 0) {
+                                if(count($arrTempMailJP) == 0) {
+                                    array_push($arrTempMailJP, $user['mail_address']);
+                                    $arrMail['jpn'][] = array(
+                                        'USER_NAME' => $user['user_name'],
+                                        'MAIL_ADDRESS' => $user['mail_address'],
+                                    );
+                                } else {
+                                    if(!in_array($user['mail_address'], $arrTempMailJP)) {
+                                        array_push($arrTempMailJP, $user['mail_address']);
+                                        $arrMail['jpn'][] = array(
+                                            'USER_NAME' => $user['user_name'],
+                                            'MAIL_ADDRESS' => $user['mail_address'],
+                                        );
+                                    }
+                                }
+                            } else {
+                                if(count($arrTempMailEN) == 0) {
+                                    array_push($arrTempMailEN, $user['mail_address']);
+                                    $arrMail['eng'][] = array(
+                                        'USER_NAME' => $user['user_name'],
+                                        'MAIL_ADDRESS' => $user['mail_address'],
+                                    );
+                                } else {
+                                    if(!in_array($user['mail_address'], $arrTempMailEN)) {
+                                        array_push($arrTempMailEN, $user['mail_address']);
+                                        $arrMail['eng'][] = array(
+                                            'USER_NAME' => $user['user_name'],
+                                            'MAIL_ADDRESS' => $user['mail_address'],
+                                        );
+                                    }
+                                }
+                            }
+                        }
+
+                        $strSQL = ' SELECT * FROM t_announce WHERE t_announce.announce_no = ? ';
+                        $arrResult = fncSelectOne($strSQL, array($_POST['announce_no']), DISPLAY_TITLE);
+
+                        if($arrResult == 0) {
+                            echo 2;
+                            exit;
+                        }
+
+                        $arrSubject = array(
+                            'jpn' => '',
+                            'eng' => '',
+                        );
+                        $arrBody = array(
+                            'jpn' => '',
+                            'eng' => '',
+                        );
+                        if(count($arrResult) > 0) {
+                            $arrSubject['jpn'] = $arrResult['TITLE_JPN'];
+                            $arrSubject['eng'] = $arrResult['TITLE_ENG'];
+
+                            $arrBody['jpn'] = $arrResult['CONTENTS_JPN'];
+                            $arrBody['eng'] = $arrResult['CONTENTS_ENG'];
+                        }
+
+                        foreach($arrMail as $strLang => $listMail) {
+                            if(count($listMail) > 0) {
+                                $strSubjectSend = ($strLang == 'jpn') ? $arrSubject['jpn'] : $arrSubject['eng'];
+                                $strBodySend = ($strLang == 'jpn') ? $arrBody['jpn'] : $arrBody['eng'];
+
+                                if(trim($strSubjectSend) == '') {
+                                    $strSubjectSend = ($strLang == 'jpn') ? $arrSubject['eng'] : $arrSubject['jpn'];
+                                }
+
+                                if(trim($strBodySend) == '') {
+                                    $strBodySend = ($strLang == 'jpn') ? $arrBody['eng'] : $arrBody['jpn'];
+                                }
+
+                                fncSendMail($listMail, $strSubjectSend, $strBodySend, '');
+                            }
+                        }
+                    }
+                    echo 1;
+                } catch (\Exception $e) {
+                    $GLOBALS['g_dbaccess']->funcRollback();
+                    // <エラー発生時>
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTxtTrans['PUBLIC_MSG_003']);
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_003'];
+                    echo 0;
+                }
+            }
+
+            // delete data
+            if($_POST['mode'] == 2) {
+                // 以下の条件で[t_announce]から削除(DELETE)する。
+                $strSQL = ' DELETE FROM t_announce WHERE t_announce.announce_no = :announceNo ';
+                $GLOBALS['g_dbaccess']->funcBeginTransaction();
+                try {
+                    $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                    $query->bindParam(':announceNo', $_POST['announce_no']);
+
+                    $strLogSql = $strSQL;
+                    $strLogSql = str_replace(':announceNo', $_POST['announce_no'], $strLogSql);
+                    fncWriteLog(LogLevel['Info'], LogPattern['Button'],
+                        DISPLAY_TITLE.'　削除(ユーザID = '.$objLoginUserInfo->strUserID.')');
+
+                    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], DISPLAY_TITLE.' '.$strLogSql);
+                    $query->execute();
+                    $GLOBALS['g_dbaccess']->funcCommit();
+
+                    // delete folder announce attachment with announce_no
+                    $strPathDelete = $strFilePathAttactmentRoot.'/'.$_POST['announce_no'];
+                    deleteFolderWithPath($strPathDelete);
+
+                    echo 1;
+                } catch (\Exception $e) {
+                    $GLOBALS['g_dbaccess']->funcRollback();
+                    // <エラー発生時>
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                    $arrTxtTrans['PUBLIC_MSG_004']);
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_004'];
+                    echo 0;
+                }
+            }
+
+            // export CSV || backup data
+            if($_POST['mode'] == 3 || $_POST['mode'] == 4) {
+                $strTitleSearch    = $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'];
+                $strRegDateSearch  = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'];
+                $strCompDateSearch = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'];
+                $intChkDoneSearch  = ($_POST['mode'] == 4) ? 1
+                                        : $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'];
+
+                $strBtn = ($_POST['mode'] == 3) ? 'CSV出力' : '一括削除';
+
+                $strMsgError = ($_POST['mode'] == 3) ? $arrTxtTrans['PUBLIC_MSG_005']
+                                                     : $arrTxtTrans['PUBLIC_MSG_007'];
+
+                // <CSV出力時> / <一括削除時>
+                $intChkDoneLog = ($intChkDoneSearch == 1) ? 1 : 0;
+                $strLog = DISPLAY_TITLE.'　'.$strBtn.'「インシデント件名 = '.$strTitleSearch.',';
+                $strLog .= '期間（開始）= '. $strRegDateSearch.',';
+                $strLog .= '期間（終了）= '. $strCompDateSearch.',';
+                $strLog .= '完了を表示 = '.$intChkDoneLog.'」';
+                $strLog .= '(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'], LogPattern['Button'], $strLog);
+
+                $arrDataCSV = fncGetData($strTitleSearch, $strRegDateSearch,
+                                        $strCompDateSearch, $intChkDoneLog,
+                                        $intLanguageType, 1, false, true);
+                $arrDataContent = array();
+
+                if($arrDataCSV == 0) {
+                    // <エラー発生時>
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strMsgError);
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $strMsgError;
+                    if($_POST['mode'] == 3) {
+                        header('Location: announce_mng.php');
+                        exit;
+                    } else {
+                        echo $strMsgError;
+                        exit;
+                    }
+                }
+
+                if(count($arrDataCSV) > 0) {
+                    $dtmNowDate = date("YmdHis");
+                    $strFileName = ($_POST['mode'] == 3) ? 'お知らせ_'.$dtmNowDate.'.csv' : $dtmNowDate.'.csv';
+                    $strFilePathBackup = SHARE_FOLDER.'/'.ORGANIZE_ANNOUNCE_FOLDER.'/'.$dtmNowDate;
+
+                    $intNumber = 0;
+                    $arrHasFile = array();
+
+                    // prepare data to export CSV / backup data
+                    foreach($arrDataCSV as $arrItem) {
+                        $intNumber++;
+
+                        // get title jp to creata folder name
+                        $strTitleExport = $arrItem['TITLE_JPN'];
+                        if($strTitleExport == '') {
+                            $strTitleExport = $arrItem['TITLE_ENG'];
+                        }
+
+                        $strFolderKey = $arrItem['ANNOUNCE_NO'].'--';
+                        $strFolderKey .= getNumberIncrementWithZero($intNumber).'-'.$strTitleExport;
+
+                        $strTitleExport = preg_replace('/([\/\\\:*?"><|]*)/', '', $strTitleExport);
+
+                        $strFolderKeyInsert = getNumberIncrementWithZero($intNumber).'-'.$strTitleExport;
+                        $strFp = ($_POST['mode'] == 3) ? $strFilePathAttactmentRoot.'/'.$arrItem['ANNOUNCE_NO']
+                                                       : $strFilePathBackup.'/'.$strFolderKeyInsert;
+
+                        $strRegDateTemp = date_format(date_create($arrItem['REG_DATE']), 'Y/n/j').'～';
+                        $strCompDateTemp = '';
+                        if(!is_null($arrItem['COMP_DATE'])) {
+                            $strCompDateTemp = date_format(date_create($arrItem['COMP_DATE']), 'Y/n/j');
+                        }
+                        $arrDataContent[] = [
+                            iff(is_null($arrItem['TITLE_JPN']), '', trim($arrItem['TITLE_JPN'])),
+                            iff(is_null($arrItem['TITLE_ENG']), '', trim($arrItem['TITLE_ENG'])),
+                            iff(is_null($arrItem['CONTENTS_JPN']), '', trim($arrItem['CONTENTS_JPN'])),
+                            iff(is_null($arrItem['CONTENTS_ENG']), '', trim($arrItem['CONTENTS_ENG'])),
+                            $strRegDateTemp.$strCompDateTemp,
+                            iff(is_null($arrItem['user_name']), '', $arrItem['user_name']),
+
+                            iff(is_null($arrItem['FILE_NAME1']), '', $strFp.'/1/'.$arrItem['FILE_NAME1']),
+                            iff(is_null($arrItem['FILE_NAME2']), '', $strFp.'/2/'.$arrItem['FILE_NAME2']),
+                            iff(is_null($arrItem['FILE_NAME3']), '', $strFp.'/3/'.$arrItem['FILE_NAME3']),
+                            iff(is_null($arrItem['FILE_NAME4']), '', $strFp.'/4/'.$arrItem['FILE_NAME4']),
+                            iff(is_null($arrItem['FILE_NAME5']), '', $strFp.'/5/'.$arrItem['FILE_NAME5']),
+                        ];
+
+                        $arrHasFile[$strFolderKey] = array();
+                        if($arrItem['FILE_NAME1'] != '') {
+                            $arrHasFile[$strFolderKey][1] = $arrItem['FILE_NAME1'];
+                        }
+                        if($arrItem['FILE_NAME2'] != '') {
+                            $arrHasFile[$strFolderKey][2] = $arrItem['FILE_NAME2'];
+                        }
+                        if($arrItem['FILE_NAME3'] != '') {
+                            $arrHasFile[$strFolderKey][3] = $arrItem['FILE_NAME3'];
+                        }
+                        if($arrItem['FILE_NAME4'] != '') {
+                            $arrHasFile[$strFolderKey][4] = $arrItem['FILE_NAME4'];
+                        }
+                        if($arrItem['FILE_NAME5'] != '') {
+                            $arrHasFile[$strFolderKey][5] = $arrItem['FILE_NAME5'];
+                        }
+                    }
+
+                    $arrHeaderTitle = array([
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_011'],
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_012'],
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_013'],
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_014'],
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_015'],
+                        $arrTxtTrans['ANNOUNCE_MNG_TEXT_016'],
+
+                        $arrTxtTrans['PUBLIC_TEXT_011'],
+                        $arrTxtTrans['PUBLIC_TEXT_012'],
+                        $arrTxtTrans['PUBLIC_TEXT_013'],
+                        $arrTxtTrans['PUBLIC_TEXT_014'],
+                        $arrTxtTrans['PUBLIC_TEXT_015'],
+                    ]);
+
+                    $arrDataExport = array_merge($arrHeaderTitle, $arrDataContent);
+
+                    // export CSV
+                    if($_POST['mode'] == 3) {
+                        try {
+                            if(fncArray2Csv($arrDataExport, $strFileName, 1)) {
+                                exit();
+                            }
+                        } catch (\Exception $e) {
+                            // <エラー発生時>
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strMsgError);
+                            $_SESSION['ANNOUNCE_MNG_ERROR'][] = $strMsgError;
+                            header('Location: announce_mng.php');
+                            exit;
+                        }
+                    } else {
+                        // backup data to file csv in folder YmdHis
+                        if(fncArray2Csv($arrDataExport, $strFileName, 0, $strFilePathBackup)) {
+                            // copy file from attachment folder to backup folder & delete in attachment folder with announce_no
+                            if(backupData($arrHasFile, $strFilePathAttactmentRoot, $strFilePathBackup)) {
+                                $GLOBALS['g_dbaccess']->funcBeginTransaction();
+                                try {
+                                    // 一括削除対象のお知らせ情報データと添付ファイルを削除する。
+                                    $strSQL = ' DELETE FROM t_announce WHERE t_announce.announce_no = :announceNo ';
+                                    foreach($arrDataCSV as $arrItem) {
+                                        $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                                        $query->bindParam(':announceNo', $arrItem['ANNOUNCE_NO']);
+
+                                        $strSqlLog = str_replace(':announceNo', $arrItem['ANNOUNCE_NO'], $strSQL);
+                                        fncWriteLog(LogLevel['Info'], LogPattern['Sql'], DISPLAY_TITLE.' '.$strSqlLog);
+
+                                        $query->execute();
+                                    }
+                                    $GLOBALS['g_dbaccess']->funcCommit();
+
+                                    // delete root folder
+                                    foreach($arrDataCSV as $arrItem) {
+                                        deleteFolderWithPath($strFilePathAttactmentRoot.'/'.$arrItem['ANNOUNCE_NO']);
+                                    }
+
+                                    exit;
+                                } catch (\Exception $e) {
+                                    header('Content-Type: text/html; charset=utf-8');
+			                        header("Content-Transfer-Encoding: utf-8");
+                                    deleteFolderWithPath($strFilePathBackup);
+                                    $GLOBALS['g_dbaccess']->funcRollback();
+                                    // <エラー発生時>
+                                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strMsgError);
+                                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $strMsgError;
+                                    echo $strMsgError;
+                                    exit;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // <エラー発生時>
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strMsgError);
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $strMsgError;
+                    if($_POST['mode'] == 3) {
+                        header('Location: announce_mng.php');
+                    } else {
+                        header('Content-Type: text/html; charset=utf-8');
+                        header("Content-Transfer-Encoding: utf-8");
+                        echo $strMsgError;
+                    }
+                    exit;
+                }
+            }
+        }
+
+        if(isset($_POST['loadList'])) {
+            $strEvent = null;
+            if(isset($_POST['event']) && trim($_POST['event']) != '') {
+                $strEvent = trim($_POST['event']);
+            }
+            if(isset($_POST['page'])) $GLOBALS['currentPage'] = $_POST['page'];
+
+            $strLog = '';
+            $strLogPattern = '';
+
+            $_SESSION['ANNOUNCE_MNG_ERROR'] = array();
+            if($strEvent == 0) {
+
+            } else {
+                $strLogPattern = 'Button';
+                // save to session
+                $strTxtTitle = $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'];
+                if(isset($_POST['txtTitle'])) {
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'] = trim($_POST['txtTitle']);
+                }
+
+                $blnFlagSDate = true;
+                $blnFlagEDate = true;
+                $strSDate  = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'];
+                $strEDate  = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'];
+
+                if(isset($_POST['txtDateStart'])) {
+                    $strDate = trim($_POST['txtDateStart']);
+                    if($strDate != '') {
+                        if(!checkFormatDateTimeInput($strDate)) {
+                            $strDate = $strSDate;
+                            $blnFlagSDate = false;
+                        }
+                    }
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'] = $strDate;
+                }
+
+                if(isset($_POST['txtDataEnd'])) {
+                    $strDate = trim($_POST['txtDataEnd']);
+                    if($strDate != '') {
+                        if(!checkFormatDateTimeInput($strDate)) {
+                            $strDate = $strEDate;
+                            $blnFlagEDate = false;
+                        }
+                    }
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'] = $strDate;
+                }
+
+                $blnFlagAfterBefore = true;
+                if($_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'] != ''
+                    && $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'] != '') {
+                    $strSDatePost = trim($_POST['txtDateStart']);
+                    $strEDatePost = trim($_POST['txtDataEnd']);
+
+                    if($blnFlagSDate && $blnFlagEDate) {
+                        if(strtotime($strSDatePost) > strtotime($strEDatePost)) {
+                            $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['ANNOUNCE_MNG_MSG_004'];
+                            $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'] = $strSDate;
+                            $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'] = $strEDate;
+                            $blnFlagAfterBefore = false;
+                        }
+                    }
+                }
+
+                $strChkDone = $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'];
+                if(isset($_POST['chkDone'])) {
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'] = (trim($_POST['chkDone'])
+                                                && trim($_POST['chkDone']) == 'on') ? 1 : 0;
+                }
+
+                if(!$blnFlagSDate || !$blnFlagEDate || (!$blnFlagSDate && !$blnFlagEDate)) {
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['ANNOUNCE_MNG_MSG_003'];
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'] = $strChkDone;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'] = $strTxtTitle;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'] = $strSDate;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'] = $strEDate;
+                }
+
+                if(!$blnFlagAfterBefore) {
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'] = $strChkDone;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'] = $strTxtTitle;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'] = $strSDate;
+                    $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'] = $strEDate;
+                }
+
+                if($blnFlagSDate && $blnFlagEDate
+                    && count($_SESSION['ANNOUNCE_MNG_ERROR']) == 0 && $blnFlagAfterBefore) {
+                    // <お知らせ情報検索時>
+                    $intChkDoneLog = $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'];
+                    $strLog = DISPLAY_TITLE.'「インシデント件名 = '.$_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'].',';
+                    $strLog .= '期間（開始）= '. $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'].',';
+                    $strLog .= '期間（終了）= '. $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'].',';
+                    $strLog .= '完了を表示 = '.$intChkDoneLog.'」';
+                    $strLog .= '(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                    fncWriteLog(LogLevel['Info'], LogPattern[$strLogPattern], $strLog);
+                }
+            }
+
+            // 検索処理
+            $arrData = fncGetData($_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'],
+                                  $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'],
+                                  $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'],
+                                  $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK'],
+                                  $intLanguageType, $GLOBALS['currentPage'],
+                                  true);
+?>
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th><?php echo $arrTxtTrans['ANNOUNCE_MNG_TEXT_005']; ?></th>
+                        <th><?php echo $arrTxtTrans['ANNOUNCE_MNG_TEXT_006']; ?></th>
+                        <th><?php echo $arrTxtTrans['ANNOUNCE_MNG_TEXT_007']; ?></th>
+                        <th><?php echo $arrTxtTrans['ANNOUNCE_MNG_TEXT_008']; ?></th>
+                        <th><?php echo $arrTxtTrans['ANNOUNCE_MNG_TEXT_009']; ?></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" align="center">
+                            <div style="float: left">
+                        	    <font size="5">
+                                    <?php echo str_replace('%1%', $GLOBALS['totalRecord'], $arrTxtTrans['PUBLIC_TEXT_016']); ?>
+                                </font>
+                            </div>
+                            <div class="links in-line">
+                                <?php fncViewPagination('announce_mng_proc.php'); ?>
+                            </div>
+                            <div class="in-line" style="float: right">
+                                <form  action="announce_mng_proc.php" method="post" id="formCSV">
+                                    <input type="hidden" name="searchData" value="" />
+                                    <input type="hidden" name="X-CSRF-TOKEN" value="<?php echo $_POST['X-CSRF-TOKEN']; ?>" />
+                                    <input type="hidden" name="mode" value="3" />
+                                    <button type="submit" class="tbl-btn tbl-btn-action btnOutput">
+                                        <?php echo $arrTxtTrans['PUBLIC_BUTTON_011']; ?>
+                                    </button>
+                                    <button type="submit" class="tbl-btn tbl-btn-action btnDataReduct" id="close" disabled>
+                                        <?php echo $arrTxtTrans['PUBLIC_BUTTON_012']; ?>
+                                    </button>
+                                    <button type="submit" class="tbl-btn tbl-btn-action tbn-btn-return">
+                                        <?php echo $arrTxtTrans['PUBLIC_BUTTON_015']; ?>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php
+                        if($arrData != 0 && count($arrData) > 0) {
+                            foreach ($arrData as $value) {
+                    ?>
+                        <tr>
+                            <td class="text-center">
+                                <a href="announce_view.php" class="load-modal"
+                                    data-id="<?php echo $value['announce_no']; ?>" data-screen="announce_mng">
+                                    <?php
+                                        $strTitle = '';
+                                        if($intLanguageType == 0) {
+                                            $strTitle = fncHtmlSpecialChars($value['title_jpn']);
+                                            if($strTitle == '') {
+                                                $strTitle = fncHtmlSpecialChars($value['title_eng']);
+                                            }
+                                        } else {
+                                            $strTitle = fncHtmlSpecialChars($value['title_eng']);
+                                            if($strTitle == '') {
+                                                $strTitle = fncHtmlSpecialChars($value['title_jpn']);
+                                            }
+                                        }
+                                        echo $strTitle;
+                                    ?>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <?php
+                                    echo date_format(date_create($value['reg_date']), 'Y/n/j').'～';
+                                    if($value['comp_date'] != '') {
+                                        echo date_format(date_create($value['comp_date']), 'Y/n/j');
+                                    }
+                                ?>
+                            </td>
+                            <td><?php echo fncHtmlSpecialChars($value['user_name']); ?></td>
+                            <td class="text-center">
+                                <?php if($value['comp_date'] != '') { echo $arrTxtTrans['PUBLIC_BUTTON_007']; } ?>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-50">
+                                    <?php if($value['comp_date'] == '') { ?>
+                                        <button class="tbl-btn tbtn-green btnDone" data-id="<?php echo $value['announce_no']; ?>">
+                                            <?php echo $arrTxtTrans['PUBLIC_BUTTON_007']; ?>
+                                        </button>
+                                    <?php } ?>
+                                </div>
+                                <button class="tbl-btn tbtn-red btnDelete" data-id="<?php echo $value['announce_no']; ?>">
+                                    <?php echo $arrTxtTrans['PUBLIC_BUTTON_010']; ?>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php
+                            }
+                        }
+                    ?>
+                </tbody>
+                </tr>
+            </table>
+            <script>
+                $(function() {
+<?php
+            $arrErrorMsg = array();
+            if(isset($_SESSION['ANNOUNCE_MNG_ERROR'])) {
+                $arrErrorMsg = $_SESSION['ANNOUNCE_MNG_ERROR'];
+            }
+            if($arrData == 0) {
+                // <エラー発生時>
+                fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                            $arrTxtTrans['PUBLIC_MSG_001']);
+                $arrErrorMsg[] = $arrTxtTrans['PUBLIC_MSG_001'];
+            }
+            $strHtml = '';
+            if(count($arrErrorMsg) > 0) {
+                $strHtml = '';
+                foreach($arrErrorMsg as $value) {
+                    $strHtml .= '<div>'.$value.'</div>';
+                }
+?>
+                    $('.error').append('<?php echo $strHtml; ?>');
+<?php       } ?>
+                    if($('#chkDone').is(':checked')) {
+                        $('.btnDataReduct').prop('disabled', false);
+                    } else {
+                        $('.btnDataReduct').prop('disabled', true);
+                    }
+
+                    var contentError = $.trim($('.error').html());
+                    if(contentError.length > 0) {
+                        if('<?php echo $_SESSION['ANNOUNCE_MNG_SEARCH_COMP_CHECK']; ?>' == 0) {
+                            $('#chkDone').prop('checked', false);
+                            $('.btnDataReduct').prop('disabled', true);
+                        } else {
+                            $('#chkDone').prop('checked', true);
+                            $('.btnDataReduct').prop('disabled', false);
+                        }
+                    }
+                });
+            </script>
+<?php
+        }
+
+        if(isset($_POST['action'])) {
+            if($_POST['action'] == 'checkNumDataReduct') {
+                $strTitleSearch = $_SESSION['ANNOUNCE_MNG_SEARCH_TITLE'];
+                $strRegDateSearch = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_START'];
+                $strCompDateSearch = $_SESSION['ANNOUNCE_MNG_SEARCH_DATE_END'];
+                $intChkDoneSearch = 1;
+                $arrDataCSV = fncGetData($strTitleSearch, $strRegDateSearch,
+                                         $strCompDateSearch, $intChkDoneSearch,
+                                         $intLanguageType, 1, false, true);
+
+                if(!is_array($arrDataCSV) && $arrDataCSV == 0) {
+                    // <エラー発生時>
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTxtTrans['PUBLIC_MSG_007']);
+                    $_SESSION['ANNOUNCE_MNG_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_007'];
+                    echo -1;
+                    exit;
+                }
+
+                // 上記のメッセージを下記で置換し、表示する。
+                echo count($arrDataCSV);
+                exit;
+            }
+        }
+    }
+
+    /**
+     * backup all file in root path to folder backup & del all file in root path
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     * @param array $arrData
+     * @param string $strPathRootFolder
+     * @param string $strPathBackupFolder
+     * @return boolean true:成功、false:失敗
+     */
+    function backupData($arrData, $strPathRootFolder, $strPathBackupFolder, $blnFlagDeleteRoot = false) {
+		$strPathRoot = $strPathRootFolder;
+		$strPathExportRoot = $strPathBackupFolder;
+
+		try {
+			if (!is_dir($strPathExportRoot) && !mkdir($strPathExportRoot, 0755, true)) {
+				return false;
+			}
+			$blnFlagCheckFalse = false;
+			// copy -> backup data
+			foreach ($arrData as $strFolderKey => $arrFile) {
+                $arrKey = explode("--", $strFolderKey);
+                $intId = $arrKey[0];
+                $strFolderBackup = $arrKey[1];
+
+                // remove special char in folder name
+                $strFolderBackup = preg_replace('/([\/\\\:*?"><|]*)/', '', $strFolderBackup);
+
+                $strPath = $strPathExportRoot.'/'.$strFolderBackup;
+                // make folder 0xxx-titlename
+				if (!mkdir($strPath, 0755, true)) {
+					$blnFlagCheckFalse = true;
+				} else {
+					if(count($arrFile) > 0) {
+						foreach ($arrFile as $strFolder => $strFile) {
+                            // remove special char in folder name
+                            $strFolder = preg_replace('/([\/\\\:*?"><|]*)/', '', $strFolder);
+                            // make folder 1 -> 5 to copy
+							if (!mkdir($strPath.'/'.$strFolder, 0755, true)) {
+								$blnFlagCheckFalse = true;
+							} else {
+								$strOldFile = $strPathRoot.'/'.$intId.'/'.$strFolder.'/'.$strFile;
+								$strNewFile = $strPath.'/'.$strFolder.'/'.$strFile;
+
+								if (file_exists($strOldFile)) {
+                                    // copy -> backup folder
+									if (!copy($strOldFile, $strNewFile)) {
+										$blnFlagCheckFalse = true;
+                                    }
+                                }
+
+                                if($blnFlagDeleteRoot) {
+                                    $strPathFolderFileOfAnnounce = $strPathRoot.'/'.$intId.'/'.$strFolder;
+                                    if(is_dir($strPathFolderFileOfAnnounce)) {
+                                        $arrFiles = glob($strPathFolderFileOfAnnounce.'/*');	// get all file names
+                                        foreach($arrFiles as $objFile) { // iterate files
+                                            if(is_file($objFile)) {
+                                                unlink($objFile); // delete file
+                                            } else {
+                                                $arrTempFolderFile = glob($objFile.'/*');	// get all file and folder
+                                                foreach($arrTempFolderFile as $objFileInFolder) { // iterate files
+                                                    if(is_file($objFileInFolder)) {
+                                                        unlink($objFileInFolder); // delete file
+                                                    }
+                                                }
+                                                if(is_dir($arrTempFolderFile)) {
+                                                    rmdir($arrTempFolderFile);
+                                                }
+                                            }
+                                        }
+                                        if(is_dir($strPathFolderFileOfAnnounce)) {
+                                            // remove folder file_name1 -> 5
+                                            rmdir($strPathFolderFileOfAnnounce);
+                                        }
+                                    }
+                                }
+							}
+                        }
+                        if($blnFlagDeleteRoot) {
+                            if(is_dir($strPathRoot.'/'.$intId)) {
+                                // remove folder announce_no
+                                rmdir($strPathRoot.'/'.$intId);
+                            }
+                        }
+					}
+				}
+			}
+		} catch (\Exception $e) {
+			return false;
+		}
+		return true;
+    }
+
+    /**
+     * delete all file and folder in path
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     * @param string $strPath
+     * @return boolean true:成功、false:失敗
+     */
+    function deleteFolderWithPath($strPath) {
+        try {
+            // check string input is path?
+            if(is_dir($strPath)) {
+                $arrFileFolder = glob($strPath.'/*');	// get all file and folder
+                if(count($arrFileFolder) > 0) {
+                    foreach($arrFileFolder as $arrItem) {
+                        if(!is_file($arrItem)) {
+                            $pathTemp = glob($arrItem.'/*');	// get all file and folder
+                            // remove folder file_name1 -> 5
+                            foreach($pathTemp as $objFile) { // iterate files
+                                if(is_file($objFile)) {
+                                    unlink($objFile); // delete file
+                                } else {
+                                    $pathTemp_2 = glob($objFile.'/*');	// get all file and folder
+                                    foreach($pathTemp_2 as $objFile_2) {
+                                        if(is_file($objFile_2)) {
+                                            unlink($objFile_2); // delete each file in folder
+                                        }
+                                    }
+                                    rmdir($objFile);    // delete folder
+                                }
+                            }
+                            rmdir($arrItem);    // delete folder
+                        } else {
+                            unlink($arrItem);   // delete file
+                        }
+                    }
+                    rmdir($strPath);
+                }
+            }
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+?>

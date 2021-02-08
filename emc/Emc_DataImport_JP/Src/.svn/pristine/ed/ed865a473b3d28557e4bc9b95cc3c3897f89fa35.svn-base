@@ -1,0 +1,47 @@
+<?php
+/*
+* @bull_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+?>
+<div>
+    <?php
+    require_once ('portal_proc.php');
+    if(!empty(@$arrBulletin)){
+        foreach ($arrBulletin as $arrItem){
+            $strName = $arrItem['INCIDENT_NAME'.$strEndLang];
+
+            if(!$strName){
+                $intUntra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $strName = $arrItem['INCIDENT_NAME_ENG'];
+                }else{
+                    $strName = $arrItem['INCIDENT_NAME_JPN'];
+                }
+            }
+            $strBusName = $arrItem['BUSINESS_NAME'.$strEndLang];
+            if(!$strBusName){
+                $strBusName = $arrItem['BUSINESS_NAME_JPN'];
+            }
+            ?>
+            <div class="t-row">
+                <div class="t-col-md-3">
+                    <?php echo date('Y-m-d H:i:s',strtotime($arrItem['OCCURRENCE_DATE']))?>
+                </div>
+                <div class="t-col-md-3">
+                    <?php echo fncHtmlSpecialChars($strBusName)?>
+                </div>
+                <div class="t-col-md-3">
+                    <a href="#" onclick="
+                            loadView('bulletin_board_view.php',<?php echo $arrItem['BULLETIN_BOARD_NO'] ?>)">
+                        <?php echo fncHtmlSpecialChars($strName)?>
+                    </a>
+                </div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>

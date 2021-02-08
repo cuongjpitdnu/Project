@@ -1,0 +1,582 @@
+<?php 
+    /*
+    * @request_edit.php
+    *
+    * @create 2020/02/20 AKB Thang
+    * @update
+    */
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+    
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+    //DB接続
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+    if(!isset($_SESSION['LOGINUSER_INFO'])){
+        echo "
+        <script>
+            alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+            window.location.href = 'login.php';
+        </script>
+        ";
+
+        exit();
+    }
+    
+    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] = '';
+
+    //constant
+    define('SCREEN_NAME', '依頼事項登録編集画面');
+    define('SCREEN_NAME_VIEW', '依頼事項登録編集画面 表示');
+
+    $arrUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+    //view log
+    fncWriteLog(
+        LogLevel['Info'], 
+        LogPattern['View'], 
+        SCREEN_NAME_VIEW . ' (ユーザID = '.$arrUserInfo->strUserID.')'
+    );
+
+    // get list text translate
+    $arrTitle =  array(
+        'REQUEST_EDIT_TEXT_001',
+        'REQUEST_EDIT_TEXT_002',
+        'PUBLIC_TEXT_004',
+        'PUBLIC_TEXT_005',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_008',
+        'PUBLIC_TEXT_009',
+        'PUBLIC_BUTTON_003',
+        'PUBLIC_BUTTON_004',
+        'PUBLIC_BUTTON_005',
+        'PUBLIC_MSG_009',
+        'REQUEST_EDIT_MSG_003',
+        'REQUEST_EDIT_MSG_001',
+        'REQUEST_EDIT_MSG_002',
+        'PUBLIC_TEXT_003',
+        'PUBLIC_MSG_020',
+        'PUBLIC_MSG_011',
+        'PUBLIC_MSG_012',
+        'PUBLIC_MSG_013',
+        'PUBLIC_MSG_014',
+        'PUBLIC_MSG_015',
+        'PUBLIC_MSG_016',
+        'PUBLIC_MSG_041'
+    );
+
+    $arrTextTranslate = getListTextTranslate($arrTitle, $arrUserInfo->intLanguageType);
+
+
+    //redirect if dont have permission
+    if($arrUserInfo->intMenuPerm == 0){
+        echo "
+        <script>
+            alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+            window.location.href = 'login.php';
+        </script>
+        ";
+    }
+    //session check
+    fncSessionTimeOutCheck();
+    if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
+    && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'))
+    {    
+        exit;    
+    }
+    if(isset($_POST['id'])){
+        if($_POST['id'] != 0){
+            //process edit request
+            $arrOneRequest = fncSelectOne(
+                "SELECT * FROM t_request WHERE REQUEST_NO=?", 
+                [$_POST['id']], 
+                SCREEN_NAME
+            );
+            if(!(is_array($arrOneRequest) && count($arrOneRequest))){
+                //request not exist, return error msg
+
+?>
+<script>
+    alert('<?php echo $arrTextTranslate['REQUEST_EDIT_MSG_001']; ?>');
+
+    $('#myModal').modal('hide');
+
+</script>
+<?php
+            exit();
+        }
+    }
+?>
+
+<div class="main-content">
+    <div class="main-form">
+    <form class="formEdit" action="request_edit_proc.php" 
+    enctype="multipart/form-data">
+        <input type="hidden" name="mode" class="t-input t-input-250" value="1">
+        <input type="hidden" name="REQUEST_NO" 
+        class="t-input t-input-250" value="<?php 
+            if(isset($arrOneRequest['REQUEST_NO'])) echo $arrOneRequest['REQUEST_NO']; 
+        ?>">
+        <input type="hidden" name="INCIDENT_CASE_NO" 
+        class="t-input t-input-250" value="<?php
+            if(isset($_POST['dataId'])) echo $_POST['dataId']; 
+        ?>">
+        <input type="hidden" name="X-CSRF-TOKEN" value="<?php
+            if(isset($_SESSION['csrf'])) echo $_SESSION['csrf']; 
+        ?>">
+        <div class="form-title">
+            <?php echo $arrTextTranslate['REQUEST_EDIT_TEXT_001']; ?>
+        </div>
+        <div class="edit-error" style="color:red;"></div>
+        <div class="form-body">
+            <div class="text-right right-20 ">
+                <div class="select-container">
+                    <select name="LANGUAGE_TYPE">
+                        <?php if(isset($arrOneRequest['LANGUAGE_TYPE'])){
+
+                        ?>
+                        <option value="ja"
+                            <?php echo ($arrOneRequest['LANGUAGE_TYPE'] == 0 
+                            ? "selected": ""); ?>><?php echo PUBLIC_TEXT_010_JPN; ?>
+                        </option>
+                        <option value="en"
+                            <?php echo ($arrOneRequest['LANGUAGE_TYPE'] == 1 
+                            ? "selected": ""); ?>><?php echo PUBLIC_TEXT_010_ENG; ?>
+                        </option>
+
+                        <?php }
+                        else{
+                            ?>
+                        <option value="ja" 
+                        <?php echo (!$arrUserInfo->intLanguageType ? "selected": ""); ?>>
+                            <?php echo PUBLIC_TEXT_010_JPN; ?>
+                        </option>
+                        <option value="en"
+                        <?php echo ($arrUserInfo->intLanguageType ? "selected": ""); ?>>
+                            <?php echo PUBLIC_TEXT_010_ENG; ?>
+                        </option>    
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <fieldset class="fi-yellow">
+                <legend>< <?php echo $arrTextTranslate['PUBLIC_TEXT_002']; ?> ></legend>
+                <div>
+                    <?php echo PUBLIC_TEXT_004_JPN ?>/<?php echo PUBLIC_TEXT_004_ENG; ?>
+                </div>
+                <input type="text" name="titleSource[]" class="form-control" value="<?php 
+                    if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                    echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                    ? $arrOneRequest['TITLE_ENG'] : $arrOneRequest['TITLE_JPN']); 
+                ?>">
+                <div>
+                    <?php echo PUBLIC_TEXT_005_JPN ?>/<?php echo PUBLIC_TEXT_005_ENG; ?>
+                </div>
+                <textarea name="contentSource[]" class="form-control" rows="2" cols="50"><?php 
+                    if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                    echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                    ? $arrOneRequest['CONTENTS_ENG'] : $arrOneRequest['CONTENTS_JPN']); 
+                ?></textarea>
+            </fieldset>
+
+            <div class="clearfix mar-tl-10">
+                <div class="in-line">
+                    <input type="checkbox" name="tranChkBox">
+                    <?php echo $arrTextTranslate['PUBLIC_TEXT_008']; ?>
+                </div>
+                <div class="in-line col-right">
+                    <button class="tbtn tbtn-defaut tran-btn">
+                        <?php echo $arrTextTranslate['PUBLIC_BUTTON_004']; ?>
+                    </button>
+                </div>
+            </div>
+            
+            <fieldset class="fi-pink">
+                <legend>< <?php echo $arrTextTranslate['PUBLIC_TEXT_003']; ?> ></legend>
+                <div>
+                    <?php echo PUBLIC_TEXT_004_JPN ?>/<?php echo PUBLIC_TEXT_004_ENG; ?>
+                </div>
+                <input type="text" name="titleSource[]" 
+                class="form-control trans" value="<?php
+                    if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                    echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                    ? $arrOneRequest['TITLE_JPN'] 
+                    : $arrOneRequest['TITLE_ENG']); ?>" disabled>
+                <input type="hidden" name="titleSource[]" 
+                class="form-control trans" value="<?php 
+                if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                ? $arrOneRequest['TITLE_JPN'] : $arrOneRequest['TITLE_ENG']); ?>">
+                <div>
+                    <?php echo PUBLIC_TEXT_005_JPN ?>/<?php echo PUBLIC_TEXT_005_ENG; ?>
+                </div>
+                <textarea name="contentSource[]" class="form-control trans"
+                rows="2" cols="50" disabled><?php 
+                    if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                    echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                    ? $arrOneRequest['CONTENTS_JPN'] 
+                    : $arrOneRequest['CONTENTS_ENG']); ?></textarea>
+                <input type="hidden" name="contentSource[]" 
+                class="form-control trans"  value="<?php 
+                if(isset($arrOneRequest['LANGUAGE_TYPE'])) 
+                echo ($arrOneRequest['LANGUAGE_TYPE'] 
+                ? $arrOneRequest['CONTENTS_JPN'] 
+                : $arrOneRequest['CONTENTS_ENG']); ?>">
+
+            </fieldset>
+            <div>
+                <?php echo $arrTextTranslate['REQUEST_EDIT_TEXT_002']; ?>
+            </div>
+            <table class="blueTable">
+                <?php for($intLoop =1; $intLoop<=5; $intLoop++){ ?>
+                    <tr>
+                        <td rowspan="2" width="60px" align="center">
+                            <div class="singe-line">
+                                <?php echo $intLoop; ?>
+                            </div>
+                        </td>
+                        <?php if(isset($arrOneRequest['TMP_FILE_NAME'.$intLoop]) 
+                        && $arrOneRequest['TMP_FILE_NAME'.$intLoop] != ''){
+                            $strPathTmp = SHARE_FOLDER . '/' . REQUEST_ATTACHMENT_FOLDER . '/' 
+                            . $arrOneRequest['REQUEST_NO'] . '/'.$intLoop.'/' 
+                            . $arrOneRequest['TMP_FILE_NAME'.$intLoop];    
+                        ?>
+                        <td>
+                            <div class="singe-line">
+                                <div class="in-line">
+                                    <a <?php echo 'href="#"'
+                                    . (!file_exists(SHARE_FOLDER . '/' . REQUEST_ATTACHMENT_FOLDER 
+                                    . '/' . $arrOneRequest['REQUEST_NO'] . '/'.$intLoop.'/' 
+                                    . $arrOneRequest['TMP_FILE_NAME'.$intLoop]) 
+                                    ? ' class="no-file"' 
+                                    : ' onclick="downloadURI(\''.base64_encode($strPathTmp)
+                                    .'\', \'request_edit_proc.php\', \''
+                                    .$arrTextTranslate['REQUEST_EDIT_MSG_002'].'\')"')
+                                    ?>  class="link">
+                                        <?php echo  $arrOneRequest['TMP_FILE_NAME'.$intLoop]; ?>
+                                    </a>
+                                </div>
+                            
+                                <div class="in-line col-right right-20">
+                                    <input type="checkbox" name="chkDelete<?php echo $intLoop; ?>" class="chkDelete">
+                                    <?php echo $arrTextTranslate['PUBLIC_TEXT_009']; ?>
+                                </div>
+                                <div style="clear:both;"></div>
+                                
+                            </div>
+                            
+                        </td>
+                        <?php } ?>
+                    </tr>
+                    <tr>
+                        <td>
+                        <div class="singe-line">
+                                <input type="file" accept="image/*" name="file<?php echo $intLoop; ?>" 
+                                class="file-upload" class="t-input" <?php 
+                                    echo isset($arrOneRequest['TMP_FILE_NAME'.$intLoop]) 
+                                    && $arrOneRequest['TMP_FILE_NAME'.$intLoop]!='' ? 'disabled' : ''; 
+                                ?> >
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+                
+            </table>
+
+            <div class="form-footer top-20">
+                <div class="in-line">
+                    <button type="submit" class="tbtn tbtn-defaut btn-save">
+                        <?php echo $arrTextTranslate['PUBLIC_BUTTON_005']; ?>
+                    </button>
+                </div>
+                <div class="in-line text-right" style="float: right">
+                    <button type="submit" class="tbtn-cancel tbtn-defaut" 
+                    id="close" data-dismiss="modal">
+                        <?php echo $arrTextTranslate['PUBLIC_BUTTON_003']; ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+<style>
+    table.blueTable td, table.blueTable th {
+        border: 1px solid #97999a;
+    }
+    .singe-line {
+        border: 1px solid #fff;
+        padding: 10px;
+    }
+</style>
+<script>
+    var fileNotExistMessage = '<?php echo $arrTextTranslate['REQUEST_EDIT_MSG_002'] ?>';
+    $('.no-file').click(function(e){
+        e.preventDefault();
+        $('.edit-error').html(fileNotExistMessage);
+    });
+    $("[name='tranChkBox']").click(function(e){
+        if($(this).prop('checked') == true){
+            $('.trans').attr('disabled', false);
+        }else{
+            $('.trans').attr('disabled', true);
+        }
+    });
+    $(".tran-btn").click(function(e){
+        
+        e.preventDefault();
+        $('.edit-error').html('');
+        if($("[name='tranChkBox']").prop("checked") == true){
+            return;
+        }else{
+            var titleTran = $(".fi-pink [name='titleSource[]']").val();
+            var contentTran = $(".fi-pink [name='contentSource[]']").val();
+            if((titleTran != '' && contentTran == '') || (titleTran == '' && contentTran != '')){
+                return;
+            }else{
+                
+                var data = [
+                        {name: 'title', value: $(".fi-yellow [name='titleSource[]']").val()},
+                        {name: 'content', value: $(".fi-yellow [name='contentSource[]']").val()},
+                        {name: 'X-CSRF-TOKEN', value: $('meta[name="csrf-token"]').attr('content')},
+                        {name: 'mode', value: 2},
+                        {name: 'LANGUAGE_TYPE', value: $('[name="LANGUAGE_TYPE"]').val()}
+                    ];
+                $.ajax({
+                    url: 'request_edit_proc.php',
+                    type: 'post',
+                    data: data,
+                    success: function(result){
+                        eval(result);
+                    }
+                });
+            }
+        }
+    });
+
+    var confirmAmazoneContinueMSG = '<?php echo $arrTextTranslate['PUBLIC_MSG_041'] ?>';
+    var confirmMsg = '<?php echo $arrTextTranslate['REQUEST_EDIT_MSG_003'] ?>';
+    $('.btn-save').click(function(e){
+        e.preventDefault();
+        $('.edit-error').html('');
+        if($("[name='tranChkBox']").prop("checked") == true){
+            processPost();
+            return;
+        }else{
+            var titleTran = $(".fi-pink [name='titleSource[]']").val();
+            var contentTran = $(".fi-pink [name='contentSource[]']").val();
+            if((titleTran != '' && contentTran == '') || (titleTran == '' && contentTran != '')){
+                return;
+            }else{
+                var data = [
+                        {name: 'title', value: $(".fi-yellow [name='titleSource[]']").val()},
+                        {name: 'content', value: $(".fi-yellow [name='contentSource[]']").val()},
+                        {name: 'X-CSRF-TOKEN', value: $('meta[name="csrf-token"]').attr('content')},
+                        {name: 'mode', value: 2},
+                        {name: 'LANGUAGE_TYPE', value: $('[name="LANGUAGE_TYPE"]').val()},
+                        {name: 'save', value: 1}
+                    ];
+                $.ajax({
+                    url: 'request_edit_proc.php',
+                    type: 'post',
+                    data: data,
+                    success: function(result){
+                        if(result != 2 && result != '2' && result != ''){
+                            eval(result);
+                        }else{
+                            t = confirm(confirmAmazoneContinueMSG);
+                            if(!t) return;
+                        }
+                        
+                        var htmlErr = $('.edit-error').html();
+                        if(htmlErr == ''){
+                            t = confirm(confirmMsg);
+                            if(!t){
+                                $(".trans").val('');
+                                return;
+                            }else{
+                                var formElement = document.querySelector(".formEdit");
+                                var formData = new FormData(formElement);
+
+                                var url = $('.formEdit').attr('action');
+                                var el = document.getElementById("file-upload");
+                                var listMsg  = [];
+                                $('input[name^=file]').each(function(i, e) {
+                                    if($(this).val() != '') {
+                                        var name = $(this).attr('name');
+                                        var file = $(this).prop('files')[0];
+                                        checkFileExist(name, file, listMsg);
+                                    }
+                                });
+
+                                if(listMsg.length > 0) {
+                                    $.each(listMsg, function(i, e) {
+                                        $('.edit-error').append('<div>'+e+'</div>');
+                                    });
+                                    return;
+                                }
+                                $.ajax({
+                                    url: url,
+                                    type: 'post',
+                                    data: formData,
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    async: false,
+                                    success: function(result){
+    
+                                        if(result!=0 && result != 1){
+                                            eval(result);
+                                        }else{
+                                            if(result == 1){
+                                                $('#myModal').modal('hide');
+                                            }else{
+                                                loadView("request_view.php", <?php if(isset($arrOneRequest['REQUEST_NO']))
+                                                echo $arrOneRequest['REQUEST_NO']; ?>);
+                                            }
+                                        }
+
+                                    }
+                                });
+                            }
+                        
+                        }
+                        
+                    }
+                });
+            }
+        }
+		
+
+    });
+    $('.chkDelete').click(function(e){
+
+        var index = $('.chkDelete').index(this);
+
+        if($(this).prop('checked') == true){
+            $('.file-upload').eq(index).attr('disabled', false);
+        }else{
+            $('.file-upload').eq(index).attr('disabled', true);
+        }
+        
+    });
+    function processPost(){
+        t = confirm(confirmMsg);
+        if(!t){
+            return;
+        }else{
+            var formElement = document.querySelector(".formEdit");
+            var formData = new FormData(formElement);
+
+            var url = $('.formEdit').attr('action');
+            var el = document.getElementById("file-upload");
+            var listMsg  = [];
+            $('input[name^=file]').each(function(i, e) {
+                if($(this).val() != '') {
+                    var name = $(this).attr('name');
+                    var file = $(this).prop('files')[0];
+                    checkFileExist(name, file, listMsg);
+                }
+            });
+
+            if(listMsg.length > 0) {
+                $.each(listMsg, function(i, e) {
+                    $('.edit-error').append('<div>'+e+'</div>');
+                });
+                return false;
+            }
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                async: false,
+                success: function(result){
+                    if(result!=0 && result != 1){
+                        eval(result);
+                    }else{
+                        if(result == 1){
+                            $('#myModal').modal('hide');
+                        }else{
+                            loadView("request_view.php", <?php
+                                if(isset($arrOneRequest['REQUEST_NO'])) 
+                                echo $arrOneRequest['REQUEST_NO']; ?>);
+                        }
+                    }
+
+
+                }
+            });
+        }
+    }
+    function checkFileExist(name, file, listMsg) {
+        var arrMsg = {
+            'file1': '<?php
+                        echo $arrTextTranslate['PUBLIC_MSG_011']
+                        .$arrTextTranslate['PUBLIC_MSG_016']; ?>',
+            'file2': '<?php
+                        echo $arrTextTranslate['PUBLIC_MSG_012']
+                        .$arrTextTranslate['PUBLIC_MSG_016']; ?>',
+            'file3': '<?php
+                        echo $arrTextTranslate['PUBLIC_MSG_013']
+                        .$arrTextTranslate['PUBLIC_MSG_016']; ?>',
+            'file4': '<?php
+                        echo $arrTextTranslate['PUBLIC_MSG_014']
+                        .$arrTextTranslate['PUBLIC_MSG_016']; ?>',
+            'file5': '<?php
+                        echo $arrTextTranslate['PUBLIC_MSG_015']
+                        .$arrTextTranslate['PUBLIC_MSG_016']; ?>'
+        }
+        if(file['size'] == 0) {
+            listMsg.push(arrMsg[name]);
+            return false;
+        }
+        return true;
+    }
+</script>
+<?php
+    if(isset($arrOneRequest['CORRECTION_FLAG']) 
+    && $arrOneRequest['CORRECTION_FLAG']==1){
+?>
+    <script>
+        $('[name="tranChkBox"]').click();
+    </script>
+<?php
+    }
+?>
+
+<?php if(isset($arrOneRequest)){ ?>
+    <script>
+        var clickTranBtn = 0;
+        var confirmTranMsg = '<?php echo $arrTextTranslate['PUBLIC_MSG_020'] ?>';
+        $('[name="tranChkBox"]').click(function(){
+            if(clickTranBtn == 0 && $('[name="tranChkBox"]').prop('checked') == true){
+                alert(confirmTranMsg);
+                clickTranBtn++;
+            }
+        });
+        
+    </script>
+<?php } ?>
+
+
+
+<?php 
+
+}else{
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."/".PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+    exit();
+}
+?>

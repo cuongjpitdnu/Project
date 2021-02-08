@@ -1,0 +1,41 @@
+<?php
+require_once('query_view_proc.php');
+
+if(count(@$listQuery)){
+    foreach ($listQuery as $que){
+        $mes = $que['CONTENTS'.$endLang];
+        if(!$mes){
+            $untra = 1;
+            if(!$objLoginUserInfo->intLanguageType){
+                $mes = $que['CONTENTS_ENG'];
+            }else{
+                $mes = $que['CONTENTS_JPN'];
+            }
+        }
+
+        if(in_array($que['QUERY_USER_NO'],$mapArrIds)){
+            ?>
+            <div class="incoming_msg">
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <span class="time_date"><?= $arrUserName[$que['QUERY_USER_NO']]?> <?php echo date('m/d H:i',strtotime($que['QUERY_DATE']))?></span>
+                        <p><?= htmlspecialchars($mes)?></p>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }else{
+            ?>
+            <div class="outgoing_msg">
+                <div class="sent_msg">
+                    <span class="time_date_sent"><?= $arrUserName[$que['QUERY_USER_NO']]?> <?php echo date('m/d H:i',strtotime($que['QUERY_DATE']))?></span>
+                    <p><?= htmlspecialchars($mes)?></p>
+                </div>
+            </div>
+            <?php
+        }
+    }
+}else{
+    return NULL;
+}
+?>

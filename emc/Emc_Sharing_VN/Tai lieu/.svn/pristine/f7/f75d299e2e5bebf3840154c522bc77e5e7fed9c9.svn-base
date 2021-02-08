@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">ログイン</div>
+        <div class="form-body-300 top-20">
+            <div class="lb-left-long" >ユーザーID:</div>
+            <span class="ip-span"><input name="name"  class="t-input"/></span>
+            <div class="lb-left-long" >パスワード:</div>
+            <span class="ip-span"><input name="name"  class="t-input"/></span>
+        </div>
+
+        <div class="form-footer top-20 text-right right-20 text-center">
+            <button type="submit" class="tbtn tbtn-defaut "  onclick="window.location.href='login_otp.html'">ログイン</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

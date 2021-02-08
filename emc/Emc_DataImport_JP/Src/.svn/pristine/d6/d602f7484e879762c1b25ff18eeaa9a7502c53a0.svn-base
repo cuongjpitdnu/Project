@@ -1,0 +1,227 @@
+<?php
+    // -------------------------------------------------------------------------
+    //	function	: ポータル画面 (仮)ページ
+    //	create		: 2020/01/17 KBS S.Tasaki
+    //	update		:
+    // -------------------------------------------------------------------------
+    require_once('common/common.php');
+    require_once('announce_view_proc.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    //セッションスタート
+
+    if(fncConnectDB() == false) {
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    // //ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg =  array(
+        'PUBLIC_MSG_001',
+        'ANNOUNCE_VIEW_MSG_001',
+        'ANNOUNCE_VIEW_TEXT_001',
+        'ANNOUNCE_VIEW_MSG_002',
+        'PUBLIC_TEXT_001',
+        'PUBLIC_TEXT_004',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_003',
+        'PUBLIC_TEXT_005',
+        'PUBLIC_BUTTON_002',
+        'PUBLIC_BUTTON_003',
+    );
+
+    fncWriteLog(LogLevel['Info'], LogPattern['View'], 'お知らせ表示画面　表示(ユーザID = '.$objLoginUserInfo->intUserNo.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null));
+
+    $arrTextTranslate = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    $dataDetail = fncGetInfoAnnounce($_POST['id']);
+    // $dataDetail = fncGetInfoAnnounce(111);
+
+    $res = array(
+        'ANNOUNCE_NO' => '',
+        'TITLE_ORIGINAL' => '',
+        'TITLE_TRANSLATE' => '',
+        'CONTENTS_ORIGINAL' => '',
+        'CONTENTS_TRANSLATE' => '',
+        'CORRECTION_FLAG' => '',
+        'FILES' => array(
+            '1' => '',
+            '2' => '',
+            '3' => '',
+            '4' => '',
+            '5' => ''
+        )
+    );
+    if($dataDetail != 0 && count($dataDetail) > 0) {
+        $title_original = '';
+        $title_translate = '';
+        $contents_original = '';
+        $contents_translate = '';
+        if($dataDetail[0]['LANGUAGE_TYPE'] == 0) {
+            $title_original = @$dataDetail[0]['TITLE_JPN'] ? fncHtmlSpecialChars(trim($dataDetail[0]['TITLE_JPN'])) : '';
+            $title_translate = @$dataDetail[0]['TITLE_ENG'] ? fncHtmlSpecialChars(trim($dataDetail[0]['TITLE_ENG'])) : '';
+            $contents_original = @$dataDetail[0]['CONTENTS_JPN'] ? fncHtmlSpecialChars(trim($dataDetail[0]['CONTENTS_JPN'])) : '';
+            $contents_translate = @$dataDetail[0]['CONTENTS_ENG'] ? fncHtmlSpecialChars(trim($dataDetail[0]['CONTENTS_ENG'])) : '';
+        } else {
+            $title_original = @$dataDetail[0]['TITLE_ENG'] ? fncHtmlSpecialChars(trim($dataDetail[0]['TITLE_ENG'])) : '';
+            $title_translate = @$dataDetail[0]['TITLE_JPN'] ? fncHtmlSpecialChars(trim($dataDetail[0]['TITLE_JPN'])) : '';
+            $contents_original = @$dataDetail[0]['CONTENTS_ENG'] ? fncHtmlSpecialChars(trim($dataDetail[0]['CONTENTS_ENG'])) : '';
+            $contents_translate = @$dataDetail[0]['CONTENTS_JPN'] ? fncHtmlSpecialChars(trim($dataDetail[0]['CONTENTS_JPN'])) : '';
+        }
+
+        $res = array(
+            'ANNOUNCE_NO' => $dataDetail[0]['ANNOUNCE_NO'],
+            'TITLE_ORIGINAL' => $title_original,
+            'TITLE_TRANSLATE' => $title_translate,
+            'CONTENTS_ORIGINAL' => $contents_original,
+            'CONTENTS_TRANSLATE' => $contents_translate,
+            'CORRECTION_FLAG' => $dataDetail[0]['CORRECTION_FLAG'],
+            'FILES' => array(
+                '1' => @$dataDetail[0]['FILE_NAME1'] ? fncHtmlSpecialChars(trim($dataDetail[0]['FILE_NAME1'])) : '',
+                '2' => @$dataDetail[0]['FILE_NAME2'] ? fncHtmlSpecialChars(trim($dataDetail[0]['FILE_NAME2'])) : '',
+                '3' => @$dataDetail[0]['FILE_NAME3'] ? fncHtmlSpecialChars(trim($dataDetail[0]['FILE_NAME3'])) : '',
+                '4' => @$dataDetail[0]['FILE_NAME4'] ? fncHtmlSpecialChars(trim($dataDetail[0]['FILE_NAME4'])) : '',
+                '5' => @$dataDetail[0]['FILE_NAME5'] ? fncHtmlSpecialChars(trim($dataDetail[0]['FILE_NAME5'])) : ''
+            )
+        );
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="<?php echo (isset($_POST['X-CSRF-TOKEN']) ? $_POST['X-CSRF-TOKEN'] : ''); ?>">
+    <meta charset="UTF-8">
+    <title><?php echo $arrTextTranslate['ANNOUNCE_VIEW_TEXT_001']; ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <script src="js/common.js"></script> -->
+    <style>
+        .style_real_display { white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title"><?php echo $arrTextTranslate['ANNOUNCE_VIEW_TEXT_001']; ?></div>
+        <div class="form-body">
+            <div class="error-messeage">
+                <?php if($res['CORRECTION_FLAG'] == 0) { ?>
+                <div><?php echo PUBLIC_TEXT_001_JPN; ?></div>
+                <div><?php echo PUBLIC_TEXT_001_ENG; ?></div>
+                <?php } ?>
+                <?php
+                    if($dataDetail == 0) {
+                        echo '<div>'.$arrTextTranslate['PUBLIC_MSG_001'].'</div>';
+                    } else {
+                        if(count($dataDetail) == 0) {
+                ?>
+                    <script>
+                        alert('<?php echo $arrTextTranslate['ANNOUNCE_VIEW_MSG_002']; ?>');
+                        $('#myModal').modal('hide');
+                    </script>
+                <?php
+                        }
+                    }
+                ?>
+                <span class="error"></span>
+            </div>
+            <div class="col-left in-lineblock">
+                <div class="title"><?php echo PUBLIC_TEXT_004_JPN ?>/<?php echo PUBLIC_TEXT_004_ENG ?></div>
+                <div class="info-left">
+                    <div class="line">
+                        <div class="in-line tlabel">(<?php echo PUBLIC_TEXT_002_JPN ?>/<?php echo PUBLIC_TEXT_002_ENG ?>)</div>
+                        <div class="in-line text-input text-bold"><?php echo $res['TITLE_ORIGINAL']; ?></div>
+                    </div>
+                    <div class="line">
+                        <div class="in-line tlabel">(<?php echo PUBLIC_TEXT_003_JPN ?>/<?php echo PUBLIC_TEXT_003_ENG ?>)</div>
+                        <div class="in-line text-input text-bold"><?php echo $res['TITLE_TRANSLATE']; ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-right in-lineblock right-20">
+                <?php if(@$objLoginUserInfo->intAnnounceRegPerm && $objLoginUserInfo->intAnnounceRegPerm == 1) { ?>
+                    <button type="button" class="tbtn tbtn-defaut load-modal" href="announce_edit.php" data-id="<?php echo $res['ANNOUNCE_NO']; ?>" id="btn-edit"><?php echo $arrTextTranslate['PUBLIC_BUTTON_002']; ?></button>
+                <?php } ?>
+            </div>
+
+            <div class="title"><?php echo PUBLIC_TEXT_005_JPN ?>/<?php echo PUBLIC_TEXT_005_ENG ?></div>
+            <div class="info">
+                <div class="line">
+                    <div >(<?php echo PUBLIC_TEXT_002_JPN ?>/<?php echo PUBLIC_TEXT_002_ENG ?>)</div>
+                    <div class="text-input text-bold style_real_display"><?php echo $res['CONTENTS_ORIGINAL']; ?></div>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="line">
+                    <div >(<?php echo PUBLIC_TEXT_003_JPN ?>/<?php echo PUBLIC_TEXT_003_ENG ?>)</div>
+                    <div class="text-input text-bold style_real_display"><?php echo $res['CONTENTS_TRANSLATE']; ?></div>
+                </div>
+            </div>
+            <div class="link info">
+                <?php
+                    foreach($res['FILES'] as $folder => $file) {
+                        if($file != '') {
+                ?>
+                    <div><a href="javscript:void(0)" class="download-file" data-id="<?php echo $_POST['id'].'/'.$folder.'/'.$file; ?>" ><?php echo $file; ?></a></div>
+                <?php
+                        }
+                    }
+                ?>
+            </div>
+            <div class="form-footer text-right right-20">
+                <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal"><?php echo $arrTextTranslate['PUBLIC_BUTTON_003']; ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('.download-file').off().on('click', function(e) {
+            e.preventDefault();
+            $('.error').html('');
+            var arr = [
+                { name: 'X-CSRF-TOKEN', value: '<?php echo (isset($_POST['X-CSRF-TOKEN']) ? $_POST['X-CSRF-TOKEN'] : ''); ?>'},
+                { name: 'file', value: $(this).attr('data-id') },
+                { name: 'action', value: 'checkFile' }
+            ];
+            $.ajax({
+                url: 'announce_view_proc.php',
+                type: 'POST',
+                async: false,
+                data: arr,
+                success: function(result) {
+                    if(result == 0) {
+                        $('span.error').html('<div><?php echo $arrTextTranslate['ANNOUNCE_VIEW_MSG_001']; ?></div>');
+                    } else {
+                        var arrPathFile = result.split("/");
+                        var a = $("<a>").attr("href", result).attr("download", arrPathFile[arrPathFile.length-1]).appendTo("body");
+                        a[0].click();
+                        a.remove();
+                    }
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
+            return;
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            $('#modal-body').html('');
+            if('<?php echo (@$_POST['screen'] && $_POST['screen'] == 'announce_mng') ? trim($_POST['screen']) : '' ?>' == 'announce_mng') {
+                window.location.reload();
+            }
+            return;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="title text-white">関西エアポートからのお知らせ</div>
+            </div>
+            <div class="col-md-6">
+                <div class="select-container">
+                    <input type="button" class="tbtn tbtn-defaut" onclick="loadModal('announce_edit.html')" value="新規登録">
+                    <select class="select-150">
+                        <option>2020/01</option>
+                        <option>2019/12</option>
+                        <option>2019/11</option>
+                        <option>2019/10</option>
+                        <option>2019/09</option>
+                        <option>2019/08</option>
+                        <option>2019/07</option>
+                        <option>2019/06</option>
+                        <option>2019/05</option>
+                        <option>2019/04</option>
+                        <option>2019/03</option>
+                        <option>2019/02</option>
+                        <option>2019/01</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="cont-table ">
+                <div class="t-row">
+                    <div class="t-col-md-3">日時</div>
+                    <div class="t-col-md-2">タイトル</div>
+                </div>
+                <div class="info-cont2">
+                    <div class="t-row">
+                        <div class="t-col-md-3 ">2020/03/03 08:45</div>
+                        <div class="t-col-md-2 "><a href="#" onclick="loadModal('announce_view.html')">コロナウイルスの対応について</a></div>
+                    </div>
+                    <div class="t-row">
+                        <div class="t-col-md-3">2020/02/27 09:00</div>
+                        <div class="t-col-md-2"><a href="#" onclick="loadModal('announce_view.html')">計画停電について</a></div>
+                    </div>
+
+                    <div class="t-row">
+                        <div class="t-col-md-3">2020/02/26 15:30</div>
+                        <div class="t-col-md-2"><a href="#" onclick="loadModal('announce_view.html')">踏切事故について</a></div>
+                    </div>
+
+                    <div class="t-row">
+                        <div class="t-col-md-3">2019/12/31 15:00</div>
+                        <div class="t-col-md-2"><a href="#" onclick="loadModal('announce_view.html')">年末年始の対応について</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="title text-white mar-tl-10">関係機関からの情報</div>
+        <div>
+            <div class="select-container right-100 in-line">
+                <select class="sl-boad">
+                    <option value="boad1">機関カテゴリ</option>
+                    <option value="boad2">情報カテゴリ</option>
+                </select>
+            </div>
+            <div class="in-line">
+                <span class="text-white">他社を表示しない <input type="checkbox" ></span>
+            </div>
+            <div class="in-line col-right">
+                <button class="tbtn  tbtn-defaut button-right" onclick="loadModal('information_edit.html')">情報登録</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="title text-white">JCMG事案</div>
+        <div class="cont-table">
+            <div>日時：2019/10/19 13:00　</div>
+            <div>タイトル：<a href="#" onclick="loadModal('incident_case_view.html')">Typh19/2019</a></div>
+            <div>内容：台風19号接近に伴いJCMGの設置を行います</div>
+        </div>
+        <div class="row top-10">
+            <div class="col-md-6">
+                <p class="text-white title">関係機関への依頼事項</p>
+            </div>
+            <div class="col-md-6">
+                <button class="tbtn-defaut button-right" onclick="loadModal('request_edit.html')">新規登録</button>
+            </div>
+        </div>
+        <div class="cont-table">
+            <div class="row">
+                <div class="col-md-3 title">日時</div>
+                <div class="col-md-5 title">タイトル</div>
+                <div class="col-md-4 title">会社名</div>
+            </div>
+            <div class="info-cont">
+                <div class="">
+                    <div class="col-md-3 ">2020/03/03 10:00</div>
+                    <div class="col-md-5 "><a href="#" onclick="loadModal('request_view.html')">コロナウイルス対応</a></div>
+                    <div class="col-md-4 ">JR西日本</div>
+
+                </div>
+                <div class="">
+                    <div class="col-md-3 ">2020/02/28 09:54</div>
+                    <div class="col-md-5 "><a href="#" onclick="loadModal('request_view.html')">滞留者の情報について</a></div>
+                    <div class="col-md-4 ">関西空港</div>
+
+                </div>
+                <div class="">
+                    <div class="col-md-3 ">2020/01/28 09:54</div>
+                    <div class="col-md-5 "><a href="#" onclick="loadModal('request_view.html')">至急○○について確認・・・</a></div>
+                    <div class="col-md-4 ">関西空港</div>
+
+                </div>
+                <div class="">
+                    <div class="col-md-3 ">2019/09/23 09:54</div>
+                    <div class="col-md-5 "><a href="#" onclick="loadModal('request_view.html')">台風20号接近について・・・</a></div>
+                    <div class="col-md-4 ">気象庁</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cont-boad1">
+    <table class="blueTable top-10">
+        <thead>
+        <tr>
+            <th class="bg-red">気象</th>
+            <th class="bg-brown">アクセス</th>
+            <th class="bg-yellow">航空会社</th>
+            <th class="bg-green" >官公庁</th>
+            <th class="bg-blue">KAP</th>
+        </tr>
+        </thead>
+        <tbody class="body-table-info">
+        <tr bgcolor="lightgray">
+            <td>
+                <div class="ticker bg-white">
+                    <div class="t-col-md-9 title fi-double">あいうえおかきくけこさしす</div>
+                    <div class="t-col-md-1"><img src="img/sticker-pink.jpg" class="col-right"></div><br/>
+                    <span class="label-75">更新日時</span>タイトル</p>
+                    <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">あいうえおかきくけ</a></div>
+                    <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad " title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風収束</a></div>
+                    <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風最接近</a></div>
+                </div>
+            </td>
+            <td>
+            	<div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">西日本高速道路株式会社</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-pink.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                            <span class="label-75">更新日時</span>タイトル
+                	    </p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">アイウエオカキクケ</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧状況</a></div>
+                    </div>
+                <div class="tickers">
+                    
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">アイウエオカキクケコサシス</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                            <span class="label-75">更新日時</span>タイトル
+                	    </p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">遅延発生</a></div>
+                    </div>
+                
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">アイウエオカキクケコサシス</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                            <span class="label-75">更新日時</span>タイトル
+                    	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">気象状況</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風収束</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風最接近</a></div>
+                    </div>
+                
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">アイウエオカキクケコサシス</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">気象状況</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風収束</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風最接近</a></div>
+                    </div>
+                </div>
+                
+            </td>
+            <td>
+            	<div class="ticker bg-white">
+                    <div class="t-col-md-9 title fi-double">ABCDEFGHIJKLMNOPQR</div></p>
+                    <div class="t-col-md-1"><img src="img/sticker-pink.jpg" class="col-right"></div><br/>
+                    <p style="background-color:lightgray">
+                <span class="label-75">更新日時</span>タイトル
+            	</p>
+                    <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">ABCDEFGHIJKLMN</a></div>
+                    <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">ABCDEFGHIJKLMN</a></div>
+                </div>
+                <div class="tickers">
+                    
+                
+                    <div class="ticker bg-white">    
+                        
+                        <div class="t-col-md-9 title fi-double">ABCDEFGHIJKLMNOPQR</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">気象状況</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風収束</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風最接近</a></div>
+                        
+                    </div>
+				
+                 	<div class="ticker bg-white">    
+                        <div class="t-col-md-9 title fi-double">ABCDEFGHIJKLMNOPQR</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">フライト状況</a></div>
+                    </div>
+               
+                 	<div class="ticker bg-white">    
+                        <div class="t-col-md-9 title fi-double">ABCDEFGHIJKLMNOPQR</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">気象状況</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風収束</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">台風最接近</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+            	<div class="ticker bg-white">
+                    <div class="t-col-md-9 title fi-double">abcdefghijklmnopqr</div></p>
+                    <div class="t-col-md-1"><img src="img/sticker-pink.jpg" class="col-right"></div><br/>
+                    <p style="background-color:lightgray">
+                		<span class="label-75">更新日時</span>タイトル
+            		</p>
+                    <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">abcdefghijklmn</a></div>
+                    <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">abcdefghijklmn</a></div>
+                    <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">abcdefghijklmn</a></div>
+                    <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">abcdefghijklmn</a></div>
+                </div>
+                <div class="tickers">
+                    
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">abcdefghijklmnopqr</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧完了</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者なし</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者情報</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧状況</a></div>
+                    </div>
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">abcdefghijklmnopqr</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧完了</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者なし</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者情報</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧状況</a></div>
+                    </div>
+                    
+                </div>
+            </td>
+            <td>
+                <div class="tickers">
+                    <div class="ticker bg-white">
+                        <div class="t-col-md-9 title fi-double">123456789012345678</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+                    <span class="label-75">更新日時</span>タイトル
+                	</p>
+                        
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">12345678901234</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者なし</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者情報</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧状況</a></div>
+                    </div>
+                    <div class="ticker bg-white">
+                        
+                        <div class="t-col-md-9 title fi-double">123456789012345678</div></p>
+                        <div class="t-col-md-1"><img src="img/sticker-white.jpg" class="col-right"></div><br/>
+                        <p style="background-color:lightgray">
+	                    <span class="label-75">更新日時</span>タイトル
+	                	</p>
+                        
+                        <div class=""><span class="label-75">10/23 9:55</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧完了</a></div>
+                        <div class=""><span class="label-75">10/23 6:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者なし</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">滞留者情報</a></div>
+                        <div class=""><span class="label-75">10/22 10:00</span><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad" title="あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろん">復旧状況</a></div>
+                    </div>
+                    
+                   
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="cont-boad2">
+    <table class="blueTable top-20">
+        <thead>
+	        <tr>
+	            <th class="bg-red">気象</th>
+	            <th class="bg-brown">アクセス</th>
+	            <th class="bg-yellow">航空会社</th>
+	            <th class="bg-green" >官公庁</th>
+	            <th class="bg-blue">KAP</th>
+	        </tr>
+        </thead>
+        <tbody>
+        
+        <tr class="bg-white">
+	            <td><div class=""><span class="label-70L">会社名</span><span class="label-70L">更新日時</span><span class="label-70L">タイトル</span></div></td>
+	            <td><div class=""><span class="label-70L">会社名</span><span class="label-70L">更新日時</span><span class="label-70L">タイトル</span></div></td>
+	            <td><div class=""><span class="label-70L">会社名</span><span class="label-70L">更新日時</span><span class="label-70L">タイトル</span></div></td>
+	            <td><div class=""><span class="label-70L">会社名</span><span class="label-70L">更新日時</span><span class="label-70L">タイトル</span></div></td>
+	            <td><div class=""><span class="label-70L">会社名</span><span class="label-70L">更新日時</span><span class="label-70L">タイトル</span></div></td>
+	    </tr>
+        
+        
+        <tr bgcolor="lightgray">
+            <td>
+            	<div class="ticker-2 bg-white">
+                    
+                    
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/30 09:55</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/28 06:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/28 01:50</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/28 15:50</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/28 14:50</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/25 13:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/24 10:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/24 09:30</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/24 09:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/22 10:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/24 09:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/22 10:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/24 09:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                    <div ><span class="label-70L">あいうえおか</span><span class="label-70L">10/22 10:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">あいうえおか</a></span></div>
+                  
+                    </div>
+            </td>
+            <td>
+
+                <div class="ticker-2 bg-white">
+                    
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/29 09:55</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/28 04:45</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/27 06:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/26 18:10</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/25 06:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/25 06:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/24 23:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/24 22:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/24 21:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/24 20:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                    <div ><span class="label-70L">アイウエオカ</span><span class="label-70L">11/24 19:30</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">アイウエオカ</a></span></div>
+                 
+
+                </div>
+            </td>
+            <td>
+                <div class="ticker-2 bg-white">
+                    
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/30 07:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/30 06:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/30 05:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 23:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 22:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 21:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 20:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 19:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 18:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 17:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 16:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 15:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 14:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                    <div ><span class="label-70L">ABCDEFGHI</span><span class="label-70L">10/29 13:00</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">ABCDEFGHI</a></span></div>
+                  
+                </div>
+            </td>
+            <td>
+                <div class="ticker-2 bg-white">
+                    
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/30 06:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 23:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 22:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 21:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 20:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 19:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 18:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 17:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 16:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 06:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/29 05:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/28 18:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/28 17:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+                    <div ><span class="label-70L">abcdefghi</span><span class="label-70L">10/28 16:12</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">abcdefghi</a></span></div>
+              
+                </div>
+            </td>
+            <td>
+                <div class="ticker-2 bg-white">
+                    
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 17:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 16:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 15:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 14:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 13:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 12:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 11:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/29 10:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 23:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 22:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 19:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 18:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 17:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789</a></span></div>
+                    <div ><span class="label-70L">123456789</span><span class="label-70L">10/28 16:15</span><span class="label-70L"><a href="#" onclick="loadModal('information_view.html')" class="tl-red-boad">123456789a></span></div>
+                   
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $('.cont-boad2').hide();
+
+    $('.sl-boad').on('change', function() {
+        if(this.value == 'boad1'){
+            $('.cont-boad1').show();
+            $('.cont-boad2').hide();
+        }else{
+            $('.cont-boad1').hide();
+            $('.cont-boad2').show();
+        }
+
+    });
+    var info = 'info-cont2';
+    var infoRight = 'info-cont';
+    var tickers = 'tickers';
+    var ticker = 'ticker';
+    doResize(info,18);
+    doResize(infoRight,13);
+    doResizeTable(tickers,48);
+    doResize(ticker,15);
+
+    window.onresize = function(event) {
+        var info = 'info-cont2';
+        var infoRight = 'info-cont';
+        var tickers = 'tickers';
+        var ticker = 'ticker';
+        doResize(info,18);
+        doResize(infoRight,13);
+        doResizeTable(tickers,48);
+        doResize(ticker,15);
+
+
+        var divIdmes = 'msg_history';
+        var divInfo = 'info-cont1';
+        var divImgMap = 'img-map';
+        var divBull = 't-body-table';
+        doResize(divIdmes,68);
+
+        doResize(divInfo,21);
+        doResize(divImgMap,28);
+        doResize(divBull,21);
+
+    }
+
+
+
+
+</script>

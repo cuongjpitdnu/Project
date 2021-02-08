@@ -1,0 +1,34 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	:
+//	create		: 2020/02/17 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+require_once('common/validate_user.php');
+
+$bull = get_detail($_GET['id']);
+echo '<pre>';
+var_dump($bull);
+echo '</pre>';
+die();
+$detail = $bull[0];
+
+function get_detail($id){
+    $strSQL = '';
+    $strSQL .= ' SELECT * FROM t_bulletin_board ';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' BULLETIN_BOARD_NO =:BULLETIN_BOARD_NO';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':BULLETIN_BOARD_NO', $id);
+    $strLogSql = $strSQL;
+    $strLogSql = str_replace(':BULLETIN_BOARD_NO', $id,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+
+?>

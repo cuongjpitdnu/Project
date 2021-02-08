@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザ管理</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nextpage.js"></script>
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">ユーザ管理</div>
+            <div class="form-body">
+                <div class="cont-title">
+                    <div class=" in-line">
+                        <div class="label-80">ユーザID</div>
+                        <input type="text" class="t-input t-input-125" value="">
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80">会社名</div>
+                        <input type="text" class="t-input t-input-125" value="">
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80">グループ</div>
+                        <div class="select-container">
+                            <select class="select-150">
+                                <option value="ja">関空</option>
+                                <option value="en">官公庁(空港内)</option>
+                                <option value="en">官公庁(空港外)</option>
+                                <option value="en">アクセス機関</option>
+                                <option value="en">民間</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80">担当者名</div>
+                        <input type="text" class="t-input t-input-125" value="">
+                    </div>　　　
+                    <div class="in-line">
+                        <input type="button" class="tbtn-defaut" value=" 検索 ">
+                    </div>
+                </div>
+
+                <table class="blueTable">
+                    <thead>
+                    <tr>
+                        <th  class="text-th">ユーザID</th>
+                        <th  class="text-th">有効期限</th>
+                        <th  class="text-th">グループ</th>
+                        <th  class="text-th">会社名</th>
+                        <th  class="text-th">担当者名</th>
+                        <th  class="text-th">更新日</th>
+                        <th  class="text-th">処理</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                    	<td>55件</td>
+                        <td colspan="6" align="center">
+                            <div class="links in-line"><a href="#">&laquo;</a><a href="#">&lsaquo;</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">&rsaquo;</a><a href="#">&raquo;</a></div>
+                            <div class="in-line" style="float: right">
+                                <button type="submit" class="tbtn tbtn-defaut" onclick="loadModal('user_edit.html')" >新規登録</button>
+                                
+                                <button type="submit" class="tbtn tbtn-defaut" >CSV出力</button>
+                                <button type="button" class="tbtn tbtn-defaut" id="close" onclick="history.back()">戻る</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="text-center"><a href="#">User001</a></td>
+                        <td class="text-center">2019/10/1～2021/3/31</td>
+                        <td class="text-center" >関空</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">2020/02/01</td>
+                        <td class="text-center">
+                            <button class="tbl-btn tbtn-green" onclick="loadModal('user_edit.html')">変更</button>
+                            <button class="tbl-btn tbtn-blue" onclick="loadModal('user_perm.html')">権限</button>
+                            
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><a href="#">User002</a></td>
+                        <td class="text-center">2019/10/1～2021/3/31</td>
+                        <td class="text-center" >アクセス機関</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">2020/02/01</td>
+                        <td class="text-center">
+                            <button class="tbl-btn tbtn-green" onclick="loadModal('user_edit.html')">変更</button>
+                            <button class="tbl-btn tbtn-blue" onclick="loadModal('user_perm.html')">権限</button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><a href="#">User003</a></td>
+                        <td class="text-center">2019/10/1～2021/3/31</td>
+                        <td class="text-center" >官公庁（空港内</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">2020/02/01</td>
+                        <td class="text-center">
+                            <button class="tbl-btn tbtn-green" onclick="loadModal('user_edit.html')">変更</button>
+                            <button class="tbl-btn tbtn-blue" onclick="loadModal('user_perm.html')">権限</button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><a href="#">User004</a></td>
+                        <td class="text-center">2019/10/1～2021/3/31</td>
+                        <td class="text-center" >官公庁（空港外）</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">〇〇</td>
+                        <td class="text-center">2020/02/01</td>
+                        <td class="text-center">
+                            <button class="tbl-btn tbtn-green" onclick="loadModal('user_edit.html')">変更</button>
+                            <button class="tbl-btn tbtn-blue" onclick="loadModal('user_perm.html')">権限</button>
+                            
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>

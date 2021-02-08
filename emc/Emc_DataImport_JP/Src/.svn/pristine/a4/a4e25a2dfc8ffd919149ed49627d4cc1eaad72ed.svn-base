@@ -1,0 +1,194 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン画面 (仮)ページ
+//	create		: 2020/02/12 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+//セッションスタート
+
+if(fncConnectDB() == false){
+	$_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+	header('Location: login.php');
+	exit;
+}
+$arrTitle =  array(
+    'LINK_MNG_TEXT_001',
+    'LINK_MNG_TEXT_002',
+    'LINK_MNG_TEXT_003',
+    'LINK_MNG_TEXT_004',
+    'LINK_MNG_TEXT_005',
+    'LINK_MNG_TEXT_006',
+
+    'PUBLIC_BUTTON_006',
+    'PUBLIC_BUTTON_009',
+    'PUBLIC_BUTTON_010',
+    'PUBLIC_BUTTON_001',
+    'PUBLIC_BUTTON_015',
+    'LINK_MNG_MSG_001',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_008',
+);
+$arrTextTranslate = getListTextTranslate($arrTitle);
+//エラーメッセージ確認
+$strLoginError = '';
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?", [$userInfo->intUserNo], 'リンク情報管理画面');
+if(!$user){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+// print_r($userInfo);
+if($userInfo->intMenuPerm != 1){
+    $alertMsg = $arrTextTranslate['PUBLIC_MSG_009'];
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+//get link cats
+$strSQL = "SELECT LINK_CATEGORY_NO,";
+$strSQL .= iff($userInfo->intLanguageType, " LINK_CATEGORY_NAME_ENG as LINK_CATEGORY_NAME,", " LINK_CATEGORY_NAME_JPN as LINK_CATEGORY_NAME,");
+$strSQL .= " LINK_CATEGORY_NAME_JPN,";
+$strSQL .= " LINK_CATEGORY_NAME_ENG,";
+
+$strSQL .= " SORT_NO";
+$strSQL .= " FROM m_link_category ORDER BY SORT_NO ASC";
+
+$mLinkCats = fncSelectData($strSQL, [], 1, false, 'リンク情報管理画面');
+
+//log view
+
+$viewLog = 'リンク情報管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="<?php echo $csrf; ?>">
+    <title><?php echo $arrTextTranslate['LINK_MNG_TEXT_001']; ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/nextpage.js"></script> -->
+    <script src="js/common.js"></script>
+    <style>
+        table.blueTable td{
+            padding: 9px 10px !important;
+        }
+    </style>
+</head>
+<body>
+
+<?php
+if($strLoginError != ''){
+?>
+	<font color="red"><?php echo $strLoginError;?></font>
+<?php
+}
+?>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title"><?php echo $arrTextTranslate['LINK_MNG_TEXT_001']; ?></div>
+            <?php if(isset($_SESSION['LINK_MNG_ERROR'])){
+				echo '<font color="red" class="error">'.$_SESSION['LINK_MNG_ERROR'].'</font>';
+			}else{
+				echo '<font color="red" class="error"></font>';
+			}
+			?>
+            <div class="form-body">
+                <div class="cont-title col-right">
+                <form class="search-form" name="searchForm">
+                    <input type="hidden" name="loadList" value="1">
+                    <div class="in-line">
+                        <div class="label-80"><?php echo $arrTextTranslate['LINK_MNG_TEXT_002']; ?></div>
+                        <div class="select-container">
+                            <select name="catNO">
+                            <option value="">ALL</option>
+                            <?php foreach($mLinkCats as $mLinkCat){ ?>
+                                <option value="<?php echo $mLinkCat['LINK_CATEGORY_NO'] ?>"><?php echo fncHtmlSpecialChars($mLinkCat['LINK_CATEGORY_NAME']); ?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="in-line">
+                        <input type="button" class="tbl-btn tbl-btn-action btn-search" value="<?php echo $arrTextTranslate['PUBLIC_BUTTON_006']; ?>">
+                    </div>
+                </form>
+                </div>
+                <div class="ajax-content">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var confirmMsg = '<?php echo $arrTextTranslate['LINK_MNG_MSG_001']; ?>';
+    var csrf = '<?php echo $csrf; ?>';
+    var ajaxUrl = 'link_mng_proc.php';
+    $(function(){
+
+
+        function loadPage(){
+            // var arr = $('.search-form').serializeArray();
+
+            $.ajax({
+                url: ajaxUrl,
+                type: 'post',
+                data: [{name: 'X-CSRF-TOKEN', value: csrf}],
+                success: function(result){
+                    $(".ajax-content").html(result);
+                }
+            });
+        }
+        loadPage();
+
+
+    });
+</script>
+</html>
+

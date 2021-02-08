@@ -1,0 +1,38 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+EmcDataImport
+</name>
+</assembly>
+<members>
+<member name="T:EmcDataImport.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:EmcDataImport.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:EmcDataImport.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:EmcDataImport.clsPopClient.ReadLine">
+ <summary>
+ POP サーバから 1行読み込みます。
+ </summary>
+ <returns>読み込んだ文字列。</returns>
+</member>
+<member name="M:EmcDataImport.clsPopClient.Print(System.String)">
+ <summary>
+ チェック用にコンソールに出力します。
+ </summary>
+ <param name="msg">出力する文字列。</param>
+</member>
+</members>
+</doc>

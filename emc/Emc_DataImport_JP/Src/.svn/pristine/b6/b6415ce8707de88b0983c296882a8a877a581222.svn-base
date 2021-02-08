@@ -1,0 +1,142 @@
+<?php
+require_once('common/common.php');
+// require_once('bulletin_board_mng_proc.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+
+if(fncConnectDB() == false){
+	echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+$_SESSION['errStr'] = '';
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+
+
+// get list text translate
+$arrTitle =  array(
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_008',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_004',
+    'PUBLIC_MSG_003',
+    'PUBLIC_MSG_002',
+    
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?",
+    [$userInfo->intUserNo], 'ユーザ別権限設定画面');
+if(!$user){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+//redirect if dont have permission
+if($userInfo->intMenuPerm != 1){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+
+
+//check input
+if(isset($_POST['mode']) && $_POST['mode'] == 1){
+if(isset($_POST['user_no'])){
+    $group = fncSelectOne("SELECT ADMIN_FLAG FROM m_group
+            INNER JOIN m_user ON m_user.GROUP_NO = m_group.GROUP_NO
+            WHERE m_user.USER_NO = ?
+            
+            ", [$_POST['user_no']], 'ユーザ別権限設定画面');
+    if(!$group && $_POST['user_no'] != ''){
+        $_SESSION['errStr'] .= $arrTextTranslate['PUBLIC_MSG_003'].'<br>';
+
+    }else{
+        
+    }
+}else{
+    // $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_014'];
+}
+
+
+if($_SESSION['errStr'] != ''){
+    //write log
+    fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ別権限設定画面 '. $_SESSION['errStr']);
+?>
+
+$('.edit-error').html('<?php echo $_SESSION['errStr']; ?>');
+
+<?php
+}else{
+    //process
+    try{
+        if($_POST['user_no']!=''){
+            
+            
+            $t = fncProcessData([
+                'ANNOUNCE_REG_PERM' => iff($group['ADMIN_FLAG'], isset($_POST['ANNOUNCE_REG_PERM']) ? 1 : 0, 0),
+                'BULLETIN_BOARD_REG_PERM' => iff($group['ADMIN_FLAG'], isset($_POST['BULLETIN_BOARD_REG_PERM']) ? 1 : 0, 0),
+                'QUERY_REG_PERM' => isset($_POST['QUERY_REG_PERM']) ? 1 : 0,
+                'INCIDENT_CASE_REG_PERM' => iff($group['ADMIN_FLAG'], isset($_POST['INCIDENT_CASE_REG_PERM']) ? 1 : 0, 0),
+                'REQUEST_REG_PERM' => isset($_POST['REQUEST_REG_PERM']) ? 1 : 0,
+                'INFORMATION_REG_PERM' => isset($_POST['INFORMATION_REG_PERM']) ? 1 : 0,
+                'MENU_PERM' => iff($group['ADMIN_FLAG'], isset($_POST['MENU_PERM']) ? 1 : 0, 0),
+                'ANNOUNCE_MAIL' => isset($_POST['ANNOUNCE_MAIL']) ? 1 : 0,
+                'BULLETIN_BOARD_MAIL' => isset($_POST['BULLETIN_BOARD_MAIL']) ? 1 : 0,
+                'INCIDENT_CASE_MAIL' => isset($_POST['INCIDENT_CASE_MAIL']) ? 1 : 0,
+                'REQUEST_CONTENTS_MAIL' => isset($_POST['REQUEST_CONTENTS_MAIL']) ? 1 : 0,
+                'PERM_FLAG' =>  1,
+                'UP_USER_NO'    =>  $userInfo->intUserNo,
+                'UP_DATE'   => date('Y-m-d H:i:s')
+            ], 
+            'm_user', 
+            'USER_NO=?', 
+            array($_POST['user_no']));
+
+            if($t->rowCount()>0){
+                echo 0;
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'] , 'ユーザ別権限設定画面 更新 (ユーザID = '.$userInfo->strUserID.')');
+                //ajax return 0 reload the current page
+            }else{
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ別権限設定画面 ' . $arrTextTranslate['PUBLIC_MSG_003']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+            }
+        }
+    }
+    catch(\Exception $e){
+        fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ別権限設定画面 ' . $e->getMessage());
+        echo $e->getMessage();
+    }
+    
+
+}
+}
+
+// print_r($_SESSION['errStr'] );

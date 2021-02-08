@@ -1,0 +1,351 @@
+<?php
+    // -------------------------------------------------------------------------
+    //	function	: osirase
+    //	create		:
+    //	update		:
+    // -------------------------------------------------------------------------
+    require_once('common/common.php');
+    require_once('announce_mng_proc.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    //セッションスタート
+
+    if(fncConnectDB() == false) {
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    $arrLoginError = (isset($_SESSION['ANNOUNCE_MNG_ERROR'])) ? $_SESSION['ANNOUNCE_MNG_ERROR'] : array();
+
+    // check page first time or refresh
+    $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache');;
+    if(!$pageWasRefreshed) {
+        $_SESSION['ANNOUNCE_MNG_ERROR'] = array();
+        $_SESSION['announce_mng'] = array(
+            'titleSearch' => null,
+            'regDateSearch' => null,
+            'compDateSearch' => null,
+            'chkDoneSearch' => 0
+        );
+
+        fncWriteLog(LogLevel['Info'], LogPattern['View'], 'お知らせ管理画面　画面表示(ユーザID = '.$objLoginUserInfo->intUserNo.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null));
+    }
+
+    // //ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg =  array(
+        'PUBLIC_MSG_009',
+        'ANNOUNCE_MNG_TEXT_011',
+
+        'ANNOUNCE_MNG_TEXT_001',
+        'ANNOUNCE_MNG_TEXT_002',
+        'ANNOUNCE_MNG_TEXT_003',
+        'ANNOUNCE_MNG_TEXT_004',
+        'ANNOUNCE_MNG_TEXT_005',
+        'ANNOUNCE_MNG_TEXT_006',
+        'ANNOUNCE_MNG_TEXT_007',
+        'ANNOUNCE_MNG_TEXT_008',
+        'ANNOUNCE_MNG_TEXT_009',
+        'ANNOUNCE_MNG_TEXT_010',
+        'PUBLIC_BUTTON_006',
+        'PUBLIC_BUTTON_007',
+        'PUBLIC_BUTTON_010',
+        'PUBLIC_TEXT_016',
+        'PUBLIC_BUTTON_011',
+        'PUBLIC_BUTTON_012',
+        'PUBLIC_BUTTON_015',
+
+        'ANNOUNCE_MNG_MSG_003',
+        'ANNOUNCE_MNG_MSG_004',
+
+        // get data grid fail
+        'PUBLIC_MSG_001',
+
+        // msg confirm when click btnDone
+        'ANNOUNCE_MNG_MSG_001',
+
+        'ANNOUNCE_MNG_MSG_002',
+
+        'PUBLIC_MSG_003',
+        'PUBLIC_MSG_004',
+        'PUBLIC_MSG_006',
+
+        'PUBLIC_MSG_005',
+        'PUBLIC_MSG_007',
+
+        // csv title
+        'ANNOUNCE_MNG_TEXT_012',
+        'ANNOUNCE_MNG_TEXT_013',
+        'ANNOUNCE_MNG_TEXT_014',
+        'ANNOUNCE_MNG_TEXT_015',
+        'ANNOUNCE_MNG_TEXT_016',
+        'ANNOUNCE_MNG_TEXT_017',
+        'ANNOUNCE_MNG_TEXT_018',
+    );
+
+    $arrTextTranslate = getListTextTranslate($arrTitleMsg, $intLanguageType);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="<?php echo (isset($csrf) ? $csrf : ''); ?>">
+    <meta charset="UTF-8">
+    <title><?php echo $arrTextTranslate['ANNOUNCE_MNG_TEXT_001']; ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.3.14.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/nextpage.js"></script> -->
+    <script src="js/common.js"></script>
+    <?php if($objLoginUserInfo->intMenuPerm == 0) {   // permission 各種メニュー権限[intMenuPerm] ?>
+        <script type="text/javascript">
+            alert('<?php echo $arrTextTranslate['PUBLIC_MSG_009']; ?>');
+            window.location.href = 'login.php';
+        </script>
+    <?php exit; } ?>
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title"><?php echo $arrTextTranslate['ANNOUNCE_MNG_TEXT_001']; ?></div>
+            <font color="red" class="error">
+                <?php
+                    if(count($arrLoginError) > 0) {
+                        $html = '';
+                        foreach($arrLoginError as $value) {
+                            $html .= '<div>'.$value.'</div>';
+                        }
+                        echo $html;
+                    }
+                ?>
+            </font>
+            <div class="form-body">
+                <form class="search-form" name="searchForm" action="" method="post">
+                    <input type="hidden" name="loadList" value="1">
+                    <input type="hidden" name="currentPage" value="1">
+                    <div class="cont-title">
+                        <div class="in-line ">
+                            <div class="label-80"><?php echo $arrTextTranslate['ANNOUNCE_MNG_TEXT_002']; ?></div>
+                            <input type="text" class="t-input" id="txtTitle" name="txtTitle" value="<?php echo (isset($_SESSION['announce_mng']['titleSearch'])) ? $_SESSION['announce_mng']['titleSearch'] : ''; ?>">
+                        </div>
+                        <div class="in-line ">
+                            <div class="label-80"><?php echo $arrTextTranslate['ANNOUNCE_MNG_TEXT_003']; ?></div>
+                            <input type="text" class="t-input" id="txtDateStart" name="txtDateStart" value="<?php echo (isset($_SESSION['announce_mng']['regDateSearch'])) ? $_SESSION['announce_mng']['regDateSearch'] : ''; ?>"> ~
+                            <input type="text" class="t-input" id="txtDataEnd" name="txtDataEnd" value="<?php echo (isset($_SESSION['announce_mng']['compDateSearch'])) ? $_SESSION['announce_mng']['compDateSearch'] : ''; ?>">
+                        </div>
+                        <div class="in-line ">
+                            <label class="t-container"><?php echo $arrTextTranslate['ANNOUNCE_MNG_TEXT_004']; ?>
+                                <input type="checkbox" id="chkDone" name="chkDone" <?php echo (isset($_SESSION['announce_mng']['chkDoneSearch'])) ? (($_SESSION['announce_mng']['chkDoneSearch'] == 1) ? 'checked' : '') : ''; ?> />
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="in-line col-right">
+                            <input type="button" class="tbl-btn tbl-btn-action btn-search-announce" value="<?php echo $arrTextTranslate['PUBLIC_BUTTON_006']; ?>">
+                        </div>
+                    </div>
+                </form>
+
+                <div class="ajax-content"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $('#txtDateStart').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy/mm/dd'
+        });
+
+        $('#txtDataEnd').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy/mm/dd'
+        });
+    });
+
+    var ajaxUrl = '';
+    var msgReduct = '';
+    var pageWasRefreshed = '<?php echo $pageWasRefreshed; ?>';
+    $(document).ready(function() {
+        if(pageWasRefreshed == 1) {
+            loadData(1);
+        } else {
+            loadData(0);
+        }
+
+        $('.btn-search-announce').on('click', function(e) {
+            $('.error').html('');
+            e.preventDefault();
+            loadData(1);
+        });
+
+        $(document).on('click', '.btnDone', function(e) {
+            e.preventDefault();
+            $('.error').html('');
+            if(confirm('<?php echo $arrTextTranslate['ANNOUNCE_MNG_MSG_001']; ?>')) {
+                var arr = [
+                    { name: 'X-CSRF-TOKEN', value: '<?php echo (isset($csrf) ? $csrf : ''); ?>'},
+                    { name: 'announce_no', value: $(this).attr('data-id') },
+                    { name: 'mode', value: 1 }
+                ];
+                $.ajax({
+                    url: 'announce_mng_proc.php',
+                    type: 'POST',
+                    data: arr,
+                    success: function(result) {
+                        if(result == 2) {
+                            $('.error').html('<div><?php echo $arrTextTranslate['PUBLIC_MSG_001']; ?></div>');
+                        }
+                        if(result == 0) {
+                            $('.error').html('<div><?php echo $arrTextTranslate['PUBLIC_MSG_003']; ?></div>');
+                        }
+                        loadData(1);
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', '.btnDelete', function(e) {
+            e.preventDefault();
+            $('.error').html('');
+            if(confirm('<?php echo $arrTextTranslate['ANNOUNCE_MNG_MSG_002']; ?>')) {
+                var arr = [
+                    { name: 'X-CSRF-TOKEN', value: '<?php echo (isset($csrf) ? $csrf : ''); ?>'},
+                    { name: 'announce_no', value: $(this).attr('data-id') },
+                    { name: 'mode', value: 2 }
+                ];
+                $.ajax({
+                    url: 'announce_mng_proc.php',
+                    type: 'POST',
+                    data: arr,
+                    success: function(result) {
+                        if(result == 0) {
+                            $('.error').html('<div><?php echo $arrTextTranslate['PUBLIC_MSG_004']; ?></div>');
+                        }
+                        loadData(1);
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', '.btnOutput', function(e) {
+            e.preventDefault();
+            $('.error').html('');
+            $('[name=mode]').val(3);
+            var data = $('.search-form').serialize();
+            $('[name=searchData]').val(data);
+            $("#formCSV").submit();
+        });
+
+        $(document).on('click', '.btnDataReduct', function(e) {
+            e.preventDefault();
+            $('.error').html('');
+            checkNumDataReduct();
+        });
+
+        $('#chkDone').on('change', function(e) {
+            if($(this).is(':checked')) {
+                $('.btnDataReduct').prop('disabled', false);
+            } else {
+                $('.btnDataReduct').prop('disabled', true);
+            }
+            loadData(1);
+        });
+    });
+
+    function loadData(condition) {
+        var data = $('.search-form').serializeArray();
+        data.push({ name: 'event', value: condition });
+        if(!$('input[name=chkDone]').is(':checked')) {
+            data.push({ name: 'chkDone', value: 0 });
+        }
+        $.ajax({
+            url: 'announce_mng_proc.php',
+            type: 'POST',
+            data: data,
+            success: function(result) {
+                if(result == 0) {
+                    $('.error').html('<div><?php echo $arrTextTranslate['PUBLIC_MSG_001']; ?></div>');
+                }
+                $(".ajax-content").html(result);
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    }
+
+    function checkNumDataReduct() {
+        var arr = [
+            { name: 'X-CSRF-TOKEN', value: '<?php echo (isset($csrf) ? $csrf : ''); ?>' },
+            { name: 'action', value: 'checkNumDataReduct' }
+        ];
+        $.ajax({
+            url: 'announce_mng_proc.php',
+            type: 'POST',
+            data: arr,
+            success: function(result) {
+                if(result == -1) {
+                    $('.error').html('<div><?php echo $arrTextTranslate['PUBLIC_MSG_007']; ?></div>');
+                    return false;
+                } else {
+                    if(result > 0) {
+                        if(confirm('<?php echo $arrTextTranslate['PUBLIC_MSG_006']; ?>'.replace("%0%", result))) {
+                            $('[name=mode]').val(4);
+                            var data = $('.search-form').serialize();
+                            $('[name=searchData]').val(data);
+                            $.ajax({
+                                url: './announce_mng_proc.php',
+                                type:'post',
+                                data: $('#formCSV').serializeArray(),
+                                success:function(data) {
+                                    if(data != '') {
+                                        $('.error').html('<div>'+data+'</div>');
+                                    }
+                                    loadData(1);
+                                }
+                            });
+                        }
+                    }
+                }
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+    }
+</script>
+</html>

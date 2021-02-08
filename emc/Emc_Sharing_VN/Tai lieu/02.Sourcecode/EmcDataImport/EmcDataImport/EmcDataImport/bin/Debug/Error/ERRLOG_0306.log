@@ -1,0 +1,23 @@
+2020/03/06 08:58:17 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:02:45 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:03:39 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:07:18 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:13:25 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:14:58 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:15:32 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:18:52 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 09:31:36 EmcDataImport.vb EMCDataImportProcessing Invalid length for a Base-64 char array or string.
+2020/03/06 10:02:29 EmcDataImport.vb EMCDataImportProcessing Object reference not set to an instance of an object.
+2020/03/06 10:02:29 EmcDataImport.vb EMCDataImportProcessing Unable to write data to the transport connection: An established connection was aborted by the software in your host machine.
+2020/03/06 10:02:29 EmcDataImport.vb EMCDataImportProcessing The operation is not allowed on non-connected sockets.
+2020/03/06 10:02:29 EmcDataImport.vb EMCDataImportProcessing The operation is not allowed on non-connected sockets.
+2020/03/06 10:16:48 EmcDataImport.vb EMCDataImportProcessing Object reference not set to an instance of an object.
+2020/03/06 10:16:48 EmcDataImport.vb EMCDataImportProcessing Unable to write data to the transport connection: An established connection was aborted by the software in your host machine.
+2020/03/06 10:16:48 EmcDataImport.vb EMCDataImportProcessing The operation is not allowed on non-connected sockets.
+2020/03/06 10:16:48 EmcDataImport.vb EMCDataImportProcessing The operation is not allowed on non-connected sockets.
+2020/03/06 10:28:34 EmcDataImport.vb EMCDataImportProcessing VALUES 句で指定された値よりも INSERT ステートメントの列数が多すぎます。VALUES 句の値の数は、INSERT ステートメントで指定される列数と一致させてください。
+2020/03/06 14:28:59 EmcDataImport.vb EMCDataImportProcessing Object reference not set to an instance of an object.
+2020/03/06 14:29:01 EmcDataImport.vb EMCDataImportProcessing Unable to write data to the transport connection: An established connection was aborted by the software in your host machine.
+2020/03/06 14:48:12 EmcDataImport.vb EMCDataImportProcessing Unable to write data to the transport connection: An established connection was aborted by the software in your host machine.
+2020/03/06 14:48:14 EmcDataImport.vb EMCDataImportProcessing The operation is not allowed on non-connected sockets.
+2020/03/06 16:52:39 EmcDataImport.vb EMCDataImportProcessing PASS 送信時に POP サーバが "-ERR Double login" を返しました。

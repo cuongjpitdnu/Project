@@ -1,0 +1,32 @@
+<?php
+/*
+* @incident_request_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+    require_once ('portal_function.php');
+    $arrRequest = get_request();
+    if($arrRequest){
+        foreach ($arrRequest as $arrItem){
+            $strTilte = $arrItem['TITLE'.$strEndLang];
+            if(!$strTilte){
+                $intUntra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $strTilte = $arrItem['TITLE_ENG'];
+                }else{
+                    $strTilte = $arrItem['TITLE_JPN'];
+                }
+            }
+            echo '<div >';
+                echo '<div class="col-md-4">'
+                    .date('m/d H:i',strtotime($arrItem['REG_DATE'])).'　</div>';
+                echo '</div>';
+                echo '<div class="col-md-4 ">
+                <a href="#" onclick=\'loadView("request_view.php",'
+                    .$arrItem['REQUEST_NO'].')\' >' . fncHtmlSpecialChars($strTilte).' </a></div>';
+                echo '<div class="col-md-4 ">'.$arrItem['ABBREVIATIONS'.$strEndLang].'</div>';
+        }
+    }
+?>
+

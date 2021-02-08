@@ -1,0 +1,272 @@
+<?php
+    /*
+     * @user_setting_proc.php
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     */
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    define('DISPLAY_TITLE', 'ユーザ設定画面');
+
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        $strShow = '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'");';
+        $strShow .= ' window.location.href="login.php";</script> ';
+        echo $strShow;
+        exit;
+    }
+
+    fncSessionTimeOutCheck(1);
+
+    // check if ajax -> do something | access this file directly -> stop
+    if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+        exit;
+    }
+
+    // ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg =  array(
+        'USER_SETTING_MSG_002',
+        'USER_SETTING_MSG_003',
+        'USER_SETTING_MSG_004',
+        'USER_SETTING_MSG_005',
+        'USER_SETTING_MSG_006',
+        'USER_SETTING_MSG_007',
+        'USER_SETTING_MSG_008',
+        'USER_SETTING_MSG_009',
+        'USER_SETTING_MSG_010',
+        'USER_SETTING_MSG_011',
+        'USER_SETTING_MSG_012',
+        'USER_SETTING_MSG_013',
+        'USER_SETTING_MSG_014',
+        'USER_SETTING_MSG_015',
+        'USER_SETTING_MSG_016',
+        'PUBLIC_MSG_003',
+    );
+
+    // get list text translate
+    $arrTextTranslate = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    define('LENGTH_ADDRESS', 100);      // max length address
+    define('LENGTH_ORGANIZATION', 50);  // max length organization
+    define('LENGTH_USER_NAME', 20);     // max length user_name
+    define('LENGTH_MAIL_ADDRESS', 50);  // max length mail_address
+    define('LENGTH_TEL', 20);           // max length tel
+    define('LENGTH_FAX', 20);           // max length fax
+    define('LENGTH_MIN_PASSWORD', 12);  // min length password
+    define('LENGTH_MAX_PASSWORD', 30);  // max length password
+
+    if(isset($_POST)) {
+        $_SESSION['USER_SETTING_ERROR'] = array();
+
+        if(isset($_POST['mode'])) {
+            $arrRes = array(
+                'error' => '',
+                'success' => ''
+            );
+
+            if($_POST['mode'] == 1) {
+                // <更新処理時>
+                $strLog = DISPLAY_TITLE.' 更新 (ユーザID ='.$objLoginUserInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'], LogPattern['Button'], $strLog);
+
+                $strAddress = (@$_POST['txtAddress']) ? trim($_POST['txtAddress']) : '';
+                $strOrganization = (@$_POST['txtOrganization'])
+                                    ? trim($_POST['txtOrganization']) : '';
+                $strName = (@$_POST['txtName']) ? trim($_POST['txtName']) : '';
+                $strMail = (@$_POST['txtMail']) ? trim($_POST['txtMail']) : '';
+                $strTel = (@$_POST['txtTel']) ? trim($_POST['txtTel']) : '';
+                $strFax = (@$_POST['txtFax']) ? trim($_POST['txtFax']) : '';
+                $strPassword = (@$_POST['password']) ? trim($_POST['password']) : '';
+                $intCmbLanguage = (@$_POST['cmbLanguage'])
+                                    ? ((trim($_POST['cmbLanguage']) == 'ja') ? 0 : 1) : '';
+
+                // ①	入力チェックをする。
+                if(mb_strlen($strAddress) > LENGTH_ADDRESS) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_002'];
+                }
+
+                if(mb_strlen($strOrganization) > LENGTH_ORGANIZATION) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_003'];
+                }
+
+                if(mb_strlen($strName) > LENGTH_USER_NAME) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_004'];
+                }
+
+                if(mb_strlen($strMail) == 0) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_005'];
+                } else {
+                    if(!mb_detect_encoding($strMail, 'ASCII', true)
+                        || strpos($strMail, ',') !== false) {
+                        $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_006'];
+                    }
+                    if(mb_strlen($strMail) > LENGTH_MAIL_ADDRESS) {
+                        $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_007'];
+                    }
+                }
+
+                if(!mb_detect_encoding($strTel, 'ASCII', true)
+                    || strpos($strTel, ',') !== false) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_008'];
+                }
+                if(mb_strlen($strTel) > LENGTH_TEL) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_009'];
+                }
+
+                if(!mb_detect_encoding($strFax, 'ASCII', true)
+                    || strpos($strFax, ',') !== false) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_010'];
+                }
+                if(mb_strlen($strFax) > LENGTH_FAX) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_011'];
+                }
+
+                if(mb_strlen($strPassword) == 0) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_012'];
+                } else {
+                    if(!mb_detect_encoding($strPassword, 'ASCII', true)
+                        || strpos($strPassword, ',') !== false) {
+                        $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_013'];
+                    }
+                    if(mb_strlen($strPassword) < LENGTH_MIN_PASSWORD
+                        || mb_strlen($strPassword) > LENGTH_MAX_PASSWORD) {
+                        $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_014'];
+                    }
+                    preg_match('/^.*(?=.*[a-z])(?=.*[A-Z]).*$/', $strPassword, $checkPass);
+                    if(count($checkPass) == 0) {
+                        $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_015'];
+                    }
+                }
+
+                if(mb_strlen($intCmbLanguage) == 0) {
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['USER_SETTING_MSG_016'];
+                }
+
+                if(count($_SESSION['USER_SETTING_ERROR']) > 0) {
+                    $htmlError = '';
+                    foreach($_SESSION['USER_SETTING_ERROR'] as $error) {
+                        $htmlError .= '<div>'.$error.'</div>';
+                    }
+                    $arrRes['error'] = $htmlError;
+                    echo json_encode($arrRes);
+                    exit;
+                }
+
+                // check user exist in database & password change?
+                $strSQL = ' SELECT * FROM m_user WHERE m_user.user_no = ? ';
+                $arrResult = fncSelectData($strSQL, array($objLoginUserInfo->intUserNo), 1, false, DISPLAY_TITLE);
+
+                if($arrResult == 0) {
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_003']);
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_003'];
+                    if(count($_SESSION['USER_SETTING_ERROR']) > 0) {
+                        $htmlError = '';
+                        foreach($_SESSION['USER_SETTING_ERROR'] as $error) {
+                            $htmlError .= '<div>'.$error.'</div>';
+                        }
+                        $arrRes['error'] = $htmlError;
+                        echo json_encode($arrRes);
+                        exit;
+                    }
+                }
+
+                $blnFlagChangePass = false; //flag check password change? false: no | true: change
+                if(is_array($arrResult) && count($arrResult) > 0) {
+                    $strOldPassword = $arrResult[0]['PASSWORD'];
+                    if($strOldPassword != $strPassword) {
+                        $blnFlagChangePass = true;
+                    }
+                } else {
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_003']);
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_003'];
+                    if(count($_SESSION['USER_SETTING_ERROR']) > 0) {
+                        $htmlError = '';
+                        foreach($_SESSION['USER_SETTING_ERROR'] as $error) {
+                            $htmlError .= '<div>'.$error.'</div>';
+                        }
+                        $arrRes['error'] = $htmlError;
+                        echo json_encode($arrRes);
+                        exit;
+                    }
+                }
+
+                try {
+                    // 以下の条件でユーザマスタ[m_user]を更新(UPDATE)する。
+                    $strSQL = " UPDATE m_user SET "
+                            . " address = :address "
+                            . " , organization = :organization "
+                            . " , user_name = :user_name "
+                            . " , mail_address = :mail_address "
+                            . " , tel = :tel "
+                            . " , fax = :fax "
+                            . " , password = :password "
+                            . " , language_type = :language_type ";
+                    if($blnFlagChangePass) {
+                        $strSQL .= " , password_up_date = CURRENT_TIMESTAMP ";
+                    }
+                    $strSQL .= " WHERE user_no = :user_no; ";
+
+                    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                    $objStmt->bindParam(':address', $strAddress);
+                    $objStmt->bindParam(':organization', $strOrganization);
+                    $objStmt->bindParam(':user_name', $strName);
+                    $objStmt->bindParam(':mail_address', $strMail);
+                    $objStmt->bindParam(':tel', $strTel);
+                    $objStmt->bindParam(':fax', $strFax);
+                    $objStmt->bindParam(':password', $strPassword);
+                    $objStmt->bindParam(':language_type', $intCmbLanguage);
+                    $objStmt->bindParam(':user_no', $objLoginUserInfo->intUserNo);
+
+                    $strLogSql = DISPLAY_TITLE.$strSQL;
+                    $strLogSql = str_replace(':address', $strAddress, $strLogSql);
+                    $strLogSql = str_replace(':organization', $strOrganization, $strLogSql);
+                    $strLogSql = str_replace(':user_name', $strName, $strLogSql);
+                    $strLogSql = str_replace(':mail_address', $strMail, $strLogSql);
+                    $strLogSql = str_replace(':tel', $strTel, $strLogSql);
+                    $strLogSql = str_replace(':fax', $strFax, $strLogSql);
+                    $strLogSql = str_replace(':password', $strPassword, $strLogSql);
+                    $strLogSql = str_replace(':language_type', $intCmbLanguage, $strLogSql);
+                    $strLogSql = str_replace(':user_no', $objLoginUserInfo->intUserNo, $strLogSql);
+                    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                    $objStmt->execute();
+
+                    // 更新に成功したら、下記の値をセッション「LOGINUSER_INFO」に格納し、画面を閉じる。※親画面の表示を更新する。- 2020/03/18 update
+                    $objLoginUserInfo->strUserName = $strName;
+                    $objLoginUserInfo->intLanguageType = $intCmbLanguage;
+                    $_SESSION['LOGINUSER_INFO'] = serialize($objLoginUserInfo);
+
+                    $arrRes['success'] = 1;
+                    echo json_encode($arrRes);
+                    exit;
+                } catch (\Exception $e) {
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_003']);
+                    $_SESSION['USER_SETTING_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_003'];
+                    if(count($_SESSION['USER_SETTING_ERROR']) > 0) {
+                        $htmlError = '';
+                        foreach($_SESSION['USER_SETTING_ERROR'] as $error) {
+                            $htmlError .= '<div>'.$error.'</div>';
+                        }
+                        $arrRes['error'] = $htmlError;
+                        echo json_encode($arrRes);
+                        exit;
+                    }
+                }
+            }
+        }
+    }
+?>

@@ -1,0 +1,62 @@
+
+<div class="clearfix">
+    <div class="in-line tcol-md-6" style="float: left">
+        <?php require_once('info_form.php')?>
+        <img src="img/kix.jpg" alt="" width="100%" class="top-20 map-img" >
+
+        <div class="title text-yellow mar-tl-10"><?= $arrayText['PORTAL_DAILY_TEXT_008']  ?></div>
+
+        <div class="cont-table">
+            <div class="t-row">
+                <div class="t-col-md-3"><?= $arrayText['PORTAL_DAILY_TEXT_010'] ?></div>
+                <div class="t-col-md-3"><?= $arrayText['PORTAL_DAILY_TEXT_011'] ?></div>
+                <div class="t-col-md-3"><?= $arrayText['PORTAL_DAILY_TEXT_012'] ?></div>
+            </div>
+            <div class="t-body-table" id="bull_form">
+                <?php require_once('bull_form.php')?>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="in-line tcol-md-6 float-left">
+        <div class="pad-left-20">
+            <div class="title text-yellow"><?= $arrayText['PORTAL_DAILY_TEXT_002'] ?></div>
+            <div class="chat-cont">
+                <div class="mesgs">
+                    <?php include ('msg_history.php')?>
+                </div>
+                <div class="chat-control mar-tl-10">
+                    <div class="in-line mar-tl-10">
+                        <?= $arrayText['PORTAL_DAILY_TEXT_006'] ?> <input type="radio" name="gettime" value="0" checked>
+                        <span class="pad-left-20"><?= $arrayText['PORTAL_DAILY_TEXT_007']  ?></span><input type="radio" name="gettime" value="1">
+                    </div>
+                    <div class="in-line col-right">
+                        <?php
+                            if($objLoginUserInfo->intQueryRegPerm){
+                        ?>
+                                <button class="tbtn tbtn-defaut" onclick="loadChat('query_view.php')" name="btnDelete"><?= $arrayText['PORTAL_DAILY_BUTTON_002']?></button>
+                        <?php
+                            }
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="title text-yellow mar-tl-10"><?= $arrayText['PORTAL_DAILY_TEXT_009'] ?></div>
+
+            <div class="cont-table">
+                <div class="t-row">
+                    <?php
+                        foreach ($linkCategory as $item){
+                            echo '<div class="t-col-md-3 title text-green"><a target="_blank" href="category_detail.php?category='.$item['LINK_CATEGORY_NO'].'">'.htmlspecialchars($item['LINK_CATEGORY_NAME_JPN']).' / '.htmlspecialchars($item['LINK_CATEGORY_NAME_ENG']).'</a></div>';
+                        }
+                    ?>
+                </div>
+                <div class="t-body-table">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

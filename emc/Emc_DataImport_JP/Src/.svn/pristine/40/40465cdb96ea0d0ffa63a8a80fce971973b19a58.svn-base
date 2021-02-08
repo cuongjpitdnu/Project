@@ -1,0 +1,39 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: 各社へのリンク情報グリッド
+//	create		: 2020/02/27 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+require_once('common/validate_user.php');
+
+$arrMSG = [
+    'PORTAL_DAILY_TEXT_009',
+];
+
+$arrayText = getListTextTranslate($arrMSG,$objLoginUserInfo->intLanguageType);
+
+
+$category = get_link_category_detail($_GET['category']);
+
+function get_link_category_detail($category){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_link_category ';
+    $strSQL .= ' INNER JOIN t_link ON m_link_category.LINK_CATEGORY_NO = t_link.LINK_CATEGORY_NO ';
+    $strSQL .= ' WHERE m_link_category.LINK_CATEGORY_NO = :LINK_CATEGORY_NO';
+    $strSQL .= ' ORDER BY t_link.SORT_NO ASC';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':LINK_CATEGORY_NO', $category);
+    $strLogSql = $strSQL;
+
+    $strLogSql = str_replace(':LINK_CATEGORY_NO', $category,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    $objStmt->execute();
+    $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    return $arrResult;
+}
+
+
+?>

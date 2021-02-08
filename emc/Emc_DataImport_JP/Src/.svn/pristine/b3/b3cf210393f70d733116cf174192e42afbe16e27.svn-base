@@ -1,0 +1,830 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: データベース処理共通関数
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('config.php');
+require_once('display_text_config.php');
+require_once('msg_config.php');
+require_once('sqlsrv_common.php');
+
+//Amazon Service
+require 'vendor/autoload.php';
+use Aws\Translate\TranslateClient;
+use Aws\Exception\AwsException;
+
+//DB接続クラスを設定.
+$g_dbaccess = null;
+$g_dbaccess = new sqlsrv_dbaccess();
+
+date_default_timezone_set('Asia/Tokyo');
+
+// ************************************************************************************************************************************************************
+//	CONST
+// ************************************************************************************************************************************************************
+//ログレベル
+const LogLevel = array(
+	'Error' => 0,
+	'Info' => 1
+);
+//ログパターン
+const LogPattern = array(
+	'Error' => 0,
+	'Login'=> 1,
+	'View' => 2,
+	'Button' => 3,
+	'Sql' => 4
+);
+//Thang
+ini_set("error_reporting", E_ALL);
+session_start();
+if(count($_POST)) {
+	if(!isset($_POST['X-CSRF-TOKEN']) || !isset($_SESSION['csrf'])) {
+		echo "<script>alert('".PUBLIC_MSG_008_JPN."/".PUBLIC_MSG_008_ENG."');window.location.href='login.php';</script>";
+		exit();
+	} else if($_POST['X-CSRF-TOKEN'] != $_SESSION['csrf']) {
+		echo "<script>window.location.href='login.php';</script>";
+		exit();
+	}
+	// unset($_POST['X-CSRF-TOKEN']);
+} else {
+	if(isset($_SESSION['csrf']) && $_SESSION['csrf'] != '') {
+		$csrf = $_SESSION['csrf'];
+	} else {
+		$_SESSION['csrf'] =fncGetCsrfToken();
+		$csrf = $_SESSION['csrf'];
+	}
+
+}
+
+//end Thang
+
+// ************************************************************************************************************************************************************
+//	CLASS
+// ************************************************************************************************************************************************************
+
+//ログインユーザー情報格納クラス
+class clsLoginUserInfo {
+	public $intUserNo;					//ユーザNo
+	public $strUserID;					//ユーザID
+	public $intLanguageType;			//言語タイプ
+	public $intCompanyNo;				//会社No
+	public $strCompanyName;				//会社名
+	public $intGroupNo;					//グループNo
+	public $strUserName;				//ユーザ名
+	public $intAnnounceRegPerm;			//お知らせ登録権限
+	public $intBulletinBoardRegPerm;	//掲示板登録権限
+	public $intQueryRegPerm;			//問い合わせ登録権限
+	public $intIncidentCaseRegPerm;		//インシデント事案登録権限
+	public $intRequestRegPerm;			//依頼事項登録権限
+	public $intInformationRegPerm;		//情報登録権限
+	public $intMenuPerm;				//各種メニュー権限
+	public $strMailAddress;
+	public $intAnnounceMail;
+	public $intBulletinBoardMail;
+	public $intIncidentCaseMail;
+	public $intRequestContentsMail;
+}
+
+// ************************************************************************************************************************************************************
+//	DB CONNECT
+// ************************************************************************************************************************************************************
+
+
+// -------------------------------------------------------------------------
+//	function	: データベース接続
+//	value		:
+//	params		:
+//	memo		:
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+function fncConnectDB(){
+	return $GLOBALS['g_dbaccess']->fncDbConnect();
+}
+
+// ************************************************************************************************************************************************************
+//	DB SELECT
+// ************************************************************************************************************************************************************
+
+// -------------------------------------------------------------------------
+//	function	: ログイン
+//	value		:
+//	params		:
+//	memo		:
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+function fncLogin($strUserID, $strPassword){
+
+	$strSQL = '';
+	$strSQL .= ' SELECT ';
+	$strSQL .= '        m_user.user_no ';
+	$strSQL .= '      , m_user.user_id ';
+	$strSQL .= '      , m_user.language_type ';
+	$strSQL .= '      , m_user.company_no ';
+	$strSQL .= '      , m_company.company_name_jpn ';
+	$strSQL .= '      , m_company.company_name_eng ';
+	$strSQL .= '      , m_company.group_no ';
+	$strSQL .= '      , m_user.user_name ';
+	$strSQL .= '      , m_user.announce_reg_perm ';
+	$strSQL .= '      , m_user.bulletin_board_reg_perm ';
+	$strSQL .= '      , m_user.query_reg_perm ';
+	$strSQL .= '      , m_user.incident_case_reg_perm ';
+	$strSQL .= '      , m_user.request_reg_perm ';
+	$strSQL .= '      , m_user.information_reg_perm ';
+	$strSQL .= '      , m_user.menu_perm ';
+
+	$strSQL .= '      , m_user.mail_address ';
+	$strSQL .= '      , m_user.announce_mail ';
+	$strSQL .= '      , m_user.bulletin_board_mail ';
+	$strSQL .= '      , m_user.incident_case_mail ';
+	$strSQL .= '      , m_user.request_contents_mail ';
+
+	$strSQL .= '   FROM m_user ';
+	$strSQL .= '  INNER JOIN m_company ';
+	$strSQL .= '          ON m_user.company_no = m_company.company_no ';
+	$strSQL .= '  WHERE m_user.user_id = :user_id ';
+	$strSQL .= '    AND m_user.password = :password ';
+	$strSQL .= '    AND m_user.delete_flag = 0 ';
+
+	$objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+	$objStmt->bindParam(':user_id', $strUserID);
+	$objStmt->bindParam(':password', $strPassword);
+
+	$strLogSql = $strSQL;
+	$strLogSql = str_replace(':user_id', $strUserID, $strLogSql);
+	$strLogSql = str_replace(':password', $strPassword, $strLogSql);
+	fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+
+	$objStmt->execute();
+	$arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+	return $arrResult;
+}
+
+// ************************************************************************************************************************************************************
+//	FUNCTION
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: エスケープ処理
+//	value		:
+//	params		:
+//	memo		:
+//	create		: 2020/01/22 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+function fncHtmlSpecialChars($item){
+	return htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
+}
+
+// -------------------------------------------------------------------------
+//	function	: トークン作成処理
+//	value		:
+//	params		:
+//	memo		:
+//	create		: 2020/01/22 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+function fncGetCsrfToken() {
+	$TOKEN_LENGTH = 16;
+	$bytes = openssl_random_pseudo_bytes($TOKEN_LENGTH);
+	return bin2hex($bytes);
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: ログの出力を行う
+//	value		:
+//	params		: ログレベル
+//				: ログパターン
+//				: 出力メッセージ
+//	memo		:
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+function fncWriteLog($intLogLevel, $intLogPattern, $strMsg){
+	// $strMsg=iconv('ISO8859-1', 'UTF-8', $strMsg);
+
+	//DBにログ内容を出力する
+	fncWriteLogToDb($intLogLevel, $intLogPattern, $strMsg);
+
+	/*
+	//ログパターン確認
+	if($intLogPattern == LogPattern['Login']){
+		if(LOG_LOGIN_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['View']){
+		if(LOG_DISPLAY_VIEW_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['Button']){
+		if(LOG_BUTTON_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['Sql']){
+		if(LOG_SQL_FLAG != 1){
+			return;
+		}
+	}
+
+	//ログレベルを確認
+	$strLogLevel = 'INFO';
+	if($intLogLevel == 0){
+		$strLogLevel = 'ERROR';
+	}
+
+	$strLogMsg = '';
+	$strLogMsg = date('Y/m/d H:i:s') .' ' .$strLogLevel .' ' .$strMsg ."\r\n";
+
+
+	//ファイル名、パスを作成
+	$strFileName = date('md') .'.log';
+	$strLogPath = LOG_FOLDER;
+
+	//フルパスを作成
+	$strFilePath = $strLogPath .'\\' .$strFileName;
+
+	if(!file_exists($strFilePath)){
+		//指定ファイルが存在しない場合は、ファイルを作成する.
+		touch($strFilePath);
+	}
+
+	//ファイルを追記モードでオープン
+	$fno = fopen($strFilePath, 'a');
+
+	//文字列を書き出す.
+	fwrite($fno, $strLogMsg);
+
+	//ファイルをクローズ
+	fclose($fno);
+	*/
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: Write Log to DB
+//	value		:
+//	params		: ログレベル
+//				: ログパターン
+//				: 出力メッセージ
+//	memo		:
+//	create		: 2020/01/17 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+
+function fncWriteLogToDb($intLogLevel, $intLogPattern, $strMsg){
+
+	//ログパターン確認
+	if($intLogPattern == LogPattern['Login']){
+		if(LOG_LOGIN_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['View']){
+		if(LOG_DISPLAY_VIEW_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['Button']){
+		if(LOG_BUTTON_FLAG != 1){
+			return;
+		}
+	}else if($intLogPattern == LogPattern['Sql']){
+		if(LOG_SQL_FLAG != 1){
+			return;
+		}
+	}
+
+	//ログレベルを確認
+	$strLogLevel = 'INFO';
+	if($intLogLevel == 0){
+		$strLogLevel = 'ERROR';
+	}
+
+	$strLogMsg = date('Y/m/d H:i:s') .' ' .$strLogLevel .' ' .$strMsg ."\r\n";
+    $regDate = date('Y-m-d');
+
+    $strSQL = '';
+    $strSQL .= ' INSERT INTO t_log ';
+    $strSQL .= ' VALUES(';
+    $strSQL .= ' :reg_date';
+    $strSQL .= ' ,(SELECT ISNULL(MAX( LOGID ), 0)+ 1  FROM t_log WHERE REG_DATE = :reg_d) ';
+    $strSQL .= ' ,:content)';
+
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+
+    $objStmt->bindParam(':reg_date', $regDate);
+    $objStmt->bindParam(':reg_d', $regDate);
+    $objStmt->bindParam(':content', $strLogMsg);
+    $objStmt->execute();
+}
+
+// ************************************************************************************************************************************************************
+//	Amazonからの翻訳
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: Amazonからの翻訳
+//	value		:
+//	params		: 文字列翻訳
+//				: 翻訳タイプ
+//				:
+//	memo		:
+//	create		: 2020/02/21 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+
+function tranAmazon($textTran, $type = 0){ // Type = 0 transalte from JPN -> ENG
+
+    $client = new Aws\Translate\TranslateClient([
+        //'profile' => 'default',
+        'region' => 'us-west-2',
+        'version' => '2017-07-01',
+        'credentials' => [
+            'key' => AWS_ACCESS_KEY,
+            'secret' => AWS_SECRET_KEY,
+        ],
+    ]);
+
+    if(!$type){
+        $currentLanguage= 'ja';
+        $targetLanguage= 'en';
+    }else{
+        $currentLanguage= 'en';
+        $targetLanguage= 'ja';
+    }
+
+    try {
+        $result = $client->translateText([
+            'SourceLanguageCode' => $currentLanguage,
+            'TargetLanguageCode' => $targetLanguage,
+            'Text' => $textTran,
+        ]);
+        return $result['TranslatedText'];
+    }catch (AwsException $e) {
+        // output error message if fails
+        echo $e->getMessage();
+        echo "\n";
+    }
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: Update or Insert Data
+//	value		:
+//	params		: $data
+//				: $tableName
+//				: $condition
+//				: $conditionArray
+//	memo		:
+//	create		: 2020/02/13 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+
+function fncProcessData(array $data, string $tableName, string $condition = '', $conditionArray = array(), $strScreenName = '') {
+	try{
+		if($condition == '') {
+			$strSQL = '';
+			$strSQL .= ' INSERT INTO '. $tableName;
+			$strSQL .= ' (';
+			$tempArr = [];
+			$tempArrBind = [];
+			$tempData = [];
+			foreach($data as $key => $value) {
+				$tempArr[] = $key;
+				$tempArrBind[] = '?';
+				$tempData[] = $value;
+			}
+			$strSQL .= implode(', ', $tempArr);
+			$strSQL .= ')';
+			$strSQL .= ' VALUES (';
+			$strSQL .= implode(', ', $tempArrBind);
+			$strSQL .= ')';
+			$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+			$query->execute($tempData);
+		} else {
+			$strSQL = '';
+			$strSQL .= ' UPDATE '. $tableName;
+			$strSQL .= ' SET ';
+			$count = 0;
+			$tempArr = [];
+			foreach($data as $key => $value) {
+				$tempArr[] = $value;
+				if($count == count($data) - 1) {
+					$strSQL .= " $key=?";
+				} else {
+					$strSQL .= " $key=?,";
+				}
+				$count++;
+			}
+			$strSQL .= ' WHERE '.$condition;
+
+			$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+			$query->execute(array_merge($tempArr, $conditionArray));
+		}
+		fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strScreenName.' '.$strSQL);
+		return $query;
+	} catch(\Exception $e) {
+		fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $strScreenName.' '.$e->getMessage());
+		return $e->getMessage();
+	}
+}
+
+function getListTextTranslate($arrTitle = array(), $lang = 0) {
+    if(count($arrTitle) == 0) {
+        return array();
+    }
+
+    $suffixes = ($lang == 0) ? '_JPN' : '_ENG';
+
+    $arrAllConst = get_defined_constants();
+
+    $resArrTitle = array();
+    foreach ($arrTitle as $title) {
+        $key = $title.$suffixes;
+        if(array_key_exists($key, $arrAllConst)) {
+            $resArrTitle[$title] = fncHtmlSpecialChars($arrAllConst[$key]);
+        } else {
+            $resArrTitle[$title] = '';
+        }
+    }
+
+    return $resArrTitle;
+}
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: SELECT DATA
+//	value		:
+//	params		: $strSQL
+//				: $conditionArray
+//				: $page
+//				: $pagi
+//				: $listViewNum
+//	memo		:
+//	create		: 2020/02/14 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+$totalPage = 0;
+$currentPage = 1;
+$totalRecord = 0;
+function fncSelectData($strSQL, $conditionArray = array(), $page = 1, $pagi = true, $strScreenName = '', $listViewNum = LIST_VIEW_NUM) {
+	try {
+		$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+
+		$query->execute($conditionArray);
+
+		if($listViewNum > 0 && $pagi) {
+			$result = $query->fetchAll(PDO::FETCH_ASSOC);
+			$total = count($result);
+			$GLOBALS['totalRecord'] = $total;
+			$GLOBALS['totalPage'] = ceil($total/$listViewNum);
+			if(!is_numeric($page)) $page = 1;
+			if(!is_numeric($listViewNum)) $listViewNum = 1;
+			$GLOBALS['currentPage'] = $page;
+			if($page=='' || !is_numeric($page) || $page<1) $page=1;
+			$offset = ($page-1)*$listViewNum;
+			$strSQL .= ' OFFSET '.$offset.' ROWS FETCH NEXT '.$listViewNum.' ROWS ONLY;';
+			$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+			$query->execute($conditionArray);
+		}
+
+		foreach($conditionArray as $item) {
+			$from = '/'.preg_quote('?', '/').'/';
+
+			$strSQL = preg_replace($from, $item, $strSQL, 1);
+		}
+
+		//write log
+		fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strScreenName.' '.$strSQL);
+		return $query->fetchAll(PDO::FETCH_ASSOC);
+	} catch (\Exception $e) {
+		fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $strScreenName.' '.$e->getMessage());
+		return 0;
+	}
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: fncViewPagination
+//	value		:
+//	params		: $link = bulletin_board_mng_proc.php
+//	memo		: ajax pagination
+//	create		: 2020/02/14 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+function fncViewPagination($link) {
+	if($GLOBALS['totalPage'] > 1) {
+		// <div style="float: left">
+		// <font size="5">
+		// 	'.$GLOBALS['totalRecord'].'
+		// </font>
+		// </div>
+		echo '
+		<div class="links in-line">
+		<a href="'.$link.'" class="pagi'.iff( $GLOBALS['currentPage']==1, ' disabled', ' first').'" data="1">&laquo;</a>
+		<a href="'.$link.'" class="pagi'.iff( $GLOBALS['currentPage']==1, ' disabled', '').'" data="'.iff( $GLOBALS['currentPage']>1, ($GLOBALS['currentPage']-1), 1).'">&lsaquo;</a>';
+
+		$page = $GLOBALS['currentPage'];
+		$begin = $page - 2;
+		$end = $page + 2;
+		if($begin < 1) $begin = 1;
+		if($end > $GLOBALS['totalPage']) $end = $GLOBALS['totalPage'];
+		if($end <= 5) {
+			$begin = 1;
+			$end = $GLOBALS['totalPage']<=5 ? $GLOBALS['totalPage'] : 5;
+		} else {
+			$begin = $end-4;
+		}
+		for($i = $begin; $i <= $end; $i++) {
+			echo ' <a href="'.$link.'" '.iff($i == $page, 'class="active pagi"', 'class="pagi"').' data="'.$i.'">'.$i.'</a>';
+		}
+			echo ' <a href="'.$link.'" class="pagi'.iff( $GLOBALS['currentPage']==$GLOBALS['totalPage'], ' disabled', '').'" data="'.iff( $GLOBALS['currentPage']<$GLOBALS['totalPage'], ($GLOBALS['currentPage']+1), $GLOBALS['totalPage']).'">&rsaquo;</a>
+			<a href="'.$link.'" class="pagi'.iff( $GLOBALS['currentPage']==$GLOBALS['totalPage'], ' disabled', ' last').'" data="'.$GLOBALS['totalPage'].'">&raquo;</a>
+
+			</div>
+			';
+	}
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: iff
+//	value		:
+//	params		: $condition Boolean
+//				: $a
+//				: $b
+//	memo		:
+//	create		: 2020/02/14 AKB Thang
+//	update		:
+// ------
+function iff($condition, $a, $b) {
+	if($condition) return $a;
+	else return $b;
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: fncArray2Csv
+//	value		:
+//				: $array
+//				: $$filename
+//				: $download
+//				: $path
+//	memo		: export to csv and/or download the file
+//	create		: 2020/02/14 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+function fncArray2Csv($array, $filename = null, $download = 1, $path = null) {
+	try {
+		if($download == 1) {
+			header("Content-Type: application/force-download");
+			header("Content-Type: application/octet-stream");
+			header("Content-Type: application/download");
+			header('Content-Type: text/csv; charset=shift-jis');
+
+			// disposition / encoding on response body
+			// header("Content-Disposition: attachment;filename={$filename}");
+			header("Content-Disposition: attachment;filename=".mb_convert_encoding($filename, 'SJIS', 'UTF-8'));
+			header("Content-Transfer-Encoding: shift-jis");
+			$new_csv = fopen('php://output', 'w');
+		} else {
+			header('Content-Type: text/csv; charset=shift-jis');
+			header("Content-Transfer-Encoding: shift-jis");
+			if (!file_exists($path)) {
+				mkdir($path, 0755, true);
+			}
+			// $new_csv = fopen($path.'/'.$filename, 'w');
+			$new_csv = fopen($path.'/'.mb_convert_encoding($filename, 'SJIS', 'UTF-8'), 'w');
+		}
+		foreach($array as $row) {
+			// foreach($row as $item){
+			// 	$item = chunk_split($item, 50, '\r\n');
+			// }
+			if(!fputcsv($new_csv, $row))
+				return 0;
+			// fputcsv($new_csv, $row);
+		}
+		// Convert CRLF
+		$tmp = str_replace(PHP_EOL, "\r\n", stream_get_contents($new_csv));
+		fclose($new_csv);
+		mb_convert_encoding($tmp, 'SJIS', 'UTF-8');
+		return 1;
+	} catch (\Exception $e) {
+		fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $e->getMessage());
+		return 0;
+	}
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: SELECT ONE RECORD
+//	value		:
+//	params		: $tableName
+//	params		: $condition
+//				: $conditionArray
+//	memo		:
+//	create		: 2020/02/14 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+function fncSelectOne($strSQL, $conditionArray, $strScreenName = ''){
+	try {
+		$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+
+		$query->execute($conditionArray);
+
+		foreach($conditionArray as $item){
+			$from = '/'.preg_quote('?', '/').'/';
+
+			$strSQL = preg_replace($from, $item, $strSQL, 1);
+		}
+		//write log
+		fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strScreenName.' '.$strSQL);
+		return $query->fetch();
+	} catch (\Exception $e) {
+		fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $strScreenName.' '.$e->getMessage());
+		return $e->getMessage();
+	}
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: fncGetText
+//	value		:
+//	params		: getText
+//	params		: $key
+//				: $userLanguageType
+//	memo		: get text translate by Key
+//	create		: 2020/02/24 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+function fncGetText($key, $userLanguageType = 0){
+	$suffixes = ($userLanguageType == 0) ? '_JPN' : '_ENG';
+
+	$arrAllConst = get_defined_constants();
+	$key = $key.$suffixes;
+	if(array_key_exists($key, $arrAllConst)) {
+		$resArrTitle = fncHtmlSpecialChars($arrAllConst[$key]);
+	} else {
+		$resArrTitle = '';
+	}
+	return $resArrTitle;
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: sendMail
+//	value		:
+//	params		: $tableName
+//	params		: $condition
+//				: $conditionArray
+//	memo		: coding
+//	create		: 2020/02/21 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
+function fncSendMail($arrUser = array(), $title = '', $htmlBody = '', $noneHtmlBody = '') {
+	if(count($arrUser) == 0 || $title == '') {
+		return true;
+	}
+	$mail = new PHPMailer(true);
+	try {
+		//Server settings
+		$mail->CharSet    = 'UTF-8';
+		$mail->SMTPDebug  = 0;
+		// $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+		$mail->isSMTP();                                            // Send using SMTP
+		$mail->Host       = MAIL_SMTP_HOST;                    // Set the SMTP server to send through
+		$mail->SMTPAuth   = false;                                   // Enable SMTP authentication
+		$mail->Username   = MAIL_SMTP_USER;                     // SMTP username
+		$mail->Password   = MAIL_SMTP_PASS;                               // SMTP password
+		// $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS ;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+		$mail->Port       = MAIL_SMTP_PORT;                                    // TCP port to connect to
+		$mail->SMTPAutoTLS = false;
+
+		//Recipients
+		$mail->setFrom(MAIL_FROM_ADDRESS, 'Administrator');
+		foreach($arrUser as $user) {
+			$mail->addAddress(trim($user['mail_address']), trim($user['user_name']));     // Add a recipient
+		}
+		// $mail->addAddress('ellen@example.com');               // Name is optional
+		// $mail->addReplyTo('thangvv@akb.com.vn', 'MrThang');
+		// $mail->addCC('cc@example.com');
+		// $mail->addBCC('bcc@example.com');
+		// $mail->SMTPDebug = 4;
+		// Attachments
+		// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+		// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+		// Content
+		$mail->isHTML(true);                                  // Set email format to HTML
+		$mail->Subject = $title;
+		$mail->Body    = $htmlBody;
+		// $mail->AltBody = $noneHtmlBody;
+
+		// echo '<pre>';
+		// print_r($mail);
+		// echo '</pre>';
+
+		$mail->send();
+		// echo 1;
+	} catch (Exception $e) {
+		fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $mail->ErrorInfo);
+		// echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+	}
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: fncCheckEngText
+//	value		:
+//	params		: $tableName
+//	params		: $condition
+//				: $conditionArray
+//	memo		: coding
+//	create		: 2020/02/21 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+function fncCheckEngText($string){
+	for($i=0; $i<strlen($string); $i++){
+		$t = mb_strwidth($string[$i]);
+		if($t==0) return false;
+
+	}
+	return true;
+}
+
+// ************************************************************************************************************************************************************
+//	ログ出力
+// ************************************************************************************************************************************************************
+// -------------------------------------------------------------------------
+//	function	: fncGetDataMUserSendMail
+//	value		:
+//	params		: $field
+//	params		: $strScreenName
+//	memo		: get list user email
+//	create		: 2020/03/04
+//	update		:
+// -------------------------------------------------------------------------
+function fncGetDataMUserSendMail($field, $strScreenName = '') {
+	try {
+		$strSQL = ' SELECT '
+				. '     mu.user_no, '
+				. '     mu.user_id, '
+				. '     mu.user_name, '
+				. '     mu.language_type, '
+				. '     mu.mail_address '
+				. ' FROM '
+				. '     m_user AS mu '
+				. ' WHERE ';
+		$field = strtoupper($field);
+		switch ($field) {
+			case 'ANNOUNCE_MAIL':
+				$strSQL .= ' mu.ANNOUNCE_MAIL = 1 ';
+				break;
+			case 'BULLETIN_BOARD_MAIL':
+				$strSQL .= ' mu.BULLETIN_BOARD_MAIL = 1 ';
+				break;
+			case 'INCIDENT_CASE_MAIL':
+				$strSQL .= ' mu.INCIDENT_CASE_MAIL = 1 ';
+				break;
+			case 'REQUEST_CONTENTS_MAIL':
+				$strSQL .= ' mu.REQUEST_CONTENTS_MAIL = 1 ';
+				break;
+		}
+		$arrResult = fncSelectData($strSQL, array(), 1, false, $strScreenName);
+		return $arrResult;
+	} catch (\Exception $e) {
+		fncWriteLog(LogLevel['Error'], LogPattern['Error'], $e->getMessage());
+		return 0;
+	}
+}
+?>

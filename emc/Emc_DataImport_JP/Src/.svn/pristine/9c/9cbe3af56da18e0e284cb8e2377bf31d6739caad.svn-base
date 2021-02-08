@@ -1,0 +1,341 @@
+<?php
+/*
+* @query_view_proc.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+
+
+
+
+require_once('common/common.php');
+
+require_once('common/validate_user.php');
+require_once('portal_function.php');
+
+const DISPLAY_NAME = '問い合わせ画面';
+const DISPLAY_NAME_PORTAL_IN_QUERY = 'ポータル画面';
+const ACTION_NAME = '問い合わせ画面　投稿';
+$arrMSG = [
+    'PUBLIC_TEXT_001',
+    'PUBLIC_TEXT_002',
+    'PUBLIC_TEXT_003',
+    'PUBLIC_TEXT_004',
+    'PUBLIC_TEXT_005',
+    'PUBLIC_TEXT_006',
+    'PUBLIC_TEXT_007',
+    'PUBLIC_TEXT_008',
+    'PUBLIC_MSG_009',
+
+    'PUBLIC_BUTTON_001',
+    'PUBLIC_BUTTON_002',
+    'PUBLIC_BUTTON_003',
+    'PUBLIC_BUTTON_004',
+    'PUBLIC_BUTTON_005',
+    'QUERY_VIEW_TEXT_001',
+    'USER_PERM_MSG_001',
+
+    'QUERY_VIEW_MSG_001',
+    'QUERY_VIEW_MSG_002',
+    'QUERY_VIEW_MSG_003',
+    'QUERY_VIEW_MSG_004',
+    'PUBLIC_MSG_049',
+
+];
+
+if (!isset($arrText)) {
+    $arrText = array();
+}
+$arrText = array_merge(
+    getListTextTranslate($arrMSG, $objLoginUserInfo->intLanguageType),
+    $arrText
+);
+
+
+
+if (!$objLoginUserInfo->intQueryRegPerm
+    && $_SERVER['REQUEST_URI'] == '/information_sharing/query_view.php') {
+    $alertMsg = $arrText['PUBLIC_MSG_009'];
+    echo "
+        <script>
+            alert('" . $alertMsg . "');
+            window.location.href = 'login.php';
+        </script>
+    ";
+}
+
+if(empty($_POST)){
+    if(isset($objLoginUserInfo->intLanguageType)){
+        $strMes = $arrText['PUBLIC_MSG_049'];
+    }else{
+        $strMes = ".PUBLIC_MSG_049_JPN."/".PUBLIC_MSG_049_ENG.";
+    }
+    echo "<script>alert('".$strMes."');
+    history.back();</script>";
+}
+$intFlagQuery = @$_POST['intFlagQuery'];
+$intFlagFromBtn = @$_POST['fromBtn'];
+if($intFlagFromBtn){
+    $intFlagQuery = 1;
+}
+
+
+
+$intCheck24h = 0;
+$intIsAjax = @$_POST['isAjax'];
+if (@$_POST['action'] == 'insert_query') {
+    $strViewLog = ACTION_NAME.'(ユーザID = ' . $objLoginUserInfo->strUserID . ') ';
+    fncWriteLog(LogLevel['Info'], LogPattern['Button'], $strViewLog);
+    
+    $arrValidate = validateInputText($_POST, $arrText, $objLoginUserInfo);
+    if (is_array($arrValidate)) {
+        echo json_encode($arrValidate);
+    } else {
+        if(!$_POST['txtTarget']){
+            $_POST['txtTarget'] = $arrValidate;
+        }
+        insert($_POST, $objLoginUserInfo);
+        echo 1;
+    }
+} else {
+    if($intFlagQuery){
+        $strDisplayName = DISPLAY_NAME;
+    }else{
+        $strDisplayName = DISPLAY_NAME_PORTAL_IN_QUERY;
+    }
+    $strViewLog = $strDisplayName.'　画面表示(ユーザID = ' . $objLoginUserInfo->strUserID . ') ' .
+        (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+    if($intFlagFromBtn){
+        fncWriteLog(LogLevel['Info'], LogPattern['View'], $strViewLog);
+    }
+    
+    if(isset($_POST['typeOfTime'])) {
+        $intCheck24h = $_POST['typeOfTime'];
+    }
+    $arrQuery = get_query($intCheck24h, $intIsAjax,@$_POST['intFlagQuery'],@$_POST['intFlagChangeTime'],$intFlagFromBtn);
+    if (!empty($arrQuery)) {
+        $arrUserName = getMapName($arrQuery, $strEndLang,@$_POST['intFlagQuery'],$intFlagFromBtn);
+    }
+}
+
+$arrayIdInCompany = get_all_id_in_company($objLoginUserInfo->intUserNo,$intFlagQuery,$intFlagFromBtn);
+$mapArrIds = array();
+foreach ($arrayIdInCompany as $item) {
+    $mapArrIds[] = $item['USER_NO'];
+}
+
+
+/**
+ * 簡略配列データがidにマッピングされました
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $arrQuery IDリスト
+ * @param $strEndLang ユーザーがログインする言語サフィックス
+ * @return array IDで設定された短縮マッピングデータを返します
+ */
+function getMapName($arrQuery, $strEndLang,$intFlagQuery,$intFlagFromBtn)
+{
+    $arrAllIds = array();
+    $arrUserName = array();
+    foreach ($arrQuery as $item) {
+        $arrAllIds[$item['QUERY_USER_NO']] = $item['QUERY_USER_NO'];
+    }
+
+    $arrDataUserName = get_query_name_in_array($arrAllIds,$intFlagQuery,$intFlagFromBtn);
+    foreach ($arrDataUserName as $us) {
+        $arrUserName[$us['USER_NO']] = $us['ABBREVIATIONS' . $strEndLang];
+    }
+    return $arrUserName;
+}
+
+/**
+ * 簡略配列データがidにマッピングされました
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $arrData t_queryテーブルに保存されるデータには、
+ * テキストソース、テキストターゲット、翻訳元から言語への変換が含まれます
+ * @param $objLoginUserInfo ユーザーログインオブジェクト
+ * @return
+ */
+function insert($arrData, $objLoginUserInfo)
+{
+    $intFlag = 1;
+    if ($arrData['ckeckMan'] == 'false') {
+        $intFlag = 0;
+    }
+    if ($arrData['sleTran'] == 'ej') {
+        $strEn = $arrData['txtSource'];
+        $strJpn = $arrData['txtTarget'];
+        $intLangType = 1;
+    } else {
+        $strEn = $arrData['txtTarget'];
+        $strJpn = $arrData['txtSource'];
+        $intLangType = 0;
+    }
+    $strSQL = '';
+    $strSQL .= ' INSERT INTO t_query ';
+    $strSQL .= ' VALUES(';
+    $strSQL .= '(SELECT ISNULL(MAX( QUERY_NO ), 0)+ 1  FROM t_query),';
+    $strSQL .= ':QUERY_DATE,';
+    $strSQL .= ':QUERY_USER_NO,';
+    $strSQL .= ':CONTENT_JPN,';
+    $strSQL .= ':CONTENTS_ENG,';
+    $strSQL .= ':LANGUAGE_TYPE,';
+    $strSQL .= ':CORRECTION_FLAG';
+    $strSQL .= ')';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $dtmDate = date('Y-m-d H:i:s');
+    $objStmt->bindParam(':QUERY_DATE', $dtmDate);
+    $objStmt->bindParam(':QUERY_USER_NO', $objLoginUserInfo->intUserNo);
+    $objStmt->bindParam(':CONTENT_JPN', $strJpn);
+    $objStmt->bindParam(':CONTENTS_ENG', $strEn);
+    $objStmt->bindParam(':LANGUAGE_TYPE', $intLangType);
+    $objStmt->bindParam(':CORRECTION_FLAG', $intFlag, PDO::PARAM_INT);
+    $strLogSql = DISPLAY_NAME . $strSQL;
+    $strLogSql = str_replace(':QUERY_DATE', date('Y-m-d H:i:s'), $strLogSql);
+    $strLogSql = str_replace(':QUERY_USER_NO', $objLoginUserInfo->intUserNo, $strLogSql);
+    $strLogSql = str_replace(':CONTENT_JPN', $strJpn, $strLogSql);
+    $strLogSql = str_replace(':CONTENTS_ENG', $strEn, $strLogSql);
+    $strLogSql = str_replace(':LANGUAGE_TYPE', $intLangType, $strLogSql);
+    $strLogSql = str_replace(':CORRECTION_FLAG', $intFlag, $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        return $objStmt->execute();
+    }catch (Exception $e) {
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.$e->getMessage());
+    }
+}
+
+/**
+ * t_queryテーブルのデータを取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $intCheck24h フラグチェックは24時間でデータを取得します
+ * @param $intIsAjax ajaxのフラグチェック取得
+ * @param $objLoginUserInfo ユーザーログインオブジェクト
+ * @return array t_queryリスト
+ */
+function get_query($intCheck24h, $intIsAjax = 0,$intFlagQuery = 1,$intFlagChangeTime = 0,$intFlagFromBtn)
+{
+    if ($intIsAjax && !$intFlagChangeTime) {
+        $intMaxQueryId = isset($_SESSION["maxQueryId"]) ? $_SESSION["maxQueryId"] : 0;
+    } else {
+        $intMaxQueryId = 0;
+        $_SESSION["maxQueryId"] = 0;
+    }
+    $strSQL = '';
+    $strSQL .= ' SELECT * FROM t_query ';
+    $strSQL .= ' WHERE';
+    if ($intCheck24h) {
+        $strSQL .= ' QUERY_DATE >= DATEADD(day, -1, GETDATE()) AND';
+    } else {
+        $strSQL .= ' QUERY_DATE >= DATEADD(day, -' .QUERY_VIEW_DAY . ', GETDATE()) AND';
+    }
+
+    $strSQL .= ' QUERY_NO > :QUERY_NO_MAX';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':QUERY_NO_MAX', $intMaxQueryId);
+
+    if($intFlagQuery || $intFlagFromBtn){
+        $trDisplayName = DISPLAY_NAME;
+    }else{
+        $trDisplayName = DISPLAY_NAME_PORTAL_IN_QUERY;
+    }
+    $strLogSql = $trDisplayName . $strSQL;
+    $strLogSql = str_replace(':QUERY_NO_MAX', $intMaxQueryId, $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], $trDisplayName.' '.$e->getMessage());
+    }
+    $_SESSION["maxQueryId"] =
+        count($arrResult) ? end($arrResult)['QUERY_NO'] : $intMaxQueryId;
+    return $arrResult;
+}
+
+/**
+ * 会社のすべてのユーザーIDを取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $intUserId ユーザーID
+ * @return array ユーザー配列
+ */
+function get_all_id_in_company($intUserId,$intFlagQuery,$intFlagFromBtn)
+{
+    $strSQL = '';
+    $strSQL .= ' SELECT USER_NO FROM m_user ';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' COMPANY_NO = (SELECT COMPANY_NO FROM m_user 
+                WHERE USER_NO =:USER_NO)';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':USER_NO', $intUserId);
+    if($intFlagQuery){
+        $trDisplayName = DISPLAY_NAME;
+    }else{
+        $trDisplayName = DISPLAY_NAME_PORTAL_IN_QUERY;
+    }
+    $strLogSql = $trDisplayName . $strSQL;
+    $strLogSql = str_replace(':USER_NO', $intUserId, $strLogSql);
+    if($intFlagFromBtn){
+        fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    }
+
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * ユーザーIDリストごとに会社情報を含むすべてのユーザー情報を取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $intUserId ユーザーID
+ * @param $intFlagQuery タッチスクリーンからフラグを確認する
+ * @return array 会社のすべてのユーザー情報
+ */
+function get_query_name_in_array($intUserId,$intFlagQuery,$intFlagFromBtn)
+{
+    //$listUserIds = implode(",",array_map('intval', $intUserId));
+    $strSQL = '';
+    $strSQL .= ' SELECT USER_NO,USER_NAME,ABBREVIATIONS_ENG,ABBREVIATIONS_JPN';
+    $strSQL .= ' FROM m_user';
+    $strSQL .= ' INNER JOIN m_company ON m_company.COMPANY_NO = m_user.COMPANY_NO';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' USER_NO IN (' . implode(",", array_map('intval',$intUserId)). ')';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    if($intFlagQuery || $intFlagFromBtn){
+        $trDisplayName = DISPLAY_NAME;
+    }else{
+        $trDisplayName = DISPLAY_NAME_PORTAL_IN_QUERY;
+    }
+    $strLogSql = $trDisplayName . $strSQL;
+    if($intFlagFromBtn){
+        fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    }
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], $trDisplayName.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}

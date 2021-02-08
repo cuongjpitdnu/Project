@@ -1,0 +1,16 @@
+<?php
+/*
+* @incident_case_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+    require_once ('portal_function.php');
+    if(@$arrIncident){
+        foreach ($arrIncident as $item){
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_003'].': ' . date('Y/m/d H:i:s',strtotime($item['S_DATE'])).'</div>';
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_004'].': <a href="#" onclick=\'loadModalIncident('.$item['INCIDENT_CASE_NO'].')\' >' . $item['TITLE'.$strEndLang].' </a></div>';
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_005'].': ' . $item['CONTENTS'.$strEndLang].'</div>';
+        }
+    }
+?>

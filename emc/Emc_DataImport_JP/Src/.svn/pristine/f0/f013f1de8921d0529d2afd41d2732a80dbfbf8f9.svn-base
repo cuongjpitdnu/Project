@@ -1,0 +1,38 @@
+<?php
+/*
+* @info_form_content.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+?>
+<div>
+    <?php
+    require_once ('portal_proc.php');
+    if(count($arrInfo) >0){
+        foreach ($arrInfo as $item){
+            $tilte = $item['TITLE'.$strEndLang];
+            if(!$tilte){
+                $intUntra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $tilte = $item['TITLE_ENG'];
+                }else{
+                    $tilte = $item['TITLE_JPN'];
+                }
+            }
+            ?>
+            <div class="t-row">
+                <div class="t-col-md-3">
+                    <?php echo date('Y-m-d H:i:s',strtotime($item['REG_DATE']))?>
+                </div>
+                <div class="t-col-md-3">
+                    <a href="#" onclick="loadModalAnonView(<?php echo $item['ANNOUNCE_NO'] ?>)">
+                        <?php echo fncHtmlSpecialChars($tilte)?>
+                    </a>
+                </div>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>

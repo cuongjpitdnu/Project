@@ -1,0 +1,7 @@
+common.phpを以下に変更すること
+
+require 'vendor/autoload.php';
+
+↓
+
+require 'C:/information_sharing/vendor/autoload.php';

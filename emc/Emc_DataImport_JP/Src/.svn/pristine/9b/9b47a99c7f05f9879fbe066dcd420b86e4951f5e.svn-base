@@ -1,0 +1,465 @@
+function load_ajax(id){
+    $.ajax({
+        url : "announce_view.html",
+        type : "GET",
+        // type : "POST",
+        dataType:"text",
+        data : {
+            textTitle : $('#title-source').val(),
+            idChat : id,
+        },
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModal(modal)
+{
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+
+    $.ajax({
+        url : modal,
+        type : "GET",
+        // type : "POST",
+        dataType:"text",
+        data : {
+            textTitle : $('#title-source').val(),
+        },
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadView(modal,id)
+{
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : modal,
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModalAnonView(id)
+{
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'announce_view.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModalIncident(id)
+{
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'incident_case_view.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModalAnnonEdit(id,dataId)
+{
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'dataId',value: dataId },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'announce_edit.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+
+function loadChat(modal) {
+    var intTimeReload = $('#reloadTimeInfoBoad').val();
+    var inLoadChatForm = setInterval('loadChatForm(1)',intTimeReload*1000);
+    $('#modal-body').html('');
+    $('#myModal').modal({
+            backdrop: 'static'
+    });
+
+    var radioValue = $("input[name='gettime']:checked").val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'typeOfTime',value: radioValue },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+    ];
+
+    $.ajax({
+        url : modal,
+        // type : "GET",
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+
+$( document ).ready(function() {
+    loadInval();
+    $('.selAnnounceTime').on('change', function() {
+        var intId = $(this).attr('data-id');
+        loadInfo(intId);
+    });
+
+    $("input[name='gettime']").on('change', function() {
+        loadChatFormPortal(1);
+    });
+
+});
+function loadInval() {
+    var intTimeReload = $('#reloadTimeInfoBoad').val();
+    var inLoadInfo = setInterval('loadInfo(1)',intTimeReload*1000);
+    var inLoadBull = setInterval('loadBull()',intTimeReload*1000);
+    var inLoadChatForm = setInterval('loadChatFormPortal()',intTimeReload*1000);
+    var inLoadIncident = setInterval('loadIncident()',intTimeReload*1000);
+    return [inLoadInfo,inLoadBull,inLoadChatForm,inLoadIncident];
+}
+
+
+function loadChatFormPortal(intFlagChangeTime) {
+    var radioValue = $("input[name='gettime']:checked").val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'typeOfTime',value: radioValue },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 },
+        {name: 'intFlagChangeTime',value: intFlagChangeTime }
+    ];
+
+    $.ajax({
+        url : 'msg_history_form.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(intFlagChangeTime == 1){
+                $('.msg_history').html(result);
+            }else{
+                if(result.length > 2){
+                    $('.msg_history').append(result);
+                    $('.msg_history').stop().animate({
+                        scrollTop: $('.msg_history')[0].scrollHeight
+                    }, 1);
+                }
+            }
+        }
+    });
+}
+
+
+function loadInfo(intNumberTab) {
+    var csrf = $('#csrf').val();
+    var selectedDate = $("#selTimeAnnouce"+intNumberTab).children("option:selected").val();
+    var data = [
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'action',value: 'load_info' },
+        {name: 'dtmDateFilter',value: selectedDate }
+    ];
+
+    $.ajax({
+        url : 'info_form_content.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('#info-cont-'+intNumberTab).html(result);
+            }
+        }
+    });
+}
+function loadIncident() {
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'action',value: 'load-incident' },
+    ];
+
+    $.ajax({
+        url : 'incident_boad_ajax.php',
+        type : "POST",
+        dataType:"JSON",
+        data : data,
+        success : function (result){
+            if(result.intIncident == 1){
+                $('.el-tab-2').show();
+            }else{
+                $('.el-tab-2').hide();
+            }
+
+            if(result.intShowBtn == 1){
+                $('#span-btnSearch').show();
+            }else{
+                $('#span-btnSearch').hide();
+            }
+            $('#timeJST').html(result.strJstTime);
+            $('#timeUTC').html(result.strUtcTime);
+        }
+    });
+}
+
+function loadBull() {
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'action',value: 'load_bull' }
+    ];
+
+    $.ajax({
+        url : 'bull_form.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('#bull_form').html(result);
+            }
+        }
+    });
+}
+
+
+
+
+window.onresize = function(event) {
+    var info = 'info-cont2';
+    var infoRight = 'info-cont';
+    var tickers = 'tickers';
+    var ticker = 'con-ticker';
+    doResize(info,18);
+    doResize(infoRight,13);
+    doResizeTable(tickers,48);
+    doResize(ticker,15);
+
+
+    var divIdmes = 'msg_history';
+    var divInfo = 'info-cont1';
+    var divImgMap = 'img-map';
+    var divBull = 't-body-table';
+    doResize(divIdmes,68);
+
+    doResize(divInfo,21);
+    doResize(divImgMap,28);
+    doResize(divBull,21);
+
+}
+
+
+function doResize(divId,pecent) {
+    var xper = 1;
+    var vph = $(window).height();
+
+    if(100<vph && vph<200){
+        xper = 3;
+    }else if(200<vph && vph<300){
+        xper = 2.9;
+    }else if(300<vph && vph<350){
+        xper = 2.8;
+    }else if(350<=vph && vph<380){
+        xper = 2.65;
+    }else if(380<=vph && vph<400){
+        xper = 2.5;
+    }else if(400<=vph && vph<410){
+        xper = 2.45;
+    }else if(410<=vph && vph<420){
+        xper = 2.4;
+    }else if(420<=vph && vph<430){
+        xper = 2.3;
+    }else if(430<=vph && vph<440){
+        xper = 2.2;
+    }else if(440<=vph && vph<450){
+        xper = 2;
+    }else if(450<=vph && vph<470){
+        xper = 1.9;
+    }else if(470<=vph && vph<480){
+        xper = 1.8;
+    }else if(480<=vph && vph<500){
+        xper = 1.7;
+    }else if(500<=vph && vph<550){
+        xper = 1.65;
+    }else if(550<=vph && vph<600){
+        xper = 1.5;
+    }else if(600<=vph && vph<620){
+        xper = 1.45;
+    }else if(620<=vph && vph<650){
+        xper = 1.35;
+    }else if(650<=vph && vph<700){
+        xper = 1.24;
+    }else if(700<vph && vph<750){
+        xper = 1.17;
+    }else if(750<=vph && vph<800){
+        xper = 1.11;
+    }else if(800<=vph && vph<830) {
+        xper = 1.08;
+    }else if(830<=vph && vph<850) {
+        xper = 1.06;
+    }else if(850<=vph && vph<900) {
+        xper = 1.04;
+    }else if(900<=vph && vph<950) {
+        xper = 1.02;
+    }else{
+        xper = 1;
+    }
+    heighDiv = vph*pecent/(100*xper);
+    $('.'+divId).css({'height': heighDiv + 'px'});
+}
+
+
+function doResizeTable(divId,pecent) {
+    var xper = 1;
+    var vph = $(window).height();
+
+    if(100<vph && vph<200){
+        xper = 3;
+    }else if(200<vph && vph<300){
+        xper = 2.9;
+    }else if(300<vph && vph<350){
+        xper = 2.8;
+    }else if(350<=vph && vph<380){
+        xper = 2.65;
+    }else if(380<=vph && vph<400){
+        xper = 2.5;
+    }else if(400<=vph && vph<410){
+        xper = 2.45;
+    }else if(410<=vph && vph<420){
+        xper = 2.4;
+    }else if(420<=vph && vph<430){
+        xper = 2.3;
+    }else if(430<=vph && vph<440){
+        xper = 2.2;
+    }else if(440<=vph && vph<450){
+        xper = 2;
+    }else if(450<=vph && vph<470){
+        xper = 1.9;
+    }else if(470<=vph && vph<480){
+        xper = 1.8;
+    }else if(480<=vph && vph<500){
+        xper = 1.7;
+    }else if(500<=vph && vph<550){
+        xper = 2;
+    }else if(550<=vph && vph<600){
+        xper = 1.8;
+    }else if(600<=vph && vph<620){
+        xper = 1.7;
+    }else if(620<=vph && vph<650){
+        xper = 1.6;
+    }else if(650<=vph && vph<700){
+        xper = 1.5;
+    }else if(700<vph && vph<750){
+        xper = 1.3;
+    }else if(750<=vph && vph<800){
+        xper = 1.2;
+    }else if(800<=vph && vph<830) {
+        xper = 1.15;
+    }else if(830<=vph && vph<850) {
+        xper = 1.11;
+    }else if(850<=vph && vph<900) {
+        xper = 1.07;
+    }else if(900<=vph && vph<950) {
+        xper = 1.04;
+    }else{
+        xper = 1;
+    }
+
+    heighDiv = vph*pecent/(100*xper);
+    $('.'+divId).css({'height': heighDiv + 'px'});
+}
+
+
+
+$(document).ready(function() {
+    $('#without_com').change(function() {
+        var checkWithoutCom = $(this).is(':checked'); // this gives me null
+        getinfodata(checkWithoutCom);
+    });
+
+});
+function getinfodata(checkWithoutCom) {
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'checkWithoutCom',value: checkWithoutCom },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 },
+        {name: 'action',value: 'long-form' }
+    ];
+
+    $.ajax({
+        url : "incident_boad_info_long_form.php",
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#long_form').html(result);
+        }
+    });
+}
+
+
+

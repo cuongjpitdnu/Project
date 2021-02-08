@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板　編集</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">掲示板　編集</div>
+        <div class="form-body">
+            <div class="cont-title">
+                <div class="">
+                    <div class="title in-line">発生日時/abcabcabc</div>
+                    <div class="title in-line cont-time">2019/11/30 12:30</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="title">業務名/abcabcabc</div>
+                <div class="info-left">
+                    <div class="line">
+                        <div class="in-line tlabel">(原文/Original)</div>
+                        <div class="in-line text-input text-bold"><?php echo @$chat[0]['text']?></div>
+                    </div>
+                    <div class="line">
+                        <div class="in-line tlabel">(翻訳/・・・)</div>
+                        <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">インシデント件名/abcabcabc</div>
+            <div class="info">
+                <div class="line">
+                    <div >(原文/Original)</div>
+                    <div class="text-input text-bold">
+                        ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+                    </div>
+                </div>
+            </div>
+            <div class="col-left">
+                <div class="title">場所/Location</div>
+                <div class="info-left">
+                    <div class="line">
+                        <div class="in-line tlabel">(原文/Original)</div>
+                        <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                    </div>
+                    <div class="line">
+                        <div class="in-line tlabel">(翻訳/・・・)</div>
+                        <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="in-line tlabel"><input type="checkbox" name="vehicle1" value="Bike">翻訳を手入力する</div>
+                <div class="in-line text-input col-right">
+                    <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal">翻訳</button>
+                </div>
+            </div>
+
+            <div class="top-20">
+                <div class="title">インシデント件名/abcabcabc （翻訳）</div>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="form-footer top-20">
+                <div class="in-line">
+                    <button type="submit" class="tbtn tbtn-defaut " onclick="loadModal('bulletin_board_view.html')">投稿</button>
+                </div>
+                <div class="in-line text-right" style="float: right">
+                    <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

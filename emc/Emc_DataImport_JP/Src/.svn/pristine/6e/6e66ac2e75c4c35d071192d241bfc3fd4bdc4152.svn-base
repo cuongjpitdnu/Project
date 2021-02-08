@@ -1,0 +1,595 @@
+<?php
+/*
+* @portal_function.php
+*
+* @create 2020/02/17 KBS Tam.nv
+* @update
+*/
+const DISPLAY_NAME_PORTAL = 'ポータル画面 画面表示';
+
+require_once('common/common.php');
+require_once('common/validate_user.php');
+$arrMSG = [
+    'PORTAL_TEXT_001',
+    'PORTAL_TEXT_002',
+    'PORTAL_TEXT_003',
+    'PORTAL_TEXT_004',
+    'PORTAL_TEXT_005',
+    'PORTAL_TEXT_006',
+    'PORTAL_TEXT_007',
+    'PORTAL_TEXT_008',
+    'PORTAL_TEXT_009',
+    'PORTAL_TEXT_010',
+    'PORTAL_TEXT_011',
+    'PORTAL_TEXT_012',
+    'PORTAL_TEXT_013',
+    'PORTAL_TEXT_014',
+    'PORTAL_TEXT_015',
+    'PORTAL_TEXT_016',
+    'PORTAL_TEXT_017',
+
+    'PORTAL_DAILY_BUTTON_001',
+    'PORTAL_DAILY_TEXT_001',
+    'PUBLIC_BUTTON_001',
+    'PORTAL_DAILY_TEXT_002',
+    'PORTAL_DAILY_TEXT_003',
+    'PORTAL_DAILY_TEXT_004',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_005',
+    'PORTAL_DAILY_TEXT_006',
+    'PORTAL_DAILY_TEXT_007',
+    'PORTAL_DAILY_BUTTON_002',
+    'PORTAL_DAILY_TEXT_008',
+    'PORTAL_DAILY_TEXT_009',
+    'PORTAL_DAILY_TEXT_010',
+    'PORTAL_DAILY_TEXT_011',
+    'PORTAL_DAILY_TEXT_012',
+
+    'PUBLIC_TEXT_001',
+    'PUBLIC_TEXT_002',
+    'PUBLIC_TEXT_003',
+    'PUBLIC_TEXT_004',
+    'PUBLIC_TEXT_005',
+    'PUBLIC_TEXT_006',
+    'PUBLIC_TEXT_007',
+    'PUBLIC_TEXT_008',
+
+    'PUBLIC_MSG_010',
+    'PUBLIC_MSG_026',
+    'PUBLIC_MSG_028',
+    'PUBLIC_MSG_036',
+    'PUBLIC_MSG_042',
+    'PUBLIC_MSG_045',
+    'PUBLIC_MSG_046',
+    'PUBLIC_MSG_047',
+    'PUBLIC_MSG_048',
+    'USER_PERM_MSG_001',
+
+    //Incident boad
+    'PORTAL_INCIDENT_TEXT_001',
+    'PORTAL_INCIDENT_TEXT_002',
+    'PORTAL_INCIDENT_TEXT_003',
+    'PORTAL_INCIDENT_TEXT_004',
+    'PORTAL_INCIDENT_TEXT_005',
+    'PORTAL_INCIDENT_TEXT_006',
+    'PORTAL_INCIDENT_TEXT_007',
+    'PORTAL_INCIDENT_TEXT_008',
+    'PORTAL_INCIDENT_TEXT_009',
+    'PORTAL_INCIDENT_TEXT_010',
+    'PORTAL_INCIDENT_TEXT_011',
+    'PORTAL_INCIDENT_TEXT_012',
+    'PORTAL_INCIDENT_TEXT_013',
+    'PORTAL_INCIDENT_TEXT_014',
+    'PORTAL_INCIDENT_TEXT_015',
+    'PORTAL_INCIDENT_TEXT_016',
+    'PORTAL_INCIDENT_TEXT_017',
+    'PORTAL_INCIDENT_TEXT_018',
+    'PORTAL_INCIDENT_TEXT_019',
+    'PORTAL_INCIDENT_TEXT_020',
+];
+//Define data untranslate
+
+$arrText = getListTextTranslate($arrMSG,$objLoginUserInfo->intLanguageType);
+$strUtcTime = date("m/d H:i:s", time() - date("Z"));
+$strJstTime = date('m/d H:i:s');
+
+$arrColorBgArr = ['red','brown','yellow','green','blue','white'];
+
+/**
+ * リストを取得する
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param $dtmDate 時間
+ * @return array リスト発表
+ */
+function get_annouce($dtmDate = ''){
+    if($dtmDate){
+        $dtmStart =  date('Y-m-01', strtotime(str_replace('/', '-', $dtmDate)));
+        $dtmEnd =  date('Y-m-t', strtotime(str_replace('/', '-', $dtmDate)));
+        $strSQLDate = ' AND REG_DATE BETWEEN :DATE_START AND :DATE_END';
+    }
+    $strSQL = '';
+    $strSQL .= ' SELECT * FROM t_announce ';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' COMP_DATE IS NULL';
+    $strSQL .= @$strSQLDate;
+    $strSQL .= ' ORDER BY reg_date DESC';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    if($dtmDate){
+        $objStmt->bindParam(':DATE_START', $dtmStart);
+        $objStmt->bindParam(':DATE_END', $dtmEnd);
+    }
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    if($dtmDate){
+        $strLogSql = str_replace(':DATE_START',$dtmStart,$strLogSql);
+        $strLogSql = str_replace(':DATE_END',$dtmEnd,$strLogSql);
+    }
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * 情報を翻訳する
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param $arrAnnoList リストは翻訳を発表します
+ * @param $objLoginUserInfo オブジェクトユーザーログイン
+ * @return
+ */
+function tranInfo($arrAnnoList,$objLoginUserInfo){
+    if($objLoginUserInfo->intLanguageType && count($arrAnnoList)>0){
+        $strTitle = '';
+        $strContent = '';
+        $arrIds = array();
+        foreach ($arrAnnoList as $arrItem){
+            if(!$arrItem['UNTRANSLATED']){
+                if($strTitle){
+                    $strTitle .= ' [KBSMARCODE] '.$arrItem['TITLE_JPN'];
+                }else{
+                    $strTitle .= $arrItem['TITLE_JPN'];
+                }
+                if($strContent){
+                    $strContent .= ' [KBSMARCODE] '.$arrItem['CONTENTS_JPN'];
+                }else{
+                    $strContent .= $arrItem['CONTENTS_JPN'];
+                }
+                $arrIds[] = $arrItem['ANNOUNCE_NO'];
+            }
+        }
+        if(count($arrIds)){
+            $strTranTitle = tranAmazon($strTitle);
+            $strTranContent = tranAmazon($strContent);
+            $arrTranTitle = explode(' [KBSMARCODE] ',$strTranTitle);
+            $arrTranContent = explode(' [KBSMARCODE] ',$strTranContent);
+
+            foreach ($arrIds as $intKey => $intId){
+                $dtmDate = date('Y-m-d H:i:s');
+                $strSQL = '';
+                $strSQL .= ' UPDATE t_announce SET ';
+                $strSQL .= ' TITLE_ENG = :TITLE_ENG, ';
+                $strSQL .= ' CONTENTS_ENG = :CONTENTS_ENG, ';
+                $strSQL .= ' UP_USER_NO = :UP_USER_NO, ';
+                $strSQL .= ' UP_DATE = :UP_DATE, ';
+                $strSQL .= ' UNTRANSLATED = 1 ';
+                $strSQL .= ' WHERE ANNOUNCE_NO = :ANNOUNCE_NO; ';
+                $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                $objStmt->bindParam(':TITLE_ENG', $arrTranTitle[$intKey]);
+                $objStmt->bindParam(':CONTENTS_ENG', $arrTranContent[$intKey]);
+                $objStmt->bindParam(':UP_USER_NO', $objLoginUserInfo->intUserNo);
+                $objStmt->bindParam(':UP_DATE', $dtmDate);
+                $objStmt->bindParam(':ANNOUNCE_NO',$intId);
+                $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+                $strLogSql = str_replace(':TITLE_ENG', $arrTranTitle[$intKey],$strLogSql);
+                $strLogSql = str_replace(':CONTENTS_ENG', $arrTranContent[$intKey],$strLogSql);
+                $strLogSql = str_replace(':ANNOUNCE_NO', $intId,$strLogSql);
+                $strLogSql = str_replace(':UP_USER_NO',$objLoginUserInfo->intUserNo,$strLogSql);
+                $strLogSql = str_replace(':UP_DATE', $dtmDate,$strLogSql);
+                fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                $objStmt->execute();
+            }
+        }
+    }
+}
+
+/**
+ * 速報を翻訳する
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param $arrList 速報リスト
+ * @param $objLoginUserInfo オブジェクトユーザーログイン
+ * @return
+ */
+function tranBul($arrList,$objLoginUserInfo){
+    if($objLoginUserInfo->intLanguageType && count($arrList)>0){
+        $strContent = '';
+        $arrIds = array();
+        foreach ($arrList as $arrItem){
+            if(!$arrItem['UNTRANSLATED']){
+                if($strContent){
+                    $strContent .= ' [KBSMARCODE] '.$arrItem['INCIDENT_NAME_JPN'];
+                }else{
+                    $strContent .= $arrItem['INCIDENT_NAME_JPN'];
+                }
+                $arrIds[] = $arrItem['BULLETIN_BOARD_NO'];
+            }
+        }
+        if(count($arrIds)){
+            $strTranContent = tranAmazon($strContent);
+            $arrTranContent = explode(' [KBSMARCODE] ',$strTranContent);
+
+            foreach ($arrIds as $intKey => $intId){
+                $updated = date('Y-m-d H:i:s');
+                $strSQL = '';
+                $strSQL .= ' UPDATE t_bulletin_board SET ';
+                $strSQL .= ' INCIDENT_NAME_ENG = :INCIDENT_NAME_ENG, ';
+                $strSQL .= ' UP_USER_NO = :UP_USER_NO, ';
+                $strSQL .= ' UP_DATE = :UP_DATE, ';
+                $strSQL .= ' UNTRANSLATED = 1 ';
+                $strSQL .= ' WHERE BULLETIN_BOARD_NO = :BULLETIN_BOARD_NO; ';
+                $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                $objStmt->bindParam(':INCIDENT_NAME_ENG', $arrTranContent[$intKey]);
+                $objStmt->bindParam(':UP_USER_NO', $objLoginUserInfo->intUserNo);
+                $objStmt->bindParam(':UP_DATE', $updated);
+                $objStmt->bindParam(':BULLETIN_BOARD_NO',$intId);
+                $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+                $strLogSql = str_replace(':CONTENTS_ENG',$arrTranContent[$intKey],$strLogSql);
+                $strLogSql = str_replace(':UP_USER_NO',$objLoginUserInfo->intUserNo,$strLogSql);
+                $strLogSql = str_replace(':UP_DATE',$updated,$strLogSql);
+                $strLogSql = str_replace(':BULLETIN_BOARD_NO',$intId,$strLogSql);
+                fncWriteLog(LogLevel['Info'] , LogPattern['Sql'],$strLogSql);
+                $objStmt->execute();
+            }
+        }
+    }
+}
+
+/**
+ * 速報リストを取得する
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param
+ * @return array 配列速報リスト
+ */
+function get_query_bulletin(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_bulletin_board ';
+    $strSQL .= ' LEFT JOIN m_business_name on m_business_name.BUSINESS_NAME_JPN = t_bulletin_board.BUSINESS_NAME';
+    $strSQL .= ' WHERE COMP_DATE IS NULL ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+
+    return @$arrResult;
+}
+
+/**
+ * 配列リクエストを取得
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param
+ * @return array 配列リクエスト
+ */
+function get_request(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_request ';
+    $strSQL .= ' INNER JOIN t_incident_case ON';
+    $strSQL .= ' t_request.INCIDENT_CASE_NO = t_incident_case.INCIDENT_CASE_NO';
+    $strSQL .= ' WHERE t_incident_case.COMP_DATE IS NULL ';
+    $strSQL .= ' ORDER BY t_request.REG_DATE DESC ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * すべてのセキュリティ情報を翻訳解除する
+ *
+ * @create 2020/02/17 KBS Tam.nv
+ * @update
+ * @param
+ * @return array 配列速報の未翻訳
+ */
+function bullUntran(){
+    $unstra = 0;
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_bulletin_board ';
+    $strSQL .= ' WHERE UNTRANSLATED = :UNTRANSLATED ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':UNTRANSLATED', $unstra);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    $strLogSql = str_replace(':UNTRANSLATED', 0,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+// Incident function
+
+/**
+ * すべてのリンクカテゴリを取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param
+ * @return array 配列リンクカテゴリ
+ */
+function get_link_category(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_link_category ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = $strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * すべての事件を取得
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param
+ * @return array すべてのインシデントケースを配列する
+ */
+function get_incident_case(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM t_incident_case ';
+    $strSQL .= ' WHERE COMP_DATE IS NULL ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * すべてのインシデントカテゴリを取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param
+ * @return array すべてのインシデントカテゴリを配列する
+ */
+function get_inst_cat(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_inst_category ';
+    $strSQL .= ' ORDER BY SORT_NO ASC ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * すべての情報カテゴリを取得する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param
+ * @return array すべての情報カテゴリを配列する
+ */
+function get_info_cat(){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_info_category ';
+    $strSQL .= ' ORDER BY SORT_NO ASC ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * 情報を入手する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $strOuter 固定/固定解除情報の取得を確認するフラグ
+ * @param $objLoginUserInfo オブジェクトユーザーログイン
+ * @param $strCkWioutCom 同じ会社IDの情報を取得する
+ * @return array すべての情報を配列する
+ */
+function get_t_information($strOuter = '',$objLoginUserInfo = NULL,$strCkWioutCom = NULL){
+    if($strOuter){
+        $strOuter = ' WHERE NOT EXISTS (SELECT t_inst_company_sort.COMPANY_NO';
+        $strOuter .= ' FROM t_inst_company_sort';
+        $strOuter .= ' WHERE t_information.COMPANY_NO = t_inst_company_sort.COMPANY_NO)';
+    }else{
+        $strOuter = ' WHERE EXISTS (SELECT t_inst_company_sort.COMPANY_NO';
+        $strOuter .= ' FROM t_inst_company_sort WHERE ';
+        $strOuter .= ' t_information.COMPANY_NO = t_inst_company_sort.COMPANY_NO';
+        $strOuter .= '  AND t_inst_company_sort.USER_NO = :USER_NO)';
+    }
+
+    if($strCkWioutCom == 'true'){
+        $strWioutComStr = ' AND t_information.COMPANY_NO = :COMPANY_NO ';
+    }
+    $strSQL = '';
+    $strSQL .= ' SELECT';
+    $strSQL .= ' t_information.UP_DATE,t_information.TITLE_JPN,';
+    $strSQL .= ' t_information.TITLE_ENG,m_company.INST_CATEGORY_NO,';
+    $strSQL .= ' m_company.COMPANY_NAME_JPN,m_company.COMPANY_NAME_ENG,';
+    $strSQL .= ' m_company.COMPANY_NO ';
+    $strSQL .= ' FROM t_information ';
+    $strSQL .= ' INNER JOIN t_incident_case ON ';
+    $strSQL .= ' t_incident_case.INCIDENT_CASE_NO = t_information.INCIDENT_CASE_NO';
+    $strSQL .= ' AND t_incident_case.COMP_DATE IS NULL';
+    $strSQL .= @$strWioutComStr;
+    $strSQL .= ' INNER JOIN m_company';
+    $strSQL .= ' ON m_company.COMPANY_NO = t_information.COMPANY_NO';
+    $strSQL .= $strOuter;
+    $strSQL .= ' ORDER BY  m_company.SORT_NO,t_information.UP_DATE DESC';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    if($objLoginUserInfo){
+        $objStmt->bindParam(':USER_NO',$objLoginUserInfo->intUserNo);
+    }
+    if($strCkWioutCom == 'true'){
+        $objStmt->bindParam(':COMPANY_NO',$objLoginUserInfo->intCompanyNo);
+    }
+    $strLogSql = DISPLAY_NAME_PORTAL.$strSQL;
+    if($objLoginUserInfo){
+        $strLogSql = str_replace(':USER_NO', $objLoginUserInfo->intUserNo,$strLogSql);
+    }
+    if($strCkWioutCom == 'true'){
+        $strLogSql = str_replace(
+            ':COMPANY_NO',
+            $objLoginUserInfo->intCompanyNo,
+            $strLogSql
+        );
+    }
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], DISPLAY_NAME_PORTAL.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * 翻訳時またはt_queryテーブルへの保存時に入力データを確認します
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $arrData 配列は、textSourceなどの入力データを保存し、言語への翻訳を選択します
+ * @param $arrText 配列には翻訳されたデータが含まれます
+ * @param $objLoginUserInfo オブジェクトユーザーログイン
+ * @return array/text エラーがある場合はエラー配列を返し、そうでない場合は翻訳されたデータを返すエラーがあります
+ */
+function validateInputText($arrData,$arrText,$objLoginUserInfo){
+    $arrError = array();
+    $intMaxLengSource = 200;
+    $intMaxLengTarget = 1000;
+    $intTypeTran = 0;
+    if($arrData['sleTran']=='ej'){
+        $intMaxLengSource = 1000;
+        $intMaxLengTarget = 200;
+        $intTypeTran = 1;
+        if (strpos($arrData['txtSource'], ',') !== false) {
+            $arrError['er-character'] = $arrText['PUBLIC_MSG_028'];
+        }
+        if(!mb_detect_encoding($arrData['txtSource'], 'ASCII', true)) {
+            $arrError['er-character'] =  $arrText['PUBLIC_MSG_028'];
+        }
+    }
+
+    if(!$arrData['txtSource']){
+        $arrError['er-source'] = $arrText['PUBLIC_MSG_026'];
+    }else{
+        if($intTypeTran){
+            $errSouce = $arrText['PUBLIC_MSG_046'];
+        }else{
+            $errSouce = $arrText['PUBLIC_MSG_045'];
+        }
+        if(mb_strlen($arrData['txtSource'])>$intMaxLengSource){
+            $arrError['er-source'] = $errSouce;
+        }
+    }
+
+    if($intTypeTran == 0 && !$arrData['txtTarget']){
+        if (strpos($arrData['txtTarget'], ',') !== false) {
+            $arrError['er-character'] = $arrText['PUBLIC_MSG_038'];
+        }
+        if(!mb_detect_encoding($arrData['txtTarget'], 'ASCII', true)) {
+            $arrError['er-character'] =  $arrText['PUBLIC_MSG_038'];
+        }
+    }
+
+    if(!$arrData['txtTarget'] && $arrData['ckeckMan'] =='true'){
+        $arrError['er-target'] = $arrText['PUBLIC_MSG_036'];
+    }else{
+        if($intTypeTran){
+            $errMaxTarget = $arrText['PUBLIC_MSG_048'];
+        }else{
+            $errMaxTarget = $arrText['PUBLIC_MSG_047'];
+        }
+        if(mb_strlen($arrData['txtTarget'])>$intMaxLengTarget){
+            $arrError['er-target'] = $errMaxTarget;
+        }
+    }
+    if(empty($arrError)){
+        $strTran = tranAmazon($arrData['txtSource'],$intTypeTran);
+        if(is_array($strTran)){
+            $arrError['message'] = $arrText['PUBLIC_MSG_010'];
+            $arrResult['error'] = $arrError;
+            return $arrResult;
+        }else{
+            return $strTran;
+        }
+    }else{
+        $arrResult['error'] = $arrError;
+        return $arrResult;
+    }
+}
+

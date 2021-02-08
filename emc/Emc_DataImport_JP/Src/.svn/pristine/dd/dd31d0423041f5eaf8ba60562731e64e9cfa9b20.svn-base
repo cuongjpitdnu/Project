@@ -1,0 +1,14 @@
+$( document ).ready(function() {
+    $( "#tab2" ).click(function() {
+        $('#content2').find('.info-cont').attr('id','info-cont-2');
+        $('#content2').find('.selAnnounceTime').attr('id','selTimeAnnouce2');
+        $('#content2').find('.selAnnounceTime').attr('data-id','2');
+        loadInfo(2);
+    });
+    $( "#tab1" ).click(function() {
+
+    });
+});
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});

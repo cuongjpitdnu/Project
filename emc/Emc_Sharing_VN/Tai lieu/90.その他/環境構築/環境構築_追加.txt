@@ -1,0 +1,29 @@
+〇php.iniの追加設定
+	・ファイルアップロードの最大サイズの設定を変更
+		設定値を変更する。
+		
+		upload_max_filesize=2M
+		
+		↓
+		
+		upload_max_filesize=10M
+		
+	・mbstringの読み込み設定
+		コメントアウトをはずす
+		
+		;extension=mbstring
+		
+		↓
+		
+		extension=mbstring
+		
+		
+〇AWS_VM環境構築
+	90.その他\AWS_VM環境構築
+	上記の資料を参考に環境構築を行うこと。
+	
+	
+	
+〇らく認環境設定
+	90.その他\らく認サンプル\らく認環境構築
+	上記の資料を参考に環境設定を行うこと。

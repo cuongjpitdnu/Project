@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/chat.css">
+</head>
+<body>
+    <div class="mesgs">
+        <div class="msg_history">
+            <div class="incoming_msg">
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <span class="time_date">関空 11:01 AM | June 9</span>
+                        <p>Test which is a new approach to have all
+                            solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="outgoing_msg">
+                <div class="sent_msg">
+                    <span class="time_date">JR西 11:01 AM    |    June 9</span>
+                    <p>Test which is a new approach to have all
+                        solutions</p>
+                </div>
+            </div>
+            <div class="incoming_msg">
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <span class="time_date">関空 11:01 AM    |    Yesterday</span>
+                        <p>Test, which is a new approach to have</p>
+                    </div>
+                </div>
+            </div>
+            <div class="outgoing_msg">
+                <div class="sent_msg">
+                    <span class="time_date">ANA 11:01 AM    |    Today</span>
+                    <p>Apollo University, Delhi, India Test</p>
+                </div>
+            </div>
+            <div class="incoming_msg">
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <span class="time_date"> 11:01 AM    |    Today</span>
+                        <p>We work directly with our designers and suppliers,
+                            and sell direct to you, which means quality, exclusive
+                            products, at a price anyone can afford.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

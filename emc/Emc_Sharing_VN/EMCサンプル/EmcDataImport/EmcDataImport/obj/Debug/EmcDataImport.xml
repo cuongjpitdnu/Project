@@ -1,0 +1,246 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+EmcDataImport
+</name>
+</assembly>
+<members>
+<member name="T:EmcDataImport.My.Resources.Resources">
+<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member>
+<member name="P:EmcDataImport.My.Resources.Resources.ResourceManager">
+<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member>
+<member name="P:EmcDataImport.My.Resources.Resources.Culture">
+<summary>
+  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member>
+<member name="T:EmcDataImport.MailHeader">
+ <summary>
+ ƒ[ƒ‹ƒwƒbƒ_•”‚ðŽæ“¾‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="F:EmcDataImport.MailHeader.mailheader">
+ <summary>ƒ[ƒ‹ƒwƒbƒ_•”</summary>
+</member>
+<member name="M:EmcDataImport.MailHeader.#ctor(System.String)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="mail">ƒ[ƒ‹–{‘ÌB</param>
+</member>
+<member name="P:EmcDataImport.MailHeader.Text">
+ <summary>
+ ƒwƒbƒ_•”‘S‘Ì‚ð•Ô‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="P:EmcDataImport.MailHeader.Item(System.String)">
+ <summary>
+ ƒwƒbƒ_‚ÌŠes‚ð•Ô‚µ‚Ü‚·B
+ name ‚É nullA‚à‚µ‚­‚ÍA‹ó•¶Žš—ñ‚ð“n‚µ‚½ê‡‚Í‚·‚×‚Ä‚Ìƒwƒbƒ_‚ð•Ô‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.MailHeader.Decode(System.String)">
+ <summary>
+ ƒfƒR[ƒh‚µ‚Ü‚·B
+ </summary>
+ <param name="encodedtext">ƒfƒR[ƒh‚·‚é•¶Žš—ñB</param>
+ <returns>ƒfƒR[ƒh‚µ‚½Œ‹‰ÊB</returns>
+</member>
+<member name="T:EmcDataImport.MailBody">
+ <summary>
+ ƒ[ƒ‹ƒ{ƒfƒB•”‚ðŽæ“¾‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="F:EmcDataImport.MailBody.mailbody">
+ <summary>ƒ[ƒ‹ƒ{ƒfƒB•”</summary>
+</member>
+<member name="F:EmcDataImport.MailBody._multiparts">
+ <summary>Šeƒ}ƒ‹ƒ`ƒp[ƒg•”‚ÌƒRƒŒƒNƒVƒ‡ƒ“</summary>
+</member>
+<member name="M:EmcDataImport.MailBody.#ctor(System.String)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="mail">ƒ[ƒ‹–{‘ÌB</param>
+</member>
+<member name="P:EmcDataImport.MailBody.Text">
+ <summary>
+ ƒ{ƒfƒB•”‘S‘Ì‚ð•Ô‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="P:EmcDataImport.MailBody.Multiparts">
+ <summary>
+ ƒ}ƒ‹ƒ`ƒp[ƒg•”‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ð•Ô‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="T:EmcDataImport.MailMultipart">
+ <summary>
+ ‚Ð‚Æ‚Â‚Ìƒ}ƒ‹ƒ`ƒp[ƒg•”‚ð‚ ‚ç‚í‚·ƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="F:EmcDataImport.MailMultipart.mail">
+ <summary>ƒ[ƒ‹–{‘Ì</summary>
+</member>
+<member name="M:EmcDataImport.MailMultipart.#ctor(System.String)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="mail">ƒ[ƒ‹–{‘ÌB</param>
+</member>
+<member name="P:EmcDataImport.MailMultipart.Header">
+ <summary>
+ ƒwƒbƒ_•”‚ðŽæ“¾‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="P:EmcDataImport.MailMultipart.Body">
+ <summary>
+ ƒ{ƒfƒB•”‚ðŽæ“¾‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="T:EmcDataImport.Mail">
+ <summary>
+ ƒ[ƒ‹‚ð•\‚·ƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="F:EmcDataImport.Mail.mail">
+ <summary>ƒ[ƒ‹–{‘Ì</summary>
+</member>
+<member name="M:EmcDataImport.Mail.#ctor(System.String)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="mail">ƒ[ƒ‹–{‘ÌB</param>
+</member>
+<member name="P:EmcDataImport.Mail.Header">
+ <summary>
+ ƒwƒbƒ_•”‚ðŽæ“¾‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="P:EmcDataImport.Mail.Body">
+ <summary>
+ ƒ{ƒfƒB•”‚ðŽæ“¾‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.PcMoniter.PcMoniterService.xCheckSetting(System.String@)">
+ <summary>
+ 設定ファイルチェック
+ </summary>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:EmcDataImport.PcMoniter.PcMoniterService.PopTest">
+ <summary>
+ POP に接続しメールを取得するテストを実行します。
+ </summary>
+</member>
+<member name="T:EmcDataImport.PopClient">
+ <summary>
+ POP ‚æ‚èƒ[ƒ‹‚ðŽóM‚·‚éƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="F:EmcDataImport.PopClient.tcp">
+ <summary>TCP Ú‘±</summary>
+</member>
+<member name="F:EmcDataImport.PopClient.reader">
+ <summary>TCP Ú‘±‚©‚ç‚ÌƒŠ[ƒ_[</summary>
+</member>
+<member name="M:EmcDataImport.PopClient.#ctor(System.String,System.Int32)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·BPOPƒT[ƒo‚ÆÚ‘±‚µ‚Ü‚·B
+ </summary>
+ <param name="hostname">POPƒT[ƒo‚ÌƒzƒXƒg–¼B</param>
+ <param name="port">POPƒT[ƒo‚Ìƒ|[ƒg”Ô†i’Êí‚Í110jB</param>
+</member>
+<member name="M:EmcDataImport.PopClient.Dispose">
+ <summary>
+ ‰ð•úˆ—‚ðs‚¢‚Ü‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.PopClient.Login(System.String,System.String)">
+ <summary>
+ POP ƒT[ƒo‚ÉƒƒOƒCƒ“‚µ‚Ü‚·B
+ </summary>
+ <param name="username">ƒ†[ƒU–¼B</param>
+ <param name="password">ƒpƒXƒ[ƒhB</param>
+</member>
+<member name="M:EmcDataImport.PopClient.GetList">
+ <summary>
+ POP ƒT[ƒo‚É—­‚Ü‚Á‚Ä‚¢‚éƒ[ƒ‹‚ÌƒŠƒXƒg‚ðŽæ“¾‚µ‚Ü‚·B
+ </summary>
+ <returns>System.String ‚ðŠi”[‚µ‚½ ArrayListB</returns>
+</member>
+<member name="M:EmcDataImport.PopClient.GetMail(System.String)">
+ <summary>
+ POP ƒT[ƒo‚©‚çƒ[ƒ‹‚ð 1‚ÂŽæ“¾‚µ‚Ü‚·B
+ </summary>
+ <param name="num">GetList() ƒƒ\ƒbƒh‚ÅŽæ“¾‚µ‚½ƒ[ƒ‹‚Ì”Ô†B</param>
+ <returns>ƒ[ƒ‹‚Ì–{‘ÌB</returns>
+</member>
+<member name="M:EmcDataImport.PopClient.DeleteMail(System.String)">
+ <summary>
+ POP ƒT[ƒo‚Ìƒ[ƒ‹‚ð 1‚Âíœ‚µ‚Ü‚·B
+ </summary>
+ <param name="num">GetList() ƒƒ\ƒbƒh‚ÅŽæ“¾‚µ‚½ƒ[ƒ‹‚Ì”Ô†B</param>
+</member>
+<member name="M:EmcDataImport.PopClient.Close">
+ <summary>
+ POP ƒT[ƒo‚ÆØ’f‚µ‚Ü‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.PopClient.Send(System.String)">
+ <summary>
+ POP ƒT[ƒo‚ÉƒRƒ}ƒ“ƒh‚ð‘—M‚µ‚Ü‚·B
+ </summary>
+ <param name="s">‘—M‚·‚é•¶Žš—ñB</param>
+</member>
+<member name="M:EmcDataImport.PopClient.SendLine(System.String)">
+ <summary>
+ POP ƒT[ƒo‚ÉƒRƒ}ƒ“ƒh‚ð‘—M‚µ‚Ü‚·B––”ö‚É‰üs‚ð•t‰Á‚µ‚Ü‚·B
+ </summary>
+ <param name="s">‘—M‚·‚é•¶Žš—ñB</param>
+</member>
+<member name="M:EmcDataImport.PopClient.ReadLine">
+ <summary>
+ POP ƒT[ƒo‚©‚ç 1s“Ç‚Ýž‚Ý‚Ü‚·B
+ </summary>
+ <returns>“Ç‚Ýž‚ñ‚¾•¶Žš—ñB</returns>
+</member>
+<member name="M:EmcDataImport.PopClient.Print(System.String)">
+ <summary>
+ ƒ`ƒFƒbƒN—p‚ÉƒRƒ“ƒ\[ƒ‹‚Éo—Í‚µ‚Ü‚·B
+ </summary>
+ <param name="msg">o—Í‚·‚é•¶Žš—ñB</param>
+</member>
+<member name="T:EmcDataImport.PopClientException">
+ <summary>
+ PopClient ‚Ì—áŠOƒNƒ‰ƒX‚Å‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.PopClientException.#ctor">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+</member>
+<member name="M:EmcDataImport.PopClientException.#ctor(System.String)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="message"></param>
+</member>
+<member name="M:EmcDataImport.PopClientException.#ctor(System.String,System.Exception)">
+ <summary>
+ ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+ </summary>
+ <param name="message"></param>
+ <param name="innerException"></param>
+</member>
+</members>
+</doc>

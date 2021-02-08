@@ -1,0 +1,244 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン処理画面 (仮)ページ
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+// return 1;
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+//DB接続
+if(fncConnectDB() == false) {
+	echo 0;
+	exit();
+}
+
+$_SESSION['errStr'] = '';
+if(!isset($_SESSION['LOGINUSER_INFO'])) {
+	echo 0;
+	exit();
+}
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+// get list text translate
+$arrTitle =  array(
+    'LINK_MNG_TEXT_001',
+    'LINK_MNG_TEXT_002',
+    'LINK_MNG_TEXT_003',
+    'LINK_MNG_TEXT_004',
+    'LINK_MNG_TEXT_005',
+    'LINK_MNG_TEXT_006',
+
+    'PUBLIC_BUTTON_006',
+    'PUBLIC_BUTTON_009',
+    'PUBLIC_BUTTON_010',
+    'PUBLIC_BUTTON_001',
+    'PUBLIC_BUTTON_015',
+    'LINK_MNG_MSG_001',
+    'PUBLIC_MSG_004',
+    'LINK_MNG_MSG_002',
+    'PUBLIC_MSG_001',
+    'PUBLIC_TEXT_016'
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+//DB接続
+if(fncConnectDB() == false) {
+	echo 0;
+	exit();
+}
+//load list data
+if(isset($_POST['loadList'])) {
+    // if(isset($_POST['originalSearch'])) echo $_POST['originalSearch'];
+	// if(isset($_POST['page'])) $GLOBALS['currentPage'] = $_POST['page'];
+
+	if(isset($_POST['catNO'])) {
+        $_SESSION['catNO'] = $_POST['catNO'];
+        $cat = fncSelectOne("SELECT LINK_CATEGORY_NAME_JPN, LINK_CATEGORY_NAME_ENG,
+        ".iff($userInfo->intLanguageType, " LINK_CATEGORY_NAME_ENG as LINK_CATEGORY_NAME", " LINK_CATEGORY_NAME_JPN as LINK_CATEGORY_NAME")."
+        FROM m_link_category WHERE LINK_CATEGORY_NO=:LINK_CATEGORY_NO",
+        [$_SESSION['catNO']], 'リンク情報管理画面');
+        if($cat) {
+            $catName = $cat['LINK_CATEGORY_NAME'];
+        } else {
+            if($_POST['catNO'] == '') {
+                $catName = 'ALL';
+            } else {
+                $_SESSION['errStr'] = fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_001']);
+            }
+        }
+	}
+} else {
+    $_SESSION['catNO'] = '';
+}
+
+//get links
+$conditionArray = [];
+
+$strSQL = "SELECT t_link.LINK_NO,";
+$strSQL .= " t_link.LINK_CATEGORY_NO, t_link.SORT_NO,";
+
+if($userInfo->intLanguageType) {
+    $strSQL .= ' t_link.LINK_NAME_ENG as LINK_NAME,';
+    $strSQL .= ' m_link_category.LINK_CATEGORY_NAME_ENG as LINK_CATEGORY_NAME,';
+} else {
+    $strSQL .= ' t_link.LINK_NAME_JPN as LINK_NAME,';
+    $strSQL .= ' m_link_category.LINK_CATEGORY_NAME_JPN as LINK_CATEGORY_NAME,';
+}
+
+$strSQL .= ' t_link.URL, t_link.CORRECTION_FLAG';
+$strSQL .= ' FROM t_link';
+
+$strSQL .= ' INNER JOIN m_link_category';
+$strSQL .= ' ON m_link_category.LINK_CATEGORY_NO=t_link.LINK_CATEGORY_NO';
+// $strSQL .= ' WHERE t_link.DEL_FLAG=0';
+
+if(isset($_SESSION['catNO']) && $_SESSION['catNO'] != '') {
+	$strSQL .= ' WHERE t_link.LINK_CATEGORY_NO=?';
+	$conditionArray[] = $_SESSION['catNO'];
+}
+
+$strSQL .= ' ORDER BY m_link_category.SORT_NO ASC, t_link.SORT_NO ASC';
+// $dataAll = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], false, false);
+
+//mode
+if(isset($_POST['mode'])) {
+    //delete
+	if($_POST['mode'] == 1) {
+        // $data = array();
+        // $data['DEL_FLAG'] = 1;
+        // $query = fncProcessData($data, 't_link', 'LINK_NO=? AND DEL_FLAG=?', [$_POST['id'], 0], 'リンク情報管理画面');
+        $strSQL = '';
+		$strSQL .= 'DELETE FROM t_link WHERE LINK_NO=:LINK_NO';
+		$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+        $query->bindParam(':LINK_NO', $_POST['id']);
+        $query->execute();
+		$strSqlLog = str_replace(':LINK_NO', $_POST['id'], $strSQL);
+		fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], 'リンク情報管理画面 '.$strSqlLog);
+
+        fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'リンク情報管理画面　削除(ユーザID = '.$userInfo->strUserID.')');
+
+		if($query->rowCount() > 0) {
+			echo 0;
+			exit();
+		} else {
+            echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_004']);
+            fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_004']);
+			exit();
+		}
+    }
+    //move
+    if($_POST['mode'] == 2) {
+        // $one = fncSelectOne("SELECT * FROM t_link
+        // LEFT OUTER JOIN m_link_category
+        // ON m_link_category.LINK_CATEGORY_NO = t_link.LINK_CATEGORY_NO
+        // WHERE t_link.LINK_CATEGORY_NO=? ORDER BY t_link.SORT_NO DESC", [$_POST['id']], 'リンク情報管理画面');
+        $one = fncSelectOne("SELECT * FROM t_link WHERE LINK_NO=? AND SORT_NO=?", [$_POST['id'], $_POST['sort']], 'リンク情報管理画面');
+        $next = fncSelectOne("SELECT * FROM t_link WHERE LINK_NO=? AND SORT_NO=?", [$_POST['next'], $_POST['sortNext']], 'リンク情報管理画面');
+        if($one && $next) {
+            $GLOBALS['g_dbaccess']->funcBeginTransaction();
+            $data = [];
+            $data['SORT_NO'] = $one['SORT_NO'];
+            $t1 = fncProcessData($data,'t_link', 'LINK_NO=?', [$next['LINK_NO']], 'リンク情報管理画面');
+            //update $one
+            $data['SORT_NO'] = $next['SORT_NO'];
+            $t2 = fncProcessData($data,'t_link', 'LINK_NO=?', [$one['LINK_NO']], 'リンク情報管理画面');
+            if(!($t1->rowCount() && $t2->rowCount())) {
+                $GLOBALS['g_dbaccess']->funcRollback();
+                echo fncHtmlSpecialChars($arrTextTranslate['LINK_MNG_MSG_002']);
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['LINK_MNG_MSG_002']);
+                exit();
+            } else {
+                $GLOBALS['g_dbaccess']->funcCommit();
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'リンク情報管理画面　ソート順を変更(ユーザID = '.$userInfo->strUserID.')');
+                echo 0;
+                exit();
+            }
+        } else {
+            echo $arrTextTranslate['LINK_MNG_MSG_002'];
+            fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['LINK_MNG_MSG_002']);
+            exit();
+        }
+    }
+}
+
+if(isset($_SESSION['errStr']) && $_SESSION['errStr']!='') {
+    fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$_SESSION['errStr']);
+?>
+
+<script>
+    <?php
+        if(isset($_SESSION['errStr']) && $_SESSION['errStr']!='') {
+    ?>
+    $(function() {
+        var errStr = '<?php echo $_SESSION['errStr'] ?>';
+        $('.error').html(errStr);
+    });
+    <?php
+            unset($_SESSION['errStr']);
+        }
+    ?>
+</script>
+
+<?php
+    } else {
+        $data = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], false, 'リンク情報管理画面');
+        if(isset($_POST['loadList'])) {
+            if(isset($_POST['originalSearch']) && $_POST['originalSearch'] == 1) {
+                $searchQuery = '「カテゴリ = '.$catName.'」';
+                $viewLog = 'リンク情報管理画面　検索を実施 '.$searchQuery.' (ユーザID = '.$userInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'], $viewLog);
+            }
+        } else {
+            // $viewLog = 'リンク情報管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+            // fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+        }
+    }
+?>
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th><?php echo $arrTextTranslate['LINK_MNG_TEXT_003']; ?></th>
+            <th><?php echo $arrTextTranslate['LINK_MNG_TEXT_004']; ?></th>
+            <th><?php echo $arrTextTranslate['LINK_MNG_TEXT_005']; ?></th>
+            <th><?php echo $arrTextTranslate['LINK_MNG_TEXT_006']; ?></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="4" align="right">
+                <div style="float: left">
+                <font size="5">
+                <?php echo str_replace('%1%', isset($data) ? count($data) : 0, $arrTextTranslate['PUBLIC_TEXT_016'])  ; ?>
+                </font>
+                </div>
+                <button type="submit" class="tbl-btn tbl-btn-action load-modal" href="link_edit.php" data-id="0"><?php echo $arrTextTranslate['PUBLIC_BUTTON_001']; ?></button>
+                <button type="submit" class="tbl-btn tbl-btn-action" onclick="window.location.href='portal.php'" ><?php echo $arrTextTranslate['PUBLIC_BUTTON_015']; ?></button>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <?php if(isset($data)) foreach($data as $item) { ?>
+        <tr>
+            <td class="text-center"><?php echo fncHtmlSpecialChars($item['LINK_CATEGORY_NAME']); ?></td>
+            <td><?php echo fncHtmlSpecialChars($item['LINK_NAME']); ?></td>
+            <td ><a href="<?php echo fncHtmlSpecialChars($item['URL']); ?>" target="_blank"><?php echo fncHtmlSpecialChars($item['URL']); ?></a></td>
+            <td class="text-center" style="position: relative">
+                <div class="in-lineblock">
+                    <button class="tbl-btn tbtn-green in-line load-modal" href="link_edit.php" data-id="<?php echo $item['LINK_NO']; ?>"><?php echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_BUTTON_009']); ?></button>
+                    <button class="tbl-btn tbtn-red in-line btn-del" data-id="<?php echo $item['LINK_NO'] ; ?>"><?php echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_BUTTON_010']); ?></button>
+                </div>
+                <div class="in-lineblock btn-up-down">
+                    <button class="tbtn-ud t-inline-flex cat-<?php echo $item['LINK_CATEGORY_NO'] ?>-up up" data-id="<?php echo $item['LINK_NO']; ?>" value="1" data-class="cat-<?php echo $item['LINK_CATEGORY_NO'] ?>-up" data-sort="<?php echo $item['SORT_NO'] ?>"><i class="fa fa-angle-up"></i></button>
+                    <button class="tbtn-ud t-inline-flex cat-<?php echo $item['LINK_CATEGORY_NO'] ?>-down down" data-id="<?php echo $item['LINK_NO']; ?>" value="-1"  data-class="cat-<?php echo $item['LINK_CATEGORY_NO'] ?>-down" data-sort="<?php echo $item['SORT_NO'] ?>"><i class="fa fa-angle-down"></i></button>
+                </div>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+    </tr>
+</table>

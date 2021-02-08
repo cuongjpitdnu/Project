@@ -1,0 +1,414 @@
+<?php
+/*
+* @bulletin_board_mail.php
+*
+* @create 2020/04/06 KBS Tam.nv
+* @update
+*/
+
+$arrData = $_POST;
+$_POST = array();
+
+require_once('common/common.php');
+const DISPLAY_NAME = 'アラート表示システム連携画面 ';
+$arrResult = array();
+
+//DB接続
+if(fncConnectDB() == false){
+    fncWriteLog(LogLevel['Error'], LogPattern['Error'], 'DB接続に失敗しました。');
+    exit;
+}
+
+if(!isset($arrData['status'])){
+    $strLog = DISPLAY_NAME.BULLETIN_BOARD_MAIL_MSG_001;
+    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strLog);
+}else{
+    $intStatus = $arrData['status'];
+    $arrError = validateInputBulMail($arrData);
+    if($arrError){
+        //ログ検証エラー
+        $strLog = DISPLAY_NAME.implode(' ',$arrError);
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'], $strLog);
+    }else{
+        //ログ検証エラー
+        fncWriteLog(LogLevel['Info'], LogPattern['View'],DISPLAY_NAME);
+
+        if($intStatus){
+            $intUpdate = fncUpdateBull($arrData);
+        }else{
+            $strInsertBull = fncInsertBull($arrData);
+            if($strInsertBull){
+                fncInsertPlace($arrData);
+            }
+            $arrUser = fncGetUserBoadMail();
+            if($arrUser){
+                fncSendmailToBull($arrUser);
+            }
+        }
+    }
+
+}
+
+/**
+ * 入力を確認してください
+ *
+ * @create 2020/04/06 KBS Tam.nv
+ * @update
+ * @param $arrData 入力データ配列
+ * @return array エラーの配列
+ */
+
+function validateInputBulMail($arrData){
+    $arrError = array();
+    $intNo = @$arrData['incident_no'];
+    if(!$intNo){
+        $arrError[] = BULLETIN_BOARD_MAIL_MSG_002;
+    }
+    if(!$arrData['status']){
+        $strTilte = @$arrData['Incident_title'];
+        $strBuName = @$arrData['business_name'];
+        $dtmOccDate = @$arrData['occurrence_date'];
+        $strPlaceNameJpn = @$arrData['place_name_jpn'];
+        $strPlaceNameEng = @$arrData['place_name_eng'];
+        $intMapId = @$arrData['map_id'];
+        $intPlaceId = @$arrData['place3_id'];
+
+        if(!$strTilte){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_003;
+        }
+        if(!$strBuName){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_004;
+        }
+        if(!$dtmOccDate){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_005;
+        }
+        if(!$strPlaceNameJpn){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_006;
+        }
+        if(!$strPlaceNameEng){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_007;
+        }
+        if(!$intMapId){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_008;
+        }
+        if(!$intPlaceId){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_009;
+        }
+    }else{
+        $dtmComDate = @$arrData['comp_date'];
+        if(!$dtmComDate){
+            $arrError[] = BULLETIN_BOARD_MAIL_MSG_010;
+        }
+    }
+    return $arrError;
+}
+
+/**
+ * 掲示板の新しいレコードを作成する
+ *
+ * @create 2020/04/06 KBS Tam.nv
+ * @update
+ * @param $arrData 入力コンポーネント
+ * @return
+ */
+function fncInsertBull($arrData)
+{
+    $strSqlGetBullNo = 'SELECT NEXT VALUE FOR bulletin_board_sequence';
+    $objStmtBullNo = $GLOBALS['g_dbaccess']->funcPrepare($strSqlGetBullNo);
+    $objStmtBullNo->execute();
+    $arrNo = $objStmtBullNo->fetchAll(PDO::FETCH_ASSOC);
+    $strSQL = '';
+    $strSQL .= ' INSERT INTO t_bulletin_board';
+    $strSQL .= ' VALUES(';
+//    $strSQL .= '(SELECT ISNULL(MAX( QUERY_NO ), 0)+ 1  FROM t_query),';
+//    $strSQL .= '  SELECT NEXT VALUE FOR bulletin_board_sequence,';
+    $strSQL .= ' :BULLETIN_BOARD_NO,';
+    $strSQL .= ' :INCIDENT_NO,';
+    $strSQL .= ' :OCCURRENCE_DATE,';
+    $strSQL .= ' :BUSINESS_NAME,';
+    $strSQL .= ' :PLACE3_ID,';
+    $strSQL .= ' :INCIDENT_NAME_JPN,';
+    $strSQL .= ' NULL,';
+    $strSQL .= ' 0,';
+    $strSQL .= ' 0,';
+    $strSQL .= ' NULL,';
+    $strSQL .= ' :REG_DATE, ';
+    $strSQL .= ' NULL,';
+    $strSQL .= ' NULL';
+    $strSQL .= ')';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':BULLETIN_BOARD_NO', $arrNo[0][""]);
+    $objStmt->bindParam(':INCIDENT_NO', $arrData['incident_no']);
+    $dtmOcDate = date('Y-m-d H:i:s',strtotime($arrData['occurrence_date']));
+    $objStmt->bindParam(':OCCURRENCE_DATE', $dtmOcDate);
+    $objStmt->bindParam(':BUSINESS_NAME', $arrData['business_name']);
+    $objStmt->bindParam(':PLACE3_ID', $arrData['place3_id']);
+    $objStmt->bindParam(':INCIDENT_NAME_JPN', $arrData['incident_name_jpn']);
+    $dtmRegDate = date('Y-m-d H:i:s');
+    $objStmt->bindParam(':REG_DATE', $dtmRegDate);
+    $strLogSql = DISPLAY_NAME. $strSQL;
+    $strLogSql = str_replace(
+':BULLETIN_BOARD_NO',
+        $arrData['incident_no'],
+        $strLogSql
+    );
+    $strLogSql = str_replace(':INCIDENT_NO', $arrData['incident_no'], $strLogSql);
+    $strLogSql = str_replace(':OCCURRENCE_DATE', $dtmOcDate, $strLogSql);
+    $strLogSql = str_replace(':BUSINESS_NAME', $arrData['business_name'],
+        $strLogSql);
+    $strLogSql = str_replace(':PLACE3_ID', $arrData['place3_id'], $strLogSql);
+    $strLogSql = str_replace(
+        ':INCIDENT_NAME_JPN',
+        $arrData['incident_name_jpn'],
+        $strLogSql
+    );
+    $strLogSql = str_replace(':REG_DATE', $dtmRegDate, $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        return $objStmt->execute();
+    }catch (Exception $e) {
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.BULLETIN_BOARD_MAIL_MSG_013);
+    }
+}
+
+/**
+ * 掲示板の記録を更新する
+ *
+ * @create 2020/03/04 KBS Tam.nv
+ * @update
+ * @param $arrData 入力コンポーネント
+ * @return
+ */
+function fncUpdateBull($arrData)
+{
+    $strSQL = '';
+    $strSQL .= ' UPDATE t_bulletin_board SET ';
+    $strSQL .= ' COMP_DATE = :comp_date';
+    $strSQL .= ' WHERE INCIDENT_NO = :INCIDENT_NO';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':INCIDENT_NO', $arrData['incident_no']);
+    $objStmt->bindParam(':comp_date', $arrData['comp_date']);
+    $strLogSql = DISPLAY_NAME. $strSQL;
+    $strLogSql = str_replace(':INCIDENT_NO', $arrData['incident_no'], $strLogSql);
+    $strLogSql = str_replace(':comp_date', $arrData['comp_date'], $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+        $strLog = DISPLAY_NAME.BULLETIN_BOARD_MAIL_MSG_012;
+        fncWriteLog(LogLevel['Info'], LogPattern['Button'],$strLog);
+    }catch (Exception $e) {
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.BULLETIN_BOARD_MAIL_MSG_013);
+    }
+}
+
+/**
+ * 存在を確認した後で場所を追加する
+ *
+ * @create 2020/04/07 KBS Tam.nv
+ * @update
+ * @param $arrData 入力変数の配列
+ * @return
+ */
+function fncInsertPlace($arrData)
+{
+    $strSQL = '';
+    $strSQL .= ' INSERT INTO m_place_name ';
+    $strSQL .= ' SELECT';
+    $strSQL .= ' (SELECT ISNULL(MAX( place_name_no ), 0)+ 1  FROM m_place_name),';
+    $strSQL .= ' :place_name_jpn,';
+    $strSQL .= ' :place_name_eng,';
+    $strSQL .= ' :place3_id,';
+    $strSQL .= ' :map_id,';
+    $strSQL .= ' :up_date';
+    $strSQL .= ' WHERE NOT EXISTS';
+    $strSQL .= ' (SELECT place3_id  FROM m_place_name WHERE place3_id =:place3_id2 )';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':place_name_jpn', $arrData['place_name_jpn']);
+    $objStmt->bindParam(':place_name_eng', $arrData['place_name_eng']);
+    $objStmt->bindParam(':place3_id', $arrData['place3_id']);
+    $objStmt->bindParam(':place3_id2', $arrData['place3_id']);
+    $objStmt->bindParam(':map_id', $arrData['map_id']);
+    $dtmUpdate = date('Y-m-d H:i:s',strtotime($arrData['up_date']));
+    $objStmt->bindParam(':up_date', $dtmUpdate);
+    $strLogSql = DISPLAY_NAME . $strSQL;
+    $strLogSql = str_replace(
+        ':place_name_jpn',
+        $arrData['place_name_jpn'],
+        $strLogSql
+    );
+    $strLogSql = str_replace(
+        ':place_name_eng',
+        $arrData['place_name_eng'],
+        $strLogSql
+    );
+    $strLogSql = str_replace(':place3_id', $arrData['place3_id'], $strLogSql);
+    $strLogSql = str_replace(':place3_id2', $arrData['place3_id'], $strLogSql);
+    $strLogSql = str_replace(':map_id', $arrData['map_id'], $strLogSql);
+    $strLogSql = str_replace(':up_date', $dtmUpdate, $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        return $objStmt->execute();
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.PUBLIC_MSG_003_JPN);
+    }
+}
+
+/**
+ * メールを送信するすべてのユーザーのリストを取得する
+ *
+ * @create 2020/04/07 KBS Tam.nv
+ * @update
+ * @return array ユーザー配列
+ */
+function fncGetUserBoadMail()
+{
+    $dtmDateNow = date('Y-m-d H:i:s');
+    $strSQL = '';
+    $strSQL .= ' SELECT USER_NO,mail_address,user_name,language_type FROM m_user ';
+    $strSQL .= ' WHERE';
+    $strSQL .= ' bulletin_board_mail = 1 ';
+    $strSQL .= ' AND expiration_date_s <= :START_DATE ';
+    $strSQL .= ' AND expiration_date_E >= :END_DATE ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':START_DATE', $dtmDateNow);
+    $objStmt->bindParam(':END_DATE', $dtmDateNow);
+    $strLogSql = DISPLAY_NAME . $strSQL;
+    $strLogSql = str_replace(':START_DATE', $dtmDateNow, $strLogSql);
+    $strLogSql = str_replace(':END_DATE', $dtmDateNow, $strLogSql);
+    fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        return $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'],
+            LogPattern['Error'], DISPLAY_NAME.' '.BULLETIN_BOARD_MAIL_MSG_011);
+    }
+}
+
+/**
+ * メールを送る
+ *
+ * @create 2020/04/07 KBS Tam.nv
+ * @update
+ * @return array ユーザー配列
+ */
+function fncSendmailToBull($arrUser){
+    // send mail
+    $arrMail = array(
+        'jpn' => array(),
+        'eng' => array(),
+    );
+
+    $arrTempMailJP = array();
+    $arrTempMailEN = array();
+    foreach($arrUser as $user) {
+        if($user['language_type'] == 0) {
+            if(count($arrTempMailJP) == 0) {
+                array_push($arrTempMailJP, $user['mail_address']);
+                $arrMail['jpn'][] = array(
+                    'USER_NAME' => $user['user_name'],
+                    'MAIL_ADDRESS' => $user['mail_address'],
+                );
+            } else {
+                if(!in_array($user['mail_address'], $arrTempMailJP)) {
+                    array_push($arrTempMailJP, $user['mail_address']);
+                    $arrMail['jpn'][] = array(
+                        'USER_NAME' => $user['user_name'],
+                        'MAIL_ADDRESS' => $user['mail_address'],
+                    );
+                }
+            }
+        } else {
+            if(count($arrTempMailEN) == 0) {
+                array_push($arrTempMailEN, $user['mail_address']);
+                $arrMail['eng'][] = array(
+                    'USER_NAME' => $user['user_name'],
+                    'MAIL_ADDRESS' => $user['mail_address'],
+                );
+            } else {
+                if(!in_array($user['mail_address'], $arrTempMailEN)) {
+                    array_push($arrTempMailEN, $user['mail_address']);
+                    $arrMail['eng'][] = array(
+                        'USER_NAME' => $user['user_name'],
+                        'MAIL_ADDRESS' => $user['mail_address'],
+                    );
+                }
+            }
+        }
+    }
+
+    $arrMailSend = array(
+        'jpn' => array(),
+        'eng' => array(),
+    );
+
+    // divide array mail with MAIL_SUBMIT_NUMBER
+    if(count($arrMail['jpn']) > 0) {
+        $arrMailSend['jpn'] = array_chunk($arrMail['jpn'], MAIL_SUBMIT_NUMBER);
+    }
+
+    if(count($arrMail['eng']) > 0) {
+        $arrMailSend['eng'] = array_chunk($arrMail['eng'], MAIL_SUBMIT_NUMBER);
+    }
+
+    $arrSubject = array(
+        'jpn' => MAIL_SUBMIT_TITLE_JPN,
+        'eng' => MAIL_SUBMIT_TITLE_ENG,
+    );
+
+    $arrBody = array(
+        'jpn' => is_file('common/mail_temp_jpn.txt') ?
+            nl2br(file_get_contents("common/mail_temp_jpn.txt")) : '',
+        'eng' => is_file('common/mail_temp_eng.txt') ?
+            nl2br(file_get_contents("common/mail_temp_eng.txt")) : '',
+    );
+
+    if($arrBody['jpn'] != '') {
+        $arrBody['jpn'] = str_replace ('%0%', date('m月d日H時i分'), $arrBody['jpn']);
+        $arrBody['jpn'] = str_replace('%1%',ANNOUNCE_EDIT_TEXT_003_JPN,$arrBody['jpn']);
+    }
+
+    if($arrBody['eng'] != '') {
+        $arrBody['eng'] = str_replace ('%0%', date('H:i, d M'), $arrBody['eng']);
+        $arrBody['eng'] = str_replace('%1%',ANNOUNCE_EDIT_TEXT_003_ENG,$arrBody['eng']);
+    }
+
+    $blnFlagHasBccMailJPN = false;
+    $blnFlagHasBccMailENG = false;
+
+    if(count($arrMailSend['jpn']) > 0) {
+        $blnFlagHasBccMailJPN = true;
+    }
+
+    if(count($arrMailSend['eng']) > 0) {
+        $blnFlagHasBccMailENG = true;
+    }
+    if(!$blnFlagHasBccMailJPN && !$blnFlagHasBccMailENG) {
+        fncSendMail(array(), $arrSubject['jpn'], $arrBody['jpn'], '');
+    } else {
+        foreach($arrMailSend as $strLang => $arrListMail) {
+
+            $strSubjectSend = ($strLang == 'jpn') ? $arrSubject['jpn'] : $arrSubject['eng'];
+            $strBodySend    = ($strLang == 'jpn') ? $arrBody['jpn'] : $arrBody['eng'];
+
+            if(trim($strSubjectSend) == '') {
+                $strSubjectSend = ($strLang == 'jpn') ? $arrSubject['eng'] : $arrSubject['jpn'];
+            }
+
+            if(trim($strBodySend) == '') {
+                $strBodySend = ($strLang == 'jpn') ? $arrBody['eng'] : $arrBody['jpn'];
+            }
+            if(count($arrListMail) > 0) {
+                foreach($arrListMail as $group) {
+                    fncSendMail($group, $strSubjectSend, $strBodySend, '');
+                }
+            }
+        }
+    }
+}

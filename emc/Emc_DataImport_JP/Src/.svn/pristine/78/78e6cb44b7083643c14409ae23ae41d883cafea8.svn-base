@@ -1,0 +1,184 @@
+<?php
+/*
+* @password_chg_proc.php
+*
+* @create 2020/03/25 KBS Tam.nv
+* @update
+*/
+const DISPLAY_NAME = 'パスワード変更画面';
+
+
+require_once('common/common.php');
+
+//getから拒否されるかどうかを確認します
+if(empty($_POST)){
+    echo "<script>alert('".PUBLIC_MSG_049_JPN."/".PUBLIC_MSG_049_ENG."');
+    history.back();</script>";
+    exit();
+}
+
+$arrMSG = [
+    'PASSWORD_CHG_TEXT_001',
+    'PASSWORD_CHG_TEXT_002',
+    'PASSWORD_CHG_TEXT_003',
+    'PASSWORD_CHG_TEXT_004',
+    'PASSWORD_CHG_TEXT_005',
+    'PASSWORD_CHG_TEXT_006',
+
+    'PASSWORD_CHG_MSG_002',
+    'PASSWORD_CHG_MSG_003',
+    'PASSWORD_CHG_MSG_004',
+    'PASSWORD_CHG_MSG_005',
+    'PASSWORD_CHG_MSG_006',
+    'PASSWORD_CHG_MSG_007',
+    'PASSWORD_CHG_MSG_008',
+    'PASSWORD_CHG_MSG_009',
+    'PASSWORD_CHG_MSG_010',
+    'PUBLIC_BUTTON_017',
+    'PUBLIC_BUTTON_018',
+
+    'PASSWORD_CHG_MSG_001',
+];
+//Define data untranslate
+$strError = '';
+if(count($_POST) > 0){
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+    $strCsrf = $_POST['X-CSRF-TOKEN'];
+    $arrUser = fncGetUserById($_POST['user_no']);
+    if($arrUser){
+        $arrText = getListTextTranslate($arrMSG,$arrUser[0]['LANGUAGE_TYPE']);
+    }else{
+//        header("login.php");
+//        exit();
+    }
+    if(isset($_POST['txtPasword'])){
+        $arrUser = fncGetUserById($_POST['user_no']);
+        $strPassword = $_POST['txtPasword'];
+        $strNewPassword = $_POST['txtNewPassword'];
+        $strNewPassword2 = $_POST['txtNewPassword2'];
+        //パスワード未入力
+        if(mb_strlen($strPassword) == 0){
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_002']. '<br>';
+        }
+        if(mb_strlen($strNewPassword) == 0){
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_003']. '<br>';
+        }
+        if(mb_strlen($strNewPassword2) == 0){
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_007']. '<br>';
+        }
+
+
+        if(!mb_detect_encoding($strNewPassword, 'ASCII', true) || (strpos($strNewPassword, ',') !== false )) {
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_004']. '<br>';
+        }
+
+
+        if(mb_strlen($strNewPassword) < PASSWORD_LENGTH_MIN || mb_strlen($strNewPassword) >PASSWORD_LENGTH_MAX){
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_005']. '<br>';
+        }
+
+        if (!preg_match('/[A-Z]/', $strNewPassword)) {
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_006']. '<br>';
+        }
+
+        if ($strPassword !== $arrUser[0]['PASSWORD']) {
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_008']. '<br>';
+        }
+        if ($strNewPassword === $arrUser[0]['PASSWORD']) {
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_009']. '<br>';
+        }
+        if ($strNewPassword !== $strNewPassword2) {
+            @$_SESSION['PASSWORD_CHG_MSG'] .= $arrText['PASSWORD_CHG_MSG_010']. '<br>';
+        }
+
+        if(mb_strlen(@$_SESSION['PASSWORD_CHG_MSG']) == 0 ){
+            $intResult = fncUpdateUserById($_POST['user_no'],$strNewPassword);
+            if($intResult){
+                header('Location: login.php');
+                exit;
+            }
+        }
+    }
+}
+
+
+/**
+ * IDでユーザーを取得
+ *
+ * @create 2020/03/25 KBS Tam.nv
+ * @update
+ * @param $intUserNo ユーザーID
+ * @return array ユーザーアレイ
+ */
+function fncGetUserById($intUserNo){
+    $strSQL = '';
+    $strSQL .= ' SELECT *';
+    $strSQL .= ' FROM m_user ';
+    $strSQL .= ' WHERE USER_NO =:USER_NO ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':USER_NO', $intUserNo);
+    $strLogSql = DISPLAY_NAME.$strSQL;
+    $strLogSql = str_replace(':USER_NO', $intUserNo,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        $objStmt->execute();
+        $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+            DISPLAY_NAME.' '.$e->getMessage());
+    }
+    return @$arrResult;
+}
+
+/**
+ * IDでユーザーを取得
+ *
+ * @create 2020/03/26 KBS Tam.nv
+ * @update
+ * @param $intUserNo ユーザーID
+ * @param $strPassword パスワード
+ * @return integer ステータスは正常に更新されました
+ */
+function fncUpdateUserById($intUserNo,$strPassword){
+    $dtmUpdate = date('Y-m-d H:i:s');
+    $strSQL = '';
+    $strSQL .= ' UPDATE m_user';
+    $strSQL .= ' SET PASSWORD = :PASSWORD,  ';
+    $strSQL .= ' PASSWORD_UP_DATE = :PASSWORD_UP_DATE,  ';
+    $strSQL .= ' UP_USER_NO = :UP_USER_NO,  ';
+    $strSQL .= ' UP_DATE = :UP_DATE  ';
+    $strSQL .= ' WHERE USER_NO =:USER_NO ';
+    $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+    $objStmt->bindParam(':USER_NO', $intUserNo);
+    $objStmt->bindParam(':UP_USER_NO', $intUserNo);
+    $objStmt->bindParam(':PASSWORD_UP_DATE', $dtmUpdate);
+    $objStmt->bindParam(':UP_DATE', $dtmUpdate);
+    $objStmt->bindParam(':PASSWORD', $strPassword);
+    $strLogSql = DISPLAY_NAME.$strSQL;
+    $strLogSql = str_replace(':USER_NO', $intUserNo,$strLogSql);
+    $strLogSql = str_replace(':UP_USER_NO', $intUserNo,$strLogSql);
+    $strLogSql = str_replace(':PASSWORD', $strPassword,$strLogSql);
+    $strLogSql = str_replace(':UP_DATE', $dtmUpdate,$strLogSql);
+    $strLogSql = str_replace(':PASSWORD_UP_DATE', $dtmUpdate,$strLogSql);
+    fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+    try {
+        return $objStmt->execute();
+    }catch (Exception $e) {
+        // other mysql exception (not duplicate key entry)
+        fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+            DISPLAY_NAME.' '.$e->getMessage());
+    }
+}
+
+
+function isPartUppercase($string) {
+    if(preg_match("/[A-Z]/", $string)===0) {
+        return true;
+    }
+    return false;
+}

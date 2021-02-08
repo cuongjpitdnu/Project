@@ -1,0 +1,185 @@
+function load_ajax(id){
+    $.ajax({
+        url : "announce_view.html",
+        type : "GET",
+        // type : "POST",
+        dataType:"text",
+        data : {
+            textTitle : $('#title-source').val(),
+            idChat : id,
+        },
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModal(modal)
+{
+    $('#myModal').modal({
+        backdrop: 'static'
+    });
+
+    $.ajax({
+        url : modal,
+        type : "GET",
+        // type : "POST",
+        dataType:"text",
+        data : {
+            textTitle : $('#title-source').val(),
+        },
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadView(modal,id)
+{
+    $('#myModal').modal({
+        backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : modal,
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+function loadModalAnonView(id)
+{
+    $('#myModal').modal({
+        backdrop: 'static'
+    });
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'id',value: id },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'announce_view.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+
+function loadChat(modal) {
+    $('#myModal').modal({
+        backdrop: 'static'
+    });
+
+    var radioValue = $("input[name='gettime']:checked").val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'typeOfTime',value: radioValue },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+    ];
+
+    $.ajax({
+        url : modal,
+        // type : "GET",
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            $('#modal-body').html(result);
+        }
+    });
+}
+
+
+$( document ).ready(function() {
+    var reloadTime = $('#reloadTimeInfoBoad').val();
+    setInterval('loadInfo()',reloadTime*1000);
+    setInterval('loadBull()',reloadTime*1000);
+    setInterval('loadChatForm()',reloadTime*1000);
+});
+
+
+function loadChatForm() {
+    var radioValue = $("input[name='gettime']:checked").val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'typeOfTime',value: radioValue },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'msg_history_form.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('.msg_history').append(result);
+                $('.msg_history').stop().animate({
+                    scrollTop: $('.msg_history')[0].scrollHeight
+                }, 1);
+            }
+        }
+    });
+}
+
+
+function loadInfo() {
+    var csrf = $('#csrf').val();
+
+    var data = [
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'action',value: 'load_info' }
+    ];
+
+    $.ajax({
+        url : 'info_form_content.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('.info-cont').html(result);
+
+            }
+        }
+    });
+}
+function loadBull() {
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'action',value: 'load_bull' }
+    ];
+
+    $.ajax({
+        url : 'bull_form.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('#bull_form').html(result);
+            }
+        }
+    });
+}
+
+
+

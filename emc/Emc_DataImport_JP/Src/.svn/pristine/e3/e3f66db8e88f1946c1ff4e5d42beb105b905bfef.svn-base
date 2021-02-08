@@ -1,0 +1,617 @@
+<?php
+    /*
+     * @bulletin_board_edit.php
+     *
+     * @create 2020/03/31 AKB Chien
+     * @update
+     */
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    define('DISPLAY_TITLE', '掲示板編集画面');
+
+    if(fncConnectDB() == false) {
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        $strShow = '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'");';
+        $strShow .= ' window.location.href="login.php";</script> ';
+        echo $strShow;
+        exit;
+    }
+
+    fncSessionTimeOutCheck();
+
+    // ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg =  array(
+        'BULLETIN_BOARD_EDIT_TEXT_001',
+        'BULLETIN_BOARD_EDIT_TEXT_002',
+        'BULLETIN_BOARD_EDIT_TEXT_003',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_003',
+        'BULLETIN_BOARD_EDIT_TEXT_004',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_008',
+        'BULLETIN_BOARD_EDIT_TEXT_004',
+        'PUBLIC_TEXT_003',
+        'BULLETIN_BOARD_EDIT_TEXT_005',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_003',
+        'PUBLIC_BUTTON_004',
+        'PUBLIC_BUTTON_014',
+        'PUBLIC_BUTTON_003',
+        'PUBLIC_MSG_049',
+        'PUBLIC_MSG_001',
+        'BULLETIN_BOARD_EDIT_MSG_002',
+        'PUBLIC_MSG_020',
+        'PUBLIC_MSG_010',
+        'PUBLIC_MSG_009',
+    );
+
+    // write log when access this screen
+    $strLog = DISPLAY_TITLE.'　表示(ユーザID = '.$objLoginUserInfo->strUserID.') ';
+    $strLog .= isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
+    fncWriteLog(LogLevel['Info'], LogPattern['View'], $strLog);
+
+    // get list text translate
+    $arrTxtTrans = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    $intId = @$_POST['id'] ? $_POST['id'] : '';
+
+    $arrResult = array(
+        'BULLETIN_BOARD_NO' => '',
+        'OCCURRENCE_DATE' => '',
+        'CORRECTION_FLAG' => '',
+        'BUSINESS_NAME' => '',
+        'BUSINESS_NAME_ENG' => '',
+        'INCIDENT_NAME_JPN' => '',
+        'INCIDENT_NAME_ENG' => '',
+        'PLACE_NAME_JPN' => '',
+        'PLACE_NAME_ENG' => '',
+    );
+
+    $arrDataDetail = getInfoBullentin($intId);
+    // prepare data to show
+    if($arrDataDetail != 0 && count($arrDataDetail) > 0) {
+        $arrResult = array(
+            'BULLETIN_BOARD_NO' => isset($arrDataDetail[0]['BULLETIN_BOARD_NO'])
+                                ? $arrDataDetail[0]['BULLETIN_BOARD_NO'] : '',
+            'OCCURRENCE_DATE' => isset($arrDataDetail[0]['OCCURRENCE_DATE'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['OCCURRENCE_DATE'])) : '',
+            'CORRECTION_FLAG' => isset($arrDataDetail[0]['CORRECTION_FLAG'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['CORRECTION_FLAG'])) : '',
+            'BUSINESS_NAME' => isset($arrDataDetail[0]['BUSINESS_NAME'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['BUSINESS_NAME'])) : '',
+            'BUSINESS_NAME_ENG' => isset($arrDataDetail[0]['BUSINESS_NAME_ENG'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['BUSINESS_NAME_ENG'])) : '',
+            'INCIDENT_NAME_JPN' => isset($arrDataDetail[0]['INCIDENT_NAME_JPN'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['INCIDENT_NAME_JPN'])) : '',
+            'INCIDENT_NAME_ENG' => isset($arrDataDetail[0]['INCIDENT_NAME_ENG'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['INCIDENT_NAME_ENG'])) : '',
+            'PLACE_NAME_JPN' => isset($arrDataDetail[0]['PLACE_NAME_JPN'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['PLACE_NAME_JPN'])) : '',
+            'PLACE_NAME_ENG' => isset($arrDataDetail[0]['PLACE_NAME_ENG'])
+                                ? fncHtmlSpecialChars(trim($arrDataDetail[0]['PLACE_NAME_ENG'])) : '',
+        );
+    }
+
+    /**
+     *	function: インシデント事案取得
+     *
+     *	@create	2020/03/31 Chien AKB
+     *	@update
+     *	@params	$intId      bulletin_no
+     *	@return $arrResult  array data info of bulletin_no
+     */
+    function getInfoBullentin($intId) {
+        $arrResult = array();
+        if($intId == '') {
+            return $arrResult;
+        }
+        $strSQL = ' SELECT '
+                . '     tbb.BULLETIN_BOARD_NO '
+                . '     , tbb.OCCURRENCE_DATE '
+                . '     , tbb.CORRECTION_FLAG '
+                . '     , tbb.BUSINESS_NAME '
+                . '     , mbn.BUSINESS_NAME_ENG '
+                . '     , tbb.INCIDENT_NAME_JPN '
+                . '     , tbb.INCIDENT_NAME_ENG '
+                . '     , mpn.PLACE_NAME_JPN '
+                . '     , mpn.PLACE_NAME_ENG '
+                . ' FROM '
+                . '     t_bulletin_board AS tbb '
+                . '     LEFT OUTER JOIN m_business_name AS mbn '
+                . '         ON tbb.BUSINESS_NAME = mbn.BUSINESS_NAME_JPN '
+                . '     LEFT OUTER JOIN m_place_name AS mpn '
+                . '         ON tbb.PLACE3_ID = mpn.PLACE3_ID '
+                . ' WHERE '
+                . '     tbb.BULLETIN_BOARD_NO = ? ';
+        try {
+            $arrResult = fncSelectData($strSQL, array($intId),
+                                        1, false, DISPLAY_TITLE);
+            return $arrResult;
+        } catch (\Exceoption $e) {
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                DISPLAY_TITLE.' '.$e->getMessage());
+            return 0;
+        }
+    }
+
+    $strCSRF = isset($_POST['X-CSRF-TOKEN']) ? $_POST['X-CSRF-TOKEN'] : '';
+
+    fncGetRequestCheck($arrTxtTrans);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php
+        echo $arrTxtTrans['BULLETIN_BOARD_EDIT_TEXT_001'];
+    ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <?php if($objLoginUserInfo->intMenuPerm != 1) { ?>
+        <script>
+            alert('<?php echo $arrTxtTrans['PUBLIC_MSG_009']; ?>');
+            window.location.href="login.php";
+        </script>
+    <?php die(); } ?>
+    <?php
+        if($arrDataDetail == 0) {
+            echo '<div>'.$arrTxtTrans['PUBLIC_MSG_001'].'</div>';
+        } else {
+            if(count($arrDataDetail) == 0) {
+    ?>
+        <script>
+            alert('<?php echo $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_002']; ?>');
+            $('#myModal').modal('hide');
+        </script>
+    <?php
+            }
+        }
+    ?>
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title"><?php
+                echo $arrTxtTrans['BULLETIN_BOARD_EDIT_TEXT_001'];
+            ?></div>
+            <div class="form-body">
+                <div><font color="red" class="error-edit"></font></div>
+                <form action="" method="POST" name="bulletin-edit">
+                    <div class="cont-title">
+                        <div class="in-line"><?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_002_JPN; ?>/<?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_002_ENG;
+                        ?></div>
+                        <div class="in-line"><?php
+                            echo date('Y/m/d H:i', strtotime($arrResult['OCCURRENCE_DATE']));
+                        ?></div>
+                    </div>
+                    <!-- <br/> -->
+                    <div>
+                        <p style="background-color:#4169e1">
+                            <legend><?php
+                                echo BULLETIN_BOARD_EDIT_TEXT_003_JPN; ?>/<?php
+                                echo BULLETIN_BOARD_EDIT_TEXT_003_ENG;
+                            ?></legend>
+                        </p>
+                        <div class="info-left">
+                            <div class="line">
+                                <div class="in-line tlabel">(<?php
+                                    echo PUBLIC_TEXT_002_JPN; ?>/<?php
+                                    echo PUBLIC_TEXT_002_ENG;
+                                ?>)</div>
+                                <div class="in-line text-input text-bold"><?php
+                                    echo $arrResult['BUSINESS_NAME'];
+                                ?></div>
+                            </div>
+                            <div class="line">
+                                <div class="in-line tlabel">(<?php
+                                    echo PUBLIC_TEXT_003_JPN; ?>/<?php
+                                    echo PUBLIC_TEXT_003_ENG;
+                                ?>)</div>
+                                <div class="in-line text-input text-bold"><?php
+                                    echo $arrResult['BUSINESS_NAME_ENG'];
+                                ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="background-color:#4169e1">
+                        <legend><?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_004_JPN; ?>/<?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_004_ENG;
+                        ?></legend>
+                    </p>
+                    <div class="info">
+                        <div class="line">
+                            <div >(<?php
+                                echo PUBLIC_TEXT_002_JPN; ?>/<?php
+                                echo PUBLIC_TEXT_002_ENG;
+                            ?>)</div>
+                            <div class="text-input text-bold" name="txtIncidentOriginal"><?php
+                                echo $arrResult['INCIDENT_NAME_JPN'];
+                            ?></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="in-line tlabel">
+                            <input type="checkbox" name="chkManualInput" <?php
+                                if($arrResult['CORRECTION_FLAG'] == 1) {
+                                    echo 'checked';
+                                }
+                            ?>><?php
+                                echo $arrTxtTrans['PUBLIC_TEXT_008'];
+                            ?>
+                        </div>
+                        <div class="in-line text-input col-right">
+                            <button type="submit" class="tbtn-cancel tbtn-defaut"
+                                name="btnTranslation"><?php
+                                echo $arrTxtTrans['PUBLIC_BUTTON_004'];
+                            ?></button>
+                        </div>
+                    </div>
+
+                    <div class="top-20">
+                        <div class="title"><?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_004_JPN; ?>/<?php
+                            echo BULLETIN_BOARD_EDIT_TEXT_004_ENG;
+                        ?> （<?php echo $arrTxtTrans['PUBLIC_TEXT_003']; ?>）</div>
+                        <input type="text" class="form-control" name="txtIncidentTranslation" <?php
+                            if($arrResult['CORRECTION_FLAG'] == 0) { echo 'disabled'; }
+                        ?> value="<?php
+                            echo $arrResult['INCIDENT_NAME_ENG'];
+                        ?>" />
+                    </div>
+
+                    <br/>
+
+                    <div class="col-left">
+                        <p style="background-color:#4169e1">
+                            <legend><?php
+                                echo BULLETIN_BOARD_EDIT_TEXT_005_JPN; ?>/<?php
+                                echo BULLETIN_BOARD_EDIT_TEXT_005_ENG;
+                            ?> </legend>
+                        </p>
+                        <div class="info-left">
+                            <div class="line">
+                                <div class="in-line tlabel">(<?php
+                                    echo PUBLIC_TEXT_002_JPN; ?>/<?php
+                                    echo PUBLIC_TEXT_002_ENG;
+                                ?>)</div>
+                                <div class="in-line text-input text-bold"><?php
+                                    echo $arrResult['PLACE_NAME_JPN'];
+                                ?></div>
+                            </div>
+                            <div class="line">
+                                <div class="in-line tlabel">(<?php
+                                    echo PUBLIC_TEXT_003_JPN; ?>/<?php
+                                    echo PUBLIC_TEXT_003_ENG;
+                                ?>)</div>
+                                <div class="in-line text-input text-bold"><?php
+                                    echo $arrResult['PLACE_NAME_ENG'];
+                                ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-footer top-20">
+                        <div class="in-line">
+                            <button type="button" class="tbtn tbtn-defaut" name="btnPost"
+                                data-id="<?php echo $arrResult['BULLETIN_BOARD_NO']; ?>"><?php
+                                echo $arrTxtTrans['PUBLIC_BUTTON_014'];
+                            ?></button>　
+                        </div>
+                        <div class="in-line text-right" style="float: right">
+                            <button type="button" class="tbtn-cancel tbtn-defaut"
+                                name="btnClose" id="close" data-dismiss="modal"><?php
+                                echo $arrTxtTrans['PUBLIC_BUTTON_003'];
+                            ?></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var csrf = $('meta[name="csrf-token"]').attr('content');
+        var inputToken = '<input type="hidden" name="X-CSRF-TOKEN" value="'+csrf+'">';
+        $('form').append(inputToken);
+
+        var flagShowMsgCheckTranslateManual = false;
+        var flagCheckTranslateManual = false;
+
+        $(document).ready(function() {
+            $('input[name=chkManualInput]').on('change', function(e) {
+                e.preventDefault();
+                if($(this).is(':checked')) {
+                    $('input[name=txtIncidentTranslation]').prop('disabled', false);
+                    if(!flagShowMsgCheckTranslateManual
+                        && ($.trim($('input[name=txtIncidentTranslation]').val()) != '')) {
+                        alert('<?php echo $arrTxtTrans['PUBLIC_MSG_020']; ?>');
+                        flagShowMsgCheckTranslateManual = true;
+                    }
+                    flagCheckTranslateManual = true;
+                } else {
+                    $('input[name=txtIncidentTranslation]').prop('disabled', true);
+                }
+            });
+
+            $('button[name=btnTranslation]').off().on('click', function(e) {
+                e.preventDefault();
+                $('.error-edit').html('');
+
+                if(window.navigator.onLine == false) {
+                    alert('<?php echo $arrTxtTrans['PUBLIC_MSG_010']; ?>');
+                    return;
+                }
+
+                var arr = $('form[name=bulletin-edit]').serializeArray();
+                arr.push({ name: 'action', value: 'translate' });
+                arr.push({
+                    name: 'txtIncidentOriginal',
+                    value: $.trim($('div[name=txtIncidentOriginal]').text())
+                });
+                if(!$('input[name=chkManualInput]').is(':checked')) {
+                    arr.push({
+                        name: 'chkManualInput',
+                        value: 'off'
+                    });
+                    arr.push({
+                        name: 'txtIncidentTranslation',
+                        value: $('input[name=txtIncidentTranslation]').val()
+                    });
+                }
+
+                $.ajax({
+                    url: 'bulletin_board_edit_proc.php',
+                    type: 'POST',
+                    data: arr,
+                    async: false,
+                    success: function(result) {
+                        if(result != '') {
+                            if(result == 'window.location.href="login.php";') {
+                                window.location.href="login.php";
+                                return;
+                            }
+                            var res = getData(result);
+                            if(typeof res != 'string') {
+                                if(res['error'] != '') {
+                                    if(res['trans-error'] == 'error') {
+                                        alert('<?php echo $arrTxtTrans['PUBLIC_MSG_010']; ?>');
+                                    } else {
+                                        $('.error-edit').html(res['error']);
+                                    }
+                                }
+                                if(res['success'] != '') {
+                                    $('input[name=txtIncidentTranslation]').val(res['success']['incidentTranslate']);
+                                }
+                            }
+                        }
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            });
+
+            $('button[name=btnPost]').off().on('click', function(e) {
+                e.preventDefault();
+                $('.error-edit').html('');
+
+                var id = $(this).attr('data-id');
+                var arr = $('form[name=bulletin-edit]').serializeArray();
+                arr.push({ name: 'action', value: 'pre-update' });
+                arr.push({
+                    name: 'txtIncidentOriginal',
+                    value: $.trim($('div[name=txtIncidentOriginal]').text())
+                });
+                if(!$('input[name=chkManualInput]').is(':checked')) {
+                    arr.push({
+                        name: 'chkManualInput',
+                        value: 'off'
+                    });
+                    arr.push({
+                        name: 'txtIncidentTranslation',
+                        value: $('input[name=txtIncidentTranslation]').val()
+                    });
+                }
+
+                var flagStop = false;
+                var msgConfirm = '';
+                var incidentTranslate = '';
+                var intAuto = 0;
+
+                $.ajax({
+                    url: 'bulletin_board_edit_proc.php',
+                    type: 'POST',
+                    data: arr,
+                    async: false,
+                    success: function(result) {
+                        if(result != '') {
+                            if($.trim(result) == 'window.location.href="login.php";') {
+                                window.location.href="login.php";
+                                return;
+                            }
+                            var res = getData(result);
+                            if(typeof res != 'string') {
+                                if(res['error'] != '') {
+                                    if(res['trans-error'] == 'error') {
+                                        alert('<?php echo $arrTxtTrans['PUBLIC_MSG_010']; ?>');
+                                    } else {
+                                        $('.error-edit').html(res['error']);
+                                    }
+                                    flagStop = true;
+                                }
+                            }
+                            if(res['success'] != '') {
+                                console.log(res);
+                                $('input[name=txtIncidentTranslation]').val(res['success']['incidentTranslate']);
+                                incidentTranslate = res['success']['incidentTranslate'];
+                            }
+                            msgConfirm = res['confirm'];
+                            intAuto = res['auto'];
+                        }
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+
+                if(!flagStop) {
+                    if(msgConfirm != '' && confirm(msgConfirm)) {
+                        var data = $('form[name=bulletin-edit]').serializeArray();
+                        data.push({ name: 'action', value: 'update' });
+                        data.push({ name: 'id', value: id });
+                        data.push({
+                            name: 'txtIncidentOriginal',
+                            value: $.trim($('div[name=txtIncidentOriginal]').text())
+                        });
+                        if(!$('input[name=chkManualInput]').is(':checked')) {
+                            data.push({ name: 'chkManualInput', value: 'off' });
+                        }
+                        data.push({
+                            name: 'txtIncidentTranslation',
+                            value: $('input[name=txtIncidentTranslation]').val()
+                        });
+                        data.push({ name: 'auto', value: intAuto });
+                        data.push({ name: 'mode', value: 1 });
+
+                        var flagHasError = false;
+                        $.ajax({
+                            url: 'bulletin_board_edit_proc.php',
+                            type: 'POST',
+                            data: data,
+                            cache: false,
+                            async: false,
+                            success: function(result) {
+                                if(result != '') {
+                                    var res = getData(result);
+                                    if(res['error'] != '') {
+                                        $('.error-edit').html(res['error']);
+                                        flagHasError = true;
+                                        return;
+                                    }
+                                }
+                            },
+                            error: function(e) {
+                                console.log(e);
+                            }
+                        });
+
+                        if(!flagHasError) {
+                            var id = '<?php echo $arrResult['BULLETIN_BOARD_NO'] ?>';
+                            var key = '<?php if(isset($_POST['screen'])) {
+                                                if($_POST['screen'] == -1) {
+                                                    echo "bulletin_edit";
+                                                } else { echo -1;}
+                                            } else { echo -1; } ?>';
+                            if(id != '') {
+                                var a = $("<button>")
+                                        .attr('class', 'load-modal')
+                                        .attr("href", 'bulletin_board_view.php')
+                                        .attr("data-id", id)
+                                        .attr("data-screen", key)
+                                        .appendTo("body");
+                                a[0].click();
+                                a.remove();
+                            } else {
+                                var data = [
+                                    {
+                                        name: 'X-CSRF-TOKEN',
+                                        value: '<?php echo (isset($_POST['X-CSRF-TOKEN'])
+                                                        ? $_POST['X-CSRF-TOKEN'] : ''); ?>'
+                                    },{
+                                        name: 'action',
+                                        value: 'load_bull'
+                                    }
+                                ];
+
+                                $.ajax({
+                                    url : 'bull_form.php',
+                                    type : "POST",
+                                    dataType:"text",
+                                    data : data,
+                                    success : function (result){
+                                        if(result){
+                                            $('.bull_form').html(result);
+                                        }
+                                    }
+                                });
+                                $('#myModal').modal('hide');
+                            }
+                        }
+                    }
+                }
+            });
+
+            $('button[name=btnClose]').off().on('click', function(e) {
+                e.preventDefault();
+                var id = '<?php echo $arrResult['BULLETIN_BOARD_NO'] ?>';
+                var key = '<?php if(isset($_POST['screen'])) {
+                                    if($_POST['screen'] == -1) {
+                                        echo "bulletin_edit";
+                                    } else { echo -1;} } else { echo -1; } ?>';
+                console.log(key);
+                if(id != '') {
+                    var a = $("<button>")
+                            .attr('class', 'load-modal')
+                            .attr("href", 'bulletin_board_view.php')
+                            .attr("data-id", id)
+                            .attr("data-screen", key)
+                            .appendTo("body");
+                    a[0].click();
+                    a.remove();
+                    $('#myModal').modal('show');
+                } else {
+                    var data = [
+                        {
+                            name: 'X-CSRF-TOKEN',
+                            value: '<?php echo (isset($_POST['X-CSRF-TOKEN'])
+                                            ? $_POST['X-CSRF-TOKEN'] : ''); ?>'
+                        },{
+                            name: 'action', value: 'load_info'
+                        }
+                    ];
+
+                    $.ajax({
+                        url : 'info_form_content.php',
+                        type : "POST",
+                        dataType:"text",
+                        data : data,
+                        success : function (result){
+                            if(result){
+                                $('.info-cont').html(result);
+                            }
+                        }
+                    });
+                    $('#myModal').modal('hide');
+                }
+            });
+        });
+
+        function getData(str) {
+            var res;
+            try {
+                res = JSON.parse(str);
+            } catch (e) {
+                res = str;
+            }
+            return res;
+        }
+    </script>
+</body>
+</html>

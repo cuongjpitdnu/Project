@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">掲示板</div>
+            <div class="form-body">
+                <div class="error-messeage">
+                    <div>※本メッセージにおける英語表記は、自動翻訳機能により生成された文章です。</div>
+                    <div>This English is translated by the automatic translator system.</div>
+                </div>
+                <div class="col-right in-lineblock right-20">
+                        <button type="button" class="tbtn tbtn-defaut" id="btn-edit" onclick="loadModal('bulletin_board_edit.html')">編集</button>
+                    </div>
+                    
+                     <div class="cont-title">
+                    <div class="in-line">日付</div>
+                    <div class="in-line ">2019/11/30 12:30</div>
+                </div>
+                    
+                <br>
+                
+
+                <div>
+                    <p style="background-color:#4169e1">
+                 	<legend>業務名/abcabcabc</legend>
+                	</p>
+                    <div class="info-left">
+                        <div class="line">
+                            <div class="in-line tlabel">(原文/Original)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc<?php echo @$chat[0]['text']?></div>
+                        </div>
+                        <div class="line">
+                            <div class="in-line tlabel">(翻訳/・・・)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="background-color:#4169e1">
+                 	<legend>インシデント件名/abcabcabc</legend>
+                	</p>
+                    <div class="info-left">
+                        <div class="line">
+                            <div class="in-line tlabel">(原文/Original)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc<?php echo @$chat[0]['text']?></div>
+                        </div>
+                        <div class="line">
+                            <div class="in-line tlabel">(翻訳/・・・)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-left">
+                    <p style="background-color:#4169e1">
+                 	<legend>場所/abcabcabc</legend>
+                	</p>
+                    <div class="info-left">
+                        <div class="line">
+                            <div class="in-line tlabel">(原文/Original)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                        </div>
+                        <div class="line">
+                            <div class="in-line tlabel">(翻訳/・・・)</div>
+                            <div class="in-line text-input text-bold">abcabcabcabcabcabc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer text-right right-20">
+                    <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

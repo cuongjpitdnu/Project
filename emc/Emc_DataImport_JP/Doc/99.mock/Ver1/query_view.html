@@ -1,0 +1,147 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        .recent_heading h4 {
+            color: #05728f;
+            font-size: 21px;
+            margin: auto;
+        }
+
+        .chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+        .chat_ib h5 span{ font-size:13px; float:right;}
+        .chat_ib p{ font-size:14px; color:#989898; margin:auto}
+
+        .received_msg {
+            display: inline-block;
+            padding: 0 0 0 10px;
+            vertical-align: top;
+            width: 92%;
+        }
+        .received_withd_msg p {
+            background: #ebebeb none repeat scroll 0 0;
+            border-radius: 3px;
+            border: 1px solid;
+            font-size: 14px;
+            margin: 0;
+            padding: 5px 10px 5px 12px;
+            width: 100%;
+        }
+        .time_date {
+            color: #0000ff;
+            display: block;
+            font-size: 12px;
+            margin: 8px 0 0;
+        }
+
+        .received_withd_msg { width: 57%;}
+        .mesgs {
+            border: 1px solid;
+        }
+        .sent_msg p {
+            background: #ccffcc none repeat scroll 0 0;
+            border-radius: 3px;
+            border: solid 1px #000000;
+            font-size: 14px;
+            margin: 0;
+            padding: 5px 10px 5px 12px;
+            width:100%;
+        }
+        .outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+        .sent_msg {
+            float: right;
+            width: 46%;
+        }
+        .input_msg_write input {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
+            color: #4c4c4c;
+            font-size: 15px;
+            min-height: 48px;
+            width: 100%;
+        }
+        .msg_history {
+            height: 350px;
+            overflow-y: auto;
+            background: #bfbfbf;
+        }
+    </style>
+</head>
+<body>
+<div class="main-form">
+    <div class="form-title">問い合わせ</div>
+    <div class="form-body">
+        <div class="mesgs">
+            <div class="msg_history">
+                <div class="incoming_msg">
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <span class="time_date">関空 11:01 AM | June 9</span>
+                            <p>Test which is a new approach to have all
+                                solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="outgoing_msg">
+                    <div class="sent_msg">
+                        <span class="time_date">JR西 11:01 AM    |    June 9</span>
+                        <p>Test which is a new approach to have all
+                            solutions</p>
+                    </div>
+                </div>
+                <div class="incoming_msg">
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <span class="time_date">関空 11:01 AM    |    Yesterday</span>
+                            <p>Test, which is a new approach to have</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="outgoing_msg">
+                    <div class="sent_msg">
+                        <span class="time_date">ANA 11:01 AM    |    Today</span>
+                        <p>Apollo University, Delhi, India Test</p>
+                    </div>
+                </div>
+                <div class="incoming_msg">
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <span class="time_date"> 11:01 AM    |    Today</span>
+                            <p>We work directly with our designers and suppliers,
+                                and sell direct to you, which means quality, exclusive
+                                products, at a price anyone can afford.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" top-20">内容/Contents (<span class="txt-red">原文/Original</span>)</div>
+        <textarea name="content-source" class="form-control" rows="2" cols="50"></textarea>
+        <div class="in-line tlabel"><input type="checkbox" name="vehicle1" value="Bike">翻訳を手入力する</div>
+
+        <div class="in-line col-right">
+            <div class="select-container">
+                <select>
+                    <option value="ja">日(原文)⇒英(翻訳)</option>
+                    <option value="en">Eng(Original)⇒Jpn(Translation)</option>
+                </select>
+            </div>
+            <button type="submit" class="tbtn tbtn-defaut pad-left-20" >翻訳</button>
+        </div>
+        <div>内容 (<span class="txt-red">翻訳</span>)</div>
+        <textarea name="content-source" class="form-control top-20" rows="2" cols="50"></textarea>
+
+        <div class="form-footer top-20">
+            <div class="in-line">
+                <button type="submit" class="tbtn tbtn-defaut ">投稿</button>
+            </div>
+            <div class="in-line text-right" style="float: right">
+                <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal">閉じる</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

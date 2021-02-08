@@ -1,0 +1,424 @@
+2020/03/06 08:21:48 EMCデータインポート開始
+2020/03/06 08:25:12 EMCデータインポート開始
+2020/03/06 08:28:33 EMCデータインポート開始
+2020/03/06 08:31:34 EMCデータインポート開始
+2020/03/06 08:34:35 EMCデータインポート開始
+2020/03/06 08:37:36 EMCデータインポート開始
+2020/03/06 08:40:37 EMCデータインポート開始
+2020/03/06 08:43:38 EMCデータインポート開始
+2020/03/06 08:46:39 EMCデータインポート開始
+2020/03/06 08:49:40 EMCデータインポート開始
+2020/03/06 08:52:41 EMCデータインポート開始
+2020/03/06 08:55:42 EMCデータインポート開始
+2020/03/06 08:55:43 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 08:55:43 メール件数  2
+2020/03/06 08:55:45 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 08:55:45 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6242,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 08:55:45.216','2020-03-06 08:55:45.216' )
+2020/03/06 08:55:45 EMCデータインポート 終了
+2020/03/06 08:58:45 EMCデータインポート開始
+2020/03/06 09:01:45 EMCデータインポート開始
+2020/03/06 09:01:46 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:01:46 メール件数  2
+2020/03/06 09:01:47 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:01:47 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6250,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 09:01:47.527','2020-03-06 09:01:47.527' )
+2020/03/06 09:01:47 EMCデータインポート 終了
+2020/03/06 09:04:47 EMCデータインポート開始
+2020/03/06 09:04:48 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:04:48 メール件数  2
+2020/03/06 09:04:49 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:04:49 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6254,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 09:04:49.343','2020-03-06 09:04:49.343' )
+2020/03/06 09:04:49 EMCデータインポート 終了
+2020/03/06 09:07:49 EMCデータインポート開始
+2020/03/06 09:07:50 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:07:50 メール件数  2
+2020/03/06 09:07:51 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:07:51 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6259,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 09:07:51.275','2020-03-06 09:07:51.275' )
+2020/03/06 09:07:51 EMCデータインポート 終了
+2020/03/06 09:10:51 EMCデータインポート開始
+2020/03/06 09:10:51 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:10:51 メール件数  2
+2020/03/06 09:10:53 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:10:53 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6263,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 09:10:53.568','2020-03-06 09:10:53.568' )
+2020/03/06 09:10:53 EMCデータインポート 終了
+2020/03/06 09:13:53 EMCデータインポート開始
+2020/03/06 09:16:53 EMCデータインポート開始
+2020/03/06 09:16:54 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:16:54 メール件数  2
+2020/03/06 09:16:55 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:16:55 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6272,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-06 09:16:55.688','2020-03-06 09:16:55.688' )
+2020/03/06 09:16:55 EMCデータインポート 終了
+2020/03/06 09:19:55 EMCデータインポート開始
+2020/03/06 09:19:56 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:19:56 メール件数  1
+2020/03/06 09:19:56 EMCデータインポート 終了
+2020/03/06 09:22:56 EMCデータインポート開始
+2020/03/06 09:22:57 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:22:57 メール件数  1
+2020/03/06 09:22:57 EMCデータインポート 終了
+2020/03/06 09:25:57 EMCデータインポート開始
+2020/03/06 09:25:58 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:25:58 メール件数  1
+2020/03/06 09:25:58 EMCデータインポート 終了
+2020/03/06 09:28:58 EMCデータインポート開始
+2020/03/06 09:28:58 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:28:58 メール件数  1
+2020/03/06 09:28:59 EMCデータインポート 終了
+2020/03/06 09:31:59 EMCデータインポート開始
+2020/03/06 09:31:59 メール件数 0
+2020/03/06 09:31:59 EMCデータインポート 終了
+2020/03/06 09:35:00 EMCデータインポート開始
+2020/03/06 09:35:00 メール件数 0
+2020/03/06 09:35:00 EMCデータインポート 終了
+2020/03/06 09:38:00 EMCデータインポート開始
+2020/03/06 09:38:01 メール件数 0
+2020/03/06 09:38:01 EMCデータインポート 終了
+2020/03/06 09:41:01 EMCデータインポート開始
+2020/03/06 09:41:02 メール件数 0
+2020/03/06 09:41:02 EMCデータインポート 終了
+2020/03/06 09:44:02 EMCデータインポート開始
+2020/03/06 09:44:02 メール件数 0
+2020/03/06 09:44:02 EMCデータインポート 終了
+2020/03/06 09:47:02 EMCデータインポート開始
+2020/03/06 09:47:03 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:47:03 メール件数  1
+2020/03/06 09:47:03 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:47:03 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6277,'FW: 【事業者名様】　◆提供可能 通知◆','DQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBodW9uZ3RtQGxvY2FsLm5ldCBb
+bWFpbHRvOmh1b25ndG1AbG9jYWwubmV0XSANClNlbnQ6IDAyIFRoYcyBbmcgQmEgMjAyMCAxMTo0
+NSBTQQ0KVG86IGNoaWVuQGxvY2FsLm5ldDsgdHVuZ0Bsb2NhbC5uZXQNCkNjOiB0aGFuZ3BkQGxv
+Y2FsLm5ldA0KU3ViamVjdDog44CQ5LqL5qWt6ICF5ZCN5qeY44CR44CA4peG5o+Q5L6b5Y+v6IO9
+6YCa55+l4peGDQoNCuS6i+alreiAheWQjeOAgOW+oeaLheW9k+iAheanmA0KDQrjgYrkuJboqbHj
+gavjgarjgaPjgabjgYrjgorjgb7jgZnjgIINCk5UVC1NReOAgOODjeODg+ODiOODr+ODvOOCr+mB
+i+WWtuOCu+ODs+OCv+OBp+OBmeOAgg0KDQrnlLPovrzmm7jnorroqo3jga7ntZDmnpzjgIHmj5Dk
+vpvlj6/og73jgajliKTmlq3jgZXjgozjgb7jgZfjgZ/jgIINCg0K55Sz6L685YaF5a6544Gr44Gk
+44GN44G+44GX44Gm44Gv44CB77yc77yp77yz77yw44OV44Os44OD44OE55Sz6L6844Kq44Oz44Op
+44Kk44Oz77ye44GL44KJ5LiL6KiY44GuDQrlt6XkuovnlLPovrznlarlj7fjgafnorroqo3jgZfj
+gabjgYTjgZ/jgaDjgY/jgojjgYbjgojjgo3jgZfjgY/jgYrpoZjjgYTjgZfjgb7jgZnjgIINCg0K
+77yc77yp77yz77yw5bel5LqL566h55CG44OE44O844Or77y177yy77ys77yeDQpodHRwOi8vMTky
+LjE2OC4xLjE3My9Jc3BDb25zdE1hbmFnZURlY1MzL3dlYi9hcHBfZGV2LnBocC9sb2dpbi83MVVR
+M1ppQg0KDQoNCuKXhuaPkOS+m+WPr+iDvQ0KW+W3peS6i+WQjV0NCnRlc3QNClvoqK3lgpnoqK3n
+va7jgqjjg6rjgqJdDQrlpKfpmKoNClvlt6XkuovluIzmnJvml6VdDQotDQpb5bel5LqL55Sz6L68
+55Wq5Y+3XeOAgFvlt6XkuovljLrliIZd44CAW+W3peS6i+eoruWIpV3jgIANCk0xOS05MzM4MSAg
+ICAgCeODj+ODvOODiSAgIAnjgrHjg7zjg5bjg6vliIfmm78NCk0xOS05MzM4MiAgICAgCeOCveOD
+leODiCAgIAlOVy/oqo3oqLwv44OX44O844OrL051bGwvTkFTLUlQ6Zai6YCj5aSJ5pu0DQoNCg0K
+DQrvvZ7ku6XkuIvjgIHpgKPntaHlhYjjga7nvbLlkI3jgpLoqJjovInvvZ4NCg==
+
+', 0, 0, 0, 1,'2020-03-06 09:47:03.531','2020-03-06 09:47:03.531' )
+2020/03/06 09:47:05 EMCデータインポート 終了

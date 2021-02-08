@@ -1,0 +1,244 @@
+<?php
+require_once('common/common.php');
+// require_once('bulletin_board_mng_proc.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+if(fncConnectDB() == false) {
+	echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+if(!isset($_SESSION['LOGINUSER_INFO'])) {
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+$_SESSION['errStr'] = '';
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+// get list text translate
+$arrTitle =  array(
+    'COMPANY_EDIT_MSG_002',
+    'COMPANY_EDIT_MSG_003',
+    'COMPANY_EDIT_MSG_004',
+    'COMPANY_EDIT_MSG_005',
+    'COMPANY_EDIT_MSG_006',
+    'COMPANY_EDIT_MSG_007',
+    'COMPANY_EDIT_MSG_008',
+    'COMPANY_EDIT_MSG_009',
+    'COMPANY_EDIT_MSG_010',
+    'COMPANY_EDIT_MSG_011',
+    'COMPANY_EDIT_MSG_012',
+    'COMPANY_EDIT_MSG_013',
+
+    'PUBLIC_BUTTON_003',
+    'PUBLIC_BUTTON_013',
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_008',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_004',
+    'PUBLIC_MSG_003',
+    'PUBLIC_MSG_002',
+    'COMPANY_EDIT_MSG_014',
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?", [$userInfo->intUserNo], '会社情報新規登録・編集画面');
+if(!$user) {
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+
+//redirect if dont have permission
+if($userInfo->intMenuPerm != 1) {
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+    exit();
+}
+
+//check input
+define('company_name_jpn_length', 20);
+define('company_name_eng_length', 50);
+define('abbreviations_jpn_length', 4);
+define('abbreviations_eng_length', 4);
+
+if(isset($_POST['company_no'])) {
+    $one = fncSelectOne("SELECT COMPANY_NO FROM m_company WHERE COMPANY_NO=?", [$_POST['company_no']], '会社情報新規登録・編集画面');
+    if(!$one && $_POST['company_no'] != '') {
+        $_SESSION['errStr'] .= $arrTextTranslate['PUBLIC_MSG_003'].'<br>';
+    } else {
+        if(!isset($_POST['company_name_jpn']) || mb_strlen($_POST['company_name_jpn']) == 0) {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_002'].'<br>';
+        } else {
+            //số ký tự lớn hơn 20
+            if(mb_strlen($_POST['company_name_jpn'])>company_name_jpn_length) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_003'].'<br>';
+            }
+        }
+
+        if(!isset($_POST['company_name_eng']) || mb_strlen($_POST['company_name_eng']) == 0) {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_004'].'<br>';
+        } else {
+            //số ký tự lớn hơn 50
+            if(mb_strlen($_POST['company_name_eng'])>company_name_eng_length) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_005'].'<br>';
+            }
+            //ky tu dac biet, half size check
+
+            if(!fncCheckEngText($_POST['company_name_eng'])) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_006'].'<br>';
+            }
+        }
+
+        if(!isset($_POST['abbreviations_jpn']) || mb_strlen($_POST['abbreviations_jpn']) == 0) {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_007'].'<br>';
+        } else {
+            //số ký tự lớn hơn 4
+            // print_r(strlen($_POST['abbreviations_jpn']));
+            if(mb_strlen($_POST['abbreviations_jpn'])>abbreviations_jpn_length) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_008'].'<br>';
+            }
+        }
+
+        if(!isset($_POST['abbreviations_eng']) || mb_strlen($_POST['abbreviations_eng']) == 0) {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_009'].'<br>';
+        } else {
+            //số ký tự lớn hơn 4
+            if(mb_strlen($_POST['abbreviations_eng'])>abbreviations_eng_length) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_010'].'<br>';
+            }
+            //ky tu dac biet, half size check
+            if(!fncCheckEngText($_POST['abbreviations_eng'])) {
+                $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_011'].'<br>';
+            }
+        }
+
+        if(!isset($_POST['inst_category_no']) || $_POST['inst_category_no'] == '') {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_012'].'<br>';
+        } else {
+            // //check category exist
+            // $one = fncSelectOne("SELECT * FROM m_inst_category WHERE INST_CATEGORY_NO=?", [$_POST['inst_category_no']]);
+            // if(!$one) {
+            //     $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_012'].'<br>';
+            // }
+        }
+
+        if(!isset($_POST['group_no']) || $_POST['group_no'] == '') {
+            $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_013'].'<br>';
+        } else {
+            // //check group exist
+            // $one = fncSelectOne("SELECT * FROM m_group WHERE GROUP_NO=?", [$_POST['group_no']]);
+            // if(!$one) {
+            //     $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_013'].'<br>';
+            // }
+        }
+    }
+} else {
+    $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_014'];
+}
+if($_SESSION['errStr'] != '') {
+    //write log
+    fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $_SESSION['errStr']);
+?>
+    <!-- <script> -->
+        $('.edit-error').html('<?php echo $_SESSION['errStr']; ?>');
+    <!-- </script> -->
+<?php
+} else {
+    //process
+    try {
+        $cat = fncSelectOne("SELECT INST_CATEGORY_NO
+            FROM m_inst_category
+            WHERE INST_CATEGORY_NO=?",
+            [$_POST['inst_category_no']], '会社情報新規登録・編集画面');
+        $group = fncSelectOne("SELECT GROUP_NO
+            FROM m_group
+            WHERE GROUP_NO=?",
+            [$_POST['group_no']], '会社情報新規登録・編集画面');
+
+        if($_POST['company_no'] != '') {
+            //update
+            if(!$cat || !$group) {
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_003']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                exit();
+            }
+            $t = fncProcessData([
+                'COMPANY_NO' => $_POST['company_no'],
+                'COMPANY_NAME_JPN'  => $_POST['company_name_jpn'],
+                'COMPANY_NAME_ENG'  =>  $_POST['company_name_eng'],
+                'ABBREVIATIONS_JPN'  => $_POST['abbreviations_jpn'],
+                'ABBREVIATIONS_ENG'  => $_POST['abbreviations_eng'],
+                'ABBREVIATIONS_ENG'  => $_POST['abbreviations_eng'],
+                'INST_CATEGORY_NO'  => $_POST['inst_category_no'],
+                'GROUP_NO'  => $_POST['group_no']
+            ], 'm_company', 'COMPANY_NO=?', array($_POST['company_no']), '会社情報新規登録・編集画面');
+            if($t->rowCount() > 0) {
+                echo 0;
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'] , '会社情報新規登録・編集画面 登録 (ユーザID = '.$userInfo->strUserID.')');
+                //ajax return 0 reload the current page
+            } else {
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_002']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+            }
+        } else {
+            if(!$cat || !$group) {
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_002']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+                exit();
+            }
+            $last = fncSelectOne("SELECT * FROM m_company ORDER BY COMPANY_NO DESC", [], '会社情報新規登録・編集画面');
+            if($last) {
+                $no = $last['COMPANY_NO'] + 1;
+                $sortNo = $last['SORT_NO'] + 1;
+            } else {
+                $no = 1;
+                $sortNo = 1;
+            }
+            $t = fncProcessData([
+                'COMPANY_NO' => $no,
+                'COMPANY_NAME_JPN'  => $_POST['company_name_jpn'],
+                'COMPANY_NAME_ENG'  =>  $_POST['company_name_eng'],
+                'ABBREVIATIONS_JPN'  => $_POST['abbreviations_jpn'],
+                'ABBREVIATIONS_ENG'  => $_POST['abbreviations_eng'],
+                'ABBREVIATIONS_ENG'  => $_POST['abbreviations_eng'],
+                'INST_CATEGORY_NO'  => $_POST['inst_category_no'],
+                'GROUP_NO'  => $_POST['group_no'],
+                'SORT_NO'   =>  $sortNo
+            ], 'm_company', '', array(), '会社情報新規登録・編集画面');
+            if($t->rowCount() > 0) {
+                echo 1;
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'] , '会社情報新規登録・編集画面 更新 (ユーザID = '.$userInfo->strUserID.')');
+                //ajax return 1 go to last page
+            } else {
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_003']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+            }
+        }
+    } catch(\Exception $e) {
+        fncWriteLog(LogLevel['Error'] , LogPattern['Error'], $e->getMessage());
+        echo $e->getMessage();
+    }
+}
+
+// print_r($_SESSION['errStr'] );

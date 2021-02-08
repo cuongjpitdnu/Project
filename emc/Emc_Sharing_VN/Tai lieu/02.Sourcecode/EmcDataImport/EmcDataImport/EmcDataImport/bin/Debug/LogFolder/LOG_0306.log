@@ -1,0 +1,487 @@
+2020/03/06 08:58:12 EMCデータインポート開始
+2020/03/06 08:58:14 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 08:58:14 メール件数 2
+2020/03/06 08:58:25 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 08:58:31 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate, @update)
+2020/03/06 09:02:43 EMCデータインポート開始
+2020/03/06 09:02:43 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:02:43 メール件数 2
+2020/03/06 09:02:48 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:02:53 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (:announceNo, :title, :contents, :languagetype, :correctionflag, :untraslated, :reguserno, :regdate,:update)
+2020/03/06 09:03:37 EMCデータインポート開始
+2020/03/06 09:03:37 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:03:37 メール件数 2
+2020/03/06 09:03:40 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:03:48 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (:announceNo, :title, :contents, :languagetype, :correctionflag, :untraslated, :reguserno, :regdate,:update)
+2020/03/06 09:07:16 EMCデータインポート開始
+2020/03/06 09:07:16 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:07:16 メール件数 2
+2020/03/06 09:07:20 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:07:27 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (:announceNo, :title, :contents, :languagetype, :correctionflag, :untraslated, :reguserno, :regdate,:update)
+2020/03/06 09:13:23 EMCデータインポート開始
+2020/03/06 09:13:23 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:13:23 メール件数 2
+2020/03/06 09:13:28 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:13:31 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (:announceNo, :title, :contents, :languagetype, :correctionflag, :untraslated, :reguserno, :regdate,:update)
+2020/03/06 09:14:56 EMCデータインポート開始
+2020/03/06 09:14:57 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:14:57 メール件数 2
+2020/03/06 09:15:04 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:15:09 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 09:15:30 EMCデータインポート開始
+2020/03/06 09:15:31 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:15:31 メール件数 2
+2020/03/06 09:15:36 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:15:38 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 09:18:50 EMCデータインポート開始
+2020/03/06 09:18:51 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:18:51 メール件数 2
+2020/03/06 09:18:54 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:18:56 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 09:19:00 EMCデータインポート 終了
+2020/03/06 09:23:15 EMCデータインポート開始
+2020/03/06 09:23:17 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:23:17 メール件数 1
+2020/03/06 09:30:37 EMCデータインポート開始
+2020/03/06 09:30:39 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:30:40 メール件数 1
+2020/03/06 09:30:55 EMCデータインポート開始
+2020/03/06 09:30:59 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:31:03 メール件数 1
+2020/03/06 09:31:36 EMCデータインポート 終了
+2020/03/06 09:31:42 EMCデータインポート開始
+2020/03/06 09:31:43 メール件数 0
+2020/03/06 09:31:43 EMCデータインポート 終了
+2020/03/06 09:31:45 EMCデータインポート開始
+2020/03/06 09:31:46 メール件数 0
+2020/03/06 09:31:46 EMCデータインポート 終了
+2020/03/06 09:31:50 EMCデータインポート開始
+2020/03/06 09:31:53 メール件数 0
+2020/03/06 09:31:54 EMCデータインポート 終了
+2020/03/06 09:54:57 EMCデータインポート開始
+2020/03/06 09:54:58 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:54:58 メール件数 1
+2020/03/06 09:54:58 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 09:55:00 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 09:55:31 EMCデータインポート開始
+2020/03/06 09:55:32 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:55:32 メール件数 2
+2020/03/06 09:56:32 EMCデータインポート開始
+2020/03/06 09:56:33 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:56:33 メール件数 2
+2020/03/06 09:58:04 EMCデータインポート開始
+2020/03/06 09:58:05 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:58:05 メール件数 3
+2020/03/06 09:59:24 EMCデータインポート開始
+2020/03/06 09:59:25 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 09:59:25 メール件数 4
+2020/03/06 10:00:31 EMCデータインポート開始
+2020/03/06 10:00:32 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:00:32 メール件数 5
+2020/03/06 10:00:51 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:00:51 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:01:23 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:01:24 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:02:23 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:02:26 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:12:16 EMCデータインポート開始
+2020/03/06 10:12:17 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:12:17 メール件数 5
+2020/03/06 10:14:34 EMCデータインポート開始
+2020/03/06 10:14:34 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:14:34 メール件数 5
+2020/03/06 10:15:26 EMCデータインポート開始
+2020/03/06 10:15:26 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:15:26 メール件数 5
+2020/03/06 10:15:50 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:15:51 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:16:07 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:16:08 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:16:43 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:16:44 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:16:51 EMCデータインポート開始
+2020/03/06 10:16:56 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:16:57 メール件数 5
+2020/03/06 10:17:00 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:17:01 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:17:14 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:17:15 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:17:24 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:17:24 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:17:30 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:17:31 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:17:43 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:17:44 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, @regdate,@update)
+2020/03/06 10:17:52 EMCデータインポート 終了
+2020/03/06 10:17:53 EMCデータインポート開始
+2020/03/06 10:17:53 メール件数 0
+2020/03/06 10:17:53 EMCデータインポート 終了
+2020/03/06 10:17:55 EMCデータインポート開始
+2020/03/06 10:17:55 メール件数 0
+2020/03/06 10:17:55 EMCデータインポート 終了
+2020/03/06 10:17:58 EMCデータインポート開始
+2020/03/06 10:28:27 EMCデータインポート開始
+2020/03/06 10:28:28 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:28:28 メール件数 1
+2020/03/06 10:28:31 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:28:32 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 10:28:34 EMCデータインポート 終了
+2020/03/06 10:29:31 EMCデータインポート開始
+2020/03/06 10:29:36 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:29:36 メール件数 2
+2020/03/06 10:29:48 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:29:50 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 10:31:18 EMCデータインポート開始
+2020/03/06 10:31:18 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 10:31:18 メール件数 2
+2020/03/06 10:31:21 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:31:22 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 10:31:29 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 10:31:30 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 10:31:32 EMCデータインポート 終了
+2020/03/06 14:19:21 EMCデータインポート開始
+2020/03/06 14:19:24 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:19:25 メール件数 1
+2020/03/06 14:19:49 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:19:51 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:20:16 EMCデータインポート開始
+2020/03/06 14:20:21 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:20:21 メール件数 1
+2020/03/06 14:20:25 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:20:26 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:20:38 EMCデータインポート 終了
+2020/03/06 14:27:18 EMCデータインポート開始
+2020/03/06 14:27:19 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:27:19 メール件数 1
+2020/03/06 14:27:39 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:27:41 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:29:03 EMCデータインポート開始
+2020/03/06 14:29:03 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:29:03 メール件数 1
+2020/03/06 14:29:09 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:29:11 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:29:13 EMCデータインポート 終了
+2020/03/06 14:29:15 EMCデータインポート開始
+2020/03/06 14:29:15 メール件数 0
+2020/03/06 14:29:15 EMCデータインポート 終了
+2020/03/06 14:33:17 EMCデータインポート開始
+2020/03/06 14:33:18 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:33:18 メール件数 3
+2020/03/06 14:33:29 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:33:30 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:33:49 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:33:50 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:20 EMCデータインポート開始
+2020/03/06 14:42:21 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:42:21 メール件数 6
+2020/03/06 14:42:26 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:32 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:35 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:36 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:38 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:38 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:40 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:40 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:42 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:42 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:44 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:42:44 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:42:46 EMCデータインポート 終了
+2020/03/06 14:42:46 EMCデータインポート開始
+2020/03/06 14:42:47 メール件数 0
+2020/03/06 14:42:47 EMCデータインポート 終了
+2020/03/06 14:42:49 EMCデータインポート開始
+2020/03/06 14:42:49 メール件数 0
+2020/03/06 14:42:49 EMCデータインポート 終了
+2020/03/06 14:45:12 EMCデータインポート開始
+2020/03/06 14:45:12 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:45:12 メール件数 1
+2020/03/06 14:45:42 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:45:44 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:52:45 EMCデータインポート開始
+2020/03/06 14:52:46 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:52:46 メール件数 1
+2020/03/06 14:52:47 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:52:47 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:52:48 EMCデータインポート 終了
+2020/03/06 14:52:49 EMCデータインポート開始
+2020/03/06 14:52:49 メール件数 0
+2020/03/06 14:52:49 EMCデータインポート 終了
+2020/03/06 14:52:51 EMCデータインポート開始
+2020/03/06 14:52:52 メール件数 0
+2020/03/06 14:52:52 EMCデータインポート 終了
+2020/03/06 14:53:43 EMCデータインポート開始
+2020/03/06 14:53:44 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:53:44 メール件数 1
+2020/03/06 14:53:51 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:53:52 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:54:01 EMCデータインポート 終了
+2020/03/06 14:55:24 EMCデータインポート開始
+2020/03/06 14:55:25 メール件数 0
+2020/03/06 14:55:25 EMCデータインポート 終了
+2020/03/06 14:55:25 EMCデータインポート開始
+2020/03/06 14:55:26 メール件数 0
+2020/03/06 14:55:26 EMCデータインポート 終了
+2020/03/06 14:56:21 EMCデータインポート開始
+2020/03/06 14:56:22 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:56:22 メール件数 1
+2020/03/06 14:56:31 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:56:39 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:56:42 EMCデータインポート 終了
+2020/03/06 14:56:44 EMCデータインポート開始
+2020/03/06 14:56:44 メール件数 0
+2020/03/06 14:56:44 EMCデータインポート 終了
+2020/03/06 14:56:45 EMCデータインポート開始
+2020/03/06 14:56:46 メール件数 0
+2020/03/06 14:56:46 EMCデータインポート 終了
+2020/03/06 14:58:22 EMCデータインポート開始
+2020/03/06 14:58:22 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 14:58:22 メール件数 1
+2020/03/06 14:58:27 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 14:58:29 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (@announceNo, @title, @contents, @languagetype, @correctionflag, @untraslated, @reguserno, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+2020/03/06 14:58:31 EMCデータインポート 終了
+2020/03/06 14:58:32 EMCデータインポート開始
+2020/03/06 14:58:32 メール件数 0
+2020/03/06 14:58:32 EMCデータインポート 終了
+2020/03/06 14:58:33 EMCデータインポート開始
+2020/03/06 14:58:34 メール件数 0
+2020/03/06 14:58:34 EMCデータインポート 終了
+2020/03/06 15:01:13 EMCデータインポート開始
+2020/03/06 15:01:14 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:01:14 メール件数 1
+2020/03/06 15:12:53 EMCデータインポート開始
+2020/03/06 15:12:53 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:12:53 メール件数 1
+2020/03/06 15:17:49 EMCデータインポート開始
+2020/03/06 15:17:50 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:17:50 メール件数 1
+2020/03/06 15:26:39 EMCデータインポート開始
+2020/03/06 15:26:40 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:26:40 メール件数 1
+2020/03/06 15:30:01 EMCデータインポート開始
+2020/03/06 15:30:02 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:30:02 メール件数 1
+2020/03/06 15:34:26 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 15:34:28 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6319,'お疲れ様です','Nhungさん
+
+ 
+
+お疲れ様です。坂尾です。
+
+ 
+
+下名が少し勘違いしていましたが、
+
+現在、FA03から遷移する場合は、FA06⇒FA03⇒FA06
+
+という遷移のようです。
+
+ 
+
+設計書上、引渡予定明細のIDを受取るようになっていますが
+
+この分のActionクラスについて記載をお願いします。
+
+以上、よろしくお願いします。
+***********************************
+ケービーソフトウェア（株）
+坂尾　泰生（さかお　やすお）
+
+
+', 0, 0, 0, 1,'2020-03-06 15:34:28.918','2020-03-06 15:34:28.918' )
+2020/03/06 15:51:32 EMCデータインポート開始
+2020/03/06 15:51:33 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 15:51:33 メール件数 2
+2020/03/06 16:08:34 EMCデータインポート開始
+2020/03/06 16:08:35 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 16:08:35 メール件数 2
+2020/03/06 16:08:38 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 16:08:40 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6320,'お疲れ様です','Nhungさん
+
+ 
+
+お疲れ様です。坂尾です。
+
+ 
+
+下名が少し勘違いしていましたが、
+
+現在、FA03から遷移する場合は、FA06⇒FA03⇒FA06
+
+という遷移のようです。
+
+ 
+
+設計書上、引渡予定明細のIDを受取るようになっていますが
+
+この分のActionクラスについて記載をお願いします。
+
+以上、よろしくお願いします。
+***********************************
+ケービーソフトウェア（株）
+坂尾　泰生（さかお　やすお）
+
+
+', 0, 0, 0, 1,'2020-03-06 16:08:40.389','2020-03-06 16:08:40.389' )
+2020/03/06 16:08:45 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 16:08:45 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6321,'事業者名　御担当者様','事業者名　御担当者様
+
+ 
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+ 
+
+申込書確認の結果、提供可能と判断されました。
+
+ 
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+ 
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/rrq7xFw8
+
+ 
+
+ 
+
+◆提供可能
+
+[工事名]
+
+test
+
+[設備設置エリア]
+
+大阪
+
+ 
+
+
+', 0, 0, 0, 1,'2020-03-06 16:08:45.710','2020-03-06 16:08:45.710' )
+2020/03/06 16:08:47 EMCデータインポート 終了
+2020/03/06 16:08:48 EMCデータインポート開始
+2020/03/06 16:08:48 メール件数 0
+2020/03/06 16:08:48 EMCデータインポート 終了
+2020/03/06 16:08:48 EMCデータインポート開始
+2020/03/06 16:08:49 メール件数 0
+2020/03/06 16:08:49 EMCデータインポート 終了
+2020/03/06 16:08:50 EMCデータインポート開始
+2020/03/06 16:08:50 メール件数 0
+2020/03/06 16:08:50 EMCデータインポート 終了
+2020/03/06 16:08:51 EMCデータインポート開始
+2020/03/06 16:08:52 メール件数 0
+2020/03/06 16:08:52 EMCデータインポート 終了
+2020/03/06 16:10:49 EMCデータインポート開始
+2020/03/06 16:10:49 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 16:10:49 メール件数 1
+2020/03/06 16:10:53 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 16:10:55 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6322,'事業者名　御担当者様','事業者名　御担当者様
+
+ 
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+ 
+
+申込書確認の結果、提供可能と判断されました。
+
+ 
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+ 
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/rrq7xFw8
+
+ 
+
+ 
+
+◆提供可能
+
+[工事名]
+
+test
+
+[設備設置エリア]
+
+ 
+
+
+', 0, 0, 0, 1,'2020-03-06 16:10:55.436','2020-03-06 16:10:55.436' )
+2020/03/06 16:10:58 EMCデータインポート 終了
+2020/03/06 16:11:00 EMCデータインポート開始
+2020/03/06 16:11:00 メール件数 0
+2020/03/06 16:11:00 EMCデータインポート 終了
+2020/03/06 16:13:22 EMCデータインポート開始
+2020/03/06 16:13:22 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 16:13:22 メール件数 1
+2020/03/06 16:13:24 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 16:13:25 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6323,'事業者名　御担当者様','事業者名　御担当者様
+
+ 
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+ 
+
+申込書確認の結果、提供可能と判断されました。
+
+ 
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+ 
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/rrq7xFw8
+
+ 
+
+ 
+
+◆提供可能
+
+[工事名]
+
+test
+
+[設備設置エリア]
+
+ 
+
+
+', 0, 0, 0, 1,'2020-03-06 16:13:25.182','2020-03-06 16:13:25.182' )
+2020/03/06 16:13:27 EMCデータインポート 終了
+2020/03/06 16:13:28 EMCデータインポート開始
+2020/03/06 16:13:29 メール件数 0
+2020/03/06 16:13:29 EMCデータインポート 終了
+2020/03/06 16:52:39 EMCデータインポート開始
+2020/03/06 16:52:45 EMCデータインポート開始
+2020/03/06 16:52:49 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 16:52:50 メール件数 1
+2020/03/06 16:57:41 SELECT NEXT VALUE FOR announce_sequence
+2020/03/06 16:58:04 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6327,'事業者名　御担当者様','事業者名　御担当者様 お世話になっております。NTT-ME　ネットワーク運営センタです。 申込書確認の結果、提供可能と判断されました。 申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の工事申込番号で確認していただくようよろしくお願いします。 ＜ＩＳＰ工事管理ツールＵＲＬ＞http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/rrq7xFw8  ◆提供可能[工事名]test[設備設置エリア]', 0, 0, 0, 1,'2020-03-06 16:58:04.938','2020-03-06 16:58:04.938' )
+2020/03/06 16:59:07 EMCデータインポート開始
+2020/03/06 16:59:08 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/06 16:59:08 メール件数 1
+2020/03/06 17:03:17 SELECT NEXT VALUE FOR announce_sequence

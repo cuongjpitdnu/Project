@@ -1,0 +1,386 @@
+
+$(function(){
+	// ************************************************************************************************************************************************************
+	//	ログ出力
+	// ************************************************************************************************************************************************************
+	// -------------------------------------------------------------------------
+	//	memo		: add csrf token to form before
+	//	create		: 2020/02/13 AKB Thang
+	//	update		:
+	// ------
+	var csrf = $('meta[name="csrf-token"]').attr('content');
+	var inputToken = '<input type="hidden" name="X-CSRF-TOKEN" value="'+csrf+'">';
+	$('form').append(inputToken);
+
+	$(document).on('click', '.pagi', function(e) {
+		e.preventDefault();
+		if($(this).hasClass('disabled') || $(this).hasClass('active')) return;
+		var page = $(this).attr('data');
+		var url = $(this).attr('href');
+		// var arr = $('.search-form').serializeArray();
+		var arr = [{name: 'X-CSRF-TOKEN', value: csrf}, {name: 'loadList', value: 1}];;
+		arr.push({ name: 'page', value: page });
+		arr.push({ name: 'event', value: 1 });
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: arr,
+			success: function(result){
+				$(".ajax-content").html(result);
+			}
+		});
+	});
+
+	var originalSearch = 1;
+	$(document).on('click', '.btn-del', function(e){
+		e.preventDefault();
+		t = confirm(confirmDelMsg);
+		if(!t) return;
+		var arr = [{name: 'X-CSRF-TOKEN', value: csrf}, {name: 'id', value: $(this).attr('data-id')}];
+		var obj = {};
+		obj.name = 'mode';
+		obj.value = 1;
+		arr.push(obj);
+		$.ajax({
+			url: ajaxUrl,
+			type: 'post',
+			data: arr,
+			success: function(result){
+				// console.log(result);
+				// $('.btn-search').click();
+				console.log(result);
+				if(result != 0){
+					$('.error').html(result);
+				}
+
+				originalSearch = 0;
+				$('.btn-search').click();
+				originalSearch = 1;
+			  }
+		});
+	});
+
+	$(document).on('click', '.btn-search', function(e){
+		if(originalSearch == 1){
+			$('.error').html('');
+		}
+		var html = $('.ajax-content').html();
+		var arr = $('.search-form').serializeArray();
+		arr.push({name: 'originalSearch', value: originalSearch});
+		$.ajax({
+			url: ajaxUrl,
+			type: 'post',
+			data: arr,
+			success: function(result){
+				
+				$(".ajax-content").html(result);
+				if($('.error').html() != ''){
+					$(".ajax-content").html(html);
+				}
+			}
+		});
+
+	});
+
+	//csv output
+
+	$(document).on('click', '.tbl-btn-csv', function(e){
+		e.preventDefault();
+		$('[name=mode]').val(2);
+		var data = $('.search-form').serialize();
+		$('[name=searchData]').val(data);
+		$("#formCSV").submit();
+
+	});
+	//csv output del
+
+
+	$(document).on('click', '.tbl-btn-csv-del', function(e){
+		e.preventDefault();
+		t=confirm(confirmMsg);
+		if(!t) return;
+		$('[name=mode]').val(3);
+
+		$.ajax({
+			url: ajaxUrl,
+			type: 'post',
+			data: $('#formCSV').serializeArray(),
+			success:function(data){
+				console.log(data);
+				$('.error').html(data);
+				originalSearch = 0;
+				$('.btn-search').click();
+				originalSearch = 1;
+			}
+		});
+
+
+	});
+	$(document).on('click', '.tbn-btn-return', function(e){
+		e.preventDefault();
+		window.location.href = 'portal.php';
+	});
+	//load modal
+	$(document).on('click', '.load-modal', function(e){
+		e.preventDefault();
+		var modalUrl = $(this).attr('href');
+
+		var arr = [
+			{name: 'X-CSRF-TOKEN', value: csrf},
+			{name: 'id', value: $(this).attr('data-id')},
+			{name: 'screen', value: $(this).attr('data-screen')}
+		];
+		$('#modal-body').html('');
+		$('#myModal').modal({
+				backdrop: 'static'
+		});
+
+		$.ajax({
+			url : modalUrl,
+			type : "POST",
+			data : arr,
+			success : function (result){
+				$('#modal-body').html(result);
+			}
+		});
+	});
+	//up down link
+	$(document).on('click', '.tbtn-ud', function(){
+		var move = $(this).val();
+		var id = $(this).attr('data-id');
+		var sort = $(this).attr('data-sort')
+		var dataClass = $(this).attr('data-class');
+		var index = $('.'+dataClass).index(this);
+		var catLength = $('.'+dataClass).length;
+		if(index == 0 && $(this).hasClass('up') || index == catLength-1 && $(this).hasClass('down'))
+
+		return;
+
+		if($(this).hasClass('up')){
+			next = $('.'+dataClass).eq(index-1).attr('data-id');
+			sortNext = $('.'+dataClass).eq(index-1).attr('data-sort');
+		}
+		else{
+			next = $('.'+dataClass).eq(index+1).attr('data-id');
+			sortNext = $('.'+dataClass).eq(index+1).attr('data-sort');
+		}
+
+		$.ajax({
+			url: ajaxUrl,
+			type: 'post',
+			data: [
+				{name: 'X-CSRF-TOKEN', value: csrf},
+				{name: 'move', value: move},
+				{name: 'id', value: id},
+				{name: 'mode', value: 2},
+				{name: 'next', value: next},
+				{name: 'sort', value: sort},
+				{name: 'sortNext', value: sortNext},
+			],
+			success: function(result){
+				// console.log(result);
+				if(result != 0){
+					$('.error').html(result);
+				}
+				originalSearch = 0;
+				$('.btn-search').click();
+				originalSearch = 1;
+			}
+		});
+	});
+	//save form
+	$(document).on('click', '.btn-save-edit', function(e){
+		e.preventDefault();
+		t = confirm(confirmMsg);
+		if(!t){
+			return;
+		}
+
+		var formData = $('.formEdit').serializeArray();
+		var url = $('.formEdit').attr('action');
+		// console.log(url);
+
+		$.ajax({
+			url: url,
+			type: 'post',
+			data: formData,
+			success: function(result){
+				console.log(result);
+				if(result!=0 && result != 1){
+					eval(result);
+				}else{
+					window.location.reload();
+					return;
+					if(result == '0'){
+						var currentPage = $('.pagi.active').attr('data');
+						$('#myModal').modal('hide');
+
+						originalSearch = 0;
+						$('.btn-search').click();
+						// var checkAjaxStop = false;
+						// $(document).ajaxStop(function(){
+						// 	if(!checkAjaxStop)
+						// 	$('.pagi[data="'+currentPage+'"]').click();
+						// 	$('.edit-error').html('');
+						// 	$('#myModal').modal('hide');
+						// 	checkAjaxStop = true;
+						// });
+
+						originalSearch = 1;
+					}else{
+						$('#myModal').modal('hide');
+						originalSearch = 0;
+						$('.btn-search').click();
+						// var checkAjaxStop = false;
+						// $(document).ajaxStop(function(){
+						// 	if(!checkAjaxStop)
+						// 	$('.pagi.last').click();
+						// 	$('.edit-error').html('');
+						// 	$('#myModal').modal('hide');
+						// 	checkAjaxStop = true;
+						// });
+
+						originalSearch = 1;
+					}
+
+				}
+			}
+		});
+		// console.log(formData);
+	});
+	//upload ajax file
+
+	$(document).on('click', '.btn-save-edit-file', function(e){
+		e.preventDefault();
+		t = confirm(confirmMsg);
+		if(!t){
+			return;
+		}
+		var formElement = document.querySelector(".formEdit");
+		var formData = new FormData(formElement);
+
+		var url = $('.formEdit').attr('action');
+		var el = document.getElementById("file-upload");
+		if($('[name="chkDelete"]').prop('checked')){
+			if(!(typeof el.files[0] !== 'undefined' && el.files[0].size > 0)) {
+
+				// console.log(fileNotExistMessage);
+				$('.edit-error').html(fileNotExistMessage);
+				return;
+			}
+		}else{
+			if($('[name="LINK_NO"]').val() == '' || $('.in-line a.link').html() == ''){
+				if(!(typeof el.files[0] !== 'undefined' && el.files[0].size > 0)) {
+
+					// console.log(fileNotExistMessage);
+					$('.edit-error').html(fileNotExistMessage);
+					return;
+				}
+			}
+		}
+
+		// return;
+		$.ajax({
+			url: url,
+			type: 'post',
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+			async: false,
+			success: function(result){
+				console.log(result);
+				// return;
+				if(result!=0 && result != 1){
+					eval(result);
+				}else{
+					window.location.reload();
+					return;
+					if(result == '0'){
+						var currentPage = $('.pagi.active').attr('data');
+						$('#myModal').modal('hide');
+						originalSearch = 0;
+						$('.btn-search').click();
+						originalSearch = 1;
+					}else{
+						$('#myModal').modal('hide');
+						originalSearch = 0;
+						$('.btn-search').click();
+						originalSearch = 1;
+					}
+
+				}
+
+			}
+		});
+		// console.log(formData);
+	});
+
+	$(document).on('click', '.tabbs', function(e){
+		$.ajax({
+			url: 'portal_proc.php',
+			type: 'get',
+			data: [{name: 'tab', value: $('.tabbs').index(this)}],
+			success: function(result){
+				// console.log(result);
+			}
+		});
+	});
+
+});
+function downloadURI(uri, urlCheck, errMsg) {
+	var csrf = $('meta[name="csrf-token"]').attr('content');
+	$('.edit-error').html('');
+	var res = uri.replace(/\s/g, '');
+	var path = decodeURIComponent(escape(window.atob(res)));
+	var arrPathFile = path.split("/");
+	$.ajax({
+		url: urlCheck,
+		type: 'POST',
+		data: [
+			{name: 'action', value: 'checkFile'},
+			{name: 'file', value: uri},
+			{name: 'X-CSRF-TOKEN', value: csrf}
+		],
+		success: function(result){
+			// console.log(result);
+			if(result != 0 && result !='0'){
+				if(!msieversion()){
+					var link = document.createElement("a");
+					link.download = '';
+					link.href = path;
+					link.click();
+				}else{
+					var c = document.getElementById("canvas1");
+					var ctx = c.getContext("2d");
+					var img = new Image();
+					img.src = path;
+					img.onload = function() {
+						c.width = img.width;
+						c.height = img.height;
+						ctx.drawImage(img, 0, 0);
+						window.navigator.msSaveBlob(c.msToBlob(), arrPathFile[arrPathFile.length-1]);
+						img.src = '';
+						ctx.clearRect(0, 0, c.width, c.height);
+					}
+				}
+			}else{
+				$('.edit-error').html(errMsg);
+			}
+		}
+	});
+
+	
+	
+}
+
+function msieversion() {
+	var ua = window.navigator.userAgent;
+	var msie = ua.indexOf("MSIE ");
+	if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+		return true;
+	} else {
+		return false;
+	}
+	return false;
+}

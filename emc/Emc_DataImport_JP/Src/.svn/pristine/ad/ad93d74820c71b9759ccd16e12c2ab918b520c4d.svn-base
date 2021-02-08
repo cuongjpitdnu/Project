@@ -1,0 +1,170 @@
+function postQuery()
+{
+    var source = $('#txt-source').val();
+    var sleTran = $('#sle-tran').val();
+    var ckeckMan = $('#ckeck-manunal').is(":checked");
+    var target = $('#txt-target').val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'txtSource',value: source },
+        {name: 'sleTran',value: sleTran },
+        {name: 'ckeckMan',value: ckeckMan },
+        {name: 'txtTarget',value: target },
+        {name: 'action',value: 'insert_query'},
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+    $.ajax({
+        url : 'query_view_proc.php',
+        type : "POST",
+        dataType:"JSON",
+        data : data,
+        success : function (result){
+            if(result == '1'){
+                $('#er-source').hide();
+                $('#er-target').hide();
+                $('#txt-source').val('');
+                $('#txt-target').val('');
+                loadChatForm();
+                $('.msg_history').stop().animate({
+                    scrollTop: $('.msg_history')[0].scrollHeight
+                }, 1);
+            }else{
+                $('#er-source').hide();
+                $('#er-target').hide();
+                $.each(result.error, function( index, value ) {
+                    $('#'+index).html(value);
+                    $('#'+index).show();
+                });
+            }
+        }
+    });
+}
+
+function validateInput(error){
+    var txtSource = $('#txt-source').val();
+    var txtTarget = $('#txt-target').val();
+    var ckeckMan =  0;
+    if ($('#ckeck-manunal').is(":checked"))
+    {
+        ckeckMan = 1;
+    }
+    var err = 0;
+
+    if(txtSource.length ==0){
+        $('#er-source').show();
+        err = 1;
+    }else{
+        $('#er-source').hide();
+    }
+    if(txtTarget.length ==0 && ckeckMan == 1){
+        $('#er-target').show();
+        err =1;
+    }else{
+        $('#er-target').hide();
+    }
+    return err;
+}
+
+
+function loadChatForm() {
+    var radioValue = $("input[name='gettime']:checked").val();
+    var csrf = $('#csrf').val();
+    var data = [
+        {name: 'typeOfTime',value: radioValue },
+        {name: 'X-CSRF-TOKEN',value: csrf },
+        {name: 'isAjax',value: 1 }
+    ];
+
+    $.ajax({
+        url : 'msg_history_form.php',
+        type : "POST",
+        dataType:"text",
+        data : data,
+        success : function (result){
+            if(result){
+                $('.msg_history').append(result);
+                $('.msg_history').stop().animate({
+                    scrollTop: $('.msg_history')[0].scrollHeight
+                }, 1);
+            }
+        }
+    });
+}
+
+// var reloadTime = $('#reloadTime').val();
+// setInterval('loadChatForm()',reloadTime*1000);
+
+$('#ckeck-manunal').change(function() {
+    if(this.checked) {
+        $('#txt-target').prop("disabled", false);
+    }else{
+        $('#txt-target').prop("disabled", true);
+    }
+});
+
+$( "#btn-tran" ).click(function() {
+    translate();
+});
+
+function translate() {
+    //AWS Access Key ID
+    wkey1="AKIASVBKO6L4T3GB5VH6";
+
+    //AWS Secret Access Key
+    wkey2="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";
+
+    //region
+    wregion ="us-west-2";
+
+    startTime1 = Date.now();
+
+    a=document.getElementById( "txt-source" ).value ;
+
+    AWS.config.region = wregion; // Region
+    AWS.config.credentials = new AWS.Credentials(wkey1,wkey2);
+    var translate = new AWS.Translate({region: AWS.config.region});
+    var polly = new AWS.Polly();
+
+
+    var p = $('#sle-tran').children("option:selected").val();
+    var sr = 'en';
+    var tg = 'ja';
+
+    if(p == 'je'){
+        sr = 'ja';
+        tg = 'en';
+    }
+    var params = {
+        Text: a,
+        SourceLanguageCode: sr,
+        TargetLanguageCode: tg
+    };
+
+
+    var tran = translate.translateText(params, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+            alert("Error calling Amazon Translate. " + err.message);
+            return;
+        }
+        if (data) {
+            var obj = document.getElementById('txt-target');
+            obj.value = data.TranslatedText;
+        }
+    });
+    if(tran.response.error == null){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+
+//amazon�|��
+
+
+
+
+
+

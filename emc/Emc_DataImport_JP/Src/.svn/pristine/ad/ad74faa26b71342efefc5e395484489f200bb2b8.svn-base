@@ -1,0 +1,445 @@
+<?php
+require_once('common/common.php');
+// require_once('bulletin_board_mng_proc.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+
+if(fncConnectDB() == false){
+	echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+$_SESSION['errStr'] = '';
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+
+
+// get list text translate
+$arrTitle =  array(
+    'USER_EDIT_MSG_002',
+    'USER_EDIT_MSG_003',
+    'USER_EDIT_MSG_004',
+    'USER_EDIT_MSG_005',
+    'USER_EDIT_MSG_006',
+    'USER_EDIT_MSG_007',
+    'USER_EDIT_MSG_008',
+    'USER_EDIT_MSG_009',
+    'USER_EDIT_MSG_010',
+    'USER_EDIT_MSG_011',
+    'USER_EDIT_MSG_012',
+    'USER_EDIT_MSG_013',
+    'USER_EDIT_MSG_014',
+    'USER_EDIT_MSG_015',
+    'USER_EDIT_MSG_016',
+    'USER_EDIT_MSG_017',
+    'USER_EDIT_MSG_018',
+    'USER_EDIT_MSG_019',
+    'USER_EDIT_MSG_020',
+    'USER_EDIT_MSG_021',
+    'USER_EDIT_MSG_022',
+    'USER_EDIT_MSG_023',
+    'USER_EDIT_MSG_024',
+    'USER_EDIT_MSG_025',
+    'USER_EDIT_MSG_026',
+    'USER_EDIT_MSG_027',
+    'USER_EDIT_MSG_028',
+    'USER_EDIT_MSG_029',
+
+    'PUBLIC_BUTTON_003',
+    'PUBLIC_BUTTON_013',
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_008',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_004',
+    'PUBLIC_MSG_003',
+    'PUBLIC_MSG_002',
+    
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?",
+    [$userInfo->intUserNo], 'ユーザ登録編集画面');
+if(!$user){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+//redirect if dont have permission
+if($userInfo->intMenuPerm != 1){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+//company change
+
+if(isset($_POST['mode']) && $_POST['mode'] == 2){
+    $company = fncSelectOne("SELECT * FROM m_company WHERE COMPANY_NO=?", [$_POST['company_no']], 'ユーザ登録編集画面');
+    if($company){
+
+
+        $one = fncSelectOne("SELECT
+        ".iff($userInfo->intLanguageType, ' m_company.ABBREVIATIONS_ENG as abbreviations,', ' m_company.ABBREVIATIONS_JPN as abbreviations,')."
+        ".iff($userInfo->intLanguageType, ' m_inst_category.INST_CATEGORY_NAME_ENG as INST_CATEGORY_NAME,', ' m_inst_category.INST_CATEGORY_NAME_JPN as INST_CATEGORY_NAME,')."
+        ".iff($userInfo->intLanguageType, ' m_group.GROUP_NAME_ENG as GROUP_NAME', ' m_group.GROUP_NAME_JPN as GROUP_NAME')."
+        FROM m_company
+        LEFT JOIN m_inst_category ON m_inst_category.INST_CATEGORY_NO = m_company.INST_CATEGORY_NO
+        LEFT JOIN m_group ON m_group.GROUP_NO = m_company.GROUP_NO
+        WHERE COMPANY_NO=?"
+        , [$company['COMPANY_NO']], 'ユーザ登録編集画面');
+        // print_r($one);
+        // exit();
+        if(is_array($one)){
+            echo json_encode([$one['abbreviations'], $one['INST_CATEGORY_NAME'], $one['GROUP_NAME']]) ;
+        }else{
+            echo json_encode([[],[],[]]);
+        }
+        
+    }else{
+        echo json_encode([[],[],[]]);
+    }
+    exit();
+}
+
+
+
+
+//check input
+if(isset($_POST['mode']) && $_POST['mode'] == 1){
+if(isset($_POST['user_no'])){
+    $one = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?",[$_POST['user_no']], 'ユーザ登録編集画面');
+    if(!$one && $_POST['user_no'] != ''){
+        $_SESSION['errStr'] .= $arrTextTranslate['PUBLIC_MSG_003'].'<br>';
+
+    }else{
+        if($_POST['user_no'] == ''){
+            //check user_id
+            if(!isset($_POST['user_id']) || strlen($_POST['user_id'])==0){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_002'].'<br>';
+            }else{
+                //số ký tự lớn hơn 20
+                if(strlen($_POST['user_id'])>20){
+                    $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_004'].'<br>';
+                }
+                
+            }
+            if(!fncCheckEngText($_POST['user_id'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_003'].'<br>';
+            }
+            //check da ton tai
+
+            $one = fncSelectOne("SELECT USER_NO from m_user WHERE USER_ID=?", [$_POST['user_id']], 'ユーザ登録編集画面');
+            if($one){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_005'].'<br>';
+            }
+        }
+        if(!isset($_POST['password']) || mb_strlen($_POST['password'])==0){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_006'].'<br>';
+        }else{
+            //số ký tự lớn hơn 30
+            if(mb_strlen($_POST['password'])>30 || mb_strlen($_POST['password'])<12){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_008'].'<br>';
+            }
+
+            //check tieng anh
+            if(!fncCheckEngText($_POST['password'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_007'].'<br>';
+            }
+            //check co ca chu hoa chu thuong
+
+            $check = (preg_match('/[A-Z]+/', $_POST['password']) && preg_match('/[a-z]+/', $_POST['password']));
+            if(!$check){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_009'].'<br>';
+            }
+        }
+
+        if(!isset($_POST['expiration_date_s']) || mb_strlen($_POST['expiration_date_s'])==0){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_010'].'<br>';
+        }else{
+            //check date
+            $tmpDate = explode('/', $_POST['expiration_date_s']);
+            if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+            $checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+            if(!$checkDate){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_011'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['expiration_date_e']) || mb_strlen($_POST['expiration_date_e'])==0){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_012'].'<br>';
+        }else{
+            //check date
+            $tmpDate = explode('/', $_POST['expiration_date_e']);
+            if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+            $checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+            if(!$checkDate){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_013'].'<br>';
+            }
+
+            //compare
+            if($_POST['expiration_date_s'] >= $_POST['expiration_date_e'] ){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_014'].'<br>';
+            }
+
+        }
+        if(!isset($_POST['language_type']) || $_POST['language_type']==''){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_015'].'<br>';
+        }
+
+        if(!isset($_POST['company_no']) || $_POST['company_no']==''){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_016'].'<br>';
+        }
+
+        if(!isset($_POST['organization'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_017'].'<br>';
+        }else{
+            //số ký tự lớn hơn 30
+            if(mb_strlen($_POST['organization'])>50){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_017'].'<br>';
+            }
+
+        }
+        
+        if(!isset($_POST['user_name'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_018'].'<br>';
+        }else{
+            //số ký tự lớn hơn 30
+            if(mb_strlen($_POST['user_name'])>20){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_018'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['mail_address'])  || $_POST['mail_address']==''){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_019'].'<br>';
+        }else{
+            //số ký tự lớn hơn 30
+            if(mb_strlen($_POST['mail_address'])>50){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_021'].'<br>';
+            }
+            //ky tu dac biet,tieng anh
+            if(!fncCheckEngText($_POST['mail_address'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_020'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['tel'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_022'].'<br>';
+        }else{
+            //số ký tự lớn hơn 30
+            if(mb_strlen($_POST['tel'])>20){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_023'].'<br>';
+            }
+            //ky tu dac biet,tieng anh
+            if(!fncCheckEngText($_POST['tel'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_022'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['fax'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_024'].'<br>';
+        }else{
+            //số ký tự lớn hơn 20
+            if(mb_strlen($_POST['fax'])>20){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_025'].'<br>';
+            }
+            //ky tu dac biet,tieng anh
+            if(!fncCheckEngText($_POST['fax'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_024'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['zip_code'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_026'].'<br>';
+        }else{
+            //số ký tự lớn hơn 8
+            if(mb_strlen($_POST['zip_code'])>8){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_027'].'<br>';
+            }
+            //ky tu dac biet,tieng anh
+            if(!fncCheckEngText($_POST['zip_code'])){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_026'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['address'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_028'].'<br>';
+        }else{
+            //số ký tự lớn hơn 100
+            if(mb_strlen($_POST['address'])>100){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_028'].'<br>';
+            }
+
+        }
+
+        if(!isset($_POST['remarks'])){
+            $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_029'].'<br>';
+        }else{
+            //số ký tự lớn hơn 200
+            if(mb_strlen($_POST['remarks'])>200){
+                $_SESSION['errStr'] .= $arrTextTranslate['USER_EDIT_MSG_029'].'<br>';
+            }
+
+        }
+
+    }
+}else{
+    // $_SESSION['errStr'] .= $arrTextTranslate['COMPANY_EDIT_MSG_014'];
+}
+
+
+if($_SESSION['errStr'] != ''){
+    //write log
+    fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 '. $_SESSION['errStr']);
+?>
+
+$('.edit-error').html('<?php echo $_SESSION['errStr']; ?>');
+
+<?php
+}else{
+    //process
+    try{
+
+        $com = fncSelectOne("SELECT COMPANY_NO, GROUP_NO
+            FROM m_company
+            WHERE COMPANY_NO=?",
+            [$_POST['company_no'], 'ユーザ登録編集画面']
+        );
+
+        
+        if($_POST['user_no']!=''){
+            //update
+            if(!$com){
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 更新 ' . $arrTextTranslate['PUBLIC_MSG_003']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                exit();
+            }
+            // print_r($_POST);
+            $t = fncProcessData([
+                // 'USER_NO' => $_POST['user_no'],
+                // 'USER_ID'  => $_POST['user_id'],
+                'PASSWORD'  =>  $_POST['password'],
+                'PASSWORD_UP_DATE'  =>  date('Y-m-d H:i:s'),
+                'EXPIRATION_DATE_S'  => $_POST['expiration_date_s'],
+                'EXPIRATION_DATE_E'  => $_POST['expiration_date_e'],
+                'LANGUAGE_TYPE'  => (isset($_POST['language_type']) && $_POST['language_type']!='0' ? 1 : 0),
+                'COMPANY_NO'  => $_POST['company_no'],
+                'ORGANIZATION'  => $_POST['organization'],
+                'GROUP_NO'  => $com['GROUP_NO'],
+                'USER_NAME'  => $_POST['user_name'],
+                'MAIL_ADDRESS'  => $_POST['mail_address'],
+                'TEL'  => $_POST['tel'],
+                'FAX'  => $_POST['fax'],
+                'ZIP_CODE'  => $_POST['zip_code'],
+                'ADDRESS'  => $_POST['address'],
+                'REMARKS'  => $_POST['remarks'],
+                // 'REG_USER_NO'  => $userInfo->intUserNo,
+                'DELETE_FLAG' => 0,
+                'PERM_FLAG' =>  0,
+                // 'REG_DATE'  =>  date('Y-m-d H:i:s'),
+                'UP_USER_NO'    =>  $userInfo->intUserNo,
+                'UP_DATE'   => date('Y-m-d H:i:s')
+            ], 
+            'm_user', 
+            'USER_NO=?', 
+            array($_POST['user_no']));
+
+            if($t->rowCount()>0){
+                echo 0;
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'] , 'ユーザ登録編集画面 更新 (ユーザID = '.$userInfo->strUserID.')');
+                //ajax return 0 reload the current page
+            }else{
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 更新 ' . $arrTextTranslate['PUBLIC_MSG_003']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+            }
+            
+            
+        }else{
+            if(!$com){
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 登録 ' . $arrTextTranslate['PUBLIC_MSG_002']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+                exit();
+            }
+            $last = fncSelectOne("SELECT * FROM m_user ORDER BY USER_NO DESC", [], 'ユーザ登録編集画面');
+            if($last){
+                $no = $last['USER_NO'] + 1;
+            }else{
+                $no = 1;
+            }
+            // print_r($_POST);
+            $t = fncProcessData([
+                'USER_NO' => $no,
+                'USER_ID'  => $_POST['user_id'],
+                'PASSWORD'  =>  $_POST['password'],
+                'PASSWORD_UP_DATE'  =>  date('Y-m-d H:i:s'),
+                'EXPIRATION_DATE_S'  => $_POST['expiration_date_s'],
+                'EXPIRATION_DATE_E'  => $_POST['expiration_date_e'],
+                'LANGUAGE_TYPE'  => (isset($_POST['language_type']) && $_POST['language_type']!='0' ? 1 : 0),
+                'COMPANY_NO'  => $_POST['company_no'],
+                'ORGANIZATION'  => $_POST['organization'],
+                'GROUP_NO'  => $com['GROUP_NO'],
+                'USER_NAME'  => $_POST['user_name'],
+                'MAIL_ADDRESS'  => $_POST['mail_address'],
+                'TEL'  => $_POST['tel'],
+                'FAX'  => $_POST['fax'],
+                'ZIP_CODE'  => $_POST['zip_code'],
+                'ADDRESS'  => $_POST['address'],
+                'REMARKS'  => $_POST['remarks'],
+                'REG_USER_NO'  => $userInfo->intUserNo,
+                'DELETE_FLAG' => 0,
+                'PERM_FLAG' =>  0,
+                'REG_DATE'  =>  date('Y-m-d H:i:s'),
+                'UP_USER_NO'    =>  $userInfo->intUserNo,
+                'UP_DATE'   => date('Y-m-d H:i:s')
+            ], 
+            'm_user');
+            if($t->rowCount()>0){
+                echo 1;
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'] , 'ユーザ登録編集画面 登録 (ユーザID = '.$userInfo->strUserID.')');
+                //ajax return 1 go to last page
+            }else{
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 ' . $arrTextTranslate['PUBLIC_MSG_002']);
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+            }
+        }
+    }
+    catch(\Exception $e){
+        fncWriteLog(LogLevel['Error'] , LogPattern['Error'], 'ユーザ登録編集画面 ' . $e->getMessage());
+        echo $e->getMessage();
+    }
+    
+
+}
+}
+
+// print_r($_SESSION['errStr'] );

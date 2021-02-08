@@ -1,0 +1,27 @@
+<?php require_once('category_detail_proc.php') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $arrayText['PORTAL_DAILY_TEXT_009']. $category[0]['LINK_CATEGORY_NAME_JPN'].'/ '. $category[0]['LINK_CATEGORY_NAME_ENG']?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title"><?= $arrayText['PORTAL_DAILY_TEXT_009'].' ('. $category[0]['LINK_CATEGORY_NAME_JPN'].'/ '. $category[0]['LINK_CATEGORY_NAME_ENG'].')'?></div>
+        <div class="form-body-90 top-20">
+            <?php
+                foreach ($category as $item){
+                    echo '<div class="div-middle-line">';
+                    echo '<label class="lb-left" ><a href="'.$item['URL'].'">'.$item["LINK_NAME".$endLang].'</a></label>';
+                    $imgLink = 'img/'.$item["LINK_NO"].'/1/'.$item["BURNER_FILE_NAME1"];
+                    echo '<span class="ip-span"><a href="'.$item['URL'].'"><img src="'.$imgLink.'"></a></span>';
+                    echo '</div>';
+                }
+            ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>

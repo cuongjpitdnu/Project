@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DailyBoard</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/table-info.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nextpage.js"></script>
+    <script>
+        $(function(){
+            $(".daily_boad").load("daily_boad.html");
+            $(".incident_boad").load("incident_boad.html");
+
+        });
+    </script>
+</head>
+<body>
+<div class="main-content">
+    <div class="header-boad">
+        <div class="in-line right-100"><img src="img/logo.jpg" alt=""></div>
+        <div class="in-line">10/23 10:00 JST　　10/23 0:00UTC </div>
+        <div class="in-line mark-btn">
+        　　<span class="text-red">原則として本システム内の情報は関係者限りです。</span>
+            <button class="tbtn tbtn-defaut jcmg-btn" onclick="loadModal('incident_case_edit.html')">JCMG事案登録</button>
+        </div>
+        <div class="in-line">
+
+        </div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">各種メニュー　▼</button>
+            <div id="myDropdown" class="dropdown-content select-gray">
+                <div class="t-outgroup">HOME Board</div>
+                <a href="announce_mng.html">お知らせ管理</a>
+                <a href="bulletin_board_mng.html">掲示板管理</a>
+                
+                <div class="t-outgroup">JCMG Board</div>
+                <a href="incident_case_mng.html">JCMG事案管理</a>
+                <div class="t-outgroup">その他</div>
+                <a href="company_mng.html">会社情報管理</a>
+                <a href="user_mng.html">ユーザ管理</a>
+                <a href="link_mng.html">リンク情報管理</a>
+                <a href="#" onclick="loadModal('user_setting.html')" >ユーザ設定</a>
+                
+            </div>
+        </div>
+
+        <div class="in-line col-right right-100">
+            <div class="in-line">
+                <div class="right-20">ユーザID:</div>
+                <div class="right-20">会社名:</div>
+                <div class="right-20">名前:</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class = "tabinator">
+        <input type = "radio" id = "tab1" class="input-tab" name = "tabs" checked>
+        <label for = "tab1" class="title">Home</label>
+        <input type = "radio" id = "tab2" class="input-tab" name = "tabs" >
+        <label for = "tab2" class="title">JCMG Board</label>
+        <div id = "content1">
+            <div class="daily_boad"></div>
+        </div>
+        <div id = "content2">
+            <div class="incident_boad"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
+<script>
+    $('.sl-menu').on('change', function() {
+        if(this.value != 'user_setting'){
+            $(location).attr('href', this.value+".html");
+        }else{
+            loadModal(this.value+".html");
+        }
+
+    });
+
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    window.onresize = function(event) {
+        var info = 'info-cont2';
+        var infoRight = 'info-cont';
+        var tickers = 'tickers';
+        var ticker = 'ticker';
+        doResize(info,18);
+        doResize(infoRight,13);
+        doResizeTable(tickers,48);
+        doResize(ticker,15);
+
+
+        var divIdmes = 'msg_history';
+        var divInfo = 'info-cont1';
+        var divImgMap = 'img-map';
+        var divBull = 't-body-table';
+        doResize(divIdmes,68);
+
+        doResize(divInfo,23);
+        doResize(divImgMap,28);
+        doResize(divBull,23);
+    }
+
+</script>
+
+</body>
+</html>

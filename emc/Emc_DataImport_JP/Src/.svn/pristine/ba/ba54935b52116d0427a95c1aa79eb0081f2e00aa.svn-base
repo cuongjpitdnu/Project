@@ -1,0 +1,421 @@
+<?php
+    /*
+     * @bulletin_board_edit_proc.php
+     *
+     * @create 2020/03/13 AKB Chien
+     * @update
+     */
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    define('DISPLAY_TITLE', '掲示板編集画面');
+
+    // check connection
+    if(fncConnectDB() == false) {
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    // Check if the user logged in or not
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        $strShow = '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'");';
+        $strShow .= ' window.location.href="login.php";</script> ';
+        echo $strShow;
+        exit;
+    }
+
+    // check timeout if direct access this file
+    fncSessionTimeOutCheck(1);
+
+    // ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    $arrTitleMsg = array(
+        'PUBLIC_MSG_001',
+        'PUBLIC_MSG_049',
+        'PUBLIC_MSG_010',
+        'PUBLIC_MSG_041',
+        'BULLETIN_BOARD_EDIT_MSG_002',
+        'BULLETIN_BOARD_EDIT_MSG_003',
+        'BULLETIN_BOARD_EDIT_MSG_004',
+        'BULLETIN_BOARD_EDIT_MSG_005',
+        'PUBLIC_MSG_003',
+    );
+
+    define('LENGTH_INCIDENT_JPN_TO_ENG', 1000);  // content jpn to eng
+
+    $intAutoTranslate = 0;  // default = 0
+
+    // get list text translate
+    $arrTxtTrans = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    // 2020/03/26 AKB Chien - start - update document 2020/03/26
+    // GET通信にて遷移してきた場合、以下のメッセージをアラート表示し、遷移元画面に戻す。
+    fncGetRequestCheck($arrTxtTrans);
+    // 2020/03/26 AKB Chien - end - update document 2020/03/26
+
+    // 2020/04/01 AKB Chien - start - update document 2020/04/01
+    // GET通信にて遷移してきた場合、以下のメッセージをアラート表示し、遷移元画面に戻す。
+    if(!isset($_SERVER['HTTP_REFERER'])) {
+        echo '<script type="text/javascript">
+                function goBack() {
+                    history.go(-1);
+                    return false;
+                }
+                alert("'.$arrTxtTrans['PUBLIC_MSG_049'].'");
+                goBack();
+            </script>';
+        die();
+    }
+    // 2020/04/01 AKB Chien - end - update document 2020/04/01
+
+    // check if ajax -> do something | access this file directly -> stop
+    if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+        exit;
+    }
+
+    if(isset($_POST)) {
+        $_SESSION['BULLETIN_BOARD_EDIT_ERROR'] = array();
+
+        // init data
+        $arrResultToView = array(
+            'trans-error' => '',
+            'error' => '',
+            'success' => '',
+            'confirm' => '',
+            'auto' => '',
+        );
+
+        if(isset($_POST['action'])) {
+            // event click button translate
+            if($_POST['action'] == 'translate') {
+                $intTypeTranslate = 0; // ja -> eng
+                $strChkBoxManualTranslate = @$_POST['chkManualInput']
+                                        ? trim($_POST['chkManualInput']) : '';
+                $strIncidentOriginal = @$_POST['txtIncidentOriginal']
+                                        ? trim($_POST['txtIncidentOriginal']) : '';
+                $strIncidentTranslate = @$_POST['txtIncidentTranslation']
+                                        ? trim($_POST['txtIncidentTranslation']) : '';
+
+                // if checkbox translate checked
+                if($strChkBoxManualTranslate == 'on') {
+                    $arrResultToView['success'] = array(
+                        'incidentTranslate' => $strIncidentTranslate
+                    );
+                    echo json_encode($arrResultToView);
+                    exit;
+                }
+
+                // if checkbox translate unchecked
+                if($strChkBoxManualTranslate == 'off') {
+                    if($strIncidentTranslate != '') {
+                        $arrResultToView['success'] = array(
+                            'incidentTranslate' => $strIncidentTranslate
+                        );
+                        echo json_encode($arrResultToView);
+                        exit;
+                    }
+                }
+
+                $strIncidentTranslate = '';
+                // translate
+                try {
+                    // if amazon key has defined
+                    if(defined ('AWS_ACCESS_KEY') && defined ('AWS_SECRET_KEY')) {
+                        $strIncidentTranslate = tranAmazon($strIncidentOriginal, $intTypeTranslate);
+                    }
+
+                    // if translate has error
+                    if((is_array($strIncidentTranslate) && $strIncidentTranslate['error'] == 1)
+                        || $strIncidentTranslate == '' || $strIncidentTranslate == null
+                        || !defined ('AWS_ACCESS_KEY') || !defined ('AWS_SECRET_KEY')) {
+                        $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_010'];
+                    }
+
+                    // if has msg error
+                    if(count($_SESSION['BULLETIN_BOARD_EDIT_ERROR']) > 0) {
+                        $strHtmlError = '';
+                        foreach($_SESSION['BULLETIN_BOARD_EDIT_ERROR'] as $error) {
+                            $strHtmlError .= '<div>'.$error.'</div>';
+                        }
+                        $arrResultToView['error'] = $strHtmlError;
+                        $arrResultToView['trans-error'] = 'error';
+                        echo json_encode($arrResultToView);
+                        exit;
+                    }
+
+                    $arrResultToView['success'] = array(
+                        'incidentTranslate' => $strIncidentTranslate
+                    );
+                    echo json_encode($arrResultToView);
+                    exit;
+                } catch (\Exception $e) {
+                    // write log
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                        $arrTxtTrans['PUBLIC_MSG_010']);
+                    $arrResultToView['error'] = $arrTxtTrans['PUBLIC_MSG_010'];
+                    $arrResultToView['trans-error'] = 'error';
+                    $arrResultToView['success'] = array(
+                        'incidentTranslate' => ''
+                    );
+                    echo json_encode($arrResultToView);
+                    exit;
+                }
+            }
+
+            // click post
+            if($_POST['action'] == 'pre-update') {
+                // write log
+                $strLogBtnPost = DISPLAY_TITLE.'　更新(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'], $strLogBtnPost);
+
+                $intTypeTranslate = 0; // ja -> eng
+                $strChkBoxManualTranslate = @$_POST['chkManualInput']
+                                        ? trim($_POST['chkManualInput']) : '';
+                $strIncidentOriginal = @$_POST['txtIncidentOriginal']
+                                        ? trim($_POST['txtIncidentOriginal']) : '';
+                $strIncidentTranslate = @$_POST['txtIncidentTranslation']
+                                        ? trim($_POST['txtIncidentTranslation']) : '';
+
+                // check if translate has text -> prepare to set value for auto_translate
+                $blnFlagHasTransUncheck = false;
+                if($strIncidentTranslate != '') {
+                    $blnFlagHasTransUncheck = true;
+                }
+
+
+                //2020/04/24 T.Mausda 確認メッセージの前に入力チェックを行う                    /
+                if($strChkBoxManualTranslate == 'on' || $strIncidentTranslate != '') {
+                    // check length text translate
+                    if(mb_strlen($strIncidentTranslate) == 0) {
+                        $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_003'];
+                    }
+                    // check length text translate
+                    if(mb_strlen($strIncidentTranslate) > LENGTH_INCIDENT_JPN_TO_ENG) {
+                        $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_004'];
+                    }
+                    // check text translate has non-ASCII char
+                    if(!mb_detect_encoding($strIncidentTranslate, 'ASCII', true)) {
+                        $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_005'];
+                    }
+                }
+
+                // if has error msg
+                if(count($_SESSION['BULLETIN_BOARD_EDIT_ERROR']) > 0) {
+                    $strHtmlError = '';
+                    foreach($_SESSION['BULLETIN_BOARD_EDIT_ERROR'] as $error) {
+                        $strHtmlError .= '<div>'.$error.'</div>';
+                    }
+                    $arrResultToView['error'] = $strHtmlError;
+                    echo json_encode($arrResultToView);
+                    exit;
+                }
+                //2020/04/24 T.Mausda
+
+
+                // if checkbox translate unchecked
+                if($strChkBoxManualTranslate == 'off') {
+                    $blnFlagHadTrans = false;
+                    // if text translate is empty
+                    if($strIncidentTranslate == '') {
+                        // translate
+                        try {
+                            // if amazon key has defined
+                            if(defined ('AWS_ACCESS_KEY') && defined ('AWS_SECRET_KEY')) {
+                                $strIncidentTranslate = tranAmazon($strIncidentOriginal, $intTypeTranslate);
+                            }
+
+                            // if translate has error
+                            if((is_array($strIncidentTranslate) && $strIncidentTranslate['error'] == 1)
+                                || $strIncidentTranslate == '' || $strIncidentTranslate == null
+                                || !defined ('AWS_ACCESS_KEY') || !defined ('AWS_SECRET_KEY')) {
+                                    $arrResultToView['confirm'] = $arrTxtTrans['PUBLIC_MSG_041'];
+                            }
+
+                            // if has msg error
+                            if(count($_SESSION['BULLETIN_BOARD_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['BULLETIN_BOARD_EDIT_ERROR'] as $error) {
+                                    $strHtmlError .= '<div>'.$error.'</div>';
+                                }
+                                $arrResultToView['error'] = $strHtmlError;
+                                $arrResultToView['trans-error'] = 'error';
+                                echo json_encode($arrResultToView);
+                                exit;
+                            }
+
+                            $arrResultToView['confirm'] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_002'];
+                            $arrResultToView['success'] = array(
+                                'incidentTranslate' => $strIncidentTranslate
+                            );
+                            $intAutoTranslate = 0;
+                            $blnFlagHadTrans = true;
+                        } catch (\Exception $e) {
+                            // write log
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                $arrTxtTrans['PUBLIC_MSG_010']);
+                            $arrResultToView['error'] = $arrTxtTrans['PUBLIC_MSG_010'];
+                            $arrResultToView['trans-error'] = 'error';
+                            $arrResultToView['success'] = array(
+                                'incidentTranslate' => ''
+                            );
+                            echo json_encode($arrResultToView);
+                            exit;
+                        }
+                    }
+
+                    // Not error in translate
+                    if(!is_array($strIncidentTranslate)) {
+                        if($strIncidentTranslate != '') {
+                            $arrResultToView['confirm'] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_002'];
+                            $arrResultToView['success'] = array(
+                                'incidentTranslate' => $strIncidentTranslate
+                            );
+                            $intAutoTranslate = 0;
+                            if($blnFlagHasTransUncheck) {
+                                $intAutoTranslate = 1;
+                            }
+                        } else {
+                            // if translate text is empty
+                            if($strIncidentTranslate == '') {
+                                $arrResultToView['confirm'] = $arrTxtTrans['PUBLIC_MSG_041'];
+                                if(!$blnFlagHadTrans) {
+                                    $arrResultToView['confirm'] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_002'];
+                                }
+                            }
+                            $arrResultToView['success'] = array(
+                                'incidentTranslate' => (!is_array($strIncidentTranslate))
+                                ? ((trim($strIncidentTranslate) == '') ? '' : $strIncidentTranslate) : '',
+                            );
+                            $intAutoTranslate = 0;
+                        }
+                    } else {
+                        $arrResultToView['confirm'] = $arrTxtTrans['PUBLIC_MSG_041'];
+                        $arrResultToView['success'] = array(
+                            'incidentTranslate' => '',
+                        );
+                        $intAutoTranslate = 0;
+                    }
+                } else {
+                    $arrResultToView['confirm'] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_002'];
+                    $arrResultToView['success'] = array(
+                        'incidentTranslate' => $strIncidentTranslate
+                    );
+                    $intAutoTranslate = 1;
+                }
+                $arrResultToView['auto'] = $intAutoTranslate;
+                echo json_encode($arrResultToView);
+                exit;
+            }
+
+            // action update after confirm msg
+            if($_POST['action'] == 'update') {
+                if($_POST['mode'] == 1) {
+                    // prepare data to insert/update
+                    $intBulletinBoardNo = isset($_POST['id'])
+                                        ? trim($_POST['id']) : '';
+                    $chkManualInput = isset($_POST['chkManualInput'])
+                                        ? ((trim($_POST['chkManualInput']) == 'on') ? 1 : 0) : '';
+                    $strIncidentOriginal = @$_POST['txtIncidentOriginal']
+                                        ? trim($_POST['txtIncidentOriginal']) : '';
+                    $strIncidentTranslate = @$_POST['txtIncidentTranslation']
+                                        ? trim($_POST['txtIncidentTranslation']) : '';
+                    $intAutoTrans = isset($_POST['auto']) ? $_POST['auto'] : '';
+
+                    //2020/04/24 T.Masuda 確認メッセージの前に入力チェックを行う
+                    // mode=1 / 以下の登録処理を実行する。/ ①	入力チェックを行う。
+                    /* if($intAutoTrans == 1) {
+                        // check length text translate
+                        if(mb_strwidth($strIncidentTranslate) == 0) {
+                            $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_003'];
+                        }
+                        // check length text translate
+                        if(mb_strwidth($strIncidentTranslate) > LENGTH_INCIDENT_JPN_TO_ENG) {
+                            $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_004'];
+                        }
+                        // check text translate has non-ASCII char
+                        if(!mb_detect_encoding($strIncidentTranslate, 'ASCII', true)) {
+                            $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['BULLETIN_BOARD_EDIT_MSG_005'];
+                        }
+                    } */
+                    //2020/04/24 T.Masuda
+
+                    // if has error msg
+                    if(count($_SESSION['BULLETIN_BOARD_EDIT_ERROR']) > 0) {
+                        $strHtmlError = '';
+                        foreach($_SESSION['BULLETIN_BOARD_EDIT_ERROR'] as $error) {
+                            $strHtmlError .= '<div>'.$error.'</div>';
+                        }
+                        $arrResultToView['error'] = $strHtmlError;
+                        echo json_encode($arrResultToView);
+                        exit;
+                    }
+
+                    // update
+                    if($_POST['action'] == 'update') {
+                        try {
+                            // ②	以下の条件で掲示板テーブル[t_bulletin_board]を更新する。更新要領は以下の通りとする。
+                            $strSQL = " UPDATE t_bulletin_board SET "
+                                    . " incident_name_eng = :incident_name_eng "
+                                    . " , correction_flag = :correction_flag "
+                                    . " , untranslated = 1 "
+                                    . " , up_user_no = :up_user_no "
+                                    . " , up_date = CURRENT_TIMESTAMP "
+                                    . " WHERE bulletin_board_no = :bulletin_board_no; ";
+
+                            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                            $objStmt->bindParam(':incident_name_eng', $strIncidentTranslate);
+                            $objStmt->bindParam(':correction_flag', $chkManualInput);
+                            $objStmt->bindParam(':up_user_no', $objLoginUserInfo->intUserNo);
+                            $objStmt->bindParam(':bulletin_board_no', $intBulletinBoardNo);
+
+                            $strLogSql = DISPLAY_TITLE.' '.$strSQL;
+                            $strLogSql = str_replace(':incident_name_eng', $strIncidentTranslate, $strLogSql);
+                            $strLogSql = str_replace(':correction_flag', $chkManualInput, $strLogSql);
+                            $strLogSql = str_replace(':up_user_no', $objLoginUserInfo->intUserNo, $strLogSql);
+                            $strLogSql = str_replace(':bulletin_board_no', $intBulletinBoardNo, $strLogSql);
+                            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                            $objStmt->execute();
+
+                            //2020/04/24 T.Masuda 更新対象の掲示板が削除されていた場合、画面を閉じる
+                            if(!is_object($objStmt) || $objStmt->rowCount() <= 0){
+                                fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                    DISPLAY_TITLE.' '.$arrTxtTrans['PUBLIC_MSG_003']);
+                                $arrResultToView['error'] = 'alreadyDelError';
+                                echo json_encode($arrResultToView);
+                                exit;
+                            }
+                            //2020/04/24 T.Masuda
+
+                            $arrResultToView['success'] = 1;
+                            echo json_encode($arrResultToView);
+                            exit;
+                        } catch (\Exception $e) {
+                            // write log
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                $arrTxtTrans['PUBLIC_MSG_003']);
+                            $_SESSION['BULLETIN_BOARD_EDIT_ERROR'][] = $arrTxtTrans['PUBLIC_MSG_003'];
+                            // if has error msg
+                            if(count($_SESSION['BULLETIN_BOARD_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['BULLETIN_BOARD_EDIT_ERROR'] as $error) {
+                                    $strHtmlError .= '<div>'.$error.'</div>';
+                                }
+                                $arrResultToView['error'] = $strHtmlError;
+                                echo json_encode($arrResultToView);
+                                exit;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>

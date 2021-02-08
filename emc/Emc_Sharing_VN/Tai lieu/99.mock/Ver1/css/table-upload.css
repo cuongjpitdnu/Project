@@ -1,0 +1,11 @@
+table.blueTable {
+    border: 1px solid #1C6EA4;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+table.blueTable td{
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}

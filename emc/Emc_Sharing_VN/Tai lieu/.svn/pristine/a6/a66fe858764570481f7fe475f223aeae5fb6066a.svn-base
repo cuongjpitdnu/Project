@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="EmcDataImport.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+    </startup>
+    <userSettings>
+        <EmcDataImport.My.MySettings>
+            <setting name="DB_HOSTNAME" serializeAs="String">
+                <value>a</value>
+            </setting>
+            <setting name="DB_DBNAME" serializeAs="String">
+                <value>a</value>
+            </setting>
+            <setting name="DB_USERNAME" serializeAs="String">
+                <value>a</value>
+            </setting>
+            <setting name="DB_USERPASSWORD" serializeAs="String">
+                <value>a</value>
+            </setting>
+            <setting name="MAIL_POP_HOST" serializeAs="String">
+                <value>mail.kbsoft.co.jp</value>
+            </setting>
+            <setting name="MAIL_POP_PORT" serializeAs="String">
+                <value>110</value>
+            </setting>
+            <setting name="MAIL_POP_USER" serializeAs="String">
+                <value>e_izumi</value>
+            </setting>
+            <setting name="MAIL_POP_PASS" serializeAs="String">
+                <value>5KvxBM</value>
+            </setting>
+            <setting name="MAIL_SMTP_HOST" serializeAs="String">
+                <value>mail.kbsoft.co.jp</value>
+            </setting>
+            <setting name="MAIL_SMTP_PORT" serializeAs="String">
+                <value>25</value>
+            </setting>
+            <setting name="MAIL_SMTP_USER" serializeAs="String">
+                <value>e_izumi</value>
+            </setting>
+            <setting name="MAIL_SMTP_PASS" serializeAs="String">
+                <value>5KvxBM</value>
+            </setting>
+            <setting name="EXECUTION_CYCLE" serializeAs="String">
+                <value>60000</value>
+            </setting>
+            <setting name="LOG_FOLDER" serializeAs="String">
+                <value>C:\Project\NTTネオメイト\情報共有システム\SVR\a</value>
+            </setting>
+            <setting name="ERRLOG_FOLDER" serializeAs="String">
+                <value>C:\Project\NTTネオメイト\情報共有システム\SVR\b</value>
+            </setting>
+            <setting name="DEBUGFLG" serializeAs="String">
+                <value>1</value>
+            </setting>
+        </EmcDataImport.My.MySettings>
+    </userSettings>
+</configuration>

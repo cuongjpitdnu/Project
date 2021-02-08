@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザ設定</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">ユーザ設定</div>
+        <div class="form-body-90">
+            <div class="label-short top-20">ID </div>
+            <span class="text-gray">User0100 </span>
+            <div class="mar-tl-10">
+                <div class="tcol-md-6 in-line float-left">
+                    <div  class="lb-left">会社名</div>
+                    <span class="text-gray ip-span">○○株式会社</span>
+                </div>
+                <div class="tcol-md-6 in-line float-left">
+                    <div  class="lb-left">略号  <span class="text-gray">XXX</span></div>
+                </div>
+                <br/>
+            </div>
+
+            <div class="lb-left">住所</div>
+            <span class="ip-span"><textarea class="t-input" cols="2" value="大阪府大阪市中央区××"></textarea></span>
+
+            <div class="lb-left">組織 </div>
+            <span class="ip-span"><input type="text" class="t-input" value="〇〇部○○課"></span>
+
+            <div class="lb-left">名前 </div>
+            <span class="ip-span"><input type="text" class="t-input" value="〇〇△△"></span>
+
+            <div class="lb-left">メール <span class="txt-red">※</span></div>
+            <span class="ip-span"><input type="text" class="t-input" value="××@××.com"></span>
+
+            <div class="lb-left">電話 </div>
+            <span class="ip-span"><input type="text" class="t-input" value="06-999-9999"></span>
+
+            <div class="lb-left">ＦＡＸ </div>
+            <span class="ip-span"><input type="text" class="t-input" value="06-999-9998"></span>
+
+            <div class="lb-left">ﾊﾟｽﾜｰﾄﾞ <span class="txt-red">※</span></div>
+            <span class="ip-span"><input type="password" class="t-input" value="大阪府大阪市中央区"></span>
+
+            <div class="lb-left">言語 <span class="txt-red">※</span></div>
+            <span class="ip-span">
+                <span class="select-container">
+                    <select>
+                        <option value="ja">日本語</option>
+                        <option value="en">English</option>
+                    </select>
+                </span>
+            </span>
+
+
+            <div class="form-footer top-20 text-right">
+                <button type="submit" class="tbtn tbtn-defaut " id="close-setting" data-dismiss="modal">更新</button>
+                <button type="submit" class="tbtn tbtn-defaut " id="close-setting" data-dismiss="modal">閉じる</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#close-setting').on('click', function() {
+        $('.sl-menu').val('0');
+    });
+</script>
+</html>

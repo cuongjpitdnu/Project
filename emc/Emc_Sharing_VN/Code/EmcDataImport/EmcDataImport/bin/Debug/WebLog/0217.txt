@@ -1,0 +1,46 @@
+2020/02/17 20:06:20 INFO ユーザ管理画面　「ユーザID = ,会社名 = ,グループ = ,担当者名 = 」(ユーザID = 1)
+
+2020/02/17 20:06:20 INFO  SELECT      mu.user_no,      mu.user_id,      FORMAT (mu.expiration_date_s, 'yyyy/M/d') as expiration_date_s,      FORMAT (mu.expiration_date_e, 'yyyy/M/d') as expiration_date_e, company_name_JPN AS company_name, group_name_JPN AS group_name,      mu.user_name  FROM      m_user AS mu      INNER JOIN m_company AS mc ON mu.company_no = mc.company_no      INNER JOIN m_group AS mg ON mc.group_no = mg.group_no  WHERE      mu.delete_flag = 0  ORDER BY mu.reg_date DESC  OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:06:22 INFO ユーザ管理画面　「ユーザID = ,会社名 = ,グループ = ,担当者名 = 」(ユーザID = 1)
+
+2020/02/17 20:06:22 INFO  SELECT      mu.user_no,      mu.user_id,      FORMAT (mu.expiration_date_s, 'yyyy/M/d') as expiration_date_s,      FORMAT (mu.expiration_date_e, 'yyyy/M/d') as expiration_date_e, company_name_JPN AS company_name, group_name_JPN AS group_name,      mu.user_name  FROM      m_user AS mu      INNER JOIN m_company AS mc ON mu.company_no = mc.company_no      INNER JOIN m_group AS mg ON mc.group_no = mg.group_no  WHERE      mu.delete_flag = 0  ORDER BY mu.reg_date DESC  OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:06:48 INFO  SELECT t_bulletin_board.BULLETIN_BOARD_NO, t_bulletin_board.OCCURRENCE_DATE, m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN, t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN, m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN, t_bulletin_board.CORRECTION_FLAG, t_bulletin_board.COMP_DATE, t_bulletin_board.REG_DATE, m_user.USER_NAME FROM t_bulletin_board INNER JOIN m_business_name ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN INNER JOIN m_place_name ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN INNER JOIN m_user ON t_bulletin_board.REG_USER_NO=m_user.USER_NO ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:06:48 INFO 掲示板管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/bulletin_board_mng.php
+
+2020/02/17 20:06:50 INFO  SELECT t_bulletin_board.BULLETIN_BOARD_NO, t_bulletin_board.OCCURRENCE_DATE, m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN, t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN, m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN, t_bulletin_board.CORRECTION_FLAG, t_bulletin_board.COMP_DATE, t_bulletin_board.REG_DATE, m_user.USER_NAME FROM t_bulletin_board INNER JOIN m_business_name ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN INNER JOIN m_place_name ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN INNER JOIN m_user ON t_bulletin_board.REG_USER_NO=m_user.USER_NO ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:06:50 INFO 掲示板管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/bulletin_board_mng.php
+
+2020/02/17 20:07:10 INFO  SELECT t_bulletin_board.BULLETIN_BOARD_NO, t_bulletin_board.OCCURRENCE_DATE, m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN, t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN, m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN, t_bulletin_board.CORRECTION_FLAG, t_bulletin_board.COMP_DATE, t_bulletin_board.REG_DATE, m_user.USER_NAME FROM t_bulletin_board INNER JOIN m_business_name ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN INNER JOIN m_place_name ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN INNER JOIN m_user ON t_bulletin_board.REG_USER_NO=m_user.USER_NO ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:07:10 INFO 掲示板管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/bulletin_board_mng.php
+
+2020/02/17 20:08:44 INFO  SELECT t_bulletin_board.BULLETIN_BOARD_NO, t_bulletin_board.OCCURRENCE_DATE, m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN, t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN, m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN, t_bulletin_board.CORRECTION_FLAG, t_bulletin_board.COMP_DATE, t_bulletin_board.REG_DATE, m_user.USER_NAME FROM t_bulletin_board INNER JOIN m_business_name ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN INNER JOIN m_place_name ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN INNER JOIN m_user ON t_bulletin_board.REG_USER_NO=m_user.USER_NO ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:08:44 INFO 掲示板管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/bulletin_board_mng.php
+
+2020/02/17 20:12:00 INFO  SELECT         m_user.user_no       , m_user.user_id       , m_user.language_type       , m_user.company_no       , m_company.company_name_jpn       , m_company.company_name_eng       , m_company.group_no       , m_user.user_name       , m_user.announce_reg_perm       , m_user.bulletin_board_reg_perm       , m_user.query_reg_perm       , m_user.incident_case_reg_perm       , m_user.request_reg_perm       , m_user.information_reg_perm       , m_user.menu_perm    FROM m_user   INNER JOIN m_company           ON m_user.company_no = m_company.company_no   WHERE m_user.user_id = admin     AND m_user.password = kbs 
+
+2020/02/17 20:12:00 INFO ログイン（ユーザID = admin, IPアドレス =192.168.1.216 ） Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36
+
+2020/02/17 20:12:45 INFO  SELECT      group_no, group_name_JPN AS group_name  FROM      m_group  ORDER BY sort_no ASC
+
+2020/02/17 20:12:54 INFO  SELECT      group_no, group_name_JPN AS group_name  FROM      m_group  ORDER BY sort_no ASC
+
+2020/02/17 20:14:19 INFO  SELECT         m_user.user_no       , m_user.user_id       , m_user.language_type       , m_user.company_no       , m_company.company_name_jpn       , m_company.company_name_eng       , m_company.group_no       , m_user.user_name       , m_user.announce_reg_perm       , m_user.bulletin_board_reg_perm       , m_user.query_reg_perm       , m_user.incident_case_reg_perm       , m_user.request_reg_perm       , m_user.information_reg_perm       , m_user.menu_perm    FROM m_user   INNER JOIN m_company           ON m_user.company_no = m_company.company_no   WHERE m_user.user_id = admin     AND m_user.password = kbs 
+
+2020/02/17 20:14:19 INFO ログイン（ユーザID = admin, IPアドレス =192.168.1.216 ） Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36
+
+2020/02/17 20:16:18 INFO  SELECT      group_no, group_name_JPN AS group_name  FROM      m_group  ORDER BY sort_no ASC
+
+2020/02/17 20:16:18 INFO ユーザ管理画面　画面表示(ユーザID = 1) 【URL nguon di chuyen】
+
+2020/02/17 20:16:18 INFO  SELECT      mu.user_no,      mu.user_id,      FORMAT (mu.expiration_date_s, 'yyyy/M/d') as expiration_date_s,      FORMAT (mu.expiration_date_e, 'yyyy/M/d') as expiration_date_e, company_name_JPN AS company_name, group_name_JPN AS group_name,      mu.user_name  FROM      m_user AS mu      INNER JOIN m_company AS mc ON mu.company_no = mc.company_no      INNER JOIN m_group AS mg ON mc.group_no = mg.group_no  WHERE      mu.delete_flag = 0  ORDER BY mu.reg_date DESC  OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:17:58 INFO  SELECT t_bulletin_board.BULLETIN_BOARD_NO, t_bulletin_board.OCCURRENCE_DATE, m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN, t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN, m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN, t_bulletin_board.CORRECTION_FLAG, t_bulletin_board.COMP_DATE, t_bulletin_board.REG_DATE, m_user.USER_NAME FROM t_bulletin_board INNER JOIN m_business_name ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN INNER JOIN m_place_name ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN INNER JOIN m_user ON t_bulletin_board.REG_USER_NO=m_user.USER_NO ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY;
+
+2020/02/17 20:17:58 INFO 掲示板管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/bulletin_board_mng.php
+

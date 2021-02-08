@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>掲示板管理</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nextpage.js"></script>
+
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">掲示板管理</div>
+            <div class="form-body">
+                <div class="cont-title">
+                    <div class=" in-line">
+                        <div class="label-short">インシデント件名</div>
+                        <input type="text" class="t-input t-input-125" value="">
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80">期間</div>
+                        <input  class="t-input" id="date_start"  type="text" > ~
+                        <input  class="t-input" id="date_end" type="text">
+                    </div>
+
+                    <div class="in-line">
+                        <label class="t-container">完了を表示
+                            <input type="checkbox" >
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="in-line col-right">
+                        <input type="button" class="tbl-btn tbl-btn-action" value=" 検索 ">
+                    </div>
+                </div>
+
+                <table class="blueTable">
+                    <thead>
+                    <tr>
+                        <th class="text-center">業務名</th>
+                        <th class="text-center">インシデント件名</th>
+                        <th class="text-center">期間</th>
+                        <th class="text-center">登録者</th>
+                        <th class="text-center">状態</th>
+                        <th class="text-center">処理</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <td colspan="7" align="center">
+                        <div style="float: left">
+                        	 <font size="5">
+                        	6件
+                        	</font>
+                        	 </div>
+                            <div class="links in-line"><a href="#">&laquo;</a><a href="#">&lsaquo;</a><a class="active" href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">&rsaquo;</a><a href="#">&raquo;</a></div>
+                            <div class="in-line" style="float: right">
+                                <button type="submit" class="tbl-btn tbl-btn-action " data-dismiss="modal">CSV出力</button>
+                                <button type="submit" class="tbl-btn tbl-btn-action" id="close" >一括削除</button>
+                                <button type="submit" class="tbl-btn tbl-btn-action" onclick="window.location.href='portal.html'" >戻る</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">業務01</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')">タイトル01</a></td>
+                        <td class="text-center">2019/10/11～</td>
+                        <td >〇〇</td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">業務02</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')">タイトル02</a></td>
+                        <td class="text-center">2019/10/1～2020/1/31</td>
+                        <td >〇〇</td>
+                        <td class="text-center">完了</td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">業務03</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')">タイトル03</a></td>
+                        <td class="text-center">2019/10/1～2020/1/31</td>
+                        <td >〇〇</td>
+                        <td class="text-center">完了</td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-center">業務04</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')">タイトル04</a></td>
+                        <td class="text-center">2019/10/11～</td>
+                        <td >〇〇</td>
+                        <td class="text-center"></td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">業務05</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')">タイトル05</a></td>
+                        <td class="text-center">2019/10/1～2020/1/31</td>
+                        <td >〇〇</td>
+                        <td class="text-center">完了</td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">業務06</td>
+                        <td class="text-center"><a href="#" onclick="loadModal('bulletin_board_view.html')" >タイトル05</a></td>
+                        <td class="text-center">2019/10/1～2020/1/31</td>
+                        <td >〇〇</td>
+                        <td class="text-center">完了</td>
+                        <td class="text-center">
+                            <div class="btn-50"></div>
+                            <button class="tbl-btn tbtn-red">削除</button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function(){
+        $('#date_start').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy/mm/dd'
+        });
+
+
+        $('#date_end').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy/mm/dd'
+        });
+    });
+</script>
+</html>

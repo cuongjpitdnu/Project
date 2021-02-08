@@ -1,0 +1,2 @@
+2020/02/28 12:46:04 INFO リンク情報管理画面　画面表示(ユーザID = admin2) http://192.168.1.185/information_sharing/link_mng.php
+

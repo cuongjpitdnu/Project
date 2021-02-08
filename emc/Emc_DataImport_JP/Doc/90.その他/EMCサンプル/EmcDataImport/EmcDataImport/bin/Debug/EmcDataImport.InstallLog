@@ -1,0 +1,84 @@
+﻿アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+サービス 'PcMoniterService' をインストールしています...
+サービス 'PcMoniterService' は正常にインストールされました。
+EventLog ソース PcMoniterService をログ Application に作成しています...
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をコミットしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をアンインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+EventLog ソース PcMoniterService を削除しています。
+サービス PcMoniterService をシステムから削除しています...
+サービス 'PcMoniterService' は正常にシステムから削除されました。
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+サービス 'PcMoniterService' をインストールしています...
+サービス 'PcMoniterService' は正常にインストールされました。
+EventLog ソース PcMoniterService をログ Application に作成しています...
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をコミットしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をアンインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+EventLog ソース PcMoniterService を削除しています。
+サービス PcMoniterService をシステムから削除しています...
+サービス 'PcMoniterService' は正常にシステムから削除されました。
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+サービス 'PcMoniterService' をインストールしています...
+サービス 'PcMoniterService' は正常にインストールされました。
+EventLog ソース PcMoniterService をログ Application に作成しています...
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をコミットしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をアンインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+EventLog ソース PcMoniterService を削除しています。
+サービス PcMoniterService をシステムから削除しています...
+サービス 'PcMoniterService' は正常にシステムから削除されました。
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+サービス 'PcMoniterService' をインストールしています...
+サービス 'PcMoniterService' は正常にインストールされました。
+EventLog ソース PcMoniterService をログ Application に作成しています...
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をコミットしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+アセンブリ 'C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe' をアンインストールしています。
+該当するパラメーター:
+   logtoconsole = 
+   assemblypath = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = C:\Project\NTTネオメイト\情報共有システム\Test\EmcDataImport\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+EventLog ソース PcMoniterService を削除しています。
+サービス PcMoniterService をシステムから削除しています...
+サービス 'PcMoniterService' は正常にシステムから削除されました。

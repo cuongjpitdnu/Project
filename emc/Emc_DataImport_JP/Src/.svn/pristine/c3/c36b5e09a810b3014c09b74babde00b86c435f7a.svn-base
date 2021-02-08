@@ -1,0 +1,64 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ポータル画面 (仮)ページ
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+//セッションスタート
+session_start();
+
+//DB接続.
+if(fncConnectDB() == false){
+	$_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+	header('Location: login.php');
+	exit;
+}
+
+//ログインユーザ情報を取得
+$objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+?>
+<!DOCTYPE html> 
+<html>
+	<head>
+		<title><?php echo HEADER_PAGE_TITLE;?></title>
+	</head>
+	<body>
+		■ポータル画面
+		<br />
+		ユーザーNo：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intUserNo); ?>
+		<br />
+		ユーザーID：<?php echo fncHtmlSpecialChars($objLoginUserInfo->strUserID); ?>
+		<br />
+		言語タイプ：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intLanguageType); ?>
+		<br />
+		会社No：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intCompanyNo); ?>
+		<br />
+		会社名：<?php echo fncHtmlSpecialChars($objLoginUserInfo->strCompanyName); ?>
+		<br />
+		グループNo：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intGroupNo); ?>
+		<br />
+		ユーザー名：<?php echo fncHtmlSpecialChars($objLoginUserInfo->strUserName); ?>
+		<br />
+		お知らせ登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intAnnounceRegPerm); ?>
+		<br />
+		掲示板登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intBulletinBoardRegPerm); ?>
+		<br />
+		問い合わせ登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intQueryRegPerm); ?>
+		<br />
+		インシデント事案登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intIncidentCaseRegPerm); ?>
+		<br />
+		依頼事項登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intRequestRegPerm); ?>
+		<br />
+		情報登録権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intInformationRegPerm); ?>
+		<br />
+		各種メニュー権限：<?php echo fncHtmlSpecialChars($objLoginUserInfo->intMenuPerm); ?>
+	</body>
+</html>
+

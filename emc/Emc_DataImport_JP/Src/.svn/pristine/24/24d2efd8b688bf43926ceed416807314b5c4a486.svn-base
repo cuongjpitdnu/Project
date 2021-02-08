@@ -1,0 +1,49 @@
+<?php
+/*
+* @category_detail.php
+*
+* @create 2020/02/27 KBS Tam.nv
+* @update
+*/
+
+require_once('category_detail_proc.php') ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <?php echo $arrText['PORTAL_DAILY_TEXT_009'].
+            @$arrCategory[0]['LINK_CATEGORY_NAME_JPN'].'/ '.
+            @$arrCategory[0]['LINK_CATEGORY_NAME_ENG'] ?>
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">
+            <?php
+            if(@$arrCategory[0]['LINK_CATEGORY_NAME_JPN']){
+                $strTitle = ' ('. @$arrCategory[0]['LINK_CATEGORY_NAME_JPN'].
+                '/ '. @$arrCategory[0]['LINK_CATEGORY_NAME_ENG'].')';
+            }
+            echo $arrText['PORTAL_DAILY_TEXT_009'].@$strTitle ?>
+        </div>
+        <div class="form-body-90 top-20">
+            <?php
+                foreach ($arrCategory as $arrItem){
+                    echo '<div class="div-middle-line">';
+                    echo '<label class="lb-left" >';
+                    echo '<a href="'.$arrItem['URL'].'">'.$arrItem["LINK_NAME".$strEndLang].'</a>';
+                    echo '</label>';
+                    $strImgLink = 'img/'.$arrItem["LINK_NO"].'/1/'.$arrItem["BURNER_FILE_NAME1"];
+                    echo '<span class="ip-span">';
+                    echo '<a href="'.$arrItem['URL'].'"><img src="'.$strImgLink.'"></a></span>';
+                    echo '</div>';
+                }
+            ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>

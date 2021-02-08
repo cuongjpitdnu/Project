@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>リンク情報登録編集</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="main-content">
+    <div class="main-form">
+        <div class="form-title">リンク情報登録編集</div>
+        <div class="form-body-90 top-20">
+            <div class="lb-left-long">カテゴリ</div>
+            <div class="select-container" style="margin-left: 15px">
+                <select>
+                    <option value="ja">気象</option>
+                    <option value="en">交通</option>
+                    <option value="en">フライト</option>
+                </select>
+            </div><br/>
+
+            <div class="lb-left-long">リンク名</div>
+            <span class="ip-span"><input type="text" class="t-input" value="飛行場実況気象（Meter)"></span>
+
+            <div class="lb-left-long">リンク名（翻訳）</div>
+            <span class="ip-span"><input type="text" class="t-input" value=""></span>
+
+            <div class="lb-left-long">リンク先</div>
+            <span class="ip-span"><input type="text" class="t-input" value="http://www.・・・・・・"></span>
+            
+            <div class="lb-left-long">バーナー画像</div>
+            <div class="upload-file ip-span">
+                <div class="singe-line">
+                    <div class="in-line"><a href="#" class="link">******.gif</a></div>
+                    <div class="in-line col-right right-100">
+                        <nobr><input type="checkbox" name="vehicle1" value="Bike">削除する</nobr>
+                    </div>
+                </div>
+                <div class="singe-line" style="border-top: none;">
+                    <input type="file" class="t-input">
+                </div>
+            </div>
+
+            <div class="form-footer top-20 text-right">
+                <button type="submit" class="tbtn tbtn-defaut " id="close" data-dismiss="modal">登録</button>　
+                <button type="submit" class="tbtn tbtn-defaut " id="close" data-dismiss="modal">閉じる</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

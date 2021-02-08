@@ -1,0 +1,35 @@
+<?php
+/*
+* @incident_boad_ajax.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+    require_once('portal_function.php');
+    if(@$_POST['action']=='long-form'){
+        $arrInsCategory = get_inst_cat();
+        $arrInfos = get_t_information(NULL,$objLoginUserInfo,$_POST['checkWithoutCom']);
+        $arrInfoData = array();
+        foreach ($arrInfos as $data){
+            $arrInfoData[$data['INST_CATEGORY_NO']][$data['COMPANY_NO']][] = $data;
+            $arrCompany[$data['COMPANY_NO']]  = $data['COMPANY_NAME'.$strEndLang];
+        }
+    }
+
+    if(@$_POST['action']=='load-incident'){
+        $intIncident = count(get_incident_case());
+        $arrResult['intIncident'] = $intIncident;
+
+        if(!$intIncident && $objLoginUserInfo->intIncidentCaseRegPerm){
+            $intShowBtn = 1;
+        }else{
+            $intShowBtn = 0;
+        }
+
+        $arrResult['intShowBtn'] = $intShowBtn;
+        $arrResult['strUtcTime'] = $strUtcTime;
+        $arrResult['strJstTime'] = $strJstTime;
+        echo json_encode($arrResult);
+    }
+?>
+

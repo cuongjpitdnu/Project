@@ -1,0 +1,246 @@
+
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン画面 (仮)ページ
+//	create		: 2020/02/12 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+// require_once('bulletin_board_mng_proc.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+//セッションスタート
+
+if(fncConnectDB() == false) {
+	$_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+	header('Location: login.php');
+	exit;
+}
+
+if(!isset($_SESSION['redirect'])) {
+	$_SESSION['txtIncident'] = '';
+	$_SESSION['txtDateStart'] = '';
+	$_SESSION['txtDateEnd'] = '';
+	$_SESSION['chkDone'] = '';
+}
+
+$arrTitle =  array(
+	'BULLETIN_BOARD_MNG_TEXT_001',
+	'BULLETIN_BOARD_MNG_TEXT_002',
+	'BULLETIN_BOARD_MNG_TEXT_003',
+	'BULLETIN_BOARD_MNG_TEXT_004',
+	'BULLETIN_BOARD_MNG_TEXT_005',
+	'BULLETIN_BOARD_MNG_TEXT_006',
+	'BULLETIN_BOARD_MNG_TEXT_007',
+	'BULLETIN_BOARD_MNG_TEXT_008',
+	'BULLETIN_BOARD_MNG_TEXT_009',
+	'BULLETIN_BOARD_MNG_TEXT_010',
+	'BULLETIN_BOARD_MNG_TEXT_011',
+	'BULLETIN_BOARD_MNG_TEXT_012',
+	'BULLETIN_BOARD_MNG_TEXT_013',
+	'BULLETIN_BOARD_MNG_TEXT_014',
+	'BULLETIN_BOARD_MNG_TEXT_015',
+	'BULLETIN_BOARD_MNG_TEXT_016',
+	'BULLETIN_BOARD_MNG_TEXT_017',
+	'BULLETIN_BOARD_MNG_TEXT_018',
+	'BULLETIN_BOARD_MNG_TEXT_019',
+	'BULLETIN_BOARD_MNG_TEXT_020',
+	'BULLETIN_BOARD_MNG_TEXT_021',
+	'PUBLIC_BUTTON_009',
+	'PUBLIC_BUTTON_010',
+	'PUBLIC_BUTTON_007',
+	'PUBLIC_BUTTON_006',
+	'PUBLIC_BUTTON_001',
+	'PUBLIC_BUTTON_011',
+	'PUBLIC_BUTTON_012',
+	'PUBLIC_BUTTON_015',
+	'BULLETIN_BOARD_MNG_MSG_001',
+	'PUBLIC_MSG_001',
+	'PUBLIC_MSG_008',
+	'PUBLIC_MSG_009',
+	'BULLETIN_BOARD_MNG_MSG_002',
+);
+//エラーメッセージ確認
+$strLoginError = '';
+$arrTextTranslate = getListTextTranslate($arrTitle);
+if(!isset($_SESSION['LOGINUSER_INFO'])) {
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?", [$userInfo->intUserNo], 'ユーザ管理画面');
+if(!$user) {
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+if($userInfo->intBulletinBoardRegPerm != 1) {
+    $alertMsg = $arrTextTranslate['PUBLIC_MSG_009'];
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+
+$viewLog = '掲示板管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="csrf-token" content="<?php echo $csrf; ?>">
+	    <title><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_001']; ?></title>
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+	    <link rel="stylesheet" type="text/css" href="css/table.css">
+	    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+	    <script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.js"></script>
+	    <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
+
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
+	    <script src="js/bootstrap.min.js"></script>
+	    <!-- <script src="js/nextpage.js"></script> -->
+	    <script src="js/common.js"></script>
+	</head>
+	<body>
+<?php
+if($strLoginError != '') {
+?>
+		<font color="red"><?php echo $strLoginError;?></font>
+<?php
+}
+?>
+	<div class="main-content">
+        <div class="main-form">
+			<div class="form-title"><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_001']; ?></div>
+			<?php if(isset($_SESSION['BULLETIN_BOARD_MNG_ERROR'])) {
+				echo '<font color="red" class="error">'.$_SESSION['BULLETIN_BOARD_MNG_ERROR'].'</font>';
+				unset($_SESSION['BULLETIN_BOARD_MNG_ERROR']);
+			}else{
+				echo '<font color="red" class="error"></font>';
+			}
+			?>
+            <div class="form-body">
+                <div class="cont-title">
+                	<form class="search-form" name="searchForm" id="searchForm">
+                		<input type="hidden" name="loadList" value="1">
+                		<?php //echo $csrfInput; ?>
+                    <div class=" in-line">
+                        <div class="label-short"><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_002']; ?></div>
+                        <input type="text" class="t-input t-input-125" name="txtIncident" value="<?php echo isset($_SESSION['txtIncident']) && $_SESSION['txtIncident']!='' ? $_SESSION['txtIncident'] : '';?>">
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80" style="display: inline-block;"><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_003']; ?></div>
+                        <input  class="t-input" id="date_start" name="txtDateStart" type="text" value="<?php echo (isset($_SESSION['txtDateStart']) && $_SESSION['txtDateStart']!='' ?  $_SESSION['txtDateStart'] : '');?>"> ~
+                        <input  class="t-input" id="date_end" name="txtDateEnd" type="text" value="<?php echo isset($_SESSION['txtDateEnd']) && $_SESSION['txtDateEnd']!='' ? $_SESSION['txtDateEnd'] : '';?>">
+                    </div>
+
+                    <div class="in-line">
+                        <label class="t-container"><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_004']; ?>
+                            <input type="checkbox" name="chkDone" <?php echo iff(isset($_SESSION['chkDone']) && $_SESSION['chkDone']!='', 'checked', '');?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="in-line col-right">
+                        <input type="button" class="tbl-btn tbl-btn-action btn-search" value="<?php echo $arrTextTranslate['PUBLIC_BUTTON_006']; ?>">
+                    </div>
+                	</form>
+                </div>
+                <div class="ajax-content">
+
+            	</div>
+            </div>
+        </div>
+    </div>
+	</body>
+	<!-- Modal HTML -->
+	<div id="myModal" class="modal fade">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div id="modal-body">
+
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+
+	<script>
+		// var confirmMsg = '<?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_MSG_001']; ?>';
+		var csrf = '<?php echo $csrf; ?>';
+		var ajaxUrl = 'bulletin_board_mng_proc.php';
+		var dataMsgError = '<?php echo $arrTextTranslate['PUBLIC_MSG_001']; ?>';
+		var dateMsgError = '<?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_MSG_002']; ?>';
+		// var originalSearch = 1;
+	    $(function() {
+	        $('#date_start').datepicker({
+	            changeMonth: true,
+	            changeYear: true,
+	            showButtonPanel: true,
+	            dateFormat: 'yy/mm/dd'
+	        });
+
+	        $('#date_end').datepicker({
+	            changeMonth: true,
+	            changeYear: true,
+	            showButtonPanel: true,
+	            dateFormat: 'yy/mm/dd'
+			});
+
+			// $('.btn-search').click();
+			function loadPage() {
+				// var arr = $('.search-form').serializeArray();
+				$.ajax({
+					url: ajaxUrl,
+					type: 'post',
+					data: [{name: 'X-CSRF-TOKEN', value: csrf}, {name: 'newLoad', value: '1'}],
+					success: function(result) {
+						$(".ajax-content").html(result);
+					}
+				});
+			}
+			loadPage();
+
+			$('[name="chkDone"]').click
+			$(document).on('click', '[name="chkDone"]', function() {
+				// if($(this).prop('checked') == true) {
+				// 	$('.tbl-btn-csv-del').removeAttr('disabled');
+				// }else{
+
+				// 	$('.tbl-btn-csv-del').attr("disabled", true);
+				// }
+				checkDone();
+			});
+			function checkDone() {
+				if($('[name="chkDone"]').prop('checked') == true) {
+					$('.tbl-btn-csv-del').removeAttr('disabled');
+					$('.tbl-btn-csv-del').css("color", '#333');
+				} else {
+					$('.tbl-btn-csv-del').attr("disabled", true);
+					$('.tbl-btn-csv-del').css("color", 'gray');
+				}
+				$('.btn-search').click();
+			}
+	    });
+
+	</script>
+</html>

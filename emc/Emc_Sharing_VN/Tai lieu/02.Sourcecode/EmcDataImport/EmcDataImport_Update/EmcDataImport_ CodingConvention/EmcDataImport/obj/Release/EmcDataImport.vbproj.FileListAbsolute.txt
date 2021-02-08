@@ -1,0 +1,91 @@
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x64.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x86.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe.config
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.pdb
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.xml
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.ProjectInstaller.resources
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.exe
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.xml
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe.config
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x64.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x86.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.xml
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.ProjectInstaller.resources
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.exe
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.xml
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.vbprojResolveAssemblyReference.cache
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe.config
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.exe
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.xml
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.pdb
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x64.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\INSTALL_x86.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.pdb
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.xml
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.ProjectInstaller.resources
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\EmcDataImport.exe.config
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.exe
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.xml
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.pdb
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\INSTALL_x64.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\INSTALL_x86.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\EmcDataImport.exe
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\EmcDataImport.pdb
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\bin\Release\EmcDataImport.xml
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.clsEmcDataImportInstaller.resources
+C:\Users\2NF001\Desktop\SRC GOC\EmcDataImport\EmcDataImport_Done1\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_CodingRule\EmcDataImport\bin\Release\EmcDataImport.exe.config
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_CodingRule\EmcDataImport\obj\Release\EmcDataImport.exe
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_CodingRule\EmcDataImport\obj\Release\EmcDataImport.xml
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_CodingRule\EmcDataImport\obj\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe.config
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.exe
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.xml
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\INSTALL_x64.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\INSTALL_x86.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.pdb
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.xml
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.clsEmcDataImportInstaller.resources
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache
+D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.vbprojResolveAssemblyReference.cache
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe.config
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.exe
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.xml
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.pdb
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\INSTALL_x64.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\INSTALL_x86.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\UNINSTALL_x64.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\UNINSTALL_x86.bat
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.pdb
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.xml
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.vbprojResolveAssemblyReference.cache
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.Resources.resources
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.clsEmcDataImportInstaller.resources
+D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\obj\Release\EmcDataImport.vbproj.GenerateResource.Cache

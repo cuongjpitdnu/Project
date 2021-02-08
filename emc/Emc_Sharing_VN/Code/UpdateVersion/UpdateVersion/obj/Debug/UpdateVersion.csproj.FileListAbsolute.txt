@@ -1,0 +1,9 @@
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Debug\UpdateVersion.exe.config
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Debug\UpdateVersion.exe
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Debug\UpdateVersion.pdb
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.Main.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.frmUpdateVersion.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.Properties.Resources.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.csproj.GenerateResource.Cache
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.exe
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Debug\UpdateVersion.pdb

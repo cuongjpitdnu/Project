@@ -1,0 +1,51 @@
+﻿Installing assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Installing service EmcDataImport...
+Service EmcDataImport has been successfully installed.
+Creating EventLog source EmcDataImport in log Application...
+Committing assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Uninstalling assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Removing EventLog source EmcDataImport.
+Service EmcDataImport is being removed from the system...
+Service EmcDataImport was successfully removed from the system.
+Installing assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Installing service EmcDataImport...
+Service EmcDataImport has been successfully installed.
+Creating EventLog source EmcDataImport in log Application...
+Committing assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Uninstalling assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Removing EventLog source EmcDataImport.
+Service EmcDataImport is being removed from the system...
+Service EmcDataImport was successfully removed from the system.
+Uninstalling assembly 'D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.exe
+   logfile = D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport_Update\EmcDataImport_ CodingConvention\EmcDataImport\bin\Debug\EmcDataImport.InstallLog
+Removing EventLog source EmcDataImport.
+Warning: The source EmcDataImport is not registered on the local machine.
+Service EmcDataImport is being removed from the system...
+Service EmcDataImport was successfully removed from the system.

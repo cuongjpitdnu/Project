@@ -1,0 +1,70 @@
+<?php
+/*
+* @incident_boad_info_long_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+require_once ('incident_boad_ajax.php');
+
+foreach ($arrInsCategory as $key => $cat){
+    echo '<td>';
+    echo '<div class="ticker-2 bg-'.$arrColorBgArr[$key].'" >';
+    if(@$arrInfoData[$cat['INST_CATEGORY_NO']]){
+        foreach ($arrInfoData[$cat['INST_CATEGORY_NO']] as $cageNo =>  $item){
+            echo '<div><span class="label-100">'.$arrText['PORTAL_INCIDENT_TEXT_013'].
+                '</span><span class="label-100">'.$arrText['PORTAL_INCIDENT_TEXT_014'].
+                '</span><span>'.$arrText['PORTAL_INCIDENT_TEXT_015'].'</span></div>';
+            foreach ($item as $arriInfoOfCom){
+                echo '<div>';
+                echo '<span class="label-100">'.$arriInfoOfCom['COMPANY_NAME'.$strEndLang].'</span>';
+                echo '<span class="label-100">'.date('m/d H:i:s',strtotime($arriInfoOfCom['UP_DATE'])).'</span>';
+                echo '<span> <a href="#" onclick="loadModal(\'information_view.php\')" 
+                        class="tl-red-boad">'.$arriInfoOfCom['TITLE'.$strEndLang].'</a></span>';
+                echo '</div>';
+            }
+        }
+    }
+    echo '</div>';
+    echo '</td>';
+}
+?>
+
+<script>
+    var info = 'info-cont2';
+    var infoRight = 'info-cont';
+    var tickers = 'tickers';
+    var contTicker = 'cont-ticker';
+    var ticker = 'ticker';
+    var ticker2 = 'ticker-2';
+    doResize(info,18);
+    doResize(infoRight,13);
+    doResizeTable(tickers,35.2);
+    doResizeTable(ticker2,49);
+    doResize(contTicker,15.2);
+    doResize(ticker,14);
+
+    window.onresize = function(event) {
+        var info = 'info-cont2';
+        var infoRight = 'info-cont';
+        var tickers = 'tickers';
+        var contTicker = 'cont-ticker';
+        doResize(info,18);
+        doResize(infoRight,13);
+        doResizeTable(tickers,35.2);
+        doResizeTable(ticker2,49);
+        doResize(contTicker,15.2);
+        doResize(ticker,14);
+
+        var divIdmes = 'msg_history';
+        var divInfo = 'info-cont1';
+        var divImgMap = 'img-map';
+        var divBull = 't-body-table';
+        doResize(divIdmes,68);
+
+        doResize(divInfo,21);
+        doResize(divImgMap,28);
+        doResize(divBull,21);
+    }
+</script>
+

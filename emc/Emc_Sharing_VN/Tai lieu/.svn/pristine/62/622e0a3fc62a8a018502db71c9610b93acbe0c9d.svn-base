@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="DB_HOSTNAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.185\sqlexpress</Value>
+    </Setting>
+    <Setting Name="DB_USERPASSWORD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">info_pass</Value>
+    </Setting>
+    <Setting Name="MAIL_POP_HOST" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.128</Value>
+    </Setting>
+    <Setting Name="MAIL_POP_PORT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">110</Value>
+    </Setting>
+    <Setting Name="MAIL_POP_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tung</Value>
+    </Setting>
+    <Setting Name="MAIL_POP_PASS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tung</Value>
+    </Setting>
+    <Setting Name="MAIL_SMTP_HOST" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.128</Value>
+    </Setting>
+    <Setting Name="MAIL_SMTP_PORT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="MAIL_SMTP_USER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">chien</Value>
+    </Setting>
+    <Setting Name="MAIL_SMTP_PASS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">chien</Value>
+    </Setting>
+    <Setting Name="EXECUTION_CYCLE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">60000</Value>
+    </Setting>
+    <Setting Name="LOG_FOLDER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Debug\LogFolder</Value>
+    </Setting>
+    <Setting Name="DEBUGFLG" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="REG_USER_NO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="QUERY_RETENTION_PERIOD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="FROM_MAILADDRESS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">chien@local.net</Value>
+    </Setting>
+    <Setting Name="DB_DBNAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">info_db</Value>
+    </Setting>
+    <Setting Name="DB_USERNAME" Type="System.String" Scope="User">
+      <Value Profile="(Default)">info_user</Value>
+    </Setting>
+    <Setting Name="ERRLOG_FOLDER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Debug\Error</Value>
+    </Setting>
+    <Setting Name="WEB_LOG_FOLDER" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Du an moi\Tai lieu\02.Sourcecode\EmcDataImport\EmcDataImport\EmcDataImport\bin\Debug\WebLog</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,8 @@
+﻿Uninstalling assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Removing EventLog source EmcDataImport.
+Service EmcDataImport is being removed from the system...
+Service EmcDataImport was successfully removed from the system.

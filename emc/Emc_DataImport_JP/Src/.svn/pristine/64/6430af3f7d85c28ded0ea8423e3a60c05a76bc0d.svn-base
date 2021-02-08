@@ -1,0 +1,739 @@
+<?php
+/*
+ * @インシデント事案登録編集画面
+ *
+ * @create 2020/03/19 KBS T.Masuda
+ * @update
+ */
+    require_once('common/common.php');
+    // require_once('common/validate_user.php');
+
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        echo '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'");
+                      window.location.href="login.php";</script>';
+        exit;
+    }
+
+    if(!(!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')) {
+        exit;
+    }
+
+    const SCREEN_NAME = 'インシデント事案登録編集画面';
+
+    //ログインユーザ情報
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    //ログインユーザ言語タイプ
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    //表示テキスト・メッセージ
+    $arrTitleMsg =  array(
+        'INCIDENT_CASE_EDIT_TEXT_001',
+        'INCIDENT_CASE_EDIT_TEXT_002',
+        'PUBLIC_TEXT_002',
+        'PUBLIC_TEXT_004',
+        'PUBLIC_TEXT_005',
+        'PUBLIC_TEXT_008',
+        'PUBLIC_BUTTON_004',
+        'PUBLIC_TEXT_003',
+        'PUBLIC_TEXT_004',
+        'PUBLIC_TEXT_005',
+        'PUBLIC_BUTTON_005',
+        'PUBLIC_BUTTON_003',
+        'PUBLIC_TEXT_010',
+        'PUBLIC_MSG_020',
+
+        'PUBLIC_MSG_009',
+        'INCIDENT_CASE_EDIT_MSG_001',
+        'PUBLIC_MSG_021',
+        'PUBLIC_MSG_022',
+        'PUBLIC_MSG_023',
+        'PUBLIC_MSG_024',
+        'PUBLIC_MSG_025',
+        'PUBLIC_MSG_026',
+        'PUBLIC_MSG_027',
+        'PUBLIC_MSG_028',
+        'PUBLIC_MSG_029',
+        'PUBLIC_MSG_030',
+
+        'PUBLIC_MSG_010',
+        'PUBLIC_MSG_041',
+        'INCIDENT_CASE_EDIT_MSG_002',
+
+        'INCIDENT_CASE_EDIT_MSG_003',
+        'INCIDENT_CASE_EDIT_MSG_004',
+        'INCIDENT_CASE_EDIT_MSG_005',
+
+        'PUBLIC_MSG_031',
+        'PUBLIC_MSG_032',
+        'PUBLIC_MSG_033',
+        'PUBLIC_MSG_034',
+        'PUBLIC_MSG_035',
+        'PUBLIC_MSG_036',
+        'PUBLIC_MSG_037',
+        'PUBLIC_MSG_038',
+        'PUBLIC_MSG_039',
+        'PUBLIC_MSG_040',
+
+        'PUBLIC_MSG_002',
+        'PUBLIC_MSG_003',
+        'PUBLIC_MSG_001',
+    );
+
+    //タイトル（日本語）入力チェック文字数
+    define('LENGTH_TITLE_JPN_TO_ENG', 20);
+    //タイトル（英語）入力チェック文字数
+    define('LENGTH_TITLE_ENG_TO_JPN', 100);
+    //内容（日本語）入力チェック文字数
+    define('LENGTH_CONTENT_JPN_TO_ENG', 1000);
+    //内容（英語）入力チェック文字数
+    define('LENGTH_CONTENT_ENG_TO_JPN', 5000);
+
+    //言語タイプに応じたテキスト・メッセージ
+    $arrTextTranslate = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    if(isset($_POST)) {
+        $_SESSION['INCIDENT_CASE_EDIT_ERROR'] = array();
+
+        if(isset($_POST['action'])) {
+            //メッセージ格納
+            $arrRes = array(
+                'trans-error' => '',
+                'error'       => '',
+                'success'     => '',
+                'confirm'     => '',
+            );
+
+            //翻訳ボタン処理
+            if($_POST['action'] == 'translate') {
+                //翻訳言語タイプ
+                $strTranslate = @$_POST['cmbTranslation']
+                              ? ((trim($_POST['cmbTranslation']) == 'ja') ? 0 : 1) : '';
+                //タイトル（原文）
+                $strTitleOriginal = @$_POST['txtTitleOriginal']
+                                  ? trim($_POST['txtTitleOriginal']) : '';
+                //内容（原文）
+                $strContentOriginal = @$_POST['txtContentOriginal']
+                                    ? trim($_POST['txtContentOriginal']) : '';
+                //翻訳を手入力するのチェック状態
+                $strManualTranslate = @$_POST['chkManualInput']
+                                    ? trim($_POST['chkManualInput']) : '';
+                //タイトル（翻訳）
+                $strTitleTranslate = @$_POST['txtTitleTranslation']
+                                   ? trim($_POST['txtTitleTranslation']) : '';
+                //内容（翻訳）
+                $strContentTranslate = @$_POST['txtContentTranslation']
+                                     ? trim($_POST['txtContentTranslation']) : '';
+
+                //翻訳を手入力するにチェック有り
+                if($strManualTranslate == 'on') {
+                    $arrRes['success'] = array(
+                        'titleTranslate' => $strTitleTranslate,
+                        'contentTranslate' => $strContentTranslate,
+                    );
+                    echo json_encode($arrRes);
+                    exit;
+                }
+
+                //翻訳を手入力するにチェック無し
+                if($strManualTranslate == 'off') {
+                    if($strTitleTranslate != '' || $strContentTranslate != '') {
+                        $arrRes['success'] = array(
+                            'titleTranslate' => $strTitleTranslate,
+                            'contentTranslate' => $strContentTranslate,
+                        );
+                        echo json_encode($arrRes);
+                        exit;
+                    }
+                }
+
+                // 入力チェック
+                $_SESSION['INCIDENT_CASE_EDIT_ERROR']
+                        = fncTranInputCheck($strTitleOriginal, $strContentOriginal,'','',
+                                            $strTranslate,'',0, $arrTextTranslate);
+
+                //入力エラー表示
+                if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                    $strHtmlError = '';
+                    foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                        $strHtmlError .= '<div>'.$strError.'</div>';
+                    }
+                    $arrRes['error'] = $strHtmlError;
+                    $arrRes['success'] = array(
+                        'titleTranslate'   => '',
+                        'contentTranslate' => '',
+                    );
+                    echo json_encode($arrRes);
+                    exit;
+                } else {
+                    $strTitleTranslate   = '';
+                    $strContentTranslate = '';
+                    try {
+                            $strTitleTranslate   = tranAmazon($strTitleOriginal, $strTranslate);
+                            $strContentTranslate = tranAmazon($strContentOriginal, $strTranslate);
+
+                            if((is_array($strTitleTranslate) && $strTitleTranslate['error'] == 1)
+                                || (is_array($strContentTranslate) && $strContentTranslate['error'] == 1)
+                                || $strTitleTranslate == '' || $strContentTranslate == '') {
+                                $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] =  $arrTextTranslate['PUBLIC_MSG_010'];
+                            }
+
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error']       = $strHtmlError;
+                                $arrRes['trans-error'] = 'error';
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+
+                            $arrRes['success'] = array(
+                                'titleTranslate'   => $strTitleTranslate,
+                                'contentTranslate' => $strContentTranslate,
+                            );
+                            echo json_encode($arrRes);
+                            exit;
+
+                    } catch (\Exception $e) {
+                        fncWriteLog(LogLevel['Error'] , LogPattern['Error'],
+                                    $arrTextTranslate['PUBLIC_MSG_010']);
+                        $arrRes['error'] = $arrTextTranslate['PUBLIC_MSG_010'];
+                        $arrRes['trans-error'] = 'error';
+                        $arrRes['success'] = array(
+                            'titleTranslate'   => '',
+                            'contentTranslate' => '',
+                        );
+                        echo json_encode($arrRes);
+                        exit;
+                    }
+                }
+            }
+
+            //投稿時の翻訳処理
+            if($_POST['action'] == 'pre-update' || $_POST['action'] == 'pre-insert') {
+                $intIncidentCaseNo = @$_POST['incidentCaseNo']
+                                   ? trim($_POST['incidentCaseNo']) : '';
+
+                $dtmStartDate = @$_POST['dtStartDate'] ? trim($_POST['dtStartDate']) : '';
+
+                $strTranslate = @$_POST['cmbTranslation']
+                              ? ((trim($_POST['cmbTranslation']) == 'ja') ? 0 : 1) : '';
+                $strTitleOriginal = @$_POST['txtTitleOriginal']
+                                  ? trim($_POST['txtTitleOriginal']) : '';
+                $strContentOriginal = @$_POST['txtContentOriginal']
+                                    ? trim($_POST['txtContentOriginal']) : '';
+                $intManualTranslate = @$_POST['chkManualInput']
+                                    ? ((trim($_POST['chkManualInput']) == 'on') ? 1 : 0) : '';
+
+                $strTitleTranslate   = @$_POST['txtTitleTranslation']
+                                     ? trim($_POST['txtTitleTranslation']) : '';
+                $strContentTranslate = @$_POST['txtContentTranslation']
+                                     ? trim($_POST['txtContentTranslation']) : '';
+
+                //新規登録時に開始日の入力チェック
+               if($intIncidentCaseNo == ''){
+                     //開始日未入力時
+                    if(empty($dtmStartDate)){
+                         $_SESSION['INCIDENT_CASE_EDIT_ERROR'][]
+                                    = $arrTextTranslate['INCIDENT_CASE_EDIT_MSG_003'];
+                    }else{
+
+                         $blnDateCheck = DateTime::createFromFormat('Y/m/d H:i', $dtmStartDate);
+
+                         //入力日付が不正の場合
+                         if(!$blnDateCheck || $blnDateCheck->format('Y/m/d H:i') != $dtmStartDate){
+                             $_SESSION['INCIDENT_CASE_EDIT_ERROR'][]
+                                = $arrTextTranslate['INCIDENT_CASE_EDIT_MSG_004'];
+                         }
+                    }
+               }
+
+                //入力チェック
+                $_SESSION['INCIDENT_CASE_EDIT_ERROR']
+                     = array_merge($_SESSION['INCIDENT_CASE_EDIT_ERROR'],
+                                   fncTranInputCheck($strTitleOriginal, $strContentOriginal,
+                                                     $strTitleTranslate,$strContentTranslate,
+                                                     $strTranslate,$intManualTranslate,1,
+                                                     $arrTextTranslate));
+
+
+                 if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                     $strHtmlError = '';
+                     foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                         $strHtmlError .= '<div>'.$strError.'</div>';
+                     }
+                     $arrRes['error'] = $strHtmlError;
+                     echo json_encode($arrRes);
+                     exit;
+                 }
+
+                //翻訳を手入力するにチェック無し
+                 if($intManualTranslate == 0) {
+                    //タイトル（翻訳）、内容（翻訳）がnullの場合
+                    if($strTitleTranslate == '' && $strContentTranslate == '') {
+                        try {
+                                //自動翻訳
+                                $strTitleTranslate = tranAmazon($strTitleOriginal, $strTranslate);
+                                $strContentTranslate = tranAmazon($strContentOriginal, $strTranslate);
+
+                                if((is_array($strTitleTranslate) && $strTitleTranslate['error'] == 1)
+                                    || (is_array($strContentTranslate) && $strContentTranslate['error'] == 1)
+                                    || $strTitleTranslate == '' || $strContentTranslate == '') {
+                                    $arrRes['confirm'] = $arrTextTranslate['PUBLIC_MSG_041'];
+                                }else{
+                                    $arrRes['success'] = array(
+                                        'titleTranslate' => $strTitleTranslate,
+                                        'contentTranslate' => $strContentTranslate,
+                                    );
+                                }
+
+                        } catch (\Exception $e) {
+                            fncWriteLog(LogLevel['Error'] , LogPattern['Error'],
+                                        $arrTextTranslate['PUBLIC_MSG_010']);
+                            $arrRes['error'] = $arrTextTranslate['PUBLIC_MSG_010'];
+                            $arrRes['trans-error'] = 'error';
+                            echo json_encode($arrRes);
+                            exit;
+                        }
+                    }
+
+
+                    //自動翻訳に成功時
+                    if($strTitleTranslate != '' && $strContentTranslate != ''
+                       && $arrRes['confirm'] == '') {
+                        $arrRes['confirm'] = $arrTextTranslate['INCIDENT_CASE_EDIT_MSG_002'];
+                        $arrRes['success'] = array(
+                            'titleTranslate' => $strTitleTranslate,
+                            'contentTranslate' => $strContentTranslate,
+                        );
+                    } else {
+                        //自動翻訳に失敗時
+                        if($strTitleTranslate == '' || $strContentTranslate == '') {
+                            $arrRes['confirm'] = $arrTextTranslate['PUBLIC_MSG_041'];
+                        }
+                        $arrRes['success'] = array(
+                            'titleTranslate'   => '',
+                            'contentTranslate' => '',
+                        );
+                    }
+
+                //翻訳を手入力するにチェック無し
+                } else {
+                    $arrRes['success'] = array(
+                        'titleTranslate'   => $strTitleTranslate,
+                        'contentTranslate' => $strContentTranslate,
+                    );
+                    $arrRes['confirm'] = $arrTextTranslate['INCIDENT_CASE_EDIT_MSG_002'];
+                }
+                echo json_encode($arrRes);
+                exit;
+            }
+
+
+            if($_POST['action'] == 'update' || $_POST['action'] == 'insert') {
+
+                if($_POST['mode'] == 1) {
+                    //更新対象のインシデント事案No
+                    $intIncidentNo = @$_POST['id'] ? trim($_POST['id']) : '';
+                    //開始日
+                    $dtmStartDate = new DateTime(@$_POST['dtStartDate']
+                                                   ? trim($_POST['dtStartDate']) : '');
+                    $dtmStartDate = $dtmStartDate->format('Y-m-d H:i');
+                    //翻訳言語タイプ選択値
+                    $strTranslation = @$_POST['cmbTranslation']
+                                    ? trim($_POST['cmbTranslation']) : '';
+                    //タイトル（原文）
+                    $strTitleOriginal = @$_POST['txtTitleOriginal']
+                                      ? trim($_POST['txtTitleOriginal']) : '';
+                    //内容（原文）
+                    $strContentOriginal = @$_POST['txtContentOriginal']
+                                        ? trim($_POST['txtContentOriginal']) : '';
+                    //タイトル（翻訳）
+                    $strTitleTranslation = @$_POST['txtTitleTranslation']
+                                         ? trim($_POST['txtTitleTranslation']) : '';
+                    //内容（翻訳）
+                    $strContentTranslation = @$_POST['txtContentTranslation']
+                                           ? trim($_POST['txtContentTranslation']) : '';
+                    //翻訳を手入力するチェック状態
+                    $intManualInput = @$_POST['chkManualInput']
+                                    ? ((trim($_POST['chkManualInput']) == 'on') ? 1 : 0) : '';
+                    //インシデント事案の言語タイプ
+                    $intLanguageType = ($strTranslation != '')
+                                     ? (($strTranslation == 'ja') ? 0 : 1) : '';
+
+                    // prepare data to insert
+                    $arrData = array(
+                        's_date'          => $dtmStartDate,
+                        'title_jpn'       => ($strTranslation != '') ? (($strTranslation == 'ja')
+                                            ? $strTitleOriginal : $strTitleTranslation) : null,
+                        'title_eng'       => ($strTranslation != '') ? (($strTranslation == 'en')
+                                            ? $strTitleOriginal : $strTitleTranslation) : null,
+                        'contents_jpn'    => ($strTranslation != '') ? (($strTranslation == 'ja')
+                                            ? $strContentOriginal : $strContentTranslation): null,
+                        'contents_eng'    => ($strTranslation != '') ? (($strTranslation == 'en')
+                                            ? $strContentOriginal : $strContentTranslation): null,
+                        'language_type'   => ($strTranslation != '') ? (($strTranslation == 'ja')
+                                            ? 0 : 1) : null,
+                        'correction_flag' => $intManualInput,
+                        'language_type'   => $intLanguageType
+                    );
+
+                    //インシデント事案更新
+                    if($_POST['action'] == 'update') {
+                        try {
+                            //更新SQｌ
+                            $strSQL = " UPDATE t_incident_case SET "
+                                    . " title_jpn = :title_jpn "
+                                    . " , title_eng = :title_eng "
+                                    . " , contents_jpn = :contents_jpn "
+                                    . " , contents_eng = :contents_eng "
+                                    . " , language_type = :language_type "
+                                    . " , correction_flag = :correction_flag "
+                                    . " , up_user_no = :up_user_no "
+                                    . " , up_date = CURRENT_TIMESTAMP "
+                                    . " WHERE incident_case_no = :incident_case_no; ";
+
+                            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                            $objStmt->bindParam(':title_jpn', $arrData['title_jpn']);
+                            $objStmt->bindParam(':title_eng', $arrData['title_eng']);
+                            $objStmt->bindParam(':contents_jpn', $arrData['contents_jpn']);
+                            $objStmt->bindParam(':contents_eng', $arrData['contents_eng']);
+                            $objStmt->bindParam(':language_type', $arrData['language_type']);
+                            $objStmt->bindParam(':correction_flag', $arrData['correction_flag']);
+                            $objStmt->bindParam(':up_user_no', $objLoginUserInfo->intUserNo);
+                            $objStmt->bindParam(':incident_case_no', $intIncidentNo);
+
+                            //SQLログ内容
+                            $strLogSql = SCREEN_NAME.$strSQL;
+                            $strLogSql = str_replace(':title_jpn', $arrData['title_jpn'], $strLogSql);
+                            $strLogSql = str_replace(':title_eng', $arrData['title_eng'], $strLogSql);
+                            $strLogSql = str_replace(':contents_jpn', $arrData['contents_jpn'], $strLogSql);
+                            $strLogSql = str_replace(':contents_eng', $arrData['contents_eng'], $strLogSql);
+                            $strLogSql = str_replace(':language_type',
+                                                      $arrData['language_type'], $strLogSql);
+                            $strLogSql = str_replace(':correction_flag',
+                                                     $arrData['correction_flag'], $strLogSql);
+                            $strLogSql = str_replace(':up_user_no',
+                                                     $objLoginUserInfo->intUserNo, $strLogSql);
+                            $strLogSql = str_replace(':incident_case_no', $intIncidentNo, $strLogSql);
+                            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                            $objStmt->execute();
+                        } catch (\Exception $e) {
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                        $arrTextTranslate['PUBLIC_MSG_003']);
+                            $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_003'];
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error'] = $strHtmlError;
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+                        }
+                    }
+
+                    //インシデント事案登録
+                    if($_POST['action'] == 'insert') {
+                        $arrCompData = funGetCompIncident();
+                        //完了したインシデント事案がある場合、登録処理は行わない
+                        if(is_array($arrCompData) && count($arrCompData) > 0) {
+                            $_SESSION['INCIDENT_CASE_EDIT_ERROR'][]
+                                = $arrTextTranslate['INCIDENT_CASE_EDIT_MSG_005'];
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error'] = $strHtmlError;
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+                        }
+
+                        $arrNextIncidentNo = getNextIncident();
+                        //データ取得失敗時
+                        if($arrNextIncidentNo == 0 || $arrCompData == 0) {
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                        $arrTextTranslate['PUBLIC_MSG_002']);
+                            $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_002'];
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error'] = $strHtmlError;
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+                        }
+
+                        try {
+                            //新規登録SQL
+                            $strSQL = " INSERT INTO t_incident_case "
+                                    . " ( "
+                                    . "     incident_case_no, "
+                                    . "     s_date, "
+                                    . "     title_jpn, "
+                                    . "     title_eng, "
+                                    . "     contents_jpn, "
+                                    . "     contents_eng, "
+                                    . "     language_type, "
+                                    . "     correction_flag, "
+                                    . "     reg_user_no, "
+                                    . "     reg_date, "
+                                    . "     up_user_no, "
+                                    . "     up_date "
+                                    . " ) VALUES ( "
+                                    . "     :incident_case_no, "
+                                    . "     :s_date, "
+                                    . "     :title_jpn, "
+                                    . "     :title_eng, "
+                                    . "     :contents_jpn, "
+                                    . "     :contents_eng, "
+                                    . "     :language_type, "
+                                    . "     :correction_flag, "
+                                    . "     :reg_user_no, "
+                                    . "     CURRENT_TIMESTAMP, "
+                                    . "     :up_user_no, "
+                                    . "     CURRENT_TIMESTAMP "
+                                    . " ); ";
+                            $intIncidentNo = $arrNextIncidentNo[0]['incident_case_no'];
+                            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+                            $objStmt->bindParam(':incident_case_no', $intIncidentNo);
+                            $objStmt->bindParam(':s_date', $arrData['s_date']);
+                            $objStmt->bindParam(':title_jpn', $arrData['title_jpn']);
+                            $objStmt->bindParam(':title_eng', $arrData['title_eng']);
+                            $objStmt->bindParam(':contents_jpn', $arrData['contents_jpn']);
+                            $objStmt->bindParam(':contents_eng', $arrData['contents_eng']);
+                            $objStmt->bindParam(':language_type', $arrData['language_type']);
+                            $objStmt->bindParam(':correction_flag', $arrData['correction_flag']);
+                            $objStmt->bindParam(':reg_user_no', $objLoginUserInfo->intUserNo);
+                            $objStmt->bindParam(':up_user_no', $objLoginUserInfo->intUserNo);
+
+                            //SQLログ内容
+                            $strLogSql = SCREEN_NAME.$strSQL;
+                            $strLogSql = str_replace(':incident_case_no', $intIncidentNo, $strLogSql);
+                            $strLogSql = str_replace(':s_date', $arrData['s_date'], $strLogSql);
+                            $strLogSql = str_replace(':title_jpn', $arrData['title_jpn'], $strLogSql);
+                            $strLogSql = str_replace(':title_eng', $arrData['title_eng'], $strLogSql);
+                            $strLogSql = str_replace(':contents_jpn', $arrData['contents_jpn'], $strLogSql);
+                            $strLogSql = str_replace(':contents_eng', $arrData['contents_eng'], $strLogSql);
+                            $strLogSql = str_replace(':language_type',
+                                                     $arrData['language_type'], $strLogSql);
+                            $strLogSql = str_replace(':correction_flag',
+                                                     $arrData['correction_flag'], $strLogSql);
+                            $strLogSql = str_replace(':reg_user_no',
+                                                     $objLoginUserInfo->intUserNo, $strLogSql);
+                            $strLogSql = str_replace(':up_user_no', $objLoginUserInfo->intUserNo, $strLogSql);
+                            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+                            $objStmt->execute();
+                        } catch (\Exception $e) {
+                            fncWriteLog(LogLevel['Error'], LogPattern['Error'],
+                                        $arrTextTranslate['PUBLIC_MSG_002']);
+                            $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_002'];
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error'] = $strHtmlError;
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+                        }
+                    }
+
+                    //登録・更新ログ内容
+                    $strEdtLog = SCREEN_NAME.'　更新(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                    $strRegLog = SCREEN_NAME.'　登録(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                    $strLogBtnPost = ($_POST['action'] == 'update') ? $strEdtLog : $strRegLog;
+                    fncWriteLog(LogLevel['Info'] , LogPattern['Button'], $strLogBtnPost);
+
+                    $arrUser = getDataMUserSendMail('INCIDENT_CASE_MAIL', SCREEN_NAME);
+                    //データ取得失敗時
+                    if($arrUser == 0) {
+                        $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_001'];
+                        if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                            $strHtmlError = '';
+                            foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                $strHtmlError .= '<div>'.$strError.'</div>';
+                            }
+                            $arrRes['error'] = $strHtmlError;
+                            echo json_encode($arrRes);
+                            exit;
+                        }
+                    } else {
+                        $arrMail = array(
+                            'jpn' => array(),
+                            'eng' => array(),
+                        );
+
+                        $arrTempMailJP = array();
+                        $arrTempMailEN = array();
+                        //メール対象者の言語タイプにて内容を変更
+                        foreach($arrUser as $user) {
+                            //日本語
+                            if($user['language_type'] == 0) {
+                                if(count($arrTempMailJP) == 0) {
+                                    array_push($arrTempMailJP, $user['mail_address']);
+                                    $arrMail['jpn'][] = array(
+                                        'USER_NAME' => $user['user_name'],
+                                        'MAIL_ADDRESS' => $user['mail_address'],
+                                    );
+                                } else {
+                                    if(!in_array($user['mail_address'], $arrTempMailJP)) {
+                                        array_push($arrTempMailJP, $user['mail_address']);
+                                        $arrMail['jpn'][] = array(
+                                            'USER_NAME' => $user['user_name'],
+                                            'MAIL_ADDRESS' => $user['mail_address'],
+                                        );
+                                    }
+                                }
+                                //英語
+                            } else {
+                                if(count($arrTempMailEN) == 0) {
+                                    array_push($arrTempMailEN, $user['mail_address']);
+                                    $arrMail['eng'][] = array(
+                                        'USER_NAME' => $user['user_name'],
+                                        'MAIL_ADDRESS' => $user['mail_address'],
+                                    );
+                                } else {
+                                    if(!in_array($user['mail_address'], $arrTempMailEN)) {
+                                        array_push($arrTempMailEN, $user['mail_address']);
+                                        $arrMail['eng'][] = array(
+                                            'USER_NAME' => $user['user_name'],
+                                            'MAIL_ADDRESS' => $user['mail_address'],
+                                        );
+                                    }
+                                }
+                            }
+                        }
+
+                        $strSQL = ' SELECT * FROM t_incident_case ';
+                        $strSQL.= ' WHERE t_incident_case.incident_case_no = ? ';
+
+                        $arrResult = fncSelectOne($strSQL, array($intIncidentNo),SCREEN_NAME);
+                        //メール内容の取得に失敗した場合
+                        if($arrResult == 0) {
+                            $_SESSION['INCIDENT_CASE_EDIT_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_001'];
+                            if(count($_SESSION['INCIDENT_CASE_EDIT_ERROR']) > 0) {
+                                $strHtmlError = '';
+                                foreach($_SESSION['INCIDENT_CASE_EDIT_ERROR'] as $strError) {
+                                    $strHtmlError .= '<div>'.$strError.'</div>';
+                                }
+                                $arrRes['error'] = $strHtmlError;
+                                echo json_encode($arrRes);
+                                exit;
+                            }
+                        }
+
+                        //メール件名
+                        $arrSubject = array(
+                            'jpn' => '',
+                            'eng' => '',
+                        );
+                        //メール本文
+                        $arrBody = array(
+                            'jpn' => '',
+                            'eng' => '',
+                        );
+                        if(count($arrResult) > 0) {
+                            $arrSubject['jpn'] = trim($arrResult['TITLE_JPN']);
+                            $arrSubject['eng'] = trim($arrResult['TITLE_ENG']);
+
+                            $arrBody['jpn'] = fncHtmlSpecialChars(trim($arrResult['CONTENTS_JPN']));
+                            //改行対応
+                            $arrBody['jpn'] = str_replace(array("\r\n", "\r","\n"), '<br>',
+                                                          $arrResult['CONTENTS_JPN']);
+                            $arrBody['eng'] = fncHtmlSpecialChars(trim($arrResult['CONTENTS_ENG']));
+                            $arrBody['eng'] = str_replace(array("\r\n", "\r","\n"), '<br>',
+                                                          $arrResult['CONTENTS_ENG']);
+                        }
+
+                        foreach($arrMail as $lang => $listMail) {
+                            if(count($listMail) > 0) {
+                                $strSubjectSend = ($lang == 'jpn') ? $arrSubject['jpn'] : $arrSubject['eng'];
+                                $strBodySend    = ($lang == 'jpn') ? $arrBody['jpn'] : $arrBody['eng'];
+
+                                if($strSubjectSend == '') {
+                                    $strSubjectSend = ($lang == 'jpn') ? $arrSubject['eng'] : $arrSubject['jpn'];
+                                }
+
+                                if($strBodySend == '') {
+                                    $strBodySend = ($lang == 'jpn') ? $arrBody['eng'] : $arrBody['jpn'];
+                                }
+
+                                fncSendMail($listMail, $strSubjectSend, $strBodySend, '');
+                            }
+                        }
+                    }
+
+                    $arrRes['success'] = 1;
+                    echo json_encode($arrRes);
+                    exit;
+                }
+            }
+        }
+    }
+
+
+    /**
+    *   function	: インシデントNoシーケンス取得
+    *
+    *   @params	    :
+    *   @return	    : $arrResult    インシデントNoシーケンス
+    *   @create	    : 2020/03/13 T.Masuda
+    *   @update	    :
+    */
+        function getNextIncident() {
+        try {
+            $strSQL = ' SELECT NEXT VALUE FOR incident_case_sequence AS incident_case_no ';
+            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+            $strLogSql = SCREEN_NAME.$strSQL;
+            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+            $objStmt->execute();
+            $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+            return $arrResult;
+        } catch (\Excoption $e) {
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $e->getMessage());
+            return 0;
+        }
+    }
+
+
+    /**
+     *   function	    : インシデント事案完了データ取得
+     *
+     *   @params	    :
+     *   @return	    : $arrResult    インシデント事案完了データ
+     *   @create	    : 2020/03/19 T.Masuda
+     *   @update	    :
+     */
+    function funGetCompIncident() {
+        try {
+            $strSQL = ' SELECT * FROM t_incident_case WHERE comp_date IS NULL ';
+            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+            $strLogSql = SCREEN_NAME.$strSQL;
+            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], $strLogSql);
+            $objStmt->execute();
+            $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+            return $arrResult;
+        } catch (\Excoption $e) {
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $e->getMessage());
+            return 0;
+        }
+    }

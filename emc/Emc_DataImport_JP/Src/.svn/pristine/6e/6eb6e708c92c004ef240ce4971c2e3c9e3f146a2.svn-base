@@ -1,0 +1,142 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: Portal screen
+//	create		: 2020/02/17 KBS Tamnv
+//	update		:
+// -------------------------------------------------------------------------
+require_once('portal_proc.php');
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="<?php echo (isset($csrf) ? $csrf : ''); ?>">
+    <title><?= $arrayText['PORTAL_TEXT_005'] ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="css/table-info.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/nextpage.js"></script>
+</head>
+<body>
+<div class="main-content">
+    <div class="header-boad">
+        <div class="in-line right-100"><img src="img/logo.jpg" alt=""></div>
+        <label name="lblViewTimeJST"><?= date('m/d H:i:s')?> JST　</label>
+        <label name="lblViewTimeUTC">　<?= $utcTime ?> </label>
+        <div class="in-line">
+            <?php
+                if(!$incident && $objLoginUserInfo->intIncidentCaseRegPerm){
+                    ?>
+                    <button class="tbtn tbtn-defaut mark-btn" onclick="loadModal('incident_case_edit.php')" name="btnSearch"><?= $arrayText['PORTAL_DAILY_BUTTON_001']  ?></button>
+            <?php
+                }
+            ?>
+        </div>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><?= $arrayText['PORTAL_TEXT_004']?>　▼</button>
+            <?php
+                if($objLoginUserInfo->intMenuPerm){
+                    ?>
+                    <div id="myDropdown" class="dropdown-content select-gray">
+                        <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_007']?></div>
+                        <a href="announce_mng.php"><?= $arrayText['PORTAL_TEXT_008']?></a>
+                        <a href="bulletin_board_mng.php"><?= $arrayText['PORTAL_TEXT_009']?></a>
+                        <a href="link_mng.php"><?= $arrayText['PORTAL_TEXT_010']?></a>
+                        <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_011']?></div>
+                        <a href="incident_case_mng.php"><?= $arrayText['PORTAL_TEXT_012']?></a>
+                        <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_013']?></div>
+                        <a href="company_mng.php"><?= $arrayText['PORTAL_TEXT_014']?></a>
+                        <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_015']?></div>
+                        <a href="#" onclick="loadModal('user_setting.php')" ><?= $arrayText['PORTAL_TEXT_016']?></a>
+                        <a href="user_mng.php"><?= $arrayText['PORTAL_TEXT_017']?></a>
+                    </div>
+                <?php
+                }else{
+                    ?>
+                    <div id="myDropdown" class="dropdown-content select-gray">
+                        <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_015']?></div>
+                        <a href="user_mng.php"><?= $arrayText['PORTAL_TEXT_017']?></a>
+                    </div>
+            <?php
+                }
+            ?>
+            <div id="myDropdown" class="dropdown-content select-gray">
+                <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_005']?></div>
+                <a href="announce_mng.php"><?= $arrayText['PORTAL_TEXT_008']?></a>
+                <a href="bulletin_board_mng.php"><?= $arrayText['PORTAL_TEXT_009']?></a>
+                <a href="link_mng.php"><?= $arrayText['PORTAL_TEXT_010']?></a>
+                <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_011']?></div>
+                <a href="incident_case_mng.php"><?= $arrayText['PORTAL_TEXT_012']?></a>
+                <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_013']?></div>
+                <a href="company_mng.php"><?= $arrayText['PORTAL_TEXT_014']?></a>
+                <div class="t-outgroup"><?= $arrayText['PORTAL_TEXT_015']?></div>
+                <a href="#" onclick="loadModal('user_setting.php')" ><?= $arrayText['PORTAL_TEXT_016']?></a>
+                <a href="user_mng.php"><?= $arrayText['PORTAL_TEXT_017']?></a>
+            </div>
+        </div>
+
+        <div class="in-line col-right right-100">
+            <div class="in-line">
+                <div class="right-20"><label name="lblUserID"><?= $arrayText['PORTAL_TEXT_001']?>: <?= htmlspecialchars($objLoginUserInfo->strUserID)?></label></div>
+                <div class="right-20"><label name="lblCompanyName"><?= $arrayText['PORTAL_TEXT_002']?>: <?= htmlspecialchars($objLoginUserInfo->strCompanyName)?></label></div>
+                <div class="right-20"><label name="lblUserName"><?= $arrayText['PORTAL_TEXT_003']?>: <?= htmlspecialchars($objLoginUserInfo->strUserName)?></label></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class = "tabinator">
+        <input type = "radio" id = "tab1" class="input-tab" name = "tabs" checked>
+        <label for = "tab1" class="title"><?= $arrayText['PORTAL_TEXT_005'] ?></label>
+        <?php
+        if($incident){
+            echo '<input type = "radio" id = "tab2" class="input-tab" name = "tabs">';
+            echo '<label for = "tab2" class="title">'.$arrayText['PORTAL_TEXT_006'].'</label>';
+        }
+        ?>
+        <input type="hidden" id="reloadTimeInfoBoad" value="<?=  PORTAL_RELOAD_TIME ?>">
+        <input type="hidden" name="csrf" id="csrf" value="<?= @$csrf?>" >
+        <div id = "content1">
+            <?php require_once('daily_boad.php'); ?>
+        </div>
+        <div id = "content2">
+            <div class="incident_boad"></div>
+            <?php require_once('incident_boad.php'); ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    var untrTitle = <?= $untra?>;
+    if(untrTitle == 1){
+        var mesUnTitle = '<?= $arrayText['PUBLIC_MSG_042']?>';
+        alert(mesUnTitle);
+    }
+</script>
+
+
+</body>
+</html>

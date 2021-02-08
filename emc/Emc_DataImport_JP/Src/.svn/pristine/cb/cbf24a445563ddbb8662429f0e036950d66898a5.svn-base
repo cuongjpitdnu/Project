@@ -1,0 +1,51 @@
+<script type="text/javascript" src="js/query_chat.js"></script>
+<script type="text/javascript" src="js/aws-sdk.min.js"></script>
+<style>
+    .mesgs {
+        border: 1px solid;
+    }
+</style>
+<?php require('query_view_proc.php'); ?>
+<div class="main-form">
+    <div class="form-title"><?= $arrayText['QUERY_VIEW_TEXT_001'] ?></div>
+    <div class="form-body">
+        <div class="mesgs" id="mesgs">
+            <?php require_once('msg_history.php'); ?>
+        </div>
+        <div class="error-messeage" style="margin-top: 20px">
+            <div style="display: none" id="er-source"></div>
+            <div style="display: none" id="er-target"></div>
+        </div>
+        <div class=" top-20"><?= $arrayText['PUBLIC_TEXT_005']?>(<span class="txt-red"><?= $arrayText['PUBLIC_TEXT_002']?></span>)</div>
+        <textarea name="txt-source" id="txt-source" class="form-control" rows="2" cols="50" maxlength="<?= $maxInputChat ?>"></textarea>
+        <div class="in-line tlabel"><input type="checkbox" name="manually" value="manual" id="ckeck-manunal" ><?= $arrayText['PUBLIC_TEXT_008']?></div>
+        <input type="hidden" name="csrf" id="csrf" value="<?= @$csrf?>" >
+        <div class="in-line col-right">
+            <div class="select-container">
+                <select name="sle-tran" id="sle-tran">
+                    <?php
+                        if($objLoginUserInfo->intLanguageType){
+                            echo '<option value="ej">Eng(Original)⇒Jpn(Translation)</option><option value="je">日(原文)⇒英(翻訳)</option>';
+                        }else{
+                            echo '<option value="je">日(原文)⇒英(翻訳)</option><option value="ej">Eng(Original)⇒Jpn(Translation)</option>';
+                        }
+                    ?>
+                </select>
+            </div>
+            <button type="button" class="tbtn tbtn-defaut pad-left-20" id="btn-tran"><?= $arrayText['PUBLIC_BUTTON_004']?></button>
+        </div>
+        <div class="mar-tl-10"><?= $arrayText['PUBLIC_TEXT_005']?> (<span class="txt-red"><?= $arrayText['PUBLIC_TEXT_003']?></span>)</div>
+        <textarea name="txt-target" id="txt-target"  class="form-control top-20" rows="2" cols="50" disabled maxlength="<?= $maxInputChat ?>"></textarea>
+
+        <div class="form-footer top-20">
+            <div class="in-line">
+                <button type="submit" class="tbtn tbtn-defaut " onclick="postQuery()"><?= $arrayText['PUBLIC_BUTTON_005']?></button>
+            </div>
+            <div class="in-line text-right" style="float: right">
+                <button type="submit" class="tbtn-cancel tbtn-defaut " id="close" data-dismiss="modal"><?= $arrayText['PUBLIC_BUTTON_003']?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

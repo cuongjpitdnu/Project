@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="EmcDataImport.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false"/>
+    </sectionGroup>
+  </configSections>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5"/>
+  </startup>
+  <userSettings>
+    <EmcDataImport.My.MySettings>
+      <setting name="DB_HOSTNAME" serializeAs="String">
+        <value>192.168.1.249\sqlexpress</value>
+      </setting>
+      <setting name="DB_DBNAME" serializeAs="String">
+        <value>info_db</value>
+      </setting>
+      <setting name="DB_USERNAME" serializeAs="String">
+        <value>info_user</value>
+      </setting>
+      <setting name="DB_USERPASSWORD" serializeAs="String">
+        <value>info_pass</value>
+      </setting>
+      <setting name="MAIL_POP_HOST" serializeAs="String">
+        <value>192.168.1.92</value>
+      </setting>
+      <setting name="MAIL_POP_PORT" serializeAs="String">
+        <value>110</value>
+      </setting>
+      <setting name="MAIL_POP_USER" serializeAs="String">
+        <value>huyennm</value>
+      </setting>
+      <setting name="MAIL_POP_PASS" serializeAs="String">
+        <value>huyennm</value>
+      </setting>
+      <setting name="MAIL_SMTP_HOST" serializeAs="String">
+        <value>192.168.1.92</value>
+      </setting>
+      <setting name="MAIL_SMTP_PORT" serializeAs="String">
+        <value>25</value>
+      </setting>
+      <setting name="MAIL_SMTP_USER" serializeAs="String">
+        <value>huyennm</value>
+      </setting>
+      <setting name="MAIL_SMTP_PASS" serializeAs="String">
+        <value>huyennm</value>
+      </setting>
+      <setting name="EXECUTION_CYCLE" serializeAs="String">
+        <value>60000</value>
+      </setting>
+      <setting name="LOG_FOLDER" serializeAs="String">
+        <value>D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release</value>
+      </setting>
+      <setting name="WEB_LOG_FOLDER" serializeAs="String">
+        <value>D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release</value>
+      </setting>
+      <setting name="ERRLOG_FOLDER" serializeAs="String">
+        <value>D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport\EmcDataImport\bin\Release</value>
+      </setting>
+      <setting name="DEBUGFLG" serializeAs="String">
+        <value>1</value>
+      </setting>
+      <setting name="QUERY_RETENTION_PERIOD" serializeAs="String">
+        <value>3</value>
+      </setting>
+      <setting name="REG_USER_NO" serializeAs="String">
+        <value>1</value>
+      </setting>
+      <setting name="FROM_MAILADDRESS" serializeAs="String">
+        <value>huyennm@akb.local</value>
+      </setting>
+      <setting name="MAIL_DESTINATION_ADMIN_ADDRESS" serializeAs="String">
+        <value>cuong@akb.local</value>
+      </setting>
+      <setting name="MAIL_SUBMIT_NUMBER" serializeAs="String">
+        <value>5</value>
+      </setting>
+      <setting name="MAIL_SUBMIT_TITLE_JPN" serializeAs="String">
+        <value>mail submit title jpb</value>
+      </setting>
+      <setting name="MAIL_SUBMIT_TITLE_ENG" serializeAs="String">
+        <value>mail submit title eng</value>
+      </setting>
+    </EmcDataImport.My.MySettings>
+  </userSettings>
+</configuration>

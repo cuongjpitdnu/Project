@@ -1,0 +1,8 @@
+①「php_mcrypt.dll」をextフォルダに設置
+
+②「php.ini」ファイルに、「extension=php_mcrypt.dll」を追加
+
+③;extension=curl　⇒　extension=curl
+	コメントアウトを削除して、有効化
+	
+

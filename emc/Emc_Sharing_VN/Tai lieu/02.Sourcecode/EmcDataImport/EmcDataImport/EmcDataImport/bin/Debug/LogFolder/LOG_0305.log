@@ -1,0 +1,1306 @@
+2020/03/05 11:16:57 EMCデータインポート開始
+2020/03/05 11:17:01 メール件数 0
+2020/03/05 11:17:03 EMCデータインポート 終了
+2020/03/05 11:21:13 EMCデータインポート開始
+2020/03/05 11:21:19 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:21:19 メール件数 1
+2020/03/05 11:22:28 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:22:28 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6123,'事業者名','事業者名　御担当者様
+
+
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+
+
+申込書確認の結果、提供可能と判断されました。
+
+
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/fdRsaneJ
+
+
+
+
+
+◆提供可能
+
+[工事名]
+
+test send mail
+
+[設備設置エリア]
+
+京都
+
+[工事希望日]
+
+-
+
+[工事申込番号]　[工事区分]　[工事種別]　
+
+M19-93383          ソフト                全セッション解除/装置再起動
+
+
+
+
+
+
+
+～以下、連絡先の署名を記載～
+
+
+
+
+', 0, 0, 0, 1,'2020-03-05 11:22:28','2020-03-05 11:22:28' )
+2020/03/05 11:23:25 EMCデータインポート開始
+2020/03/05 11:23:32 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:23:33 メール件数 1
+2020/03/05 11:23:51 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:23:55 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6124,'事業者名','事業者名　御担当者様
+
+
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+
+
+申込書確認の結果、提供可能と判断されました。
+
+
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/fdRsaneJ
+
+
+
+
+
+◆提供可能
+
+[工事名]
+
+test send mail
+
+[設備設置エリア]
+
+京都
+
+[工事希望日]
+
+-
+
+[工事申込番号]　[工事区分]　[工事種別]　
+
+M19-93383          ソフト                全セッション解除/装置再起動
+
+
+
+
+
+
+
+～以下、連絡先の署名を記載～
+
+
+
+
+', 0, 0, 0, 1,'2020-03-05 11:23:55','2020-03-05 11:23:55' )
+2020/03/05 11:24:08 EMCデータインポート 終了
+2020/03/05 11:28:55 EMCデータインポート開始
+2020/03/05 11:28:58 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:28:59 メール件数 1
+2020/03/05 11:29:34 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:29:36 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6126,'日程案回答','事業者名　御担当者様
+
+
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+下記の内容で工事日程案への回答が完了しております。
+
+
+
+◆日程案回答
+
+[事前工事名]
+
+
+
+[事前工事日時]
+
+
+
+[本工事名]
+
+20200227_0007_02_003,004,005
+
+[本工事日時]
+
+2020/02/07　10:00～
+
+[工事申込番号]　　[工事区分]　[工事種別]　
+
+M19-93385          ハード                廃止
+
+M19-93386          ハード                メニュー変更
+
+M19-93387          ソフト                NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+
+
+
+
+
+
+～以下、連絡先の署名を記載～
+
+
+
+
+', 0, 0, 0, 1,'2020-03-05 11:29:36','2020-03-05 11:29:36' )
+2020/03/05 11:30:21 EMCデータインポート開始
+2020/03/05 11:30:26 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:30:27 メール件数 1
+2020/03/05 11:30:35 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:30:38 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6127,'日程案回答','事業者名　御担当者様
+
+
+
+お世話になっております。
+
+NTT-ME　ネットワーク運営センタです。
+
+下記の内容で工事日程案への回答が完了しております。
+
+
+
+◆日程案回答
+
+[事前工事名]
+
+
+
+[事前工事日時]
+
+
+
+[本工事名]
+
+20200227_0007_02_003,004,005
+
+[本工事日時]
+
+2020/02/07　10:00～
+
+[工事申込番号]　　[工事区分]　[工事種別]　
+
+M19-93385          ハード                廃止
+
+M19-93386          ハード                メニュー変更
+
+M19-93387          ソフト                NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+
+
+
+
+
+
+～以下、連絡先の署名を記載～
+
+
+
+
+', 0, 0, 0, 1,'2020-03-05 11:30:38','2020-03-05 11:30:38' )
+2020/03/05 11:30:47 EMCデータインポート 終了
+2020/03/05 11:31:56 EMCデータインポート開始
+2020/03/05 11:31:59 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:32:00 メール件数 1
+2020/03/05 11:32:16 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:32:19 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6128,'工事予定日が登録されました','工事予定日が登録されました。
+
+ 
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+
+工事申込番号で確認していただくようよろしくお願いします。
+
+ 
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+
+https://isp-flets-order-online.ntt-east.co.jp/1ii4yA0O
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 11:32:19','2020-03-05 11:32:19' )
+2020/03/05 11:32:27 EMCデータインポート 終了
+2020/03/05 11:47:13 EMCデータインポート開始
+2020/03/05 11:47:20 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:47:22 メール件数 2
+2020/03/05 11:48:01 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:48:10 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6131,'FW: ◆工事日時照会通知◆','
+
+-----Original Message-----
+From: ccc@aaa.aaa.aaa [mailto:ccc@aaa.aaa.aaa] 
+Sent: 03 Tháng Ba 2020 3:05 CH
+To: thangpd@local.net
+Cc: bbb@aaa.aaa.aaa
+Subject: ◆工事日時照会通知◆
+
+FT
+
+工事予定日が登録されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+https://isp-flets-order-online.ntt-east.co.jp/LY0PCazh
+
+
+◆工事予定
+[事業者名]
+事業者名
+[事前工事名]
+
+[事前工事日時]
+  ～ 
+[本工事名]
+test 0501 _006 case 3
+[本工事日時]
+2020/02/18 10:00 ～ 15:00
+[工事申込番号]　　[工事区分]　[工事種別]　
+M19-93406                	ハード      	移設
+
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 11:48:10','2020-03-05 11:48:10' )
+2020/03/05 11:49:06 EMCデータインポート開始
+2020/03/05 11:49:10 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 11:49:10 メール件数 2
+2020/03/05 11:49:11 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:49:11 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6132,'FW: ◆工事日時照会通知◆','
+
+-----Original Message-----
+From: ccc@aaa.aaa.aaa [mailto:ccc@aaa.aaa.aaa] 
+Sent: 03 Tháng Ba 2020 3:05 CH
+To: thangpd@local.net
+Cc: bbb@aaa.aaa.aaa
+Subject: ◆工事日時照会通知◆
+
+FT
+
+工事予定日が登録されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+https://isp-flets-order-online.ntt-east.co.jp/LY0PCazh
+
+
+◆工事予定
+[事業者名]
+事業者名
+[事前工事名]
+
+[事前工事日時]
+  ～ 
+[本工事名]
+test 0501 _006 case 3
+[本工事日時]
+2020/02/18 10:00 ～ 15:00
+[工事申込番号]　　[工事区分]　[工事種別]　
+M19-93406                	ハード      	移設
+
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 11:49:11','2020-03-05 11:49:11' )
+2020/03/05 11:49:30 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 11:49:30 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6133,'FW: 【事業者名様】　◆提供可能 通知◆','
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:48 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/rrq7xFw8
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 11:49:30','2020-03-05 11:49:30' )
+2020/03/05 11:49:44 EMCデータインポート 終了
+2020/03/05 13:51:27 EMCデータインポート開始
+2020/03/05 13:51:28 メール件数 0
+2020/03/05 13:51:28 EMCデータインポート 終了
+2020/03/05 13:54:28 EMCデータインポート開始
+2020/03/05 13:54:28 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 13:54:28 メール件数  1
+2020/03/05 13:54:29 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 13:54:29 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6137,'FW: 【事業者名様】　◆提供可能 通知◆','
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 13:54:29','2020-03-05 13:54:29' )
+2020/03/05 13:54:31 EMCデータインポート 終了
+2020/03/05 13:57:31 EMCデータインポート開始
+2020/03/05 13:57:31 メール件数 0
+2020/03/05 13:57:31 EMCデータインポート 終了
+2020/03/05 14:00:31 EMCデータインポート開始
+2020/03/05 14:00:32 メール件数 0
+2020/03/05 14:00:32 EMCデータインポート 終了
+2020/03/05 14:03:32 EMCデータインポート開始
+2020/03/05 14:03:33 メール件数 0
+2020/03/05 14:03:33 EMCデータインポート 終了
+2020/03/05 14:06:35 EMCデータインポート開始
+2020/03/05 14:06:35 メール件数 0
+2020/03/05 14:06:35 EMCデータインポート 終了
+2020/03/05 14:09:35 EMCデータインポート開始
+2020/03/05 14:09:36 メール件数 0
+2020/03/05 14:09:36 EMCデータインポート 終了
+2020/03/05 14:12:36 EMCデータインポート開始
+2020/03/05 14:12:36 メール件数 0
+2020/03/05 14:12:36 EMCデータインポート 終了
+2020/03/05 14:15:36 EMCデータインポート開始
+2020/03/05 14:15:37 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 14:15:37 メール件数  1
+2020/03/05 14:15:37 EMCデータインポート 終了
+2020/03/05 14:18:37 EMCデータインポート開始
+2020/03/05 14:18:38 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 14:18:38 メール件数  1
+2020/03/05 14:18:38 EMCデータインポート 終了
+2020/03/05 14:21:38 EMCデータインポート開始
+2020/03/05 14:21:39 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 14:21:39 メール件数  1
+2020/03/05 14:21:39 EMCデータインポート 終了
+2020/03/05 14:24:39 EMCデータインポート開始
+2020/03/05 14:24:40 メール件数 0
+2020/03/05 14:24:40 EMCデータインポート 終了
+2020/03/05 14:27:40 EMCデータインポート開始
+2020/03/05 14:27:40 メール件数 0
+2020/03/05 14:27:40 EMCデータインポート 終了
+2020/03/05 14:30:40 EMCデータインポート開始
+2020/03/05 14:30:41 メール件数 0
+2020/03/05 14:30:41 EMCデータインポート 終了
+2020/03/05 14:33:41 EMCデータインポート開始
+2020/03/05 14:33:41 メール件数 0
+2020/03/05 14:33:41 EMCデータインポート 終了
+2020/03/05 14:36:42 EMCデータインポート開始
+2020/03/05 14:36:42 メール件数 0
+2020/03/05 14:36:42 EMCデータインポート 終了
+2020/03/05 14:39:42 EMCデータインポート開始
+2020/03/05 14:39:43 メール件数 0
+2020/03/05 14:39:43 EMCデータインポート 終了
+2020/03/05 14:55:47 WEBシステムログファイル出力
+2020/03/05 14:58:12 WEBシステムログファイル出力
+2020/03/05 14:58:53 WEBシステムログファイル出力
+2020/03/05 15:55:16 EMCデータインポート開始
+2020/03/05 15:55:17 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 15:55:17 メール件数 2
+2020/03/05 15:55:19 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 15:55:19 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6141,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 15:55:19.748','2020-03-05 15:55:19.748' )
+2020/03/05 15:56:55 EMCデータインポート開始
+2020/03/05 15:57:00 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 15:57:01 メール件数 2
+2020/03/05 15:58:30 EMCデータインポート開始
+2020/03/05 15:58:34 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 15:58:34 メール件数 2
+2020/03/05 16:05:54 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:05:56 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6143,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:05:56.739','2020-03-05 16:05:56.739' )
+2020/03/05 16:06:32 EMCデータインポート開始
+2020/03/05 16:06:34 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:06:34 メール件数 2
+2020/03/05 16:07:03 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:07:04 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6144,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:07:04.450','2020-03-05 16:07:04.450' )
+2020/03/05 16:08:11 EMCデータインポート開始
+2020/03/05 16:08:12 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:08:12 メール件数 2
+2020/03/05 16:08:41 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:09:00 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6145,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:09:00.355','2020-03-05 16:09:00.355' )
+2020/03/05 16:16:19 EMCデータインポート開始
+2020/03/05 16:16:21 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:16:21 メール件数 2
+2020/03/05 16:16:35 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:16:42 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6147,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:16:42.989','2020-03-05 16:16:42.989' )
+2020/03/05 16:17:30 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:18:03 EMCデータインポート開始
+2020/03/05 16:18:05 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:18:05 メール件数 2
+2020/03/05 16:18:17 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:18:57 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6150,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:18:57.140','2020-03-05 16:18:57.140' )
+2020/03/05 16:20:18 EMCデータインポート開始
+2020/03/05 16:20:18 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:20:18 メール件数 2
+2020/03/05 16:20:29 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:20:38 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6152,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:20:38.352','2020-03-05 16:20:38.352' )
+2020/03/05 16:23:07 EMCデータインポート開始
+2020/03/05 16:23:09 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:23:11 メール件数 2
+2020/03/05 16:23:26 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:23:30 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6153,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:23:30.714','2020-03-05 16:23:30.714' )
+2020/03/05 16:28:07 EMCデータインポート開始
+2020/03/05 16:28:09 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:28:09 メール件数 2
+2020/03/05 16:30:01 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:30:02 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6155,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:30:02.656','2020-03-05 16:30:02.656' )
+2020/03/05 16:44:41 EMCデータインポート開始
+2020/03/05 16:45:12 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:45:14 メール件数 2
+2020/03/05 16:45:32 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:45:53 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6156,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:45:53.699','2020-03-05 16:45:53.699' )
+2020/03/05 16:47:27 EMCデータインポート開始
+2020/03/05 16:47:30 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:47:30 メール件数 2
+2020/03/05 16:48:15 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:48:26 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6157,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:48:26.629','2020-03-05 16:48:26.629' )
+2020/03/05 16:53:36 EMCデータインポート開始
+2020/03/05 16:53:45 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 16:53:45 メール件数 2
+2020/03/05 16:53:55 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 16:53:56 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6158,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 16:53:56.590','2020-03-05 16:53:56.590' )
+2020/03/05 17:21:08 EMCデータインポート開始
+2020/03/05 17:21:09 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 17:21:09 メール件数 2
+2020/03/05 17:21:09 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:21:09 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6160,'RE:','=20
+
+=20
+
+From: tung [mailto:tung@local.net]=20
+Sent: 05 Tha=ECng Ba 2020 3:49 CH
+To: chien@local.net
+Subject:=20
+
+=20
+
+Khong subject
+
+=20
+
+
+', 0, 0, 0, 1,'2020-03-05 17:21:09.537','2020-03-05 17:21:09.537' )
+2020/03/05 17:21:10 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:21:10 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6161,'FW: Tinのテスト','
+
+ 
+
+From: Administrator [mailto:no_reply@is.co.jp] 
+Sent: 05 Tháng Ba 2020 3:40 CH
+To: drop
+Subject: Tinのテスト
+
+ 
+
+Tinの英語でテスト 
+
+', 0, 0, 0, 1,'2020-03-05 17:21:10.946','2020-03-05 17:21:10.946' )
+2020/03/05 17:21:12 EMCデータインポート 終了
+2020/03/05 17:21:12 EMCデータインポート開始
+2020/03/05 17:21:12 メール件数 0
+2020/03/05 17:21:12 EMCデータインポート 終了
+2020/03/05 17:21:12 EMCデータインポート開始
+2020/03/05 17:21:13 メール件数 0
+2020/03/05 17:21:13 EMCデータインポート 終了
+2020/03/05 17:21:13 EMCデータインポート開始
+2020/03/05 17:21:14 メール件数 0
+2020/03/05 17:21:14 EMCデータインポート 終了
+2020/03/05 17:21:14 EMCデータインポート開始
+2020/03/05 17:21:14 メール件数 0
+2020/03/05 17:21:14 EMCデータインポート 終了
+2020/03/05 17:21:14 EMCデータインポート開始
+2020/03/05 17:21:15 メール件数 0
+2020/03/05 17:21:15 EMCデータインポート 終了
+2020/03/05 17:21:15 EMCデータインポート開始
+2020/03/05 17:21:16 メール件数 0
+2020/03/05 17:21:16 EMCデータインポート 終了
+2020/03/05 17:21:16 EMCデータインポート開始
+2020/03/05 17:21:16 メール件数 0
+2020/03/05 17:21:16 EMCデータインポート 終了
+2020/03/05 17:21:16 EMCデータインポート開始
+2020/03/05 17:21:17 メール件数 0
+2020/03/05 17:21:17 EMCデータインポート 終了
+2020/03/05 17:21:17 EMCデータインポート開始
+2020/03/05 17:21:17 メール件数 0
+2020/03/05 17:21:18 EMCデータインポート 終了
+2020/03/05 17:21:18 EMCデータインポート開始
+2020/03/05 17:21:18 メール件数 0
+2020/03/05 17:21:18 EMCデータインポート 終了
+2020/03/05 17:21:18 EMCデータインポート開始
+2020/03/05 17:21:19 メール件数 0
+2020/03/05 17:21:19 EMCデータインポート 終了
+2020/03/05 17:21:19 EMCデータインポート開始
+2020/03/05 17:21:19 メール件数 0
+2020/03/05 17:21:19 EMCデータインポート 終了
+2020/03/05 17:21:19 EMCデータインポート開始
+2020/03/05 17:21:20 メール件数 0
+2020/03/05 17:21:20 EMCデータインポート 終了
+2020/03/05 17:21:20 EMCデータインポート開始
+2020/03/05 17:21:21 メール件数 0
+2020/03/05 17:21:21 EMCデータインポート 終了
+2020/03/05 17:21:21 EMCデータインポート開始
+2020/03/05 17:21:21 メール件数 0
+2020/03/05 17:21:21 EMCデータインポート 終了
+2020/03/05 17:21:21 EMCデータインポート開始
+2020/03/05 17:21:22 メール件数 0
+2020/03/05 17:21:22 EMCデータインポート 終了
+2020/03/05 17:21:22 EMCデータインポート開始
+2020/03/05 17:21:23 メール件数 0
+2020/03/05 17:21:23 EMCデータインポート 終了
+2020/03/05 17:21:23 EMCデータインポート開始
+2020/03/05 17:21:23 メール件数 0
+2020/03/05 17:21:23 EMCデータインポート 終了
+2020/03/05 17:21:23 EMCデータインポート開始
+2020/03/05 17:21:24 メール件数 0
+2020/03/05 17:21:24 EMCデータインポート 終了
+2020/03/05 17:21:24 EMCデータインポート開始
+2020/03/05 17:21:25 メール件数 0
+2020/03/05 17:21:25 EMCデータインポート 終了
+2020/03/05 17:21:25 EMCデータインポート開始
+2020/03/05 17:21:25 メール件数 0
+2020/03/05 17:21:25 EMCデータインポート 終了
+2020/03/05 17:21:25 EMCデータインポート開始
+2020/03/05 17:21:26 メール件数 0
+2020/03/05 17:21:26 EMCデータインポート 終了
+2020/03/05 17:21:26 EMCデータインポート開始
+2020/03/05 17:21:26 メール件数 0
+2020/03/05 17:21:26 EMCデータインポート 終了
+2020/03/05 17:21:27 EMCデータインポート開始
+2020/03/05 17:21:27 メール件数 0
+2020/03/05 17:21:27 EMCデータインポート 終了
+2020/03/05 17:21:27 EMCデータインポート開始
+2020/03/05 17:21:28 メール件数 0
+2020/03/05 17:21:28 EMCデータインポート 終了
+2020/03/05 17:21:28 EMCデータインポート開始
+2020/03/05 17:21:28 メール件数 0
+2020/03/05 17:21:28 EMCデータインポート 終了
+2020/03/05 17:21:28 EMCデータインポート開始
+2020/03/05 17:21:29 メール件数 0
+2020/03/05 17:21:29 EMCデータインポート 終了
+2020/03/05 17:21:29 EMCデータインポート開始
+2020/03/05 17:21:30 メール件数 0
+2020/03/05 17:21:30 EMCデータインポート 終了
+2020/03/05 17:21:30 EMCデータインポート開始
+2020/03/05 17:21:30 メール件数 0
+2020/03/05 17:21:30 EMCデータインポート 終了
+2020/03/05 17:21:30 EMCデータインポート開始
+2020/03/05 17:21:31 メール件数 0
+2020/03/05 17:21:31 EMCデータインポート 終了
+2020/03/05 17:21:31 EMCデータインポート開始
+2020/03/05 17:21:31 メール件数 0
+2020/03/05 17:21:31 EMCデータインポート 終了
+2020/03/05 17:21:32 EMCデータインポート開始
+2020/03/05 17:21:32 メール件数 0
+2020/03/05 17:21:32 EMCデータインポート 終了
+2020/03/05 17:21:32 EMCデータインポート開始
+2020/03/05 17:21:33 メール件数 0
+2020/03/05 17:21:33 EMCデータインポート 終了
+2020/03/05 17:21:34 EMCデータインポート開始
+2020/03/05 17:21:35 メール件数 0
+2020/03/05 17:21:35 EMCデータインポート 終了
+2020/03/05 17:21:39 EMCデータインポート開始
+2020/03/05 17:21:40 メール件数 0
+2020/03/05 17:21:40 EMCデータインポート 終了
+2020/03/05 17:21:42 EMCデータインポート開始
+2020/03/05 17:22:24 EMCデータインポート開始
+2020/03/05 17:22:29 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 17:22:30 メール件数 1
+2020/03/05 17:22:54 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:22:56 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6162,'Xử lý gửi mail','Gửi mail có thành công 
+
+', 0, 0, 0, 1,'2020-03-05 17:22:56.704','2020-03-05 17:22:56.704' )
+2020/03/05 17:42:34 EMCデータインポート開始
+2020/03/05 17:42:35 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 17:42:35 メール件数 2
+2020/03/05 17:42:48 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:42:50 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6165,'Xử lý gửi mail','Gửi mail có thành công 
+
+', 0, 0, 0, 1,'2020-03-05 17:42:50.690','2020-03-05 17:42:50.690' )
+2020/03/05 17:43:28 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:43:30 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6166,'RE:','Ok mail reply
+
+ 
+
+From: tung [mailto:tung@local.net] 
+Sent: 05 Tháng Ba 2020 5:42 CH
+To: chien@local.net
+Subject: 
+
+ 
+
+Mail RE
+
+
+', 0, 0, 0, 1,'2020-03-05 17:43:30.284','2020-03-05 17:43:30.284' )
+2020/03/05 17:43:39 EMCデータインポート開始
+2020/03/05 17:43:39 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 17:43:40 メール件数 2
+2020/03/05 17:43:41 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:43:41 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6167,'Xử lý gửi mail','Gửi mail có thành công 
+
+', 0, 0, 0, 1,'2020-03-05 17:43:41.423','2020-03-05 17:43:41.423' )
+2020/03/05 17:43:54 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:43:54 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6168,'RE:','Ok mail reply
+
+ 
+
+From: tung [mailto:tung@local.net] 
+Sent: 05 Tháng Ba 2020 5:42 CH
+To: chien@local.net
+Subject: 
+
+ 
+
+Mail RE
+
+
+', 0, 0, 0, 1,'2020-03-05 17:43:54.480','2020-03-05 17:43:54.480' )
+2020/03/05 17:44:02 EMCデータインポート 終了
+2020/03/05 17:44:49 EMCデータインポート開始
+2020/03/05 17:44:49 メール件数 0
+2020/03/05 17:44:49 EMCデータインポート 終了
+2020/03/05 17:44:52 EMCデータインポート開始
+2020/03/05 17:44:56 メール件数 0
+2020/03/05 17:44:57 EMCデータインポート 終了
+2020/03/05 17:45:55 EMCデータインポート開始
+2020/03/05 17:45:58 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 17:45:58 メール件数 1
+2020/03/05 17:46:23 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 17:47:11 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6169,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 17:47:11.395','2020-03-05 17:47:11.395' )
+2020/03/05 18:00:06 EMCデータインポート開始
+2020/03/05 18:00:11 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 18:00:12 メール件数 2
+2020/03/05 18:00:48 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 18:00:49 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6171,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 18:00:49.777','2020-03-05 18:00:49.777' )
+2020/03/05 18:01:04 EMCデータインポート開始
+2020/03/05 18:01:04 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 18:01:04 メール件数 2
+2020/03/05 18:01:11 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 18:01:12 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6172,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 18:01:12.163','2020-03-05 18:01:12.163' )
+2020/03/05 18:16:28 EMCデータインポート開始
+2020/03/05 18:16:29 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 18:16:29 メール件数 3
+2020/03/05 18:16:55 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 18:16:55 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6176,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 18:16:55.954','2020-03-05 18:16:55.954' )
+2020/03/05 18:17:10 EMCデータインポート開始
+2020/03/05 18:17:11 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 18:17:11 メール件数 4
+2020/03/05 18:17:18 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 18:17:19 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6177,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 18:17:19.479','2020-03-05 18:17:19.479' )
+2020/03/05 18:18:12 EMCデータインポート開始
+2020/03/05 18:18:13 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 18:18:13 メール件数 4
+2020/03/05 18:18:21 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 18:18:23 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6178,'Xư lý gửi mail thành công','Gửi mail có thành công 
+
+ 
+
+', 0, 0, 0, 1,'2020-03-05 18:18:23.856','2020-03-05 18:18:23.856' )
+2020/03/05 18:19:30 EMCデータインポート 終了
+2020/03/05 18:19:43 EMCデータインポート開始
+2020/03/05 18:19:46 メール件数 0
+2020/03/05 18:19:47 EMCデータインポート 終了
+2020/03/05 18:59:28 EMCデータインポート開始
+2020/03/05 18:59:29 EMCデータインポート開始
+2020/03/05 18:59:30 EMCデータインポート開始
+2020/03/05 18:59:31 EMCデータインポート開始
+2020/03/05 18:59:32 EMCデータインポート開始
+2020/03/05 18:59:33 EMCデータインポート開始
+2020/03/05 18:59:34 EMCデータインポート開始
+2020/03/05 18:59:35 EMCデータインポート開始
+2020/03/05 18:59:36 EMCデータインポート開始
+2020/03/05 18:59:37 EMCデータインポート開始
+2020/03/05 18:59:39 EMCデータインポート開始
+2020/03/05 18:59:40 EMCデータインポート開始
+2020/03/05 18:59:41 EMCデータインポート開始
+2020/03/05 18:59:42 EMCデータインポート開始
+2020/03/05 18:59:43 EMCデータインポート開始
+2020/03/05 18:59:44 EMCデータインポート開始
+2020/03/05 18:59:45 EMCデータインポート開始
+2020/03/05 18:59:46 EMCデータインポート開始
+2020/03/05 18:59:47 EMCデータインポート開始
+2020/03/05 18:59:48 EMCデータインポート開始
+2020/03/05 18:59:49 EMCデータインポート開始
+2020/03/05 18:59:50 EMCデータインポート開始
+2020/03/05 18:59:51 EMCデータインポート開始
+2020/03/05 18:59:52 EMCデータインポート開始
+2020/03/05 18:59:53 EMCデータインポート開始
+2020/03/05 18:59:54 EMCデータインポート開始
+2020/03/05 18:59:55 EMCデータインポート開始
+2020/03/05 18:59:56 EMCデータインポート開始
+2020/03/05 18:59:57 EMCデータインポート開始
+2020/03/05 18:59:58 EMCデータインポート開始
+2020/03/05 18:59:59 EMCデータインポート開始
+2020/03/05 19:00:00 EMCデータインポート開始
+2020/03/05 19:00:02 EMCデータインポート開始
+2020/03/05 19:00:03 EMCデータインポート開始
+2020/03/05 19:00:04 EMCデータインポート開始
+2020/03/05 19:00:05 EMCデータインポート開始
+2020/03/05 19:00:06 EMCデータインポート開始
+2020/03/05 19:00:07 EMCデータインポート開始
+2020/03/05 19:00:25 EMCデータインポート開始
+2020/03/05 19:00:39 EMCデータインポート開始
+2020/03/05 19:01:00 EMCデータインポート開始
+2020/03/05 19:01:19 EMCデータインポート開始
+2020/03/05 19:01:47 EMCデータインポート開始
+2020/03/05 19:05:44 EMCデータインポート開始
+2020/03/05 19:05:55 EMCデータインポート開始
+2020/03/05 19:06:01 EMCデータインポート開始
+2020/03/05 19:10:26 EMCデータインポート開始
+2020/03/05 19:10:34 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:10:34 メール件数 3
+2020/03/05 19:10:57 EMCデータインポート開始
+2020/03/05 19:10:59 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:11:00 メール件数 3
+2020/03/05 19:12:49 EMCデータインポート開始
+2020/03/05 19:12:51 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:12:52 メール件数 3
+2020/03/05 19:15:18 EMCデータインポート開始
+2020/03/05 19:15:19 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:15:19 メール件数 3
+2020/03/05 19:16:19 EMCデータインポート開始
+2020/03/05 19:16:19 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:16:20 メール件数 3
+2020/03/05 19:19:26 EMCデータインポート開始
+2020/03/05 19:19:27 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:19:27 メール件数 3
+2020/03/05 19:26:34 EMCデータインポート開始
+2020/03/05 19:26:36 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:26:36 メール件数 3
+2020/03/05 19:27:25 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 19:27:26 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6194,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 19:27:26.916','2020-03-05 19:27:26.916' )
+2020/03/05 19:30:14 EMCデータインポート開始
+2020/03/05 19:30:16 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:30:16 メール件数 3
+2020/03/05 19:33:50 EMCデータインポート開始
+2020/03/05 19:33:52 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:33:52 メール件数 3
+2020/03/05 19:34:05 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 19:34:06 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6195,'FW: 【事業者名様】　◆提供可能  通知◆','test co file dinh kem
+
+
+', 0, 0, 0, 1,'2020-03-05 19:34:06.597','2020-03-05 19:34:06.597' )
+2020/03/05 19:43:15 EMCデータインポート開始
+2020/03/05 19:43:15 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:43:15 メール件数 3
+2020/03/05 19:43:39 EMCデータインポート開始
+2020/03/05 19:43:41 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:43:42 メール件数 3
+2020/03/05 19:46:45 EMCデータインポート開始
+2020/03/05 19:46:49 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 19:46:52 メール件数 3
+2020/03/05 20:33:13 EMCデータインポート開始
+2020/03/05 20:33:16 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 20:33:17 メール件数 2
+2020/03/05 20:33:51 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 20:33:54 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6222,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 20:33:54.840','2020-03-05 20:33:54.840' )
+2020/03/05 20:34:21 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6222,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 20:34:17.462','2020-03-05 20:34:17.462' )
+2020/03/05 20:34:47 EMCデータインポート開始
+2020/03/05 20:34:52 SELECT [MAIL_ADDRESS] FROM m_user WHERE ANNOUNCE_MAIL = 1
+2020/03/05 20:34:53 メール件数 2
+2020/03/05 20:35:40 SELECT NEXT VALUE FOR announce_sequence
+2020/03/05 20:36:04 INSERT INTO t_announce ( [ANNOUNCE_NO], [TITLE_JPN], [CONTENTS_JPN], [LANGUAGE_TYPE], [CORRECTION_FLAG], [UNTRANSLATED], [REG_USER_NO], [REG_DATE], [UP_DATE] ) VALUES (6223,'FW: 【事業者名様】　◆提供可能  通知◆','
+
+-----Original Message-----
+From: chien [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 7:10 CH
+To: 'tung@local.net'
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: chien@local.net [mailto:chien@local.net] 
+Sent: 05 Tháng Ba 2020 1:55 CH
+To: chien@local.net; thangpd@local.net
+Subject: FW: 【事業者名様】　◆提供可能 通知◆
+
+
+
+-----Original Message-----
+From: huongtm@local.net [mailto:huongtm@local.net] 
+Sent: 02 Tháng Ba 2020 11:45 SA
+To: chien@local.net; tung@local.net
+Cc: thangpd@local.net
+Subject: 【事業者名様】　◆提供可能通知◆
+
+事業者名　御担当者様
+
+お世話になっております。
+NTT-ME　ネットワーク運営センタです。
+
+申込書確認の結果、提供可能と判断されました。
+
+申込内容につきましては、＜ＩＳＰフレッツ申込オンライン＞から下記の
+工事申込番号で確認していただくようよろしくお願いします。
+
+＜ＩＳＰ工事管理ツールＵＲＬ＞
+http://192.168.1.173/IspConstManageDecS3/web/app_dev.php/login/71UQ3ZiB
+
+
+◆提供可能
+[工事名]
+test
+[設備設置エリア]
+大阪
+[工事希望日]
+-
+[工事申込番号]　[工事区分]　[工事種別]　
+M19-93381     	ハード   	ケーブル切替
+M19-93382     	ソフト   	NW/認証/プール/Null/NAS-IP関連変更
+
+
+
+～以下、連絡先の署名を記載～
+', 0, 0, 0, 1,'2020-03-05 20:35:52.073','2020-03-05 20:35:52.073' )

@@ -1,0 +1,440 @@
+<?php
+
+    /*
+     * @link_edit_proc.php
+     *
+     * @create 2020/03/13 AKB Thang
+     */
+
+    
+    require_once('common/common.php');
+    require_once('common/session_check.php');
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+    if(!isset($_SESSION['LOGINUSER_INFO'])){
+        echo "
+        <script>
+            alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+            window.location.href = 'login.php';
+        </script>
+        ";
+        exit();
+    }
+
+    //sesstion check
+    fncSessionTimeOutCheck(1);
+
+    //request is not ajax, exit
+    if(
+        !(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) 
+        && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+    )
+    {    
+        exit;    
+    }
+
+
+    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] = '';
+    define('SCREEN_NAME', 'リンク情報登録編集画面');
+    define('SCREEN_NAME_CREATE', 'リンク情報登録編集画面 登録');
+    define('SCREEN_NAME_EDIT', 'リンク情報登録編集画面 更新');
+    $arrUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    // get list text translate
+    $arrTitle =  array(
+        'LINK_EDIT_MSG_002',
+        'LINK_EDIT_MSG_003',
+        'LINK_EDIT_MSG_004',
+        'LINK_EDIT_MSG_005',
+        'LINK_EDIT_MSG_006',
+        'LINK_EDIT_MSG_007',
+        'LINK_EDIT_MSG_008',
+        'LINK_EDIT_MSG_009',
+        'LINK_EDIT_MSG_010',
+        'LINK_EDIT_MSG_011',
+        'LINK_EDIT_MSG_012',
+        'PUBLIC_MSG_009',
+        'PUBLIC_MSG_003',
+        'PUBLIC_MSG_002',
+        'PUBLIC_MSG_017',
+        'PUBLIC_MSG_011'
+        
+    );
+
+    $arrTextTranslate = getListTextTranslate($arrTitle, $arrUserInfo->intLanguageType);
+
+    //redirect if dont have permission
+    if($arrUserInfo->intMenuPerm != 1){
+        echo "
+        <script>
+            alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+            window.location.href = 'login.php';
+        </script>
+        ";
+    }
+
+    //check input
+    if(isset($_POST['mode']) && $_POST['mode'] == 1){
+    if(isset($_POST['LINK_NO'])){
+        if($_POST['LINK_NO'] != ''){
+            $arrOne = fncSelectOne(
+                "SELECT LINK_NO, BURNER_FILE_NAME1 FROM t_link WHERE LINK_NO=?",
+                [$_POST['LINK_NO']], 
+                SCREEN_NAME
+            );
+        }else{
+            $arrOne = false;
+        }
+        
+        if(!$arrOne && $_POST['LINK_NO'] != ''){
+            $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+            .= $arrTextTranslate['PUBLIC_MSG_003'].'<br>';
+        }else{
+            
+            if(!isset($_POST['LINK_CATEGORY_NO']) || $_POST['LINK_CATEGORY_NO']==''){
+                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                .= $arrTextTranslate['LINK_EDIT_MSG_002'].'<br>';
+            }
+
+            if(!isset($_POST['LINK_NAME_JPN']) || $_POST['LINK_NAME_JPN']==''){
+                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                .= $arrTextTranslate['LINK_EDIT_MSG_003'].'<br>';
+            }else{
+                if(mb_strlen($_POST['LINK_NAME_JPN'])>1000){
+                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['LINK_EDIT_MSG_004'].'<br>';
+                }
+            }
+
+            if(!isset($_POST['LINK_NAME_ENG']) || $_POST['LINK_NAME_ENG']==''){
+                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                .= $arrTextTranslate['LINK_EDIT_MSG_005'].'<br>';
+            }else{
+                if(mb_strlen($_POST['LINK_NAME_ENG'])>1000){
+                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['LINK_EDIT_MSG_006'].'<br>';
+                }
+            }
+
+            if(!isset($_POST['URL']) || $_POST['URL']==''){
+                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                .= $arrTextTranslate['LINK_EDIT_MSG_007'].'<br>';
+            }else{
+                if(mb_strlen($_POST['URL'])>1000){
+                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['LINK_EDIT_MSG_009'].'<br>';
+                }
+                //check halfsize & special character
+                if(!fncCheckEngText($_POST['URL'])) {
+                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['LINK_EDIT_MSG_008'].'<br>';
+                }
+
+            }
+            //check file
+        
+            
+            if($_POST['LINK_NO'] == ''){
+                if(
+                    !isset($_FILES['file']['error']) 
+                    || is_array($_FILES['file']['error']) 
+                    || $_FILES['file']['size'] == 0
+                ){
+                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['LINK_EDIT_MSG_011'].'<br>';
+                }else{
+                    if(!file_exists($_FILES['file']['tmp_name'])){
+                        $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['LINK_EDIT_MSG_010'].'<br>';
+                    }else{
+                        if(mb_strlen($_FILES['file']['name']) > 100 ){
+                            $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                            .= $arrTextTranslate['LINK_EDIT_MSG_012'].'<br>';
+                        }
+                        $a = getimagesize($_FILES['file']['tmp_name']);
+                        $strImageType = $a[2];
+                        
+                        //file type must be jpeg and png
+                        if(!in_array($strImageType , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                        {
+                            $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                            .= $arrTextTranslate['PUBLIC_MSG_011']
+                            .' / '.$arrTextTranslate['PUBLIC_MSG_017'].'<br>';
+                        }
+                    }
+                    
+                }
+            }else{
+                if(!isset($_POST['chkDelete'])){
+                    if(is_null($arrOne['BURNER_FILE_NAME1'])){
+                        if(!isset($_FILES['file']['error']) || is_array($_FILES['file']['error'])) {
+                            $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                            .= $arrTextTranslate['LINK_EDIT_MSG_011'].'<br>';
+                        }else{
+                            if(!file_exists($_FILES['file']['tmp_name'])){
+                                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                                .= $arrTextTranslate['LINK_EDIT_MSG_010'].'<br>';
+                            }else{
+                                if(mb_strlen($_FILES['file']['name']) > 100 ){
+                                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                                    .= $arrTextTranslate['LINK_EDIT_MSG_012'].'<br>';
+                                }
+                                $a = getimagesize($_FILES['file']['tmp_name']);
+                                $strImageType = $a[2];
+                                
+                                if(!in_array($strImageType , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                                {
+                                    $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                                    .= $arrTextTranslate['PUBLIC_MSG_011']
+                                    .' / '.$arrTextTranslate['PUBLIC_MSG_017'].'<br>';
+                                }
+                            }
+                            
+                        }
+                    }
+                    else{
+                        if(!file_exists(
+                            SHARE_FOLDER.'/'.LINK_EDIT_FOLDER.'/'
+                            .$arrOne['LINK_NO'].'/1/'.$arrOne['BURNER_FILE_NAME1']
+                        ))
+                        $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['LINK_EDIT_MSG_011'].'<br>';
+                    }
+                }else{
+                    if(!isset($_FILES['file']['error']) || is_array($_FILES['file']['error'])) {
+                        $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['LINK_EDIT_MSG_011'].'<br>';
+                    }else{
+                        if(!file_exists($_FILES['file']['tmp_name'])){
+                            $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                            .= $arrTextTranslate['LINK_EDIT_MSG_010'].'<br>';
+                        }else{
+                            if(mb_strlen($_FILES['file']['name']) > 100 ){
+                                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                                .= $arrTextTranslate['LINK_EDIT_MSG_012'].'<br>';
+                            }
+                            $a = getimagesize($_FILES['file']['tmp_name']);
+                            $strImageType = $a[2];
+                            //file type must be jpeg and png
+                            if(!in_array($strImageType , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                            {
+                                $_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] 
+                                .= $arrTextTranslate['PUBLIC_MSG_011']
+                                .' / '.$arrTextTranslate['PUBLIC_MSG_017'].'<br>';
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            
+
+        }
+    }
+
+
+    if($_SESSION['LINK_EDIT_MSG_ERROR_INPUT'] != ''){
+?>
+
+$('.edit-error').html('<?php echo $_SESSION['LINK_EDIT_MSG_ERROR_INPUT']; ?>');
+
+<?php
+        }else{
+            //process
+            try{
+
+                $arrLinkCategory = fncSelectOne("SELECT LINK_CATEGORY_NO
+                    FROM m_link_category
+                    WHERE LINK_CATEGORY_NO=?",
+                    [$_POST['LINK_CATEGORY_NO'], SCREEN_NAME]
+                );
+                if($_POST['LINK_NO']!=''){
+                    //update link
+                    //if link category not exist, show error and write log
+                    if(!$arrLinkCategory){
+                        fncWriteLog(
+                            LogLevel['Error'],
+                            LogPattern['Error'],
+                            SCREEN_NAME_EDIT . ' ' . $arrTextTranslate['PUBLIC_MSG_003']
+                        );
+                        echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                        exit();
+                    }
+        
+                    if(isset($_FILES['file'])){
+                        $strFolderPath = SHARE_FOLDER.'/'.LINK_EDIT_FOLDER.'/'.$arrOne['LINK_NO'].'/1/';
+                        if (!file_exists($strFolderPath)) {
+                            mkdir($strFolderPath, 0777, true);
+                        }
+                        $files = glob($strFolderPath.'*'); // get all file names
+                        foreach($files as $file){ // iterate files
+                        if(is_file($file))
+                            unlink($file); // delete file
+                        }
+                    }
+                        
+
+                    
+                    if (!isset($_FILES['file']) || 
+                    move_uploaded_file($_FILES["file"]["tmp_name"],
+                    $strFolderPath.basename($_FILES['file']['name']))) {
+                        
+                        $objResult = fncProcessData([
+                        
+                            'LINK_CATEGORY_NO' => $_POST['LINK_CATEGORY_NO'],
+                            'LINK_NAME_JPN' => $_POST['LINK_NAME_JPN'],
+                            'LINK_NAME_ENG' => $_POST['LINK_NAME_ENG'],
+                            'URL' => $_POST['URL'],
+                            'BURNER_FILE_NAME1' => isset($_POST['chkDelete']) 
+                            ? $_FILES['file']['name'] 
+                            : (is_null($arrOne['BURNER_FILE_NAME1']) 
+                            ? $_FILES['file']['name'] : $arrOne['BURNER_FILE_NAME1']) ,
+                            'CORRECTION_FLAG' =>    0,
+
+                            'UP_USER_NO'    =>  $arrUserInfo->intUserNo,
+                            'UP_DATE'   => date('Y-m-d H:i:s')
+                        ], 
+                        't_link', 
+                        'LINK_NO=?', 
+                        array($_POST['LINK_NO']));
+
+                        if(is_object($objResult) && $objResult->rowCount()>0){
+                            echo 0;
+                            fncWriteLog(
+                                LogLevel['Info'],
+                                LogPattern['Button'],
+                                SCREEN_NAME_EDIT . ' (ユーザID = '.$arrUserInfo->strUserID.')'
+                            );
+                            //ajax return 0 reload the current page
+                        }else{
+                            fncWriteLog(
+                                LogLevel['Error'],
+                                LogPattern['Error'],
+                                SCREEN_NAME_EDIT . ' ' . $arrTextTranslate['PUBLIC_MSG_003']
+                            );
+                            echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                        }
+                    } else {
+                        fncWriteLog(
+                            LogLevel['Error'],
+                            LogPattern['Error'], 
+                            SCREEN_NAME_EDIT . ' ' . $arrTextTranslate['PUBLIC_MSG_003']
+                        );
+                        echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                    }
+                    
+                    
+                    
+                }else{
+                    //add new link
+
+                    //if link category not exist, show error and write log
+                    if(!$arrLinkCategory){
+                        fncWriteLog(
+                            LogLevel['Error'], 
+                            LogPattern['Error'], 
+                            SCREEN_NAME_CREATE. ' ' . $arrTextTranslate['PUBLIC_MSG_002']
+                        );
+                        echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+                        exit();
+                    }
+                    //get link no
+                    $arrLastLink = fncSelectOne(
+                        "SELECT LINK_NO FROM t_link ORDER BY LINK_NO DESC",
+                        [],
+                        SCREEN_NAME
+                    );
+                    if($arrLastLink){
+                        $intLastLinkNo = $arrLastLink['LINK_NO'] + 1;
+                    }else{
+                        $intLastLinkNo = 1;
+                    }
+                    //get link sort no
+                    $arrLastSortLink = fncSelectOne(
+                        "SELECT SORT_NO FROM t_link ORDER BY SORT_NO DESC",
+                        [],
+                        SCREEN_NAME
+                    );
+                    if($arrLastSortLink){
+                        $intSortNo = $arrLastSortLink['SORT_NO'] + 1;
+                    }else{
+                        $intSortNo = 1;
+                    }
+                    //upload
+
+                    $strFolderPath = SHARE_FOLDER.'/'.LINK_EDIT_FOLDER.'/'.$intLastLinkNo.'/1/';
+                    if (!file_exists($strFolderPath)) {
+                        mkdir($strFolderPath, 0777, true);
+                    }
+                    $files = glob($strFolderPath.'*'); // get all file names
+                    foreach($files as $file){ // iterate files
+                    if(is_file($file))
+                        unlink($file); // delete file
+                    }
+
+
+                    if(
+                        move_uploaded_file(
+                            $_FILES["file"]["tmp_name"], $strFolderPath.basename($_FILES['file']['name'])
+                        )
+                    )
+                    {
+                        //
+                        $objResult = fncProcessData([
+                            'LINK_NO'   =>  $intLastLinkNo,
+                            'SORT_NO'   =>  $intSortNo,
+                            'LINK_CATEGORY_NO' => $_POST['LINK_CATEGORY_NO'],
+                            'LINK_NAME_JPN' => $_POST['LINK_NAME_JPN'],
+                            'LINK_NAME_ENG' => $_POST['LINK_NAME_ENG'],
+                            'URL' => $_POST['URL'],
+                            'BURNER_FILE_NAME1' => $_FILES['file']['name'],
+                            'CORRECTION_FLAG' =>    0,
+                            'REG_USER_NO'=> $arrUserInfo->intUserNo,
+                            'REG_DATE'  => date('Y-m-d H:i:s'),
+                            'UP_USER_NO'    =>  $arrUserInfo->intUserNo,
+                            'UP_DATE'   => date('Y-m-d H:i:s')
+                        ], 
+                        't_link');
+                        //insert success
+                        if(is_object($objResult) && $objResult->rowCount()>0){
+                            echo 1;
+                            fncWriteLog(
+                                LogLevel['Info'],
+                                LogPattern['Button'],
+                                SCREEN_NAME_CREATE. ' (ユーザID = '.$arrUserInfo->strUserID.')'
+                            );
+
+                        }else{
+                            //insert failed, write log and show error message
+                            fncWriteLog(
+                                LogLevel['Error'],
+                                LogPattern['Error'],
+                                SCREEN_NAME_CREATE. ' ' . $arrTextTranslate['PUBLIC_MSG_002']
+                            );
+                            echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+                        }
+                    }else{
+                        //
+                        
+                    }
+                }
+            }
+            catch(\Exception $e){
+                fncWriteLog(
+                    LogLevel['Error'],
+                    LogPattern['Error'],
+                    SCREEN_NAME . ' ' . $e->getMessage()
+                );
+                echo $e->getMessage();
+            }
+            
+
+        }
+    }
+?>

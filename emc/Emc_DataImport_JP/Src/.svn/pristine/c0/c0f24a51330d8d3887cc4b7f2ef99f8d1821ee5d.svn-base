@@ -1,0 +1,768 @@
+<?php
+    /*
+    * @request_edit.php
+    *
+    * @create 2020/02/20 AKB Thang
+    * @update
+    */
+require_once('common/common.php');
+require_once('common/session_check.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+/**
+ * validate
+ * @create 2020/03/23 AKB Thang
+ * @update
+ * @param int $intFileNo
+ * @param string $strFileNotExist
+ * @param string $strFileNameError
+ * @param string $strFileNameTypeError
+ * @param array $arrOne
+ * @return 
+ */
+function fncValidateFile(
+    $intFileNo, $strFileNotExist, $strFileNameError, 
+    $strFileNameTypeError, $arrOne
+){
+    if($_POST['REQUEST_NO'] == ''){
+        if(isset($_FILES['file'.$intFileNo])&&$_FILES['file'.$intFileNo]['name'] != ''){
+            if(
+                !isset($_FILES['file'.$intFileNo]['error']) 
+                || is_array($_FILES['file'.$intFileNo]['error']) 
+                || $_FILES['file'.$intFileNo]['size'] == 0
+            ) {
+                $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+            }else{
+                if(!file_exists($_FILES['file'.$intFileNo]['tmp_name'])){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+                }else{
+                    if(mb_strlen($_FILES['file'.$intFileNo]['name']) > 100 ){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameError .'<br>';
+                    }
+                    $a = getimagesize($_FILES['file'.$intFileNo]['tmp_name']);
+                    $image_type = $a[2];
+                    
+                    if(!in_array($image_type , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                    {
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameTypeError .'<br>';
+                    }
+                }
+                
+            }
+        }
+    }else{
+        if(isset($_FILES['file'.$intFileNo])&&$_FILES['file'.$intFileNo]['name']!=''){
+            if(!isset($_POST['chkDelete'.$intFileNo])){
+                if(trim($arrOne['TMP_FILE_NAME'.$intFileNo]) === ''){
+                    if(!isset($_FILES['file'.$intFileNo]['error']) 
+                    || is_array($_FILES['file'.$intFileNo]['error'])  
+                    || $_FILES['file'.$intFileNo]['size'] == 0) {
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'].=$strFileNotExist .'<br>';
+                    }else{
+                        if(!file_exists($_FILES['file'.$intFileNo]['tmp_name'])){
+                            $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+                        }else{
+                            if(mb_strlen($_FILES['file'.$intFileNo]['name']) > 100 ){
+                                $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameError .'<br>';
+                            }
+                            $a = getimagesize($_FILES['file'.$intFileNo]['tmp_name']);
+                            $image_type = $a[2];
+                            
+                            if(!in_array($image_type , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                            {
+                                $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameTypeError .'<br>';
+                            }
+                        }
+                        
+                    }
+                }
+                else{
+                    if(
+                        !file_exists(
+                            SHARE_FOLDER.'/'.REQUEST_ATTACHMENT_FOLDER.'/'.$arrOne['REQUEST_NO']
+                            .'/'.$intFileNo.'/'.$arrOne['TMP_FILE_NAME'.$intFileNo]
+                        )
+                    )
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+                }
+            }else{
+                if(!isset($_FILES['file'.$intFileNo]['error']) 
+                || is_array($_FILES['file'.$intFileNo]['error']) 
+                || $_FILES['file'.$intFileNo]['size'] == 0) {
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+                }else{
+                    if(!file_exists($_FILES['file'.$intFileNo]['tmp_name'])){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNotExist .'<br>';
+                    }else{
+                        if(mb_strlen($_FILES['file'.$intFileNo]['name']) > 100 ){
+                            $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameError .'<br>';
+                        }
+                        $a = getimagesize($_FILES['file'.$intFileNo]['tmp_name']);
+                        $image_type = $a[2];
+                        
+                        if(!in_array($image_type , array(IMAGETYPE_JPEG ,IMAGETYPE_PNG)))
+                        {
+                            $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] .= $strFileNameTypeError.'<br>';
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+if(fncConnectDB() == false){
+	$_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+	header('Location: login.php');
+	exit;
+}
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+    echo "
+    <script>
+    alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+
+	exit();
+}
+$_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] = '';
+define('SCREEN_NAME', '依頼事項登録編集画面');
+define('SCREEN_NAME_VIEW', '依頼事項登録編集画面 表示');
+define('SCREEN_NAME_CREATE', '依頼事項登録編集画面 登録');
+define('SCREEN_NAME_EDIT', '依頼事項登録編集画面 更新');
+$objUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+
+
+// get list text translate
+$arrTitle =  array(
+    'PUBLIC_MSG_021',
+    'PUBLIC_MSG_022',
+    'PUBLIC_MSG_023',
+    'PUBLIC_MSG_024',
+    'PUBLIC_MSG_026',
+    'PUBLIC_MSG_027',
+    'PUBLIC_MSG_028',
+    'PUBLIC_MSG_029',
+    'PUBLIC_MSG_031',
+    'PUBLIC_MSG_032',
+    'PUBLIC_MSG_033',
+    'PUBLIC_MSG_034',
+    'PUBLIC_MSG_036',
+    'PUBLIC_MSG_037',
+    'PUBLIC_MSG_038',
+    'PUBLIC_MSG_039',
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_004',
+    'PUBLIC_MSG_003',
+    'PUBLIC_MSG_002',
+    'PUBLIC_MSG_010',
+    'PUBLIC_MSG_011',
+    'PUBLIC_MSG_012',
+    'PUBLIC_MSG_013',
+    'PUBLIC_MSG_014',
+    'PUBLIC_MSG_015',
+    'PUBLIC_MSG_016',
+    'PUBLIC_MSG_017',
+    'PUBLIC_MSG_018',
+    'PUBLIC_MSG_043',
+    'PUBLIC_MSG_049'
+    
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $objUserInfo->intLanguageType);
+
+
+//redirect if dont have permission
+if($objUserInfo->intMenuPerm != 1){
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+//session check
+
+fncSessionTimeOutCheck(1);
+//check get request
+fncGetRequestCheck($arrTextTranslate);
+// check request directly
+if(!isset($_SERVER['HTTP_REFERER'])){
+    echo '<script type="text/javascript">
+            function goBack() {
+                // Check to see if override is needed here
+                // If no override needed, call history.back()
+                history.go(-1);
+                return false;
+            }
+            alert("'.$arrTextTranslate['PUBLIC_MSG_049'].'");
+            goBack();
+        </script>';
+    die();
+}
+//if request is not ajax ->stop
+// if(
+//     !(!empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+//     && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'))
+// {    
+//     exit;    
+// }
+
+//check file download
+
+if(isset($_POST)) {
+    if(isset($_POST['action'])) {
+        // ①のファイルが存在するか確認する。
+        if($_POST['action'] == 'checkFile') {
+            
+            $strFilePath = base64_decode($_POST['file']);
+            // check file exist
+            if(is_file($strFilePath)) {
+                echo base64_encode($strFilePath);
+            } else {
+                echo 0;
+            }
+        }
+    }
+
+    if(isset($_POST['mode'])) {
+        if($_POST['mode'] == 99) {
+            $strFilePath = base64_decode($_POST['file']);
+            fncDownloadFile($strFilePath);
+        }
+    }
+}
+//define validate contstant
+define('TITLE_JA_LENGTH', 30);
+define('TITLE_ENG_LENGTH', 150);
+define('CONTENT_JA_LENGTH', 1000);
+define('CONTENT_ENG_LENGTH', 5000);
+
+//btn translate
+if(isset($_POST['mode']) && $_POST['mode'] == 2){
+    $strErrMsg = '';
+
+
+    if($_POST['LANGUAGE_TYPE'] == 'ja'){
+        //japanese -> english
+        if(!isset($_POST['title']) || $_POST['title']==''){
+            $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_021'].'<br>';
+        }else{
+            if(mb_strlen($_POST['title']) > TITLE_JA_LENGTH){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_022'].'<br>';
+            }
+        }
+
+
+        if(!isset($_POST['content']) || $_POST['content']==''){
+            $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_026'].'<br>';
+        }else{
+            if(mb_strlen($_POST['content']) > CONTENT_JA_LENGTH){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_027'].'<br>';
+            }
+        }
+    }
+
+    if($_POST['LANGUAGE_TYPE'] == 'en'){
+        //english -> japanese
+        if(!isset($_POST['title']) || $_POST['title']==''){
+            $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_021'].'<br>';
+        }else{
+            if(mb_strlen($_POST['title']) > TITLE_ENG_LENGTH){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_024'].'<br>';
+            }
+            if(!fncCheckEngText($_POST['title'])){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_023'].'<br>';
+            }
+        }
+
+
+        if(!isset($_POST['content']) || $_POST['content']==''){
+            $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_026'].'<br>';
+        }else{
+            if(mb_strlen($_POST['content']) > CONTENT_ENG_LENGTH){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_029'].'<br>';
+            }
+            if(!fncCheckEngText($_POST['content'])){
+                $strErrMsg .= $arrTextTranslate['PUBLIC_MSG_028'].'<br>';
+            }
+        }
+    }
+    if(isset($strErrMsg) && $strErrMsg != ''){
+        ?>
+            $('.edit-error').html('<?php echo $strErrMsg; ?>');
+        <?php
+    }else{
+        if($_POST['LANGUAGE_TYPE'] == 'en'){
+            //english -> japansese
+            $titleTranslated = is_array(tranAmazon($_POST['title'], 1)) 
+            ? '' : tranAmazon($_POST['title'], 1);
+            $contentTranslated = is_array(tranAmazon($_POST['content'], 1)) 
+            ? '' : tranAmazon($_POST['content'], 1) ;
+        }else{
+            $titleTranslated = is_array(tranAmazon($_POST['title'], 0)) 
+            ? '' : tranAmazon($_POST['title'], 0);
+            $contentTranslated = is_array(tranAmazon($_POST['content'], 0)) 
+            ? '' : tranAmazon($_POST['content'], 0) ;
+        }
+        // if(($titleTranslated != '' && $contentTranslated!='') || ($titleTranslated == '' && $contentTranslated=='')){
+        if(!($titleTranslated == '' ||  $contentTranslated == '')){
+        ?>
+            $(".fi-pink1 [name='titleSource[]']").val('<?php echo $titleTranslated; ?>');
+            $(".fi-pink1 [name='contentSource[]']").val('<?php echo $contentTranslated; ?>');
+        <?php
+        }else{
+            if(!isset($_POST['save'])){
+        ?>
+            $('.edit-error').html('<?php echo $arrTextTranslate['PUBLIC_MSG_010']; ?>');
+        <?php
+            }else{
+                echo 2;
+            }
+        }
+    }
+    exit();
+}
+
+
+
+//check input
+if(isset($_POST['mode']) && $_POST['mode'] == 1){
+if(isset($_POST['REQUEST_NO'])){
+    $arrOne = fncSelectOne(
+        "SELECT * FROM t_request WHERE REQUEST_NO=?",
+        [$_POST['REQUEST_NO']], 
+        SCREEN_NAME
+    );
+    if(!$arrOne && $_POST['REQUEST_NO'] != ''){
+        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+        .= $arrTextTranslate['PUBLIC_MSG_003'].'<br>';
+    }else{
+        // if correction flag = 1, check input
+        // if(isset($_POST['tranChkBox'])){
+            if(isset($_POST['LANGUAGE_TYPE']) && $_POST['LANGUAGE_TYPE']=='ja'){
+                $strEngTitle = isset($_POST['titleSource']) ? $_POST['titleSource'][1] : '';
+                $strJaTitle = isset($_POST['titleSource']) ? $_POST['titleSource'][0] : '';
+
+                $strEngContent =isset($_POST['contentSource']) ? $_POST['contentSource'][1] : '';
+                $strJaContent =isset($_POST['contentSource']) ? $_POST['contentSource'][0] : '';
+                //title eng
+                if($strEngTitle == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_031'].'<br>';
+                }else{
+                    if(mb_strlen($strEngTitle) > TITLE_ENG_LENGTH){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_034'].'<br>';
+                    }
+                    if(!fncCheckEngText($strEngTitle)){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_033'].'<br>';
+                    }
+                }
+                //title japan
+                if($strJaTitle == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_021'].'<br>';
+                }else{
+                    if(mb_strlen($strJaTitle) > TITLE_JA_LENGTH){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_022'].'<br>';
+                    }
+                }
+                //content eng
+                if($strEngContent == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_036'].'<br>';
+                }else{
+                    if(mb_strlen($strEngContent) > CONTENT_ENG_LENGTH){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_039'].'<br>';
+                    }
+                    if(!fncCheckEngText($strEngContent)){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_038'].'<br>';
+                    }
+                }
+                //content japan
+                if($strJaContent == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_026'].'<br>';
+                }else{
+                    if(mb_strlen($strJaContent) > CONTENT_JA_LENGTH){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_027'].'<br>';
+                    }
+                }
+
+            }else{
+                $strEngTitle = isset($_POST['titleSource']) ? $_POST['titleSource'][0] : '';
+                $strJaTitle = isset($_POST['titleSource']) ? $_POST['titleSource'][1] : '';
+
+                $strEngContent = isset($_POST['contentSource']) ? $_POST['contentSource'][0] : '';
+                $strJaContent = isset($_POST['contentSource']) ? $_POST['contentSource'][1] : '';
+                //title eng
+                if($strEngTitle == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_021'].'<br>';
+                }else{
+                    if(mb_strlen($strEngTitle) > 100){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_024'].'<br>';
+                    }
+                    if(!fncCheckEngText($strEngTitle)){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_023'].'<br>';
+                    }
+                }
+                //title japan
+                if($strJaTitle == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_031'].'<br>';
+                }else{
+                    if(mb_strlen($strJaTitle) > 20){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_032'].'<br>';
+                    }
+                }
+                //content eng
+                if($strEngContent == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_026'].'<br>';
+                }else{
+                    if(mb_strlen($strEngContent) > 5000){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_029'].'<br>';
+                    }
+                    if(!fncCheckEngText($strEngContent)){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_028'].'<br>';
+                    }
+                }
+                //content japan
+                if($strJaContent == ''){
+                    $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                    .= $arrTextTranslate['PUBLIC_MSG_036'].'<br>';
+                }else{
+                    if(mb_strlen($strJaContent) > 1000){
+                        $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] 
+                        .= $arrTextTranslate['PUBLIC_MSG_037'].'<br>';
+                    }
+                }
+            }
+            
+        // }
+        //check file
+        for($intCount = 1; $intCount <= 5; $intCount++){
+            fncValidateFile(
+                $intCount,
+                $arrTextTranslate['PUBLIC_MSG_01'.$intCount] 
+                . ' ' . $arrTextTranslate['PUBLIC_MSG_016'],
+                $arrTextTranslate['PUBLIC_MSG_01'.$intCount] 
+                . ' ' . $arrTextTranslate['PUBLIC_MSG_018'],
+                $arrTextTranslate['PUBLIC_MSG_01'.$intCount] 
+                . ' ' . $arrTextTranslate['PUBLIC_MSG_017'],
+                $arrOne
+            );
+        }
+    }
+}else{
+    
+}
+
+
+if($_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT'] != ''){
+?>
+
+$('.edit-error').html('<?php echo $_SESSION['REQUEST_EDIT_MSG_ERROR_INPUT']; ?>');
+
+<?php
+}else{
+    //process update
+    try{
+        $blnProcessData = true;
+        if($_POST['REQUEST_NO']!=''){
+            $blnCheck = true;
+            for($intCount = 1; $intCount<=5; $intCount++){
+                if(isset($_FILES['file'.$intCount]) 
+                && $_FILES['file'.$intCount]['name'] != ''){
+                    $strPath = SHARE_FOLDER.'/'.REQUEST_ATTACHMENT_FOLDER
+                    .'/'.$arrOne['REQUEST_NO'].'/'.$intCount.'/';
+                    if (!file_exists($strPath)) {
+                        mkdir($strPath, 0777, true);
+                    }
+                    $files = glob($strPath.'*'); // get all file names
+                    foreach($files as $file){ // iterate files
+                    if(is_file($file))
+                        unlink($file); // delete file
+                    }
+                    if(
+                        !move_uploaded_file(
+                            $_FILES["file".$intCount]["tmp_name"]
+                            ,$strPath.basename($_FILES['file'.$intCount]['name'])
+                        )
+                    ){
+                        $blnCheck = false;
+                        break;
+                    }
+                }
+            }
+            
+            if($blnCheck){
+                
+                $objResult = fncProcessData([
+                
+                    'REQUEST_NO' => $_POST['REQUEST_NO'],
+                    'TITLE_JPN' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['titleSource'][0] : $_POST['titleSource'][1]),
+                    'TITLE_ENG' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['titleSource'][1] : $_POST['titleSource'][0]),
+                    'CONTENTS_JPN' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['contentSource'][0] : $_POST['contentSource'][1]),
+                    'CONTENTS_ENG' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['contentSource'][1] : $_POST['contentSource'][0]),
+                    'LANGUAGE_TYPE' =>  ($_POST['LANGUAGE_TYPE'] == 'ja' ? 0 : 1),
+                    'CORRECTION_FLAG' => (isset($_POST['tranChkBox']) ? 1 : 0),
+                    'TMP_FILE_NAME1' => isset($_FILES['file1']['name']) 
+                    ? $_FILES['file1']['name'] : $arrOne['TMP_FILE_NAME1'],
+                    'TMP_FILE_NAME2' => isset($_FILES['file2']['name']) 
+                    ? $_FILES['file2']['name'] : $arrOne['TMP_FILE_NAME2'],
+                    'TMP_FILE_NAME3' => isset($_FILES['file3']['name']) 
+                    ? $_FILES['file3']['name'] : $arrOne['TMP_FILE_NAME3'],
+                    'TMP_FILE_NAME4' => isset($_FILES['file4']['name']) 
+                    ? $_FILES['file4']['name'] : $arrOne['TMP_FILE_NAME4'],
+                    'TMP_FILE_NAME5' => isset($_FILES['file5']['name']) 
+                    ? $_FILES['file5']['name'] : $arrOne['TMP_FILE_NAME5'],
+                    'UP_USER_NO'    =>  $objUserInfo->intUserNo,
+                    'UP_DATE'   => date('Y-m-d H:i:s'),
+                    'PUBIC_FLAG1' => (isset($_POST['PUBIC_FLAG1']) ? 1 : 0),
+                    'PUBIC_FLAG2' => (isset($_POST['PUBIC_FLAG2']) ? 1 : 0),
+                    'PUBIC_FLAG3' => (isset($_POST['PUBIC_FLAG3']) ? 1 : 0),
+                    'PUBIC_FLAG4' => (isset($_POST['PUBIC_FLAG4']) ? 1 : 0),
+                    'PUBIC_FLAG5' => (isset($_POST['PUBIC_FLAG5']) ? 1 : 0),
+                ], 
+                't_request', 
+                'REQUEST_NO=?', 
+                array($_POST['REQUEST_NO']));
+
+                if(is_object($objResult) && $objResult->rowCount()>0){
+                    $blnType = 0;
+                    fncWriteLog(
+                        LogLevel['Info'], 
+                        LogPattern['Button'], 
+                        SCREEN_NAME_EDIT . ' (ユーザID = '.$objUserInfo->strUserID.')'
+                    );
+                    //ajax return 0 reload the current page
+                }else{
+                    $blnProcessData = false;
+                    fncWriteLog(
+                        LogLevel['Error'], 
+                        LogPattern['Error'], 
+                        SCREEN_NAME_EDIT . ' ' . $arrTextTranslate['PUBLIC_MSG_003']
+                    );
+                    echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+                }
+            } else {
+                $blnProcessData = false;
+                fncWriteLog(
+                    LogLevel['Error'], 
+                    LogPattern['Error'], 
+                    SCREEN_NAME_EDIT . ' ' . $arrTextTranslate['PUBLIC_MSG_003']
+                );
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_003']."');";
+            }
+            
+            
+            
+        }else{
+            //add new
+            $arrLastRequest = fncSelectOne(
+                "SELECT NEXT VALUE FOR request_sequence as request_no", 
+                [], 
+                SCREEN_NAME
+            );
+
+            if(is_array($arrLastRequest) && count($arrLastRequest)){
+                $intRequestNo = $arrLastRequest['request_no'];
+            }else{
+                $intRequestNo = 1;
+            }
+            //upload
+            $blnCheck = true;
+            for($intCount = 1; $intCount<=5; $intCount++){
+                if(isset($_FILES['file'.$intCount]) 
+                && $_FILES['file'.$intCount]['name'] != ''){
+                    $strPath = SHARE_FOLDER.'/'.REQUEST_ATTACHMENT_FOLDER
+                    .'/'.$intRequestNo.'/'.$intCount.'/';
+                    if (!file_exists($strPath)) {
+                        mkdir($strPath, 0777, true);
+                    }
+                    $files = glob($strPath.'*'); // get all file names
+                    foreach($files as $file){ // iterate files
+                    if(is_file($file))
+                        unlink($file); // delete file
+                    }
+                    if(
+                        !move_uploaded_file(
+                            $_FILES["file".$intCount]["tmp_name"]
+                            ,$strPath.basename($_FILES['file'.$intCount]['name'])
+                        )
+                    ){
+                        $blnCheck = false;
+                        break;
+                    }
+                }
+            }
+            //move file successfully, create
+            if ($blnCheck) {
+                //check incident case
+                $incident = fncSelectOne(
+                    "SELECT INCIDENT_CASE_NO FROM t_incident_case 
+                    WHERE INCIDENT_CASE_NO=? AND COMP_DATE IS NULL",
+                    [$_POST['INCIDENT_CASE_NO']],
+                    SCREEN_NAME
+                );
+                if(!is_array($incident)){
+                    $blnProcessData = false;
+                    fncWriteLog(
+                        LogLevel['Error'], 
+                        LogPattern['Error'], 
+                        SCREEN_NAME.' ' . $arrTextTranslate['PUBLIC_MSG_043']
+                    );
+                    echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_043']."');";
+                    exit();
+                }
+                $objResult = fncProcessData([
+                    'REQUEST_NO'   =>  $intRequestNo,
+                    'INCIDENT_CASE_NO' => $_POST['INCIDENT_CASE_NO'],
+                    'TITLE_JPN' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['titleSource'][0] : $_POST['titleSource'][1]),
+                    'TITLE_ENG' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['titleSource'][1] : $_POST['titleSource'][0]),
+                    'CONTENTS_JPN' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['contentSource'][0] : $_POST['contentSource'][1]),
+                    'CONTENTS_ENG' => ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['contentSource'][1] : $_POST['contentSource'][0]),
+                    'LANGUAGE_TYPE' =>  ($_POST['LANGUAGE_TYPE'] == 'ja' ? 0 : 1),
+                    'CORRECTION_FLAG' => (isset($_POST['tranChkBox']) ? 1 : 0),
+                    'TMP_FILE_NAME1' => $_FILES['file1']['name'] != '' 
+                    ? $_FILES['file1']['name'] : null,
+                    'TMP_FILE_NAME2' => $_FILES['file2']['name'] != '' 
+                    ? $_FILES['file2']['name'] : null,
+                    'TMP_FILE_NAME3' => $_FILES['file3']['name'] != '' 
+                    ? $_FILES['file3']['name'] : null,
+                    'TMP_FILE_NAME4' => $_FILES['file4']['name'] != '' 
+                    ? $_FILES['file4']['name'] : null,
+                    'TMP_FILE_NAME5' => $_FILES['file5']['name'] != '' 
+                    ? $_FILES['file5']['name'] : null,
+                    'REG_USER_NO'=> $objUserInfo->intUserNo,
+                    'REG_DATE'  => date('Y-m-d H:i:s'),
+                    'PUBIC_FLAG1' => (isset($_POST['PUBIC_FLAG1']) ? 1 : 0),
+                    'PUBIC_FLAG2' => (isset($_POST['PUBIC_FLAG2']) ? 1 : 0),
+                    'PUBIC_FLAG3' => (isset($_POST['PUBIC_FLAG3']) ? 1 : 0),
+                    'PUBIC_FLAG4' => (isset($_POST['PUBIC_FLAG4']) ? 1 : 0),
+                    'PUBIC_FLAG5' => (isset($_POST['PUBIC_FLAG5']) ? 1 : 0),
+                    // 'UP_USER_NO'    =>  $objUserInfo->intUserNo,
+                    // 'UP_DATE'   => date('Y-m-d H:i:s')
+                ], 
+                't_request');
+                if(is_object($objResult) && $objResult->rowCount()>0){
+                    $blnType = 1;
+                    fncWriteLog(
+                        LogLevel['Info'], 
+                        LogPattern['Button'], 
+                        SCREEN_NAME_CREATE . ' (ユーザID = '.$objUserInfo->strUserID.')'
+                    );
+                }else{
+                    echo $objResult;
+                    $blnProcessData = false;
+                    fncWriteLog(
+                        LogLevel['Error'], 
+                        LogPattern['Error'], 
+                        SCREEN_NAME_CREATE . ' ' . $arrTextTranslate['PUBLIC_MSG_002']
+                    );
+                    echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+                }
+            }else{
+                $strPath = SHARE_FOLDER.'/'.REQUEST_ATTACHMENT_FOLDER.'/'.$arrOne['REQUEST_NO'];
+                if (file_exists($strPath)){
+                    unlink($strPath);
+                }
+                $blnProcessData = false;
+                fncWriteLog(
+                    LogLevel['Error'], 
+                    LogPattern['Error'], 
+                    SCREEN_NAME_CREATE . ' ' . $arrTextTranslate['PUBLIC_MSG_002']
+                );
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_002']."');";
+            }
+        }
+        //gửi mail
+        if($blnProcessData){
+            //Lay thong tin user gui mail
+            $userMailList = fncSelectData("
+                SELECT MAIL_ADDRESS, USER_NAME, LANGUAGE_TYPE FROM m_user 
+                WHERE REQUEST_CONTENTS_MAIL=?",
+                [1],
+                1,
+                false,
+                SCREEN_NAME
+            );
+            
+            if(is_array($userMailList) && count($userMailList)>0){
+                //start send mail
+                $arrEnglishUserList = [];
+                $arrJapaneseUserList = [];
+                foreach($userMailList as $user){
+                    if($user['LANGUAGE_TYPE'] == 0){
+                        $arrJapaneseUserList[] = $user;
+                    }else{
+                        $arrEnglishUserList[] = $user;
+                    }
+                }
+                fncSendMail(
+                    $arrJapaneseUserList, 
+                    ($_POST['LANGUAGE_TYPE'] == 'ja' ? 
+                    $_POST['titleSource'][0] : $_POST['titleSource'][1]), 
+                    ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['contentSource'][0] : $_POST['contentSource'][1]), 
+                    ''
+                );
+                fncSendMail(
+                    $arrEnglishUserList, ($_POST['LANGUAGE_TYPE'] == 'ja' 
+                    ? $_POST['titleSource'][1] : $_POST['titleSource'][0]), 
+                    ($_POST['LANGUAGE_TYPE'] == 'ja' ? 
+                    $_POST['contentSource'][1] : $_POST['contentSource'][0]),
+                    ''
+                );
+                echo $blnType;
+            }else{
+                //fail to load list mail, write log
+                fncWriteLog(
+                    LogLevel['Error'], 
+                    LogPattern['Error'], 
+                    SCREEN_NAME . ' ' . $arrTextTranslate['PUBLIC_MSG_001']
+                );
+                echo "$('.edit-error').html('".$arrTextTranslate['PUBLIC_MSG_001']."');";
+            }
+        }
+    }
+    catch(\Exception $e){
+        fncWriteLog(
+            LogLevel['Error'], 
+            LogPattern['Error'], 
+            '依頼事項登録編集画面 ' . $e->getMessage()
+        );
+        echo $e->getMessage();
+    }
+    
+
+}
+}
+

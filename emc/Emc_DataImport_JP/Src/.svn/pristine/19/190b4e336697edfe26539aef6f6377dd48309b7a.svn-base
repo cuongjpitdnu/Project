@@ -1,0 +1,321 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン処理画面 (仮)ページ
+//	create		: 2020/02/24 AKB Thang
+//	update		:
+// -------------------------------------------------------------------------
+// return 1;
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+//DB接続
+if(fncConnectDB() == false) {
+	echo 0;
+	exit();
+}
+
+$_SESSION['errStr'] = '';
+if(!isset($_SESSION['LOGINUSER_INFO'])) {
+
+	echo 0;
+	exit();
+}
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+// get list text translate
+$arrTitle =  array(
+    'COMPANY_MNG_TEXT_001',
+    'COMPANY_MNG_TEXT_002',
+    'COMPANY_MNG_TEXT_003',
+    'COMPANY_MNG_TEXT_004',
+    'COMPANY_MNG_TEXT_005',
+    'COMPANY_MNG_TEXT_006',
+    'COMPANY_MNG_TEXT_007',
+    'COMPANY_MNG_TEXT_008',
+    'COMPANY_MNG_TEXT_009',
+    'COMPANY_MNG_TEXT_010',
+    'PUBLIC_BUTTON_001',
+    'PUBLIC_BUTTON_006',
+    'PUBLIC_BUTTON_009',
+    'PUBLIC_BUTTON_010',
+    'PUBLIC_BUTTON_015',
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_008',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_004',
+    'PUBLIC_TEXT_016',
+
+);
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+//DB接続
+if(fncConnectDB() == false) {
+	echo 0;
+	exit();
+}
+//load list data
+
+//load list data
+if(!isset($_POST['page']) && !isset($_POST['mode'])) {
+	$_SESSION['txtCompanyName'] = '';
+	$_SESSION['txtAbbreviations'] = '';
+	$_SESSION['cmbInstCategory'] = '';
+	$_SESSION['cmbGroup'] = '';
+}
+
+if(isset($_POST['loadList'])) {
+    // if(isset($_POST['originalSearch'])) echo $_POST['originalSearch'];
+	if(isset($_POST['page'])) $GLOBALS['currentPage'] = $_POST['page'];
+
+	if(isset($_POST['txtCompanyName'])) {
+        $_SESSION['txtCompanyName'] = $_POST['txtCompanyName'];
+
+    }
+    if(isset($_POST['txtAbbreviations'])) {
+        $_SESSION['txtAbbreviations'] = $_POST['txtAbbreviations'];
+
+    }
+    if(isset($_POST['cmbInstCategory'])) {
+        $_SESSION['cmbInstCategory'] = $_POST['cmbInstCategory'];
+        $cat = fncSelectOne("SELECT INST_CATEGORY_NAME_JPN, INST_CATEGORY_NAME_ENG,
+        ".iff($userInfo->intLanguageType, " INST_CATEGORY_NAME_ENG as INST_CATEGORY_NAME", " INST_CATEGORY_NAME_JPN as INST_CATEGORY_NAME")."
+        FROM m_inst_category WHERE INST_CATEGORY_NO=?", [$_SESSION['cmbInstCategory']], '会社情報管理画面');
+
+        if($cat) {
+            $instCatName = $cat['INST_CATEGORY_NAME'];
+
+        } else {
+            if($_SESSION['cmbInstCategory'] == '') {
+                $instCatName = 'ALL';
+            }
+            else{
+                $_SESSION['errStr'] = fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_001']);
+                // fncWriteLog(LogLevel['Error'] , LogPattern['Error'],fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_001']));
+            }
+        }
+    }
+
+    if(isset($_POST['cmbGroup'])) {
+        $_SESSION['cmbGroup'] = $_POST['cmbGroup'];
+        $cat = fncSelectOne("SELECT GROUP_NAME_JPN, GROUP_NAME_ENG,
+        ".iff($userInfo->intLanguageType, " GROUP_NAME_ENG as GROUP_NAME", " GROUP_NAME_JPN as GROUP_NAME")."
+        FROM m_group WHERE GROUP_NO=?", [$_SESSION['cmbGroup']], '会社情報管理画面');
+
+        if($cat) {
+            $groupName = $cat['GROUP_NAME'];
+        } else {
+            if($_SESSION['cmbGroup'] == '') {
+                $groupName = 'ALL';
+            } else {
+                $_SESSION['errStr'] = fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_001']);
+                // fncWriteLog(LogLevel['Error'] , LogPattern['Error'],fncHtmlSpecialChars($arrTextTranslate['PUBLIC_MSG_001']));
+            }
+        }
+	}
+}
+
+//get company
+$conditionArray = [];
+
+$strSQL = "SELECT m_company.COMPANY_NO,";
+// $strSQL .= " m_company.LINK_CATEGORY_NO, t_link.SORT_NO,";
+
+if($userInfo->intLanguageType) {
+    $strSQL .= ' m_company.COMPANY_NAME_ENG as COMPANY_NAME,';
+    $strSQL .= ' m_company.ABBREVIATIONS_ENG as ABBREVIATIONS,';
+    $strSQL .= ' m_inst_category.INST_CATEGORY_NAME_ENG as INST_CATEGORY_NAME,';
+    $strSQL .= ' m_group.GROUP_NAME_ENG as GROUP_NAME,';
+} else {
+    $strSQL .= ' m_company.COMPANY_NAME_JPN as COMPANY_NAME,';
+    $strSQL .= ' m_company.ABBREVIATIONS_JPN as ABBREVIATIONS,';
+    $strSQL .= ' m_inst_category.INST_CATEGORY_NAME_JPN as INST_CATEGORY_NAME,';
+    $strSQL .= ' m_group.GROUP_NAME_JPN as GROUP_NAME,';
+}
+$strSQL .= ' m_company.INST_CATEGORY_NO, m_company.GROUP_NO';
+$strSQL .= ' FROM m_company';
+
+$strSQL .= ' INNER JOIN m_group ON m_group.GROUP_NO=m_company.GROUP_NO';
+$strSQL .= ' INNER JOIN m_inst_category ON m_company.INST_CATEGORY_NO=m_inst_category.INST_CATEGORY_NO';
+
+if(isset($_SESSION['txtCompanyName']) && $_SESSION['txtCompanyName'] != '') {
+	if($userInfo->intLanguageType) {
+		$strSQL .= ' WHERE m_company.COMPANY_NAME_ENG like ?';
+	} else {
+		$strSQL .= ' WHERE m_company.COMPANY_NAME_JPN like ?';
+	}
+	$next = 1;
+	$conditionArray[] = '%'.$_SESSION['txtCompanyName'].'%';
+}
+
+if(isset($_SESSION['txtAbbreviations']) && $_SESSION['txtAbbreviations'] != '') {
+	if(!isset($next)) {
+        if($userInfo->intLanguageType) {
+            $strSQL .= ' WHERE m_company.ABBREVIATIONS_ENG like ?';
+        } else {
+            $strSQL .= ' WHERE m_company.ABBREVIATIONS_JPN like ?';
+        }
+	} else {
+		if($userInfo->intLanguageType) {
+            $strSQL .= ' AND m_company.ABBREVIATIONS_ENG like ?';
+        } else {
+            $strSQL .= ' AND m_company.ABBREVIATIONS_JPN like ?';
+        }
+	}
+	$next = 1;
+	$conditionArray[] = '%'.$_SESSION['txtAbbreviations'].'%';
+
+}
+if(isset($_SESSION['cmbInstCategory']) && $_SESSION['cmbInstCategory'] != '') {
+	if(!isset($next)) {
+        $strSQL .= ' WHERE m_company.INST_CATEGORY_NO=?';
+	} else {
+		$strSQL .= ' AND m_company.INST_CATEGORY_NO=?';
+	}
+	$next = 1;
+	$conditionArray[] = $_SESSION['cmbInstCategory'];
+}
+if(isset($_SESSION['cmbGroup']) && $_SESSION['cmbGroup'] != '') {
+	if(!isset($next)) {
+        $strSQL .= ' WHERE m_company.GROUP_NO like ?';
+	} else {
+		$strSQL .= ' AND m_company.GROUP_NO like ?';
+	}
+	$next = 1;
+	$conditionArray[] = $_SESSION['cmbGroup'];
+}
+
+$strSQL .= ' ORDER BY m_company.SORT_NO ASC';
+// $dataAll = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], false, false, '会社情報管理画面');
+
+//mode
+if(isset($_POST['mode'])) {
+    //delete
+	if($_POST['mode'] == 1) {
+        try {
+            $t = true;
+            $GLOBALS['g_dbaccess']->funcBeginTransaction();
+            //delete m_company
+            $strSQL = '';
+            $strSQL .= 'DELETE FROM m_company WHERE COMPANY_NO=:COMPANY_NO';
+            $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+            $query->bindParam(':COMPANY_NO', $_POST['id']);
+            $strSqlLog = str_replace(':COMPANY_NO', $_POST['id'], $strSQL);
+            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], '会社情報管理画面 '.$strSqlLog);
+            fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'会社情報管理画面　削除(ユーザID = '.$userInfo->strUserID.')');
+            $query->execute();
+
+            // if($query->rowCount() <= 0) {
+            //     $t=false;
+            // }
+
+            //delete t_int_company_sort
+            $strSQL = '';
+            $strSQL .= 'DELETE FROM t_inst_company_sort WHERE COMPANY_NO=:COMPANY_NO';
+            $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+            $query->bindParam(':COMPANY_NO', $_POST['id']);
+            $strSqlLog = str_replace(':COMPANY_NO', $_POST['id'], $strSQL);
+            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], '会社情報管理画面 '.$strSqlLog);
+            fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'会社情報管理画面　削除(ユーザID = '.$userInfo->strUserID.')');
+            $query->execute();
+
+            // if($query->rowCount() <= 0) {
+            //     $t=false;
+            // }
+
+            if($t) {
+                $GLOBALS['g_dbaccess']->funcCommit();
+                echo 0;
+                exit();
+            } else {
+                $GLOBALS['g_dbaccess']->funcRollback();
+                echo $arrTextTranslate['PUBLIC_MSG_004'];
+                fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_004']);
+                exit();
+            }
+        } catch(\Exception $e) {
+            $GLOBALS['g_dbaccess']->funcRollback();
+            echo $arrTextTranslate['PUBLIC_MSG_004'];
+            fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_004']);
+            exit();
+        }
+    }
+}
+
+if(isset($_SESSION['errStr']) && $_SESSION['errStr']!='') {
+    fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$_SESSION['errStr']);
+?>
+
+<script>
+    <?php
+        if(isset($_SESSION['errStr']) && $_SESSION['errStr']!='') {
+    ?>
+    $(function() {
+        var errStr = '<?php echo $_SESSION['errStr'] ?>';
+        $('.error').html(errStr);
+    });
+    <?php
+            unset($_SESSION['errStr']);
+        }
+    ?>
+</script>
+
+<?php
+    } else {
+        $data = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], true, '会社情報管理画面');
+        if(isset($_POST['loadList'])) {
+            if(isset($_POST['originalSearch']) && $_POST['originalSearch'] == 1) {
+                $searchQuery = '「会社名 = '.$_SESSION['txtCompanyName'].', 略称名 = '.$_SESSION['txtAbbreviations'].',機関カテゴリ = '.$_SESSION['cmbInstCategory'].',グループ = '.$_SESSION['cmbGroup'].'」';
+                $viewLog = '会社情報管理画面　検索を実施 '.$searchQuery.' (ユーザID = '.$userInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'] , LogPattern['Button'], $viewLog);
+            }
+        } else {
+            // $viewLog = '会社情報管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+            // fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+        }
+    }
+?>
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th><?php echo fncHtmlSpecialChars($arrTextTranslate['COMPANY_MNG_TEXT_006']); ?></th>
+            <th><?php echo fncHtmlSpecialChars($arrTextTranslate['COMPANY_MNG_TEXT_007']); ?></th>
+            <th><?php echo fncHtmlSpecialChars($arrTextTranslate['COMPANY_MNG_TEXT_008']); ?></th>
+            <th><?php echo fncHtmlSpecialChars($arrTextTranslate['COMPANY_MNG_TEXT_009']); ?></th>
+            <th><?php echo fncHtmlSpecialChars($arrTextTranslate['COMPANY_MNG_TEXT_010']); ?></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="5" align="center">
+                <div style="float: left">
+                    <font size="5">
+                    <?php echo str_replace('%1%', $GLOBALS['totalRecord'], $arrTextTranslate['PUBLIC_TEXT_016'])  ; ?>
+                    </font>
+                </div>
+                <div class="links in-line">
+                    <?php fncViewPagination('company_mng_proc.php'); ?>
+                </div>
+                <div class="in-line" style="float: right">
+                    <button type="submit" class="tbl-btn tbl-btn-action load-modal" href="company_edit.php" data-id="0"><?php echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_BUTTON_001']); ?></button>
+                    <button type="submit" class="tbl-btn tbl-btn-action" onclick="window.location.href='portal.php'"><?php echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_BUTTON_015']); ?></button>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <?php if(isset($data)) foreach($data as $item) { ?>
+        <tr>
+            <td ><?php echo fncHtmlSpecialChars($item['COMPANY_NAME']); ?></td>
+            <td ><?php echo fncHtmlSpecialChars($item['ABBREVIATIONS']); ?></td>
+            <td class="text-center"><?php echo fncHtmlSpecialChars($item['INST_CATEGORY_NAME']); ?></td>
+            <td class="text-center"><?php echo fncHtmlSpecialChars($item['GROUP_NAME']); ?></td>
+            <td class="text-center">
+                <button class="tbl-btn tbtn-green load-modal" href="company_edit.php" data-id="<?php echo $item['COMPANY_NO']; ?>"><?php echo $arrTextTranslate['PUBLIC_BUTTON_009']; ?></button>
+                <button class="tbl-btn tbtn-red btn-del" data-id="<?php echo $item['COMPANY_NO'] ; ?>"><?php echo $arrTextTranslate['PUBLIC_BUTTON_010']; ?></button>
+            </td>
+        </tr>
+    <?php } ?>
+    </tbody>
+    </tr>
+</table>

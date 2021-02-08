@@ -1,0 +1,36 @@
+<?php
+/*
+* @incident_case_form.php
+*
+* @create 2020/02/20 KBS Tam.nv
+* @update
+*/
+    require_once ('portal_function.php');
+    $arrIncident = get_incident_case();
+    if($arrIncident){
+        foreach ($arrIncident as $arrItem){
+            $strTitle = $arrItem['TITLE'.$strEndLang];
+            if(!$strTitle){
+                $intUntra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $strTitle = $arrItem['TITLE_ENG'];
+                }else{
+                    $strTitle = $arrItem['TITLE_JPN'];
+                }
+            }
+            $strContent = $arrItem['CONTENTS'.$strEndLang];
+            if(!$strContent){
+                $intUntra = 1;
+                if(!$objLoginUserInfo->intLanguageType){
+                    $strContent = $arrItem['CONTENTS_ENG'];
+                }else{
+                    $strContent = $arrItem['CONTENTS_JPN'];
+                }
+            }
+
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_003'].': ' . date('Y/m/d H:i',strtotime($arrItem['S_DATE'])).'</div>';
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_004'].': <a href="#" onclick=\'loadModalIncident('.$arrItem['INCIDENT_CASE_NO'].')\' >' . fncHtmlSpecialChars($strTitle).' </a></div>';
+            echo '<div>'.$arrText['PORTAL_INCIDENT_TEXT_005'].': ' . fncHtmlSpecialChars($strContent).'</div>';
+        }
+    }
+?>

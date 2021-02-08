@@ -1,0 +1,429 @@
+<?php
+    // -------------------------------------------------------------------------
+    //	function	: ポータル画面 (仮)ページ
+    //	create		: 2020/01/17 KBS S.Tasaki
+    //	update		:
+    // -------------------------------------------------------------------------
+    require_once('common/common.php');
+    header('Content-type: text/html; charset=utf-8');
+    header('X-FRAME-OPTIONS: DENY');
+
+    //セッションスタート
+
+    if(fncConnectDB() == false){
+        $_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+        header('Location: login.php');
+        exit;
+    }
+
+    if(!isset($_SESSION['LOGINUSER_INFO'])) {
+        echo '<script>alert("'.PUBLIC_MSG_008_JPN.' / '.PUBLIC_MSG_008_ENG.'"); window.location.href="login.php";</script>';
+        exit;
+    }
+
+    // //ログインユーザ情報を取得
+    $objLoginUserInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+    $intLanguageType = $objLoginUserInfo->intLanguageType;
+
+    function fncGetMGroup($lang) {
+        $suffixes = ($lang == 0) ? '_JPN' : '_ENG';
+        $groupName = 'group_name'.$suffixes;
+
+        $strSQL = ' SELECT '
+                . '     group_no, '
+                . $groupName.' AS group_name '
+                . ' FROM '
+                . '     m_group '
+                . ' ORDER BY sort_no ASC';
+
+        try {
+            $objStmt = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+
+            $strLogSql = $strSQL;
+            fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], 'ユーザ管理画面'.$strLogSql);
+
+            $objStmt->execute();
+            $arrResult = $objStmt->fetchAll(PDO::FETCH_ASSOC);
+            return $arrResult;
+        } catch (\Exception $e) {
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $e->getMessage());
+            $_SESSION['USER_MNG_ERROR'][] = $e->getMessage();
+            return false;
+        }
+    }
+
+    function fncGetMUser($userId = '', $companyName = '', $groupNo = '', $userName = '', $lang, $page, $paging = false) {
+        try {
+            $suffixes = ($lang == 0) ? '_JPN' : '_ENG';
+            $companyNameSelect = 'company_name'.$suffixes;
+            $abbreviationsSelect = 'abbreviations'.$suffixes;
+            $instCategoryNameSelect = 'inst_category_name'.$suffixes;
+            $groupNameSelect = 'group_name'.$suffixes;
+
+            $strSQL = ' SELECT '
+                    . '     mu.user_no, '
+                    . '     mu.user_id, '
+                    . '     mu.password, '
+                    . '     FORMAT (mu.expiration_date_s, \'yyyy/M/d\') as expiration_date_s, '
+                    . '     FORMAT (mu.expiration_date_e, \'yyyy/M/d\') as expiration_date_e, '
+                    . $companyNameSelect.' AS company_name, '
+                    . $abbreviationsSelect.' AS abbreviations, '
+                    . $groupNameSelect.' AS group_name, '
+                    . '     mu.organization, '
+                    . '     mu.user_name, '
+                    . '     mu.tel, '
+                    . '     mu.fax, '
+                    . '     mu.mail_address, '
+                    . '     mu.zip_code, '
+                    . '     mu.address, '
+                    . '     mu.remarks, '
+                    . '     mu.language_type ';
+            if(!$paging) {
+                $strSQL .= ' , '.$instCategoryNameSelect.' AS inst_category_name ';
+            }
+            $strSQL .=  ' FROM '
+                    . '     m_user AS mu '
+                    . '     INNER JOIN m_company AS mc ON mu.company_no = mc.company_no '
+                    . '     INNER JOIN m_group AS mg ON mc.group_no = mg.group_no ';
+
+            if(!$paging) {
+                $strSQL .= ' INNER JOIN m_inst_category AS mic ON mic.inst_category_no = mc.inst_category_no ';
+            }
+
+            // $strSQL .= ' WHERE mu.delete_flag = 0 ';
+
+            $arrCondition = array();
+            $haveAnd = false;
+            if(trim($userId) != '') {
+                // $strSQL .= ' AND mu.user_id = ? ';
+                $strSQL .= ' WHERE mu.user_id = ? ';
+                $arrCondition[] = $userId;
+                $haveAnd = true;
+            }
+            if(trim($companyName) != '') {
+                if($haveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                // $strSQL .= ' AND mc.'.$companyNameSelect.' LIKE ? ';
+                $strSQL .= ' mc.'.$companyNameSelect.' LIKE ? ';
+                $arrCondition[] = '%'.$companyName.'%';
+                $haveAnd = true;
+            }
+            if(trim($groupNo) != '' && trim($groupNo) != 'All') {
+                if($haveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                // $strSQL .= ' AND mu.group_no = ? ';
+                $strSQL .= ' mc.group_no = ? ';
+                $arrCondition[] = $groupNo;
+                $haveAnd = true;
+            }
+            if(trim($userName) != '') {
+                if($haveAnd) {
+                    $strSQL .= ' AND ';
+                } else {
+                    $strSQL .= ' WHERE ';
+                }
+                // $strSQL .= ' AND mu.user_name LIKE ? ';
+                $strSQL .= ' mu.user_name LIKE ? ';
+                $arrCondition[] = $userName.'%';
+                $haveAnd = true;
+            }
+
+            $strSQL .= ' ORDER BY mu.reg_date DESC ';
+
+            $arrResult = fncSelectData($strSQL, $arrCondition, $page, $paging, 'ユーザ管理画面');
+            return $arrResult;
+        } catch (\Exception $e) {
+            fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_001']);
+            $_SESSION['USER_MNG_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_001'];
+            return 0;
+        }
+    }
+
+    $arrTitleMsg =  array(
+        'USER_MNG_TEXT_001',
+        'USER_MNG_TEXT_002',
+        'USER_MNG_TEXT_003',
+        'USER_MNG_TEXT_004',
+        'USER_MNG_TEXT_005',
+        'USER_MNG_TEXT_006',
+        'USER_MNG_TEXT_007',
+        'USER_MNG_TEXT_008',
+        'USER_MNG_TEXT_009',
+        'USER_MNG_TEXT_010',
+        'USER_MNG_TEXT_011',
+        'PUBLIC_BUTTON_009',
+        'PUBLIC_BUTTON_010',
+        'USER_MNG_TEXT_012',
+        'PUBLIC_BUTTON_006',
+        'PUBLIC_BUTTON_001',
+        'PUBLIC_BUTTON_011',
+        'PUBLIC_BUTTON_015',
+
+        'PUBLIC_TEXT_016',
+
+        // get data grid = false
+        'PUBLIC_MSG_001',
+
+        // delete data = false
+        'PUBLIC_MSG_004',
+
+        // csv title
+        'USER_MNG_TEXT_013',
+        'USER_MNG_TEXT_014',
+        'USER_MNG_TEXT_015',
+        'USER_MNG_TEXT_016',
+        'USER_MNG_TEXT_017',
+        'USER_MNG_TEXT_018',
+        'USER_MNG_TEXT_019',
+        'USER_MNG_TEXT_020',
+        'USER_MNG_TEXT_021',
+        'USER_MNG_TEXT_022',
+        'USER_MNG_TEXT_023',
+        'USER_MNG_TEXT_024',
+        'USER_MNG_TEXT_025',
+        'USER_MNG_TEXT_026',
+        'USER_MNG_TEXT_027',
+        'USER_MNG_TEXT_028',
+
+        'PUBLIC_TEXT_006',
+        'PUBLIC_TEXT_007',
+
+        'USER_MNG_MSG_001',
+
+        // export data csv = false
+        'PUBLIC_MSG_005',
+    );
+
+    $arrTextTranslate = getListTextTranslate($arrTitleMsg, $intLanguageType);
+
+    if(isset($_POST)) {
+        if(isset($_POST['loadList'])) {
+            $event = (isset($_POST['event']) && trim($_POST['event']) != '') ? trim($_POST['event']) : null;
+            if(isset($_POST['page'])) $GLOBALS['currentPage'] = $_POST['page'];
+
+            $_SESSION['USER_MNG_ERROR'] = array();
+            $strLog = '';
+            $strLogPattern = '';
+            if($event == 0) {
+                $strLogPattern = 'View';
+                $strLog = 'ユーザ管理画面　画面表示(ユーザID = '.$objLoginUserInfo->intUserNo.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+                // $_SESSION['user_mng'] = array(
+                //     'userIdSearch' => null,
+                //     'companyNameSearch' => null,
+                //     'groupNoSearch' => null,
+                //     'userNameSearch' => null
+                // );
+            } else {
+                $strLogPattern = 'Button';
+                // save to session
+                if(isset($_POST['userId'])) {
+                    $_SESSION['user_mng']['userIdSearch'] = trim($_POST['userId']);
+                }
+
+                if(isset($_POST['companyName'])) {
+                    $_SESSION['user_mng']['companyNameSearch'] = trim($_POST['companyName']);
+                }
+
+                if(isset($_POST['groupNo'])) {
+                    $_SESSION['user_mng']['groupNoSearch'] = trim($_POST['groupNo']);
+                }
+
+                if(isset($_POST['userName'])) {
+                    $_SESSION['user_mng']['userNameSearch'] = trim($_POST['userName']);
+                }
+                $strLog = 'ユーザ管理画面　「ユーザID = '.$_SESSION['user_mng']['userIdSearch'].',会社名 = '. $_SESSION['user_mng']['companyNameSearch'].',グループ = '. $_SESSION['user_mng']['groupNoSearch'].',担当者名 = '.$_SESSION['user_mng']['userNameSearch'].'」(ユーザID = '.$objLoginUserInfo->strUserID.')';
+            }
+            fncWriteLog(LogLevel['Info'], LogPattern[$strLogPattern], $strLog);
+
+            $arrData = fncGetMUser($_SESSION['user_mng']['userIdSearch'], $_SESSION['user_mng']['companyNameSearch'], $_SESSION['user_mng']['groupNoSearch'], $_SESSION['user_mng']['userNameSearch'], $intLanguageType, $GLOBALS['currentPage'], true);
+        ?>
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_006']; ?></th>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_007']; ?></th>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_008']; ?></th>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_009']; ?></th>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_010']; ?></th>
+                        <th><?php echo $arrTextTranslate['USER_MNG_TEXT_011']; ?></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" align="center">
+                            <div style="float: left">
+                        	    <font size="5"><?php echo str_replace('%1%', $GLOBALS['totalRecord'], $arrTextTranslate['PUBLIC_TEXT_016']); ?></font>
+                            </div>
+                            <div class="links in-line">
+                                <?php fncViewPagination('user_mng_proc.php'); ?>
+                            </div>
+                            <div class="in-line" style="float: right">
+                                <form  action="user_mng_proc.php" method="post" id="formCSV">
+                                    <input type="hidden" name="searchData" value="" />
+                                    <input type="hidden" name="X-CSRF-TOKEN" value="<?php echo $_POST['X-CSRF-TOKEN']; ?>" />
+				                    <input type="hidden" name="mode" value="2" />
+                                    <button type="button" class="tbl-btn tbl-btn-action load-modal" href="user_edit.php" data-id=""><?php echo $arrTextTranslate['PUBLIC_BUTTON_001']; ?></button>
+                                    <!-- <button type="button" class="tbl-btn tbl-btn-action tbl-btn-csv"><?php // echo $arrTextTranslate['PUBLIC_BUTTON_011']; ?></button> -->
+                                    <button type="button" class="tbl-btn tbl-btn-action btnOutput"><?php echo $arrTextTranslate['PUBLIC_BUTTON_011']; ?></button>
+                                    <button type="button" class="tbl-btn tbl-btn-action tbn-btn-return"><?php echo $arrTextTranslate['PUBLIC_BUTTON_015']; ?></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php
+                        if($arrData != 0 && count($arrData) > 0) {
+                            foreach ($arrData as $value) {
+                    ?>
+                        <tr>
+                            <td class="text-center"><a href="#"><?php echo fncHtmlSpecialChars($value['user_id']); ?></a></td>
+                            <td class="text-center"><?php echo fncHtmlSpecialChars($value['expiration_date_s']); ?>～<?php echo fncHtmlSpecialChars($value['expiration_date_e']); ?></td>
+                            <td><?php echo fncHtmlSpecialChars($value['company_name']); ?></td>
+                            <td class="text-center" ><?php echo fncHtmlSpecialChars($value['group_name']); ?></td>
+                            <td><?php echo fncHtmlSpecialChars($value['user_name']); ?></td>
+                            <td class="text-center">
+                                <button class="tbl-btn tbtn-green load-modal" data-id="<?php echo $value['user_no']; ?>" href="user_edit.php"><?php echo $arrTextTranslate['PUBLIC_BUTTON_009']; ?></button>
+                                <!-- <button class="tbl-btn tbtn-red btn-del-user" data-id="<?php // echo $value['user_no']; ?>"><?php // echo $arrTextTranslate['PUBLIC_BUTTON_010']; ?></button> -->
+                                <button class="tbl-btn tbtn-primary load-modal" data-id="<?php echo $value['user_no']; ?>" href="user_perm.php"><?php echo $arrTextTranslate['USER_MNG_TEXT_012']; ?></button>
+                            </td>
+                        </tr>
+                    <?php
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+            <script>
+                $(function() {
+<?php
+            $arrLoginError = (isset($_SESSION['USER_MNG_ERROR'])) ? $_SESSION['USER_MNG_ERROR'] : array();
+            if($arrData == 0) {
+                fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_001']);
+                $arrLoginError[] = $arrTextTranslate['PUBLIC_MSG_001'];
+            }
+            $html = '';
+            if(count($arrLoginError) > 0) {
+                $html = '';
+                foreach($arrLoginError as $value) {
+                    $html .= '<div>'.$value.'</div>';
+                }
+?>
+                    $('.error').html('<?php echo $html; ?>');
+<?php       } ?>
+                });
+            </script>
+<?php
+        }
+
+        if(isset($_POST['mode'])) {
+            // delete data
+            // if($_POST['mode'] == 1) {
+            //     $strSQL = ' UPDATE m_user SET m_user.delete_flag = 1 WHERE m_user.user_no = :user_no ';
+            //     try {
+            //         $query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+            //         $query->bindParam(':user_no', $_POST['user_no']);
+
+            //         $strLogSql = $strSQL;
+            //         $strLogSql = str_replace(':user_no', $_POST['user_no'], $strLogSql);
+            //         fncWriteLog(LogLevel['Info'], LogPattern['Button'], 'ユーザ管理画面　削除(ユーザID = '.$_POST['user_no'].')');
+
+            //         fncWriteLog(LogLevel['Info'], LogPattern['Sql'], $strLogSql);
+            //         $query->execute();
+            //         return 1;
+            //     } catch (\Exception $e) {
+            //         fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_004']);
+            //         $_SESSION['USER_MNG_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_004'];
+            //         return 0;
+            //     }
+            // }
+
+            // export csv
+            // if($_POST['mode'] == 2) {
+            if($_POST['mode'] == 1) {
+                $userIdSearch = $_SESSION['user_mng']['userIdSearch'];
+                $companyNameSearch = $_SESSION['user_mng']['companyNameSearch'];
+                $groupNoSearch = $_SESSION['user_mng']['groupNoSearch'];
+                $userNameSearch = $_SESSION['user_mng']['userNameSearch'];
+                $strLog = 'ユーザ管理画面　CSV出力「ユーザID = '.$userIdSearch.',会社名 = '.$companyNameSearch.',グループ = '.$groupNoSearch.',担当者名 = '.$userNameSearch.'」(ユーザID = '.$objLoginUserInfo->strUserID.')';
+                fncWriteLog(LogLevel['Info'], LogPattern['Button'], $strLog);
+                $dataCSV = fncGetMUser($userIdSearch, $companyNameSearch, $groupNoSearch, $userNameSearch, $intLanguageType, 1, false);
+                $arr = array();
+
+                if($dataCSV == 0) {
+                    fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_005']);
+                    $_SESSION['USER_MNG_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_005'];
+                    header('Location: user_mng.php');
+                    exit;
+                }
+
+                if($dataCSV != 0 && count($dataCSV) > 0) {
+                    foreach($dataCSV as $item) {
+                        $strLanguageType = ($item['language_type'] == 0) ? $arrTextTranslate['PUBLIC_TEXT_006'] : $arrTextTranslate['PUBLIC_TEXT_007'];
+
+                        $address = (is_null($item['address']) || $item['address'] == '') ? '' : chunk_split($item['address'], 50, PHP_EOL);
+                        $remarks = (is_null($item['remarks']) || $item['remarks'] == '') ? '' : chunk_split($item['remarks'], 50, PHP_EOL);
+
+                        $arr[] = [
+                            $item['user_id'],
+                            $item['password'],
+                            $item['expiration_date_s'].'～'.$item['expiration_date_e'],
+                            iff(is_null($item['company_name']), '', $item['company_name']),
+                            iff(is_null($item['abbreviations']), '', $item['abbreviations']),
+                            iff(is_null($item['inst_category_name']), '', $item['inst_category_name']),
+                            iff(is_null($item['group_name']), '', $item['group_name']),
+                            iff(is_null($item['organization']), '', $item['organization']),
+                            iff(is_null($item['user_name']), '', $item['user_name']),
+                            iff(is_null($item['tel']), '', $item['tel']),
+                            iff(is_null($item['fax']), '', $item['fax']),
+                            iff(is_null($item['mail_address']), '', $item['mail_address']),
+                            iff(is_null($item['zip_code']), '', $item['zip_code']),
+                            $address,
+                            $remarks,
+                            $strLanguageType
+                        ];
+                    }
+
+                    $head = array([
+                        $arrTextTranslate['USER_MNG_TEXT_013'],
+                        $arrTextTranslate['USER_MNG_TEXT_014'],
+                        $arrTextTranslate['USER_MNG_TEXT_015'],
+                        $arrTextTranslate['USER_MNG_TEXT_016'],
+                        $arrTextTranslate['USER_MNG_TEXT_017'],
+                        $arrTextTranslate['USER_MNG_TEXT_018'],
+                        $arrTextTranslate['USER_MNG_TEXT_019'],
+                        $arrTextTranslate['USER_MNG_TEXT_020'],
+                        $arrTextTranslate['USER_MNG_TEXT_021'],
+                        $arrTextTranslate['USER_MNG_TEXT_022'],
+                        $arrTextTranslate['USER_MNG_TEXT_023'],
+                        $arrTextTranslate['USER_MNG_TEXT_024'],
+                        $arrTextTranslate['USER_MNG_TEXT_025'],
+                        $arrTextTranslate['USER_MNG_TEXT_026'],
+                        $arrTextTranslate['USER_MNG_TEXT_027'],
+                        $arrTextTranslate['USER_MNG_TEXT_028']
+                    ]);
+
+                    try {
+                        fncArray2Csv(array_merge($head, $arr), 'ユーザー_'.date("YmdHis").'.csv', 1);
+                        return 1;
+                    } catch (\Exception $e) {
+                        fncWriteLog(LogLevel['Error'], LogPattern['Error'], $arrTextTranslate['PUBLIC_MSG_005']);
+                        $_SESSION['USER_MNG_ERROR'][] = $arrTextTranslate['PUBLIC_MSG_005'];
+                        header('Location: user_mng.php');
+                        exit;
+                    }
+                } else {
+                    header('Location: user_mng.php');
+                    exit;
+                }
+            }
+        }
+    }
+?>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+EmcDataImport
+</name>
+</assembly>
+<members>
+<member name="F:EmcDataImport.PopClient.tcp">
+	<summary>TCP 接続</summary>
+</member><member name="F:EmcDataImport.PopClient.reader">
+	<summary>TCP 接続からのリーダー</summary>
+</member><member name="M:EmcDataImport.PopClient.#ctor(System.String,System.Int32)">
+	<summary>
+ コンストラクタです。POPサーバと接続します。
+ </summary>
+	<param name="hostname">POPサーバのホスト名。</param>
+	<param name="port">POPサーバのポート番号（通常は110）。</param>
+</member><member name="M:EmcDataImport.PopClient.Dispose">
+	<summary>
+ 解放処理を行います。
+ </summary>
+</member><member name="M:EmcDataImport.PopClient.Login(System.String,System.String)">
+	<summary>
+ POP サーバにログインします。
+ </summary>
+	<param name="username">ユーザ名。</param>
+	<param name="password">パスワード。</param>
+</member><member name="M:EmcDataImport.PopClient.GetList">
+	<summary>
+ POP サーバに溜まっているメールのリストを取得します。
+ </summary>
+	<returns>System.String を格納した ArrayList。</returns>
+</member><member name="M:EmcDataImport.PopClient.GetMail(System.String)">
+	<summary>
+ POP サーバからメールを 1つ取得します。
+ </summary>
+	<param name="num">GetList() メソッドで取得したメールの番号。</param>
+	<returns>メールの本体。</returns>
+</member><member name="M:EmcDataImport.PopClient.DeleteMail(System.String)">
+	<summary>
+ POP サーバのメールを 1つ削除します。
+ </summary>
+	<param name="num">GetList() メソッドで取得したメールの番号。</param>
+</member><member name="M:EmcDataImport.PopClient.Close">
+	<summary>
+ POP サーバと切断します。
+ </summary>
+</member><member name="M:EmcDataImport.PopClient.Send(System.String)">
+	<summary>
+ POP サーバにコマンドを送信します。
+ </summary>
+	<param name="s">送信する文字列。</param>
+</member><member name="M:EmcDataImport.PopClient.SendLine(System.String)">
+	<summary>
+ POP サーバにコマンドを送信します。末尾に改行を付加します。
+ </summary>
+	<param name="s">送信する文字列。</param>
+</member><member name="M:EmcDataImport.PopClient.ReadLine">
+	<summary>
+ POP サーバから 1行読み込みます。
+ </summary>
+	<returns>読み込んだ文字列。</returns>
+</member><member name="M:EmcDataImport.PopClient.Print(System.String)">
+	<summary>
+ チェック用にコンソールに出力します。
+ </summary>
+	<param name="msg">出力する文字列。</param>
+</member><member name="T:EmcDataImport.PopClient">
+	<summary>
+ POP よりメールを受信するクラスです。
+ </summary>
+</member><member name="P:EmcDataImport.My.Resources.Resources.ResourceManager">
+	<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member><member name="P:EmcDataImport.My.Resources.Resources.Culture">
+	<summary>
+  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member><member name="T:EmcDataImport.My.Resources.Resources">
+	<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member><member name="M:EmcDataImport.PopClientException.#ctor">
+	<summary>
+ コンストラクタです。
+ </summary>
+</member><member name="M:EmcDataImport.PopClientException.#ctor(System.String)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="message"></param>
+</member><member name="M:EmcDataImport.PopClientException.#ctor(System.String,System.Exception)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="message"></param>
+	<param name="innerException"></param>
+</member><member name="T:EmcDataImport.PopClientException">
+	<summary>
+ PopClient の例外クラスです。
+ </summary>
+</member><member name="F:EmcDataImport.MailHeader.mailheader">
+	<summary>メールヘッダ部</summary>
+</member><member name="M:EmcDataImport.MailHeader.#ctor(System.String)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="mail">メール本体。</param>
+</member><member name="P:EmcDataImport.MailHeader.Text">
+	<summary>
+ ヘッダ部全体を返します。
+ </summary>
+</member><member name="P:EmcDataImport.MailHeader.Item(System.String)">
+	<summary>
+ ヘッダの各行を返します。
+ name に null、もしくは、空文字列を渡した場合はすべてのヘッダを返します。
+ </summary>
+</member><member name="M:EmcDataImport.MailHeader.Decode(System.String)">
+	<summary>
+ デコードします。
+ </summary>
+	<param name="encodedtext">デコードする文字列。</param>
+	<returns>デコードした結果。</returns>
+</member><member name="T:EmcDataImport.MailHeader">
+	<summary>
+ メールヘッダ部を取得するためのクラスです。
+ </summary>
+</member><member name="F:EmcDataImport.MailBody.mailbody">
+	<summary>メールボディ部</summary>
+</member><member name="F:EmcDataImport.MailBody._multiparts">
+	<summary>各マルチパート部のコレクション</summary>
+</member><member name="M:EmcDataImport.MailBody.#ctor(System.String)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="mail">メール本体。</param>
+</member><member name="P:EmcDataImport.MailBody.Text">
+	<summary>
+ ボディ部全体を返します。
+ </summary>
+</member><member name="P:EmcDataImport.MailBody.Multiparts">
+	<summary>
+ マルチパート部のコレクションを返します。
+ </summary>
+</member><member name="T:EmcDataImport.MailBody">
+	<summary>
+ メールボディ部を取得するためのクラスです。
+ </summary>
+</member><member name="F:EmcDataImport.MailMultipart.mail">
+	<summary>メール本体</summary>
+</member><member name="M:EmcDataImport.MailMultipart.#ctor(System.String)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="mail">メール本体。</param>
+</member><member name="P:EmcDataImport.MailMultipart.Header">
+	<summary>
+ ヘッダ部を取得します。
+ </summary>
+</member><member name="P:EmcDataImport.MailMultipart.Body">
+	<summary>
+ ボディ部を取得します。
+ </summary>
+</member><member name="T:EmcDataImport.MailMultipart">
+	<summary>
+ ひとつのマルチパート部をあらわすクラスです。
+ </summary>
+</member><member name="F:EmcDataImport.Mail.mail">
+	<summary>メール本体</summary>
+</member><member name="M:EmcDataImport.Mail.#ctor(System.String)">
+	<summary>
+ コンストラクタです。
+ </summary>
+	<param name="mail">メール本体。</param>
+</member><member name="P:EmcDataImport.Mail.Header">
+	<summary>
+ ヘッダ部を取得します。
+ </summary>
+</member><member name="P:EmcDataImport.Mail.Body">
+	<summary>
+ ボディ部を取得します。
+ </summary>
+</member><member name="T:EmcDataImport.Mail">
+	<summary>
+ メールを表すクラスです。
+ </summary>
+</member><member name="M:EmcDataImport.PcMoniter.PcMoniterService.xCheckSetting(System.String@)">
+	<summary>
+ 設定ファイルチェック
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:EmcDataImport.PcMoniter.PcMoniterService.PopTest">
+	<summary>
+ POP に接続しメールを取得するテストを実行します。
+ </summary>
+</member>
+</members>
+</doc>

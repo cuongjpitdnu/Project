@@ -1,0 +1,10 @@
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe.config
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\ToolUpdate.pdb
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.dll
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\bin\Release\Newtonsoft.Json.xml
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.frmUpdate.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.Properties.Resources.resources
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.csproj.GenerateResource.Cache
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.exe
+D:\Du an moi\Code\ToolUpdate\ToolUpdate\obj\Release\ToolUpdate.pdb

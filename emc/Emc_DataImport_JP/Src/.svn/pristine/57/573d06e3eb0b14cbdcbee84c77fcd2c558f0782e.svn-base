@@ -1,0 +1,28 @@
+table.blueTable {
+    border: 1px solid #FFFFFF;
+    width: 100%;
+    background-color: #d3d3d3 !important;
+    margin-top: 10px !important;
+}
+
+table.blueTable td, table.blueTable th {
+    border: 1px solid #FFFFFF;
+}
+table.blueTable td{
+    vertical-align: top;
+}
+table.blueTable thead th {
+    font-weight: bold;
+    border-left: 2px solid #FFFFFF;
+    width: 20%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+@media  screen and (max-width: 1366px) {
+    /* insert styles here */
+    table.blueTable thead th {
+        padding: 5px 0;
+    }
+}

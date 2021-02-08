@@ -1,0 +1,69 @@
+<?php
+/*
+* @portal_proc.php
+*
+* @create 2020/02/17 KBS Tam.nv
+* @update
+*/
+
+
+require_once('portal_function.php');
+$_POST['load_fromQuery'] =1;
+$intLoadQueryFirstTime = 1;
+//thang
+if(isset($_REQUEST['tab'])){
+    $_SESSION['tab'] = $_REQUEST['tab'];
+    exit();
+}
+//end thang
+$intAjax = 0;
+if(@$_POST['action']=='load_info'){
+    $_SESSION["SES_TIME"] = date( "Y/m/d H:i:s", time() );
+    $dtmDate = $_POST['dtmDateFilter'];
+    $arrInfo = get_annouce($dtmDate);
+    tranInfo($arrInfo,$objLoginUserInfo);
+    return $arrInfo;
+}elseif(@$_POST['action']=='load_bull'){
+    $_SESSION["SES_TIME"] = date( "Y/m/d H:i:s", time() );
+    $arrBullUntran = bullUntran();
+    tranBul($arrBullUntran,$objLoginUserInfo);
+    $arrBulletin = get_query_bulletin();
+    $intAjax = 1;
+    return $arrBulletin;
+}elseif(@$_POST['action']=='load_bull_map'){
+    $_SESSION["SES_TIME"] = date( "Y/m/d H:i:s", time() );
+    $strIdList = $_POST['arrLocationIds'];
+    $arrIdList = explode(',',$strIdList);
+//    $strIdListIn = implode(",", array_map('intval',$arrIdList));
+    $arrBulletin = get_query_bulletin($arrIdList);
+    if(!empty($arrBulletin)){
+        if(count($arrBulletin) == 1){
+            $_POST['id'] = $arrBulletin[0]['BULLETIN_BOARD_NO'];
+            include 'bulletin_board_view.php';
+        }else{
+            include 'bull_form_table.php';
+        }
+    }
+}else{
+    $strViewLog = 'ポータル画面 画面表示 (ユーザID = '.$objLoginUserInfo->strUserID.') '.
+        (isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+    fncWriteLog(LogLevel['Info'] , LogPattern['View'], $strViewLog);
+
+    fncSessionTimeOutCheck();
+    $arrInfo = get_annouce();
+    tranInfo($arrInfo,$objLoginUserInfo);
+    $arrBullUntran = bullUntran();
+    tranBul($arrBullUntran,$objLoginUserInfo);
+    $arrBulletin = get_query_bulletin();
+    $intIncident = count(get_incident_case());
+    $arrLinkCategory = get_link_category();
+
+    if(!$intIncident && $objLoginUserInfo->intIncidentCaseRegPerm){
+        $intShowBtn = 1;
+    }else{
+        $intShowBtn = 0;
+    }
+
+}
+
+?>

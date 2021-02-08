@@ -1,0 +1,208 @@
+<?php
+require_once('common/common.php');
+// require_once('bulletin_board_mng_proc.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+
+
+if(fncConnectDB() == false) {
+	$_SESSION['LOGIN_ERROR'] = 'DB接続に失敗しました。';
+	header('Location: login.php');
+	exit;
+}
+$arrTitle =  array(
+    'COMPANY_MNG_TEXT_001',
+    'COMPANY_MNG_TEXT_002',
+    'COMPANY_MNG_TEXT_003',
+    'COMPANY_MNG_TEXT_004',
+    'COMPANY_MNG_TEXT_005',
+    'COMPANY_MNG_TEXT_006',
+    'COMPANY_MNG_TEXT_007',
+    'COMPANY_MNG_TEXT_008',
+    'COMPANY_MNG_TEXT_009',
+    'COMPANY_MNG_TEXT_010',
+    'PUBLIC_BUTTON_001',
+    'PUBLIC_BUTTON_006',
+    'PUBLIC_BUTTON_009',
+    'PUBLIC_BUTTON_010',
+    'PUBLIC_BUTTON_015',
+    'COMPANY_MNG_MSG_001',
+    'PUBLIC_MSG_001',
+    'PUBLIC_MSG_009',
+    'PUBLIC_MSG_008',
+
+);
+$arrTextTranslate = getListTextTranslate($arrTitle);
+//エラーメッセージ確認
+$strLoginError = '';
+if(!isset($_SESSION['LOGINUSER_INFO'])) {
+    echo "
+    <script>
+        alert('".PUBLIC_MSG_008_JPN . "/" . PUBLIC_MSG_008_ENG."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+$user = fncSelectOne("SELECT USER_NO FROM m_user WHERE USER_NO=?", [$userInfo->intUserNo], '会社情報管理画面');
+if(!$user) {
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_008']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+	exit();
+}
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+// print_r($userInfo);
+
+//redirect if dont have permission
+if($userInfo->intMenuPerm != 1) {
+    echo "
+    <script>
+        alert('".$arrTextTranslate['PUBLIC_MSG_009']."');
+        window.location.href = 'login.php';
+    </script>
+    ";
+}
+
+$viewLog = 'ログ内容 = 会社情報管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+//get inst cats
+$strSQL = "SELECT INST_CATEGORY_NO,";
+$strSQL .= iff($userInfo->intLanguageType, " INST_CATEGORY_NAME_ENG as INST_CATEGORY_NAME,", " INST_CATEGORY_NAME_JPN as INST_CATEGORY_NAME,");
+$strSQL .= " INST_CATEGORY_NAME_ENG,";
+$strSQL .= " INST_CATEGORY_NAME_JPN,";
+
+$strSQL .= " SORT_NO";
+$strSQL .= " FROM m_inst_category ORDER BY SORT_NO ASC";
+
+$instCats = fncSelectData($strSQL, [], 1, false, '会社情報管理画面');
+
+// print_r($instCats);
+//get m_groups
+$strSQL = "SELECT GROUP_NO,";
+$strSQL .= iff($userInfo->intLanguageType, " GROUP_NAME_ENG as GROUP_NAME,", " GROUP_NAME_JPN as GROUP_NAME,");
+$strSQL .= " GROUP_NAME_ENG,";
+$strSQL .= " GROUP_NAME_JPN,";
+
+$strSQL .= " SORT_NO";
+$strSQL .= " FROM m_group ORDER BY SORT_NO ASC";
+
+$groups = fncSelectData($strSQL, [], 1, false, '会社情報管理画面');
+// print_r($groups);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="<?php echo $csrf; ?>">
+    <title><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_001']; ?></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/nextpage.js"></script> -->
+    <script src="js/common.js"></script>
+
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title"><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_001']; ?></div>
+            <?php if(isset($_SESSION['COMPANY_MNG_ERROR'])) {
+				echo '<font color="red" class="error">'.$_SESSION['COMPANY_MNG_ERROR'].'</font>';
+				unset($_SESSION['COMPANY_MNG_ERROR']);
+			}else{
+				echo '<font color="red" class="error"></font>';
+			}
+			?>
+            <div class="form-body">
+                <div class="cont-title">
+                <form class="search-form" name="searchForm">
+                    <input type="hidden" name="loadList" value="1">
+                    <div class=" in-line">
+                        <div class="label-80"><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_002']; ?></div>
+                        <input type="text" class="t-input t-input-125" name="txtCompanyName" value="" >
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80"><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_003']; ?></div>
+                        <input type="text" class="t-input t-input-125" name="txtAbbreviations" value="">
+                    </div>
+                    <div class="in-line">
+                        <div class="label-100"><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_004']; ?></div>
+                        <div class="select-container">
+                            <select name="cmbInstCategory">
+                                <option value="">ALL</option>
+                                <?php if(isset($instCats)) foreach($instCats as $instCat) {
+                                    echo '<option value="'.$instCat['INST_CATEGORY_NO'].'">'.$instCat['INST_CATEGORY_NAME'].'</option>';
+                                }?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="in-line">
+                        <div class="label-80"><?php echo $arrTextTranslate['COMPANY_MNG_TEXT_005']; ?></div>
+                        <div class="select-container">
+                            <select name="cmbGroup">
+                                <option value="">ALL</option>
+                                <?php if(isset($groups)) foreach($groups as $group) {
+                                    echo '<option value="'.$group['GROUP_NO'].'">'.$group['GROUP_NAME'].'</option>';
+                                }?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="in-line col-right">
+                        <input type="button" class="tbl-btn tbl-btn-action btn-search"  value="<?php echo $arrTextTranslate['PUBLIC_BUTTON_006']; ?>">
+                    </div>
+                </form>
+                </div>
+
+                <div class="ajax-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var confirmMsg = '<?php echo $arrTextTranslate['COMPANY_MNG_MSG_001']; ?>';
+    var csrf = '<?php echo $csrf; ?>';
+    var ajaxUrl = 'company_mng_proc.php';
+    var dataMsgError = '<?php echo $arrTextTranslate['PUBLIC_MSG_001']; ?>';
+
+    $(function() {
+        function loadPage() {
+            $.ajax({
+                url: ajaxUrl,
+                type: 'post',
+                data: [{name: 'X-CSRF-TOKEN', value: csrf}],
+                success: function(result) {
+                    $(".ajax-content").html(result);
+                }
+            });
+        }
+        loadPage();
+    });
+</script>
+</html>

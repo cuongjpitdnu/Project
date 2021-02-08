@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>権限設定</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">権限設定</div>
+            <div class="form-body">
+                <table class="blueTable">
+                    <thead>
+                        <tr>
+                            <th rowspan="3" align="center" class="text-center">ID</th>
+                            <th rowspan="3" align="center" class="text-center">会社名</th>
+                            <th colspan="7" align="center" class="text-center">権限の設定</th>
+                            <th colspan="6" align="center" class="text-center">メール通知設定</th>
+                        </tr>
+                        <tr>
+                            <th colspan="3" align="center" class="text-center">デイリーボード</th>
+                            <th colspan="3" align="center" class="text-center">インシデントボード</th>
+                            <th rowspan="2" align="center" class="text-center">各種メニュー</th>
+                            <th colspan="2" align="center" class="text-center">デイリーボード</th>
+                            <th colspan="2" align="center" class="text-center">インシデントボード</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th align="center" class="text-center">お知らせ</th>
+                            <th align="center" class="text-center">掲示板</th>
+                            <th align="center" class="text-center">問い合わせ</th>
+                            <th align="center" class="text-center">事案</th>
+                            <th align="center" class="text-center">依頼事項</th>
+                            <th align="center" class="text-center">情報</th>
+                            <th align="center" class="text-center">お知らせ <br/> 登録・編集・完了</th>
+                            <th align="center" class="text-center">掲示板 <br/> 追加・完了</th>
+                            <th align="center" class="text-center">事案 <br/> 登録・編集・完了</th>
+                            <th align="center" class="text-center">依頼事項 <br/> 登録・編集・完了</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="13" align="right">
+                                <button type="submit" class="tbtn tbtn-defaut" data-dismiss="modal">登録</button>
+                                <button type="submit" class="tbtn-cancel tbtn-defaut " id="close-setting" data-dismiss="modal">閉じる</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">KIX010</td>
+                            <td class="text-center">関西空港</td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                            <td align="center"><input type="checkbox" name="vehicle1" value="Bike"></td>
+                        </tr>
+                    </tbody>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .modal-lg {
+        width: 1205px; !important;
+    }
+</style>
+</html>

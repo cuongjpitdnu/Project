@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-22 07:01+0200\n"
+"PO-Revision-Date: 2019-11-15 16:35+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi_VN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# should be skipped
+msgid "FOMAT_MSG_BLANK"
+msgstr "Vui lòng nhập mật khẩu {0}"
+
+msgid "FOMAT_MSG_BLANK_USER"
+msgstr "Vui lòng nhập {0}"
+
+msgid "LOGIN_BTN_EXIT"
+msgstr "Thoát"
+
+msgid "LOGIN_BTN_LOGIN"
+msgstr "Đăng nhập"
+
+msgid "LOGIN_TITLE"
+msgstr "Đăng nhập"
+
+msgid "LOGIN_USERNAME"
+msgstr "Tài khoản"
+
+msgid "LOGIN_PASSWORD"
+msgstr "Mật khẩu"
+
+msgid "MSG_COMFIRM_DELETE"
+msgstr "Bạn có chắc chắn muốn xóa không?"
+
+msgid "MSG_CHANGE_PASS_ERR"
+msgstr "Thay đổi mật khẩu thất bại"
+
+msgid "MSG_CHANGE_PASS_SUCCESS"
+msgstr "Thay đổi mật khẩu thành công"
+
+msgid "MSG_ERR_LOGIN"
+msgstr "Bạn đã nhập tên người dùng hoặc mật khẩu không chính xác!"
+
+msgid "MSG_ERR_PASS_BLANK"
+msgstr "Vui lòng nhập mật khẩu."
+
+msgid "MSG_ERR_USER_BLANK"
+msgstr "Vui lòng nhập tên đăng nhập."
+
+msgid "MSG_PASS_NOT_SAME"
+msgstr "Mật khẩu không khớp với mật khẩu xác nhận"
+
+msgid "MAIN_TITLE"
+msgstr "Quản lý"
+
+msgid "MAIN_BTN_DEVICE"
+msgstr "Thiết bị"
+
+msgid "MAIN_BTN_DATA"
+msgstr "Dữ liệu"
+
+msgid "MAIN_BTN_USER"
+msgstr "Tài khoản"
+
+msgid "MAIN_BTN_LANGUAGE"
+msgstr "Ngôn ngữ"
+
+msgid "MAIN_BTN_UPDATE"
+msgstr "Cập nhật"

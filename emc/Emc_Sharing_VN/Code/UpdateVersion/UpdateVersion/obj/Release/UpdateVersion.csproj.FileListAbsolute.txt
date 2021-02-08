@@ -1,0 +1,10 @@
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Release\UpdateVersion.exe.config
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Release\UpdateVersion.exe
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\bin\Release\UpdateVersion.pdb
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.Main.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.frmUpdateVersion.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.Properties.Resources.resources
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.csproj.GenerateResource.Cache
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.exe
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.pdb
+D:\Du an moi\Code\UpdateVersion\UpdateVersion\obj\Release\UpdateVersion.csprojResolveAssemblyReference.cache

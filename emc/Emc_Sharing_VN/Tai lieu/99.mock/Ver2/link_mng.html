@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>リンク情報管理
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/nextpage.js"></script>
+
+    <style>
+        table.blueTable td{
+            padding: 9px 10px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="main-form">
+            <div class="form-title">リンク情報管理</div>
+            <div class="form-body">
+                <div class="cont-title col-right">
+                    <div class="in-line">
+                        <div class="label-80">カテゴリ</div>
+                        <div class="select-container">
+                            <select >
+                                <option value="ja">気象</option>
+                                <option value="en">交通</option>
+                                <option value="en">フライト</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="in-line">
+                        <input type="button" class="tbtn tbtn-defaut" value=" 検索 ">
+                    </div>
+                </div>
+
+                <table class="blueTable">
+                    <thead>
+                    <tr>
+                        <th  class="text-th">カテゴリ</th>
+                        <th  class="text-th">リンク名</th>
+                        <th  class="text-th">リンク内容</th>
+                        <th  class="text-th">処理</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4" align="right">
+                            <button type="submit" class="tbtn tbtn-defaut" onclick="loadModal('link_edit.html')">登録</button>　
+                            <button type="button" class="tbtn tbtn-defaut" id="close" onclick="history.back()">戻る</button>
+                        </td>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">気象</td>
+                        <td>飛行場実況気象（Meter）</td>
+                        <td ><a href="#">http://wwww.....</a></td>
+                        <td class="text-center" style="position: relative">
+                            <div class="in-lineblock">
+                                <button class="tbl-btn tbtn-green in-line" onclick="loadModal('link_edit.html')">変更</button>
+                                <button class="tbl-btn tbtn-red in-line">削除</button>
+                                <button class="tbl-btn tbtn-blue in-line">↑</button>
+                                <button class="tbl-btn tbtn-blue in-line">↓</button>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">交通</td>
+                        <td>飛行場交通状況</td>
+                        <td ><a href="#">http://wwww.....</a></td>
+                        <td class="text-center" style="position: relative">
+                            <div class="in-lineblock">
+                                <button class="tbl-btn tbtn-green in-line" onclick="loadModal('link_edit.html')">変更</button>
+                                <button class="tbl-btn tbtn-red in-line">削除</button>
+                            </div>
+                            <button class="tbl-btn tbtn-blue in-line">↑</button>
+                                <button class="tbl-btn tbtn-blue in-line">↓</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">交通</td>
+                        <td>飛行場交通状況（Meter）</td>
+                        <td ><a href="#">http://wwww.....</a></td>
+                        <td class="text-center" style="position: relative">
+                            <div class="in-lineblock">
+                                <button class="tbl-btn tbtn-green in-line" onclick="loadModal('link_edit.html')">変更</button>
+                                <button class="tbl-btn tbtn-red in-line">削除</button>
+                            </div>
+                            <button class="tbl-btn tbtn-blue in-line">↑</button>
+                                <button class="tbl-btn tbtn-blue in-line">↓</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">フライト</td>
+                        <td >フライト情報（Meter）</td>
+                        <td ><a href="#">http://wwww.....</a></td>
+                        <td class="text-center" style="position: relative">
+                            <div class="in-lineblock">
+                                <button class="tbl-btn tbtn-green in-line" onclick="loadModal('link_edit.html')">変更</button>
+                                <button class="tbl-btn tbtn-red in-line">削除</button>
+                            </div>
+                            <button class="tbl-btn tbtn-blue in-line">↑</button>
+                                <button class="tbl-btn tbtn-blue in-line">↓</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

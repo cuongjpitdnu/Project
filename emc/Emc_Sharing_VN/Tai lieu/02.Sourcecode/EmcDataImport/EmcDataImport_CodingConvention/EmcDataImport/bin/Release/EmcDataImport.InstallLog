@@ -1,0 +1,57 @@
+﻿Installing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Installing service EmcDataImport...
+Service EmcDataImport has been successfully installed.
+Creating EventLog source EmcDataImport in log Application...
+Committing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Installing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Installing service EmcDataImport...
+Creating EventLog source EmcDataImport in log Application...
+Rolling back assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Restoring event log to previous state for source EmcDataImport.
+Uninstalling assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Removing EventLog source EmcDataImport.
+Service EmcDataImport is being removed from the system...
+Service EmcDataImport was successfully removed from the system.
+Installing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Rolling back assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Installing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog
+Installing service EmcDataImport...
+Service EmcDataImport has been successfully installed.
+Creating EventLog source EmcDataImport in log Application...
+Committing assembly 'D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.exe
+   logfile = D:\Code EmcDataImport\Src\EmcDataImport\EmcDataImport_ CodingConvention\EmcDataImport\bin\Release\EmcDataImport.InstallLog

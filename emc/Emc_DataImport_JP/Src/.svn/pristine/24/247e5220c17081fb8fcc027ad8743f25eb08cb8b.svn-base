@@ -1,0 +1,472 @@
+<?php
+// -------------------------------------------------------------------------
+//	function	: ログイン処理画面 (仮)ページ
+//	create		: 2020/01/17 KBS S.Tasaki
+//	update		:
+// -------------------------------------------------------------------------
+
+require_once('common/common.php');
+
+header('Content-type: text/html; charset=utf-8');
+header('X-FRAME-OPTIONS: DENY');
+$_SESSION['errStr'] = '';
+if(!isset($_SESSION['LOGINUSER_INFO'])){
+
+	echo 0;
+	exit();
+}
+$userInfo = unserialize($_SESSION['LOGINUSER_INFO']);
+
+
+// get list text translate
+$arrTitle =  array(
+	'BULLETIN_BOARD_MNG_TEXT_001',
+	'BULLETIN_BOARD_MNG_TEXT_002',
+	'BULLETIN_BOARD_MNG_TEXT_003',
+	'BULLETIN_BOARD_MNG_TEXT_004',
+	'BULLETIN_BOARD_MNG_TEXT_005',
+	'BULLETIN_BOARD_MNG_TEXT_006',
+	'BULLETIN_BOARD_MNG_TEXT_007',
+	'BULLETIN_BOARD_MNG_TEXT_008',
+	'BULLETIN_BOARD_MNG_TEXT_009',
+	'BULLETIN_BOARD_MNG_TEXT_010',
+	'BULLETIN_BOARD_MNG_TEXT_011',
+	'BULLETIN_BOARD_MNG_TEXT_012',
+	'BULLETIN_BOARD_MNG_TEXT_013',
+	'BULLETIN_BOARD_MNG_TEXT_014',
+	'BULLETIN_BOARD_MNG_TEXT_015',
+	'BULLETIN_BOARD_MNG_TEXT_016',
+	'BULLETIN_BOARD_MNG_TEXT_017',
+	'BULLETIN_BOARD_MNG_TEXT_018',
+	'BULLETIN_BOARD_MNG_TEXT_019',
+	'BULLETIN_BOARD_MNG_TEXT_020',
+	'BULLETIN_BOARD_MNG_TEXT_021',
+	'BULLETIN_BOARD_MNG_MSG_003',
+	'BULLETIN_BOARD_MNG_MSG_002',
+	'PUBLIC_BUTTON_009',
+	'PUBLIC_BUTTON_010',
+	'PUBLIC_BUTTON_007',
+	'PUBLIC_BUTTON_006',
+	'PUBLIC_BUTTON_001',
+	'PUBLIC_BUTTON_011',
+	'PUBLIC_BUTTON_012',
+	'PUBLIC_BUTTON_015',
+	'BULLETIN_BOARD_MNG_MSG_001',
+	'PUBLIC_MSG_004',
+	'PUBLIC_MSG_007',
+	'PUBLIC_MSG_001',
+	'PUBLIC_MSG_005',
+	'PUBLIC_MSG_006',
+	'PUBLIC_TEXT_016',
+);
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+
+//DB接続
+if(fncConnectDB() == false){
+
+	echo 0;
+	exit();
+
+}
+
+//load list data
+
+if(!isset($_POST['page']) && !isset($_POST['mode']) && !isset($_SESSION['redirect'])){
+	$_SESSION['txtIncident'] = '';
+	$_SESSION['txtDateStart'] = '';
+	$_SESSION['txtDateEnd'] = '';
+	$_SESSION['chkDone'] = '';
+
+}
+// if(isset($_SESSION['redirect'])) print_r($_SESSION['redirect']);
+
+if(isset($_SESSION['redirect'])){
+	unset($_SESSION['redirect']);
+}
+if(isset($_POST['loadList'])){
+
+
+	if(isset($_POST['page'])) $GLOBALS['currentPage'] = $_POST['page'];
+
+	if(isset($_POST['txtIncident'])){
+		$_SESSION['txtIncident'] = $_POST['txtIncident'];
+	}
+
+	if(isset($_POST['txtDateStart'])){
+		$_SESSION['txtDateStart'] = $_POST['txtDateStart'];
+	}
+
+	if(isset($_POST['txtDateEnd'])){
+		$_SESSION['txtDateEnd'] = $_POST['txtDateEnd'];
+
+	}
+	if(isset($_POST['chkDone'])){
+		$_SESSION['chkDone'] = $_POST['chkDone'];
+	}else{
+		$_SESSION['chkDone'] = '';
+	}
+}
+
+$arrTextTranslate = getListTextTranslate($arrTitle, $userInfo->intLanguageType);
+//sql query
+
+$conditionArray = [];
+$strSQL = '';
+$strSQL .= ' SELECT t_bulletin_board.BULLETIN_BOARD_NO,';
+$strSQL .= ' t_bulletin_board.OCCURRENCE_DATE,';
+
+if($userInfo->intLanguageType){
+	$strSQL .= ' m_business_name.BUSINESS_NAME_ENG as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN,';
+	$strSQL .= ' t_bulletin_board.INCIDENT_NAME_ENG as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN,';
+	$strSQL .= ' m_place_name.PLACE_NAME_ENG as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN,';
+}else{
+	$strSQL .= ' m_business_name.BUSINESS_NAME_JPN as BUSINESS_NAME, m_business_name.BUSINESS_NAME_ENG, m_business_name.BUSINESS_NAME_JPN,';
+	$strSQL .= ' t_bulletin_board.INCIDENT_NAME_JPN as INCIDENT_NAME, t_bulletin_board.INCIDENT_NAME_ENG, t_bulletin_board.INCIDENT_NAME_JPN,';
+	$strSQL .= ' m_place_name.PLACE_NAME_JPN as PLACE_NAME, m_place_name.PLACE_NAME_ENG, m_place_name.PLACE_NAME_JPN,';
+}
+$strSQL .= ' t_bulletin_board.CORRECTION_FLAG,';
+$strSQL .= ' t_bulletin_board.COMP_DATE,';
+$strSQL .= ' t_bulletin_board.REG_DATE,';
+$strSQL .= ' m_user.USER_NAME,';
+$strSQL .= ' m_user.DELETE_FLAG as user_delete_flag';
+
+$strSQL .= ' FROM t_bulletin_board INNER JOIN m_business_name';
+$strSQL .= ' ON t_bulletin_board.BUSINESS_NAME=m_business_name.BUSINESS_NAME_JPN';
+$strSQL .= ' INNER JOIN m_place_name';
+$strSQL .= ' ON t_bulletin_board.PLACE_NAME=m_place_name.PLACE_NAME_JPN';
+$strSQL .= ' LEFT OUTER JOIN m_user';
+$strSQL .= ' ON t_bulletin_board.REG_USER_NO=m_user.USER_NO';
+
+if(isset($_SESSION['txtIncident']) && $_SESSION['txtIncident'] != ''){
+	if($userInfo->intLanguageType){
+		$strSQL .= ' WHERE INCIDENT_NAME_ENG like ?';
+	}else{
+		$strSQL .= ' WHERE INCIDENT_NAME_JPN like ?';
+	}
+	$next = 1;
+	$conditionArray[] = '%'.$_SESSION['txtIncident'].'%';
+}
+
+if(isset($_SESSION['txtDateStart']) && $_SESSION['txtDateStart'] != ''){
+	$tmpDate = explode('/', $_SESSION['txtDateStart']);
+	if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+	$checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+	else{
+		$checkDate = false;
+	}
+	if(!$checkDate){
+		$_SESSION['errStr'] .= $arrTextTranslate['BULLETIN_BOARD_MNG_MSG_002'].'<br>';
+	}
+
+	if(isset($next)){
+		$strSQL .= ' AND OCCURRENCE_DATE >= ?';
+	} else {
+		$strSQL .= ' WHERE OCCURRENCE_DATE >= ?';
+	}
+	$next = 1;
+	$conditionArray[] = $_SESSION['txtDateStart'];
+}
+
+if(isset($_SESSION['txtDateEnd']) && $_SESSION['txtDateEnd'] != ''){
+	$tmpDate = explode('/', $_SESSION['txtDateEnd']);
+	if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+	$checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+	else {
+		$checkDate = false;
+	}
+	if(!$checkDate) {
+		$_SESSION['errStr'] .= $arrTextTranslate['BULLETIN_BOARD_MNG_MSG_002'].'<br>';
+	}
+	if(isset($next)) {
+		$strSQL .= ' AND COMP_DATE <= ?';
+	} else {
+		$strSQL .= ' WHERE COMP_DATE <= ?';
+	}
+	$next = 1;
+	$conditionArray[] = $_SESSION['txtDateEnd'];
+
+}
+if(isset($_SESSION['chkDone']) && $_SESSION['chkDone'] != ''){
+	if(isset($next)){
+		$strSQL .= ' AND COMP_DATE IS NOT NULL';
+	}else{
+		$strSQL .= ' WHERE COMP_DATE IS NOT NULL';
+	}
+}
+if($_SESSION['txtDateStart'] != '' && $_SESSION['txtDateEnd'] != '' && $_SESSION['txtDateStart'] >= $_SESSION['txtDateEnd']){
+	$tmpDate = explode('/', $_SESSION['txtDateStart']);
+	if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+	$checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+	else{
+		$checkDate = false;
+	}
+	$tmpDate = explode('/', $_SESSION['txtDateEnd']);
+	if(isset($tmpDate[0]) && isset($tmpDate[1]) && isset($tmpDate[2]))
+	$checkDate = checkdate($tmpDate[1], $tmpDate[2], $tmpDate[0]);
+	else{
+		$checkDate = false;
+	}
+	if($checkDate)
+	$_SESSION['errStr'] .= $arrTextTranslate['BULLETIN_BOARD_MNG_MSG_003'].'<br>';
+}
+
+$strSQL .= ' ORDER BY t_bulletin_board.OCCURRENCE_DATE DESC';
+
+//mode
+if(isset($_POST['mode'])){
+	if($_POST['mode'] == 1){
+		$strSQL = '';
+		$strSQL .= 'DELETE FROM t_bulletin_board WHERE BULLETIN_BOARD_NO=:BULLETIN_BOARD_NO';
+		$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+		$query->bindParam(':BULLETIN_BOARD_NO', $_POST['id']);
+		$strSqlLog = str_replace(':BULLETIN_BOARD_NO', $_POST['id'], $strSQL);
+		fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], 'ユーザ管理画面'.$strSqlLog);
+		fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'掲示板管理画面　削除(ユーザID = '.$userInfo->strUserID.')');
+		$query->execute();
+
+
+		if($query->rowCount() > 0){
+			echo 0;
+			exit();
+		}else{
+			echo $arrTextTranslate['PUBLIC_MSG_004'];
+			fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_004']);
+			exit();
+		}
+	} else {
+		$tempArr = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], false, 'ユーザ管理画面', false);
+
+		$arr = [];
+		foreach($tempArr as $item){
+			$arr[] = [
+				//date("Y/n/j H:i", strtotime($item['OCCURRENCE_DATE'])),
+				$item['BUSINESS_NAME_JPN'],
+				$item['BUSINESS_NAME_ENG'],
+				$item['PLACE_NAME_JPN'],
+				$item['PLACE_NAME_ENG'],
+				$item['INCIDENT_NAME_JPN'],
+				$item['INCIDENT_NAME_ENG'],
+				iff(is_null($item['COMP_DATE']), date("Y/n/j", strtotime($item['OCCURRENCE_DATE'])). '~', date("Y/n/j", strtotime($item['OCCURRENCE_DATE'])). '~' . date("Y/n/j", strtotime($item['COMP_DATE']))),
+				$item['USER_NAME'],
+			];
+		}
+
+		$head = array([
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_012'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_013'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_014'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_015'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_016'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_017'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_018'],
+			$arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_019'],
+		]);
+
+		if($_POST['mode'] == 2) {
+			if(!count($tempArr)){
+				$_SESSION['BULLETIN_BOARD_MNG_ERROR'] = $arrTextTranslate['PUBLIC_MSG_005'];
+				$_SESSION['redirect'] = 1;
+				fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_005']);
+				header('Location: bulletin_board_mng.php');
+			}
+			$arr = array_merge($head, $arr);
+			// foreach($arr as $row){
+			// 	foreach($row as $item){
+			// 		$item = chunk_split($item, 50, PHP_EOL);
+			// 	}
+			// }
+
+			$check = fncArray2Csv($arr, '掲示板_'.date("YmdHis").'.csv', 1, null);
+			$searchQuery = '「インシデント件名 = '.$_SESSION['txtIncident'].',期間（開始）= '.$_SESSION['txtDateStart'].',期間（終了） = '.$_SESSION['txtDateEnd'].', 完了を表示 = '.iff($_SESSION['chkDone']!='',1,0).'」';
+			fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'掲示板管理画面　CSV出力 '.$searchQuery.'(ユーザID = '.$userInfo->strUserID.')');
+			if($check) {
+				exit();
+			} else {
+				$_SESSION['BULLETIN_BOARD_MNG_ERROR'] = $arrTextTranslate['PUBLIC_MSG_005'];
+				$_SESSION['redirect'] = 1;
+				fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_005']);
+				header('Location: bulletin_board_mng.php');
+			}
+		}
+		if($_POST['mode'] == 3){
+			if(!count($tempArr)){
+				echo $arrTextTranslate['PUBLIC_MSG_007'];
+				fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_007']);
+				exit();
+			}
+			$filename = date("YmdHis").'.csv';
+
+			$arr = array_merge($head, $arr);
+			// foreach($arr as $row){
+			// 	foreach($row as $item){
+			// 		$item = chunk_split($item, 50, PHP_EOL);
+			// 	}
+			// }
+
+			// fncArray2Csv($arr, 'Incident_'.date("YmdHis").'.csv', 1);
+			$check = fncArray2Csv($arr, $filename, 0, SHARE_FOLDER.'/'.ORGANIZE_BULLETIN_BOARD_FOLDER);
+			if($check){
+				try{
+					$GLOBALS['g_dbaccess']->funcBeginTransaction();
+					foreach($tempArr as $item){
+						$strSQL = '';
+						$strSQL .= 'DELETE FROM t_bulletin_board WHERE BULLETIN_BOARD_NO=:BULLETIN_BOARD_NO';
+						$query = $GLOBALS['g_dbaccess']->funcPrepare($strSQL);
+						$query->bindParam(':BULLETIN_BOARD_NO', $item['BULLETIN_BOARD_NO']);
+
+						$query->execute();
+						if($query->rowCount() > 0){
+							$strSqlLog = str_replace(':BULLETIN_BOARD_NO', $item['BULLETIN_BOARD_NO'], $strSQL);
+							fncWriteLog(LogLevel['Info'] , LogPattern['Sql'], 'ユーザ管理画面'.$strSqlLog);
+						}else{
+							$GLOBALS['g_dbaccess']->funcRollback();
+							unlink(SHARE_FOLDER.'/'.ORGANIZE_BULLETIN_BOARD_FOLDER.'/'.$filename);
+							echo $arrTextTranslate['PUBLIC_MSG_007'];
+							fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_007']);
+							exit();
+						}
+
+					}
+
+					$GLOBALS['g_dbaccess']->funcCommit();
+					$searchQuery = '「インシデント件名 = '.$_SESSION['txtIncident'].',期間（開始）= '.$_SESSION['txtDateStart'].',期間（終了） = '.$_SESSION['txtDateEnd'].', 完了を表示 = '.iff($_SESSION['chkDone']!='',1,0).'」';
+					fncWriteLog(LogLevel['Info'] , LogPattern['Button'],'掲示板管理画面　一括削除 '.$searchQuery.'(ユーザID = '.$userInfo->strUserID.')');
+				}catch(Exception $e){
+					echo $e->getMessage();
+					fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_007']);
+					$GLOBALS['g_dbaccess']->funcRollback();
+					if (!unlink(SHARE_FOLDER.'/'.ORGANIZE_BULLETIN_BOARD_FOLDER.'/'.$filename)) {
+						echo $arrTextTranslate['PUBLIC_MSG_007'];
+						exit();
+					}
+					else {
+						echo $arrTextTranslate['PUBLIC_MSG_007'];
+						exit();
+					}
+				}
+				exit();
+			}else{
+				echo $arrTextTranslate['PUBLIC_MSG_007'];
+				fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$arrTextTranslate['PUBLIC_MSG_007']);
+				exit();
+			}
+			exit();
+		}
+
+	}
+}
+
+if(isset($_SESSION['errStr']) && $_SESSION['errStr']!=''){
+	fncWriteLog(LogLevel['Error'] , LogPattern['Error'],$_SESSION['errStr']);
+?>
+
+<script>
+	<?php
+		if(isset($_SESSION['errStr']) && $_SESSION['errStr']!=''){
+	?>
+	$(function(){
+		var errStr = '<?php echo $_SESSION['errStr'] ?>';
+		$('.error').html(errStr);
+	});
+
+	<?php
+		unset($_SESSION['errStr']);
+		}
+	?>
+</script>
+
+<?php
+}else{
+	// $dataAll = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], false, false);
+	$data = fncSelectData($strSQL, $conditionArray, $GLOBALS['currentPage'], true, 'ユーザ管理画面');
+	if($data == 0){
+		echo 0;
+		exit();
+	}
+	if(isset($_POST['loadList'])){
+		if(isset($_POST['originalSearch']) && $_POST['originalSearch'] == 1) {
+			$searchQuery = '「インシデント件名 = '.$_SESSION['txtIncident'].',期間（開始）= '.$_SESSION['txtDateStart'].',期間（終了） = '.$_SESSION['txtDateEnd'].',
+			完了を表示 = '.iff($_SESSION['chkDone']!='',1,0).'」
+			';
+			$viewLog = '掲示板管理画面　検索を実施 '.$searchQuery.' (ユーザID = '.$userInfo->strUserID.')';
+			fncWriteLog(LogLevel['Info'] , LogPattern['Button'], $viewLog);
+		}
+	}else{
+		// $viewLog = '掲示板管理画面　画面表示(ユーザID = '.$userInfo->strUserID.') '.(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null);
+		// fncWriteLog(LogLevel['Info'] , LogPattern['View'], $viewLog);
+	}
+}
+
+?>
+<table class="blueTable">
+    <thead>
+    <tr>
+        <!-- <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_005']; ?></th> -->
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_005']; ?></th>
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_006']; ?></th>
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_007']; ?></th>
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_008']; ?></th>
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_009']; ?></th>
+        <th><?php echo $arrTextTranslate['BULLETIN_BOARD_MNG_TEXT_010']; ?></th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <td colspan="7" align="center">
+			<div style="float: left">
+			<font size="5">
+			<?php echo str_replace('%1%', $GLOBALS['totalRecord'], $arrTextTranslate['PUBLIC_TEXT_016'])  ; ?>
+			</font>
+			</div>
+            <div class="links in-line">
+			<?php fncViewPagination('bulletin_board_mng_proc.php'); ?>
+			</div>
+            <div class="in-line" style="float: right">
+				<form action="bulletin_board_mng_proc.php" method="post" id="formCSV">
+				<input type="hidden" name="X-CSRF-TOKEN" value="<?php echo $_POST['X-CSRF-TOKEN']; ?>">
+				<input type="hidden" name="mode" value="0">
+                <button type="submit" class="tbl-btn tbl-btn-action tbl-btn-csv" data-dismiss="modal"><?php echo $arrTextTranslate['PUBLIC_BUTTON_011']; ?></button>
+                <button type="submit" class="tbl-btn tbl-btn-action tbl-btn-csv-del" id="close" disabled><?php echo $arrTextTranslate['PUBLIC_BUTTON_012']; ?></button>
+				<button type="submit" class="tbl-btn tbl-btn-action tbn-btn-return"><?php echo $arrTextTranslate['PUBLIC_BUTTON_015']; ?></button>
+				</form>
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+    <tbody class="tbody-data">
+    <?php if(isset($data)) foreach($data as $item){ ?>
+    <tr>
+        <td class="text-center">
+        	<?php echo fncHtmlSpecialChars($item['BUSINESS_NAME']); ?>
+    	</td>
+        <td class="text-center"><a href="bulletin_board_view.php" data-id="<?php echo $item['BULLETIN_BOARD_NO']; ?>" class="load-modal"><?php echo fncHtmlSpecialChars((is_null($item['INCIDENT_NAME_JPN']) ? $item['INCIDENT_NAME_ENG'] : $item['INCIDENT_NAME_JPN'])); ?></a></td>
+        <td class="text-center">
+        	<?php echo !is_null($item['COMP_DATE']) ? date_format(date_create($item['OCCURRENCE_DATE']), 'Y/n/j').' ～ '.date_format(date_create($item['COMP_DATE']), 'Y/n/j') : date_format(date_create($item['OCCURRENCE_DATE']), 'Y/n/j').' ～ '; ?></td>
+        <td ><?php echo iff($item['user_delete_flag'],'',fncHtmlSpecialChars($item['USER_NAME'])); ?></td>
+        <td class="text-center">
+
+        	<?php echo(is_null($item['COMP_DATE']) ? '' : $arrTextTranslate['PUBLIC_BUTTON_007']); ?></td>
+        <td class="text-center">
+            <div class="btn-50"></div>
+            <button class="tbl-btn tbtn-red btn-del" data-id="<?php echo $item['BULLETIN_BOARD_NO'] ; ?>"><?php echo fncHtmlSpecialChars($arrTextTranslate['PUBLIC_BUTTON_010']); ?></button>
+        </td>
+    </tr>
+	<?php } ?>
+
+    </tbody>
+    </tr>
+</table>
+<script>
+	var numRecord = <?php echo $GLOBALS['totalRecord']; ?>;
+	var confirmMsg = '<?php echo str_replace('%0%', $GLOBALS['totalRecord'], $arrTextTranslate['PUBLIC_MSG_006']) ; ?>';
+	function checkDone(){
+		if($('[name="chkDone"]').prop('checked') == true){
+			$('.tbl-btn-csv-del').removeAttr('disabled');
+			$('.tbl-btn-csv-del').css("color", '#333');
+		}else{
+			$('.tbl-btn-csv-del').attr("disabled", true);
+			$('.tbl-btn-csv-del').css("color", 'gray');
+		}
+	}
+	checkDone();
+</script>
