@@ -1,0 +1,113 @@
+body {
+	font-family: ＭＳ ゴシック;
+	font-size: 14px;
+}
+
+.maintitle {
+	background-color: #1b587f;
+}
+
+.sysnormal {
+	color: #a6a6a3;
+}
+.sysnormal:hover {
+	color: #d9d9d9;
+	text-decoration: none;
+}
+
+.syssel {
+	color: #ffffff;
+}
+.syssel:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.menucellnormal {
+	background-color: #ffffff;
+}
+.menucellnormal:hover {
+	background-color: #e9e9e9;
+}
+
+.menulinknormal {
+	color: #000000;
+}
+.menulinknormal:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+.menucellsel {
+	background-color: #c1ddf1;
+}
+.menucellsel:hover {
+	background-color: #c1ddf1;
+}
+
+.menulinksel {
+	color: #000000;
+}
+.menulinksel:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+.linkcursor {
+	cursor: pointer;
+}
+
+.tooltip .tooltip-inner {
+	color: red;
+	background-color: #fff;
+	border: solid 1px #000;
+}
+
+.tooltip-auto[x-placement^="right"] .arrow::before,
+.tooltip .arrow::before {
+	bottom: 0;
+	border-width: 0 !important;
+	border-bottom-color: #fff !important;
+}
+
+.tooltip.show {
+	opacity: 1;
+}
+
+.icon-circle {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	line-height: 18px;
+	border-radius: 50%;
+	border: solid 1px red;
+}
+
+.icon-small {
+	font-size: 0.8em;
+}
+
+.info-circle {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	line-height: 18px;
+	border-radius: 50%;
+	border: solid 1px black;
+}
+
+.head-purple {
+	background-color: #b4c7e7;
+	padding: 10px 30px;
+}
+
+.real-space {
+	white-space: pre-wrap !important;
+}
+
+nav {
+	float: left;
+	margin-right: 30px;
+}

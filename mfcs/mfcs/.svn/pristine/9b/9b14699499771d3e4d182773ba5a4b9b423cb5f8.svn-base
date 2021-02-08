@@ -1,0 +1,1186 @@
+<?php
+/*
+ * @TimeTrackerCommon.php
+ * TimeTrackerNX用WebAPI処理用ファイル
+ *
+ * @create 2020/06/01 KBS T.Nishida
+ *
+ * @update
+ */
+
+namespace App\Librarys;
+
+use DB;
+use App\Models\WorkItemIDList;
+use App\Models\MstProject;
+use App\Models\TimeTrackerRunApiInfo;
+use Illuminate\Database\QueryException;
+use DateTime;
+
+/**
+ * TimeTrackerNX用WebAPI処理クラス
+ *
+ * @create 2020/06/01　T.Nishida
+ * @update
+ */
+
+class TimeTrackerCommon
+{
+
+	/**
+	 * トークンを発行
+	 *
+	 * @param  string ユーザ
+	 * @param  string パスワード
+	 * @return 正常時：トークン文字列(string) エラー時:エラー内容(array)
+	 *
+	 * @create 2020/06/01　T.Nishida
+	 * @update 2020/11/30 T.Nishida エラー時の処理を変更
+	 */
+	function getWebApiToken($userId, $password)
+	{
+		$retArr = '';
+		$apiUrl = '/auth/token';
+
+		//ログイン情報
+		$json = '';
+		$json .= '{"loginName":"' . $userId . '"';
+		$json .= ',"password":"' . $password . '"';
+		$json .= '}';
+
+		//UTF8
+		mb_http_output('utf-8');
+
+		$optionArr = array(CURLOPT_URL => config('system_config.webapi_baseurl') . $apiUrl,
+							CURLOPT_CUSTOMREQUEST => 'POST',
+							CURLOPT_HTTPHEADER => array('Content-Type: application/json'),
+							CURLOPT_POSTFIELDS => $json,
+							CURLOPT_RETURNTRANSFER => true
+							);
+		//[CURLOPT_TIMEOUT] = 30;
+
+		//WebApiから取得
+		$ch = curl_init();
+		curl_setopt_array($ch, $optionArr);
+
+		$resJson = curl_exec($ch);
+		$infoArr = curl_getinfo($ch);
+		$errorNo = curl_errno($ch);
+
+		//OK以外はエラー
+		if (!$errorNo == CURLE_OK) {
+			return '';
+		}
+
+		//JSONデコード
+		$reeApi = json_decode($resJson, true);
+
+		//ステータスコード
+		switch ($infoArr['http_code']){
+			case 200:
+				//OK
+				if (!empty($reeApi['token'])) {
+					$retArr = 'Authorization: Bearer ' . $reeApi['token'] ;
+				}
+				break;
+			default:
+				$retArr = self::getWebApiError($reeApi, $infoArr['http_code']);
+				break;
+		}
+
+		return $retArr;
+	}
+
+	/**
+	 * WebApiを実行
+	 *
+	 * @param  string トークン文字列
+	 * @param  string メソッド（GET,POST,PUT,DELETE）
+	 * @param  string API名
+	 * @param  string クエリパラメータ
+	 * @param  string リクエスト
+	 * @param  boolean レスポンスをデコードして返すか（デバッグ用）
+	 * @return array レスポンス
+	 *
+	 * @create 2020/06/01　T.Nishida
+	 * @update
+	 */
+	function runWebApi($token, $method, $api,
+						$param = null, $request = null,
+						$jsonDecode = true)
+	{
+
+		//前回実行情報を取得
+		config('system_config.webapi_wait');
+
+		$retArr = '';
+		$apiUrl = $api;
+
+		//クエリパラメータが指定されているか
+		if (!$param == null) {
+			$apiUrl .= $param;
+		}
+
+		//渡すデータ
+		$json = '';
+		if (!$request == null) {
+			$json = $request;
+		}
+
+		//UTF8
+		mb_http_output('utf-8');
+
+		$optionArr = array(CURLOPT_URL => config('system_config.webapi_baseurl') . $apiUrl,
+							CURLOPT_CUSTOMREQUEST => $method,
+							CURLOPT_HTTPHEADER => array('Content-Type: application/json', $token),
+							CURLOPT_POSTFIELDS => $json,
+							CURLOPT_RETURNTRANSFER => true
+							);
+		//$optionArr[CURLOPT_TIMEOUT] = 30;
+		
+		$ch = curl_init();
+
+		DB::transaction(function () use($optionArr, $ch) {
+			
+			//テーブルロック
+			TimeTrackerRunApiInfo::
+				lockForUpdate()
+				->get();
+
+			$runApiInfo = TimeTrackerRunApiInfo::
+			select(
+				'Updated_at'
+				,'UserID'
+			)
+			->first();
+
+			if ($runApiInfo){
+				$sysDate = DB::selectOne('SELECT getdate() AS sysdate')->sysdate;
+
+				//システム日付のミリ秒を取得
+				$sysDateFormat = DateTime::createFromFormat("Y-m-d H:i:s.u", $sysDate);
+				$sysDateV = $sysDateFormat->format("v");
+
+				//更新日付のミリ秒を取得
+				$updatedAtFormat = DateTime::createFromFormat("Y-m-d H:i:s.u", $runApiInfo->Updated_at);
+				$updatedAtV = $updatedAtFormat->format("v");
+
+				//差を取得
+				$diff = ((strtotime($sysDate) - strtotime($runApiInfo->Updated_at)) * 1000) + ($sysDateV - $updatedAtV);
+
+				//待つべき時間を計算
+				$sleep = (int)config('system_config.webapi_wait') - $diff;
+
+				if ($sleep > 0) {
+					//待機する
+					usleep($sleep * 1000);
+
+				}
+
+			}
+
+			//WebApiから取得
+			curl_setopt_array($ch, $optionArr);
+
+			// セッション変数からログイン情報を取得
+			$loginUserInfo = session('LOGINUSER_INFO');
+
+			$userid = '';
+			if (isset($loginUserInfo)) {
+				$userid = $loginUserInfo['userid']; // ユーザーID
+			}
+
+			//一旦削除
+			TimeTrackerRunApiInfo::
+				query()
+				->delete();
+			
+			//追加
+			TimeTrackerRunApiInfo::
+				insert([
+				'UserID' => $userid
+				]);
+
+		});
+
+		$resJson = curl_exec($ch);
+		$infoArr = curl_getinfo($ch);
+		$errorNo = curl_errno($ch);
+
+		//OK以外はエラー
+		if ($errorNo !== CURLE_OK) {
+			//詳しくエラーハンドリングしたい場合はerrorNoで確認
+			//タイムアウトの場合はCURLE_OPERATION_TIMEDOUT
+			return '';
+		}
+
+		//レスポンスをそのまま返すか？（デバッグ用）
+		if ($jsonDecode == false) {
+			return $resJson;
+		}
+
+		//JSONデコード
+		$reeApi = json_decode($resJson, true);
+
+		//ステータスコード
+		switch ($infoArr['http_code']){
+			case 200:
+				//OK
+				$retArr = $reeApi;
+				break;
+			default:
+				//エラー
+				$retArr = self::getWebApiError($reeApi, $infoArr['http_code']);
+				break;
+		}
+
+		return $retArr;
+	}
+
+	/**
+	 * エラーを内容を取得
+	 *
+	 * @param  array WebApiから取得したデータ
+	 * @param  integer ステータスコード
+	 * @return array エラー内容
+	 *
+	 * @create 2020/06/01　T.Nishida
+	 * @update 2020/10/13 T.Nishida errorcodeを返すように変更
+	 * @update 2020/11/30 T.Nishida エラーメッセージの後ろに「timetracker_error_msg」を入れるように変更
+	 */
+	static function getWebApiError($retArrVal, $status)
+	{
+		$retArr = '';
+		$code = '';
+
+		if (isset($retArrVal['message'])) {
+
+			if (isset($retArrVal['code'])) {
+				$code = $retArrVal['code'];
+			}
+
+			$tmpArr = array('error' => $status,
+							'errorcode' => $code,
+							'message' => $retArrVal['message'] . config('system_const.timetracker_error_msg')
+							);
+			$retArr = $tmpArr;
+		}
+		else {
+			if (isset($retArrVal[0]['message'])) {
+
+				if (isset($retArrVal[0]['code'])) {
+					$code = $retArrVal[0]['code'];
+				}
+
+				$tmpArr = array('error' => $status,
+								'errorcode' => $code,
+								'message' => $retArrVal[0]['message'] . config('system_const.timetracker_error_msg')
+								);
+				$retArr = $tmpArr;
+			}
+			else {
+				switch ($status){
+					case 400:
+						//無効なリクエスト
+						$tmpArr = array('error' => $status,
+										'message' => '無効なリクエストです。' . config('system_const.timetracker_error_msg')
+										);
+						$retArr = $tmpArr;
+						break;
+					case 401:
+						//ユーザー認証に失敗
+						$tmpArr = array('error' => $status,
+										'message' => 'ユーザー認証に失敗しました。' . config('system_const.timetracker_error_msg')
+										);
+						$retArr = $tmpArr;
+						break;
+					case 500:
+						//サーバー内で問題が発生
+						$tmpArr = array('error' => $status,
+										'message' => 'サーバー内で問題が発生しました。' . config('system_const.timetracker_error_msg')
+										);
+						$retArr = $tmpArr;
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
+		return $retArr;
+	}
+
+	/**
+	 * ワークアイテムID管理テーブル登録
+	 *
+	 * @param  integer ID
+	 * @param  integer ワークアイテムID
+	 * @return boolean 正常時：true エラー時：false
+	 *
+	 * @create 2020/10/08　S.Tanaka
+	 * @update
+	 */
+	function registWorkItemID($id, $workItemId)
+	{
+		$exception = DB::transaction(function() use($id, $workItemId) {
+			try {
+				WorkItemIDList::insert([
+					'ID' => $id,
+					'WorkItemID' => $workItemId,
+				]);
+			} catch(QueryException $e) {
+				return $e;
+			}
+		});
+		return is_null($exception) ? true : false;
+	}
+
+	/**
+	 * プロジェクトID取得
+	 *
+	 * @param  mix(int or string) IDまたはオーダ
+	 * @param  boolean 本番フラグ
+	 * @param  string トークン文字列（デフォルト null)
+	 * @return array 正常時：[ProjectID]プロジェクトのID、[RootFolderID]ルートフォルダID エラー時：[error]エラーメッセージ
+	 *
+	 * @create 2020/10/08　S.Tanaka
+	 * @update 2020/11/12　S.Tanaka　エラー時の返り値を「-1」からエラーメッセージに変更
+	 * @update 2020/11/27　S.Tanaka　独自のエラーメッセージの後ろにtimetracker_error_msg(config\system_const.php)を追加
+	 */
+	function getProjectID($idOrOrder, $productionFlag, $token = null)
+	{
+		if(!$productionFlag){
+			$result = MstProject::where('ID', $idOrOrder)
+								->first();
+
+			//取得できなかった場合
+			if(!$result){
+				$array = array('error' => sprintf(config('message.msg_cmn_db_030'), '[mstProject]')
+										  .config('system_const.timetracker_error_msg'));
+				return $array;
+			}
+
+			//プロジェクトコード作成
+			$projectCode = $result->SysKindID . '-' . $result->ListKind . '-' . $result->SerialNo;
+		}
+
+		if(is_null($token)){
+			$userID = config('system_config.webapi_username');
+			$password = config('system_config.webapi_password');
+
+			//トークン取得
+			$token = $this->getWebApiToken($userID, $password);
+
+			//トークン取得でエラーの場合
+			if(isset($token['error'])){
+				$array = array('error' => $token['message']);
+				return $array;
+			}
+		}
+
+		$result = $this->runWebApi($token, 'GET', '/project/projects');
+
+		if(isset($result['error'])){
+			$array = array('error' => $result['message']);
+			return $array;
+		}
+
+		foreach($result['data'] as $value){
+			if($value['code'] == ($productionFlag ? $idOrOrder : $projectCode)){
+				$array = array('ProjectID' => $value['id'],
+							   'RootFolderID' => $value['workItemRootFolderId']);
+				return $array;
+			}
+		}
+
+		$array = array('error' => config('message.msg_timetracker_007').config('system_const.timetracker_error_msg'));
+		return $array;
+	}
+
+	/**
+	 * カレンダー取得
+	 *
+	 * @param  integer プロジェクトID
+	 * @param  string オーダ
+	 * @param  string トークン文字列（デフォルト null)
+	 * @return 正常時：カレンダー(array（連想配列）) エラー時:エラーメッセージ(string) + timetracker_error_msg(config\system_const.php)
+	 *
+	 * @create 2020/10/13　S.Tanaka
+	 * @update 2020/10/26　S.Tanaka　引数にプロジェクトIDを追加し、そのIDからカレンダーを取得するように変更
+	 * @update 2020/11/10　K.Yoshihara　引数に$orderNoを追加
+	 * @update 2020/11/12　S.Tanaka　引数の$orderNoがnullでない場合は、その$orderNoからカレンダーを取得するように変更
+	 * @update 2020/11/27　S.Tanaka　エラーメッセージがある関数の返り値なら、付加していたtimetracker_error_msg(config\system_const.php)を削除
+	 */
+	function getCalendar($projectId, $orderNo = null, $token = null)
+	{
+		if(is_null($token)){
+			$userID = config('system_config.webapi_username');
+			$password = config('system_config.webapi_password');
+
+			//トークン取得
+			$token = $this->getWebApiToken($userID, $password);
+
+			//トークン取得でエラーの場合
+			if(isset($token['error'])){
+				return $token['message'];
+			}
+		}
+
+		if(is_null($orderNo)){
+			$id = $projectId;
+			$productionFlag = false;
+		}else{
+			$id = $orderNo;
+			$productionFlag = true;
+		}
+
+		$result = $this->getProjectID($id, $productionFlag, $token);
+
+		if(isset($result['error'])){
+			return $result['error'];
+		}
+
+		$id = $result['ProjectID'];
+
+		$result = $this->runWebApi($token, 'GET', '/project/projects/'.$id.'/workCalendar');
+
+		if(isset($result['error'])){
+			return $result['message'];
+		}
+
+		return $result;
+	}
+
+	/**
+	 * 手番シフト
+	 *
+	 * @param  date シフトする日付
+	 * @param  integer シフト数
+	 * @param  array カレンダー
+	 * @return 正常時：渡されたプロジェクトIDのカレンダー(date) エラー時：空文字
+	 *
+	 * @create 2020/10/14　S.Tanaka
+	 * @update 2020/11/24　S.Tanaka　シフトする日付が休日の場合エラーとし、空文字を返す
+	 */
+	function shiftDate($shiftDate, $shiftNumber, $calendar)
+	{
+		//シフトする日付がセットされていない場合
+		if(!$shiftDate){
+			return '';
+		}
+
+		//カレンダーがセットされていない場合
+		if(!$calendar){
+			return '';
+		}
+
+		//シフト数が整数でない場合
+		if(!preg_match('/^0$|^-?[1-9][0-9]*$/', $shiftNumber)){
+			return '';
+		}
+
+		//シフトする日付が存在する日付か
+		$format = ['Y/m/d', 'Y-m-d'];
+		for($i = 0; $i < count($format); $i++){
+			$result = \date_parse_from_format($format[$i], $shiftDate);
+			if(!$result['errors']){
+				if($result['warnings']){
+					return '';
+				}
+				$errorFlag = false;
+				break;
+			}
+			$errorFlag = true;
+		}
+
+		//シフトする日付のフォーマットが正しくない場合
+		if($errorFlag){
+			return '';
+		}
+
+		//シフト数は正の数か負の数か
+		$synbol = ($shiftNumber < 0 ? '-' : '+');
+
+		//シフトする日付が稼働日か
+		$workDateFlag = $this->checkWorkDate($shiftDate, $calendar);
+
+		//シフトする日付が休日の場合
+		if(!$workDateFlag){
+			return '';
+		}
+
+		//シフトする日付が稼働日になるまで加算or減算し、シフト数が０になるまで加算or減算する
+		while(!$workDateFlag or $shiftNumber != 0){
+			$objDateTime = new DateTime($shiftDate);
+
+			$shiftDate = $objDateTime->modify($synbol.'1 day')->format('Y-m-d');
+
+			$workDateFlag = $this->checkWorkDate($shiftDate, $calendar);
+
+			if($workDateFlag and $shiftNumber != 0){
+				$synbol == '+' ? $shiftNumber-- : $shiftNumber++;
+			}
+		}
+
+		//返り値のフォーマット直し
+		$objDateTime = new DateTime($shiftDate);
+		$shiftDate = $objDateTime->format('Y/m/d');
+
+		return $shiftDate;
+	}
+
+	/**
+	 * 稼働日確認
+	 *
+	 * @param  date 日付
+	 * @param  array(連想配列) カレンダー
+	 * @return 正常時：稼働日ならtrue、稼働日でないならfalse(boolean) エラー時：エラーメッセージ(string)
+	 *
+	 * @create 2020/10/14　S.Tanaka
+	 * @update 2020/11/18　S.Tanaka　private関数からpublic関数に変更、引数の日付のエラーチェック追加。
+	 * @update 2020/11/27　S.Tanaka　独自のエラーメッセージの後ろにtimetracker_error_msg(config\system_const.php)を追加
+	 * @update 2020/12/11　S.Tanaka　日付チェックのフォーマットに'Y/m/d H:i:s.v'と'Y-m-d H:i:s.v'を追加
+	 */
+	function checkWorkDate($date, $calendar)
+	{
+		//日付が存在する日付か
+		$format = ['Y/m/d', 'Y-m-d', 'Y/m/d H:i:s.v', 'Y-m-d H:i:s.v'];
+		for($i = 0; $i < count($format); $i++){
+			$result = \date_parse_from_format($format[$i], $date);
+			if(!$result['errors']){
+				if($result['warnings']){
+					return sprintf(config('message.msg_timetracker_011'), '日付')
+						   .config('system_const.timetracker_error_msg');
+				}
+				$errorFlag = false;
+				break;
+			}
+			$errorFlag = true;
+		}
+
+		//シフトする日付のフォーマットが正しくない場合
+		if($errorFlag){
+			return sprintf(config('message.msg_timetracker_011'), '日付の形式')
+				   .config('system_const.timetracker_error_msg');
+		}
+
+		//日付フォーマット直し
+		$objDateTime = new DateTime($date);
+		$date = $objDateTime->format('Y-m-d');
+
+		//日付が稼働日か確認
+		if(isset($calendar['specifiedWorkDate'][$date])){
+			return $calendar['specifiedWorkDate'][$date];
+		}
+
+		//日付の曜日取得
+		$dayOfWeek = strtolower($objDateTime->format('l'));
+
+		return $calendar['workDayOfWeek'][$dayOfWeek];
+	}
+
+	/**
+	 * 工程期間取得
+	 *
+	 * @param  array 工程のID(WorkItemID)の配列、または
+	 * 				 [WorkItemID]と[WorkItemIDList].[ID]を持った連想配列の配列
+	 * @param  boolean 実働日数を計算して返すかのフラグ(true = 計算する/false = 計算しない)
+	 * @param  array カレンダー($isCalcDays=trueの場合は必ず指定すること)
+	 * @return 正常時：[ワークアイテムID => ['plannedStartDate' => 開始日,
+	 * 									   'plannedFinishDate' => 終了日,
+	 * 									   ('workDays' => 実働日数 ($isCalcDaysがtrueの場合のみ))]
+	 * 				   ...($workItemIDsの個数分)](連想配列の連想配列)
+	 * 				   (開始日または終了日がnullの場合、実働日数にはnullが入る)
+	 * 		   エラー時：エラーメッセージ(string)
+	 * @create 2020/12/24　S.Tanaka
+	 * @update 
+	 */
+	function getKoteiRange($workItemIDs, $isCalcDays = false, $calendar = null)
+	{
+		//引数$workItemIDsが連想配列の配列ではない場合
+		if(!isset($workItemIDs[0]['workItemID'])){
+			$result = WorkItemIDList::whereIn('WorkItemID', $workItemIDs)
+									->get();
+			
+			//配列の初期化
+			$workItemIDs = [];
+
+			//連想配列の配列作成
+			foreach($result as $value){
+				$workItemIDs[] = ['workItemID' => $value['WorkItemID'], 'listID' => $value['ID']];
+			}
+		}else{
+			//連想配列の配列をworkItemIDの昇順に並べ替え
+			asort($workItemIDs);
+			$workItemIDs = \array_values($workItemIDs);
+		}
+
+		$userID = config('system_config.webapi_username');
+		$password = config('system_config.webapi_password');
+
+		//トークン取得
+		$token = $this->getWebApiToken($userID, $password);
+
+		//トークン取得でエラーの場合
+		if(isset($token['error'])){
+			return $token['message'];
+		}
+
+		//変数の初期化
+		$passParameter = '';
+		$queryParameter = '';
+
+		//パスパラメータを代入
+		foreach($workItemIDs as $workItemID){
+			$passParameter .= $workItemID['workItemID'].',';
+		}
+
+		$passParameter = \substr($passParameter, 0, -1);
+
+		//クエリパラメータの代入
+		$queryParameter = '?fields='.config('system_const_timetracker.workitem_id').','
+									.config('system_const_timetracker.workitem_sdate').','
+									.config('system_const_timetracker.workitem_edate').','
+									.config('system_const_timetracker.workitem_isdeleted').','
+									.config('system_const_timetracker.workitem_def_parentid').','
+									.config('system_const_timetracker.workitem_parentid').','
+									.config('system_const_timetracker.workitem_name').','
+									.config('system_const_timetracker.workitem_blockname').','
+									.config('system_const_timetracker.workitem_managedid');
+		
+		$result = $this->runWebApi($token, 'GET', '/workitem/workItems/', $passParameter, $queryParameter);
+
+		if(isset($result['error'])){
+			return $result['message'];
+		}
+
+		//配列の初期化
+		$ret = [];
+		
+		foreach($workItemIDs as $key => $item) {
+			//TimeTrackerNX側で該当データが削除された場合
+			if($result[$key]["fields"][config('system_const_timetracker.workitem_isdeleted')]){
+				return config('message.msg_timetracker_005').config('system_const.timetracker_error_msg');
+			}
+
+			//C_BlockName, C_WorkItemPID, C_WorkItemListIDの何れかが定義されていない場合
+			$customFields = [config('system_const_timetracker.workitem_blockname'),
+							 config('system_const_timetracker.workitem_parentid'),
+							 config('system_const_timetracker.workitem_managedid')];
+			foreach($customFields as $customField){
+				if(empty($result[$key]["fields"][$customField])){
+					return sprintf(config('message.msg_timetracker_013'), $customField)
+						   .config('system_const.timetracker_error_msg');
+				}
+			}
+
+			//TimeTrackerNX側で異なる親データに紐付け直しされた場合
+			if(valueUrlDecode($result[$key]["fields"][config('system_const_timetracker.workitem_parentid')])
+			!= $result[$key]["fields"][config('system_const_timetracker.workitem_def_parentid')]){
+				return config('message.msg_timetracker_004').config('system_const.timetracker_error_msg');
+			}
+
+			//TimeTrackerNX側で名称が変えられた場合
+			if($result[$key]["fields"][config('system_const_timetracker.workitem_blockname')]
+			!= $result[$key]["fields"][config('system_const_timetracker.workitem_name')]){
+				return config('message.msg_timetracker_012').config('system_const.timetracker_error_msg');
+			}
+
+			//複合化したC_WorkItemListIDと$listIDsが異なる場合
+			if(valueUrlDecode($result[$key]["fields"][config('system_const_timetracker.workitem_managedid')])
+			!= $item['listID']){
+				return config('message.msg_timetracker_014').config('system_const.timetracker_error_msg');
+			}
+
+			//配列の初期化
+			$newItem = [];
+
+			//開始日、終了日取得
+			$plannedStartDate = $result[$key]["fields"][config('system_const_timetracker.workitem_sdate')];
+			$plannedFinishDate = $result[$key]["fields"][config('system_const_timetracker.workitem_edate')];
+
+			//開始日がnull以外の場合はフォーマットを直す
+			if(!is_null($plannedStartDate)){
+				$objSDateTime = new DateTime($plannedStartDate);
+				$plannedStartDate = $objSDateTime->format('Y/m/d');
+			}
+			//終了日がnull以外の場合はフォーマットを直す
+			if(!is_null($plannedFinishDate)){
+				$objEDateTime = new DateTime($plannedFinishDate);
+				$plannedFinishDate = $objEDateTime->format('Y/m/d');
+			}
+
+			$newItem = ['plannedStartDate' => $plannedStartDate,
+						'plannedFinishDate' => $plannedFinishDate];
+
+			//実働日数を計算する場合
+			if($isCalcDays){
+				//開始日または終了日がnull場合
+				if(is_null($plannedStartDate) || is_null($plannedFinishDate)){
+					$newItem['workDays'] = null;
+				}else{
+					$workDays = 0;
+					$objTargetDateTime = $objSDateTime;
+					while($objTargetDateTime <= $objEDateTime){
+						$targetDate = $objTargetDateTime->format('Y/m/d');
+						$workDateFlag = $this->checkWorkDate($targetDate, $calendar);
+						//エラーが返ってきた場合
+						if(\is_string($workDateFlag)){
+							return $workDateFlag;
+						}
+						//稼働日の場合
+						if($workDateFlag){
+							$workDays++;
+						}
+						$objTargetDateTime = $objTargetDateTime->modify('+1 day');
+					}
+					$newItem['workDays'] = $workDays;
+				}
+			}
+
+			$ret[$item['workItemID']] = $newItem;
+		}
+		return $ret;
+	}
+
+	/**
+	 * 実働日数取得
+	 *
+	 * @param  integer プロジェクトID
+	 * @param  string オーダNo
+	 * @param  array 工程の開始日・終了日の連想配列の配列
+	 * @param  array カレンダー
+	 * @return 正常時：['plannedStartDate' => 開始日, 'plannedFinishDate' => 終了日, 'workDays' => 実働日数]
+	 * 				   ...($koteisの個数分)(連想配列の配列)
+	 * 				   (開始日または終了日がnullの場合、実働日数にはnullが入る)
+	 * 		   エラー時：エラーメッセージ(string)
+	 * @create 2020/01/05　S.Tanaka
+	 * @update 
+	 */
+	function getWorkDays($projectID, $orderNo, $koteis, $calendar = null)
+	{
+		$userID = config('system_config.webapi_username');
+		$password = config('system_config.webapi_password');
+
+		//トークン取得
+		$token = $this->getWebApiToken($userID, $password);
+
+		//トークン取得でエラーの場合
+		if(isset($token['error'])){
+			return $token['message'];
+		}
+
+		//カレンダーが省略された場合
+		if(is_null($calendar)){
+			$calendar = $this->getCalendar($projectID, $orderNo, $token);
+
+			if(is_string($calendar)){
+				return $calendar;
+			}
+		}
+
+		//配列の初期化
+		$ret = [];
+
+		foreach($koteis as $kotei){
+			if(empty($kotei['sDate']) || empty($kotei['eDate'])){
+				$workDays = null;
+			}else{
+				$workDays = 0;
+				$objSDateTime = new DateTime($kotei['sDate']);
+				$objEDateTime = new DateTime($kotei['eDate']);
+				$objTargetDateTime = $objSDateTime;
+
+				//開始日と終了日の比較
+				$synbol = $objSDateTime->diff($objEDateTime)->format('%R');
+				
+				if($synbol == '+'){
+					while($objTargetDateTime <= $objEDateTime){
+						$targetDate = $objTargetDateTime->format('Y/m/d');
+						$workDateFlag = $this->checkWorkDate($targetDate, $calendar);
+						//エラーが返ってきた場合
+						if(\is_string($workDateFlag)){
+							return $workDateFlag;
+						}
+						//稼働日の場合
+						if($workDateFlag){
+							$workDays++;
+						}
+						$objTargetDateTime = $objTargetDateTime->modify('+1 day');
+					}
+				}else{
+					while($objTargetDateTime >= $objEDateTime){
+						$targetDate = $objTargetDateTime->format('Y/m/d');
+						$workDateFlag = $this->checkWorkDate($targetDate, $calendar);
+						//エラーが返ってきた場合
+						if(\is_string($workDateFlag)){
+							return $workDateFlag;
+						}
+						//稼働日の場合
+						if($workDateFlag){
+							$workDays--;
+						}
+						$objTargetDateTime = $objTargetDateTime->modify('-1 day');
+					}
+				}
+			}
+			$ret[] = ['sDate' => $kotei['sDate'], 'eDate' => $kotei['eDate'], 'workDays' => $workDays];
+		}
+		return $ret;
+	}
+
+	/**
+	 * 実働日数差取得
+	 *
+	 * @param  array カレンダー
+	 * @param  date 前回日付
+	 * @param  date 今回日付
+	 * @return 正常時：実働日数(date)　エラー時：エラーメッセージ(string)
+	 * @create 2020/01/06　S.Tanaka
+	 * @update 
+	 */
+	function getDateDiff($calendar, $bdate, $date)
+	{
+		$userID = config('system_config.webapi_username');
+		$password = config('system_config.webapi_password');
+
+		//トークン取得
+		$token = $this->getWebApiToken($userID, $password);
+
+		//トークン取得でエラーの場合
+		if(isset($token['error'])){
+			return $token['message'];
+		}
+
+		//前回日付の稼働日チェック
+		$resultBDate = $this->checkWorkDate($bdate, $calendar);
+		
+		if(!is_bool($resultBDate)){
+			return $resultBDate;
+		}
+
+		//今回日付の稼働日チェック
+		$resultDate = $this->checkWorkDate($date, $calendar);
+
+		if(!is_bool($resultDate)){
+			return $resultDate;
+		}
+
+		//どちらか一方でも非稼働日の場合
+		if(!$resultBDate or !$resultDate){
+			return config('message.msg_timetracker_017').config('system_const.timetracker_error_msg');
+		}
+
+		$workDays = 0;
+		$objBDateTime = new DateTime($bdate);
+		$objDateTime = new DateTime($date);
+		$objTargetDateTime = $objBDateTime;
+
+		//前回日付と今回日付の比較
+		$synbol = $objBDateTime->diff($objDateTime)->format('%R');
+				
+		if($synbol == '+'){
+			while($objTargetDateTime < $objDateTime){
+				$targetDate = $objTargetDateTime->format('Y/m/d');
+				$workDateFlag = $this->checkWorkDate($targetDate, $calendar);
+				//エラーが返ってきた場合
+				if(\is_string($workDateFlag)){
+					return $workDateFlag;
+				}
+				//稼働日の場合
+				if($workDateFlag){
+					$workDays++;
+				}
+				$objTargetDateTime = $objTargetDateTime->modify('+1 day');
+			}
+		}else{
+			while($objTargetDateTime > $objDateTime){
+				$targetDate = $objTargetDateTime->format('Y/m/d');
+				$workDateFlag = $this->checkWorkDate($targetDate, $calendar);
+				//エラーが返ってきた場合
+				if(\is_string($workDateFlag)){
+					return $workDateFlag;
+				}
+				//稼働日の場合
+				if($workDateFlag){
+					$workDays--;
+				}
+				$objTargetDateTime = $objTargetDateTime->modify('-1 day');
+			}
+		}
+		return $workDays;
+	}
+
+	/**
+	 * オーダルート取得
+	 *
+	 * @param  integer プロジェクトID
+	 * @param  string オーダNo
+	 * @param  string トークン文字列（デフォルト null)
+	 * @return 正常時：オーダルートのWorkItemID(int) エラー時：エラーメッセージ(string) + timetracker_error_msg(config\system_const.php)
+	 *
+	 * @create 2020/11/12　S.Tanaka
+	 * @update 2020/11/27　S.Tanaka　エラーメッセージがある関数の返り値なら、付加していたtimetracker_error_msg(config\system_const.php)を削除
+	 */
+	function getOrderRoot($projectID, $orderNo, $token = null)
+	{
+		if(is_null($token)){
+			$userID = config('system_config.webapi_username');
+			$password = config('system_config.webapi_password');
+
+			//トークン取得
+			$token = $this->getWebApiToken($userID, $password);
+
+			//トークン取得でエラーの場合
+			if(isset($token['error'])){
+				return $token['message'];
+			}
+		}
+
+		$result = $this->getProjectID($projectID, false, $token);
+
+		if(isset($result['error'])){
+			return $result['error'];
+		}
+
+		$rootFolderId = $result["RootFolderID"];
+
+		$parameters = '?fields=Id,Name,'.config('system_const_timetracker.workitem_managedid');
+		$parameters .= ','.config('system_const_timetracker.workitem_orderno').'&depth=1';
+
+		$result = $this->runWebApi($token, 'GET', '/workitem/workItems/'.$rootFolderId.'/subItems', $parameters);
+
+		if(isset($result['error'])){
+			return $result['message'];
+		}elseif(!isset($result[0]["fields"]["SubItems"])){
+			return config('message.msg_timetracker_010').config('system_const.timetracker_error_msg');
+		}
+
+		//配列の初期化
+		$subItems = [];
+
+		foreach($result[0]["fields"]["SubItems"] as $value){
+			if(valueUrlDecode($value["fields"][config('system_const_timetracker.workitem_orderno')]) == $orderNo){
+				$subItems[] = $value;
+			}
+		}
+
+		if(!empty($subItems)){
+			//変数の初期化
+			$subItem = null;
+
+			foreach($subItems as $value){
+				$managedId = valueUrlDecode($value["fields"][config('system_const_timetracker.workitem_managedid')]);
+
+				$result = WorkItemIDList::where('ID', $managedId)
+										->get();
+
+				if(count($result) != 0){
+					$subItem = $value;
+					break;
+				}
+			}
+
+			if(is_null($subItem)){
+				return config('message.msg_timetracker_010').config('system_const.timetracker_error_msg');
+			}
+
+			$subItemId = $subItem["fields"]["Id"];
+			$subItemOrderNo = valueUrlDecode($value["fields"][config('system_const_timetracker.workitem_orderno')]);
+			$subItemName = $subItem["fields"]["Name"];
+
+			if($subItemId == $result[0]->WorkItemID){
+				if($subItemName == $subItemOrderNo){
+					return (int)$subItemId;
+				}else{
+					$json = '';
+					$json .= '{"fields":';
+					$json .= '{"'.config('system_const_timetracker.workitem_name').'":"';
+					$json .= $orderNo.'"}}';
+
+					$result = $this->runWebApi($token, 'PUT', '/workitem/workItems/'.$subItemId, '', $json);
+
+					if(isset($result['error'])){
+						return $result['message'];
+					}
+
+					return (int)$subItemId;
+				}
+			}
+		}
+
+		//シーケンスのnextval取得
+		$nextval = DB::select('select next value for seq_WorkItemIDList');
+		$nextval = $nextval[0]->{""};
+
+		$json = '';
+		$json .= '{"fields":';
+		$json .= '{"'.config('system_const_timetracker.workitem_itemtypeid').'":"';
+		$json .= config('system_const_timetracker.itemtypeid_order').'"';
+		$json .= ',"'.config('system_const_timetracker.workitem_name').'":"';
+		$json .= $orderNo.'"';
+		$json .= ',"'.config('system_const_timetracker.workitem_managedid').'":"';
+		$json .= valueUrlEncode($nextval).'"';
+		$json .= ',"'.config('system_const_timetracker.workitem_parentid').'":"';
+		$json .= valueUrlEncode($rootFolderId).'"';
+		$json .= ',"'.config('system_const_timetracker.workitem_orderno').'":"';
+		$json .= valueUrlEncode($orderNo).'"}}';
+
+		$api = '/workitem/workItems/'.$rootFolderId.'/subItems';
+
+		$result = $this->runWebApi($token, 'POST', $api, '', $json);
+
+		if(isset($result['error'])){
+			return $result['message'];
+		}
+
+		$id = $result["items"][0]["id"];
+
+		$result = $this->registWorkItemID($nextval, $id);
+
+		if(!$result){
+			$this->runWebApi($token, 'DELETE', '/workitem/workItems/'.$id);
+
+			return config('message.msg_cmn_db_029').config('system_const.timetracker_error_msg');
+		}
+
+		return (int)$id;
+	}
+
+	/**
+	 * ワークアイテム削除
+	 *
+	 * @param  array ワークアイテムIDの配列
+	 * @param  string トークン文字列（デフォルト null)
+	 * @return 正常時：null エラー時：エラーメッセージ(string) + timetracker_error_msg(config\system_const.php)
+	 *
+	 * @create 2020/10/19　S.Tanaka
+	 * @update 2020/11/27　S.Tanaka　エラーメッセージがある関数の返り値なら、付加していたtimetracker_error_msg(config\system_const.php)を削除
+	 */
+	function deleteItem($arrWorkItemId, $token = null)
+	{
+		if(is_null($token)){
+			$userID = config('system_config.webapi_username');
+			$password = config('system_config.webapi_password');
+
+			//トークン取得
+			$token = $this->getWebApiToken($userID, $password);
+
+			//トークン取得でエラーの場合
+			if(isset($token['error'])){
+				return $token['message'];
+			}
+		}
+
+		foreach($arrWorkItemId as $workItemId){
+			$result = $this->runWebApi($token, 'DELETE', '/workitem/workItems/'.$workItemId);
+
+			if(isset($result['error'])){
+				if($result['errorcode'] != config('system_const_timetracker.errorcode_idnotfound')){
+					return $result['message'];
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * カレンダー確認
+	 *
+	 * @param  array カレンダー1
+	 * @param  array カレンダー2
+	 * @return 正常時：null エラー時：エラーメッセージ(string)
+	 *
+	 * @create 2020/10/19　S.Tanaka
+	 * @update 2020/11/27　S.Tanaka　独自のエラーメッセージの後ろにtimetracker_error_msg(config\system_const.php)を追加
+	 */
+	function checkCalendar($firstCalendar, $secondCalendar){
+		if($firstCalendar === $secondCalendar){
+			return null;
+		}
+
+		return config('message.msg_timetracker_008').config('system_const.timetracker_error_msg');
+	}
+
+	/**
+	 * 配下すべてのWorkItemID取得
+	 *
+	 * @param  integer ルートのID
+	 * @return 正常時：[$workItemIDの配下のワークアイテムID => ['plannedStartDate' => 開始日,
+	 * 														 'plannedFinishDate' => 終了日]
+	 * 				   ...($workItemIDの配下の個数分)](連想配列の連想配列)
+	 * 		   エラー時：エラーメッセージ(string)
+	 * @create 2020/01/06　S.Tanaka
+	 * @update 
+	 */
+	function getChildWorkItem($workItemID)
+	{
+		$userID = config('system_config.webapi_username');
+		$password = config('system_config.webapi_password');
+
+		//トークン取得
+		$token = $this->getWebApiToken($userID, $password);
+
+		//トークン取得でエラーの場合
+		if(isset($token['error'])){
+			return $token['message'];
+		}
+
+		//変数の初期化
+		$parameter = '';
+
+		$parameter .= '?fields='.config('system_const_timetracker.workitem_id').','
+								.config('system_const_timetracker.workitem_sdate').','
+								.config('system_const_timetracker.workitem_edate').','
+								.config('system_const_timetracker.workitem_def_parentid').','
+								.config('system_const_timetracker.workitem_parentid').','
+								.config('system_const_timetracker.workitem_itemtypeid').','
+								.config('system_const_timetracker.workitem_statustypeid').','
+								.config('system_const_timetracker.workitem_name');
+
+		$result = $this->runWebApi($token, 'GET', '/workitem/workItems/'.$workItemID.'/subItems', $parameter);
+
+		if(isset($result['error'])){
+			return $result['message'];
+		}
+
+		//配列の初期化
+		$ret = [];
+
+		$function = function($values) use(&$function, &$ret){
+			foreach($values as $value){
+				//TimeTrackerNX側で異なる親データに紐付け直しされた場合
+				if(valueUrlDecode($value["fields"][config('system_const_timetracker.workitem_parentid')])
+				!= $value["fields"][config('system_const_timetracker.workitem_def_parentid')]){
+					return config('message.msg_timetracker_004').config('system_const.timetracker_error_msg');
+				}
+	
+				$ret[$value["fields"][config('system_const_timetracker.workitem_id')]]
+				= ['id' => $value["fields"][config('system_const_timetracker.workitem_id')],
+				   'plannedStartDate' => $value["fields"][config('system_const_timetracker.workitem_sdate')],
+				   'plannedFinishDate' => $value["fields"][config('system_const_timetracker.workitem_edate')],
+				   'parentId' => $value["fields"][config('system_const_timetracker.workitem_def_parentid')],
+				   'c_WorkItemPID' => $value["fields"][config('system_const_timetracker.workitem_parentid')],
+				   'itemTypeId' => $value["fields"][config('system_const_timetracker.workitem_itemtypeid')],
+				   'statusTypeId' => $value["fields"][config('system_const_timetracker.workitem_statustypeid')],
+				   'name' => $value["fields"][config('system_const_timetracker.workitem_name')]];
+
+				if(isset($value["fields"]["SubItems"])){
+					$errorMsg = $function($value["fields"]["SubItems"]);
+					if(!is_null($errorMsg)){
+						return $errorMsg;
+					}
+				}
+			}	
+		};
+
+		$errorMsg = $function($result[0]["fields"]["SubItems"]);
+		if(!is_null($errorMsg)){
+			return $errorMsg;
+		}
+
+		return $ret;
+	}
+}
+?>

@@ -1,0 +1,409 @@
+<?php
+/*
+ * @TimeTrackerFuncSchem.php
+ * TimeTrackerNX処理用(中日程関係)ファイル
+ *
+ * @create 2020/07/27 KBS T.Nishida
+ *
+ * @update
+ */
+
+namespace App\Librarys;
+
+use DB;
+use App\Models\WorkItemIDList;
+
+/**
+ * TimeTrackerNX処理用クラス
+ *
+ * @create 2020/07/27　T.Nishida
+ * @update
+ */
+
+class TimeTrackerFuncSchem
+{
+
+	/**
+	 * 日程表取込機能(工程作成)
+	 *
+	 * @param  integer プロジェクトID
+	 * @param  string オーダNo
+	 * @param  array(連想配列の配列) 作成する工程の親ID
+	 * 								作成する工程の搭載日
+	 * 								作成する工程の供給日
+	 * 								作成する工程の総組開始日
+	 * 								作成する工程の総組終了日
+	 * 								作成する工程のブロック名
+	 * 								作成する工程のオブジェクトのID
+	 * 								作成する工程の搭載日のオブジェクトのID
+	 * 								作成する工程の供給日のオブジェクトのID
+	 * 								作成する工程の総組日のオブジェクトのID
+	 * 								作成する工程の更新前ブロック名
+	 * @param  array(連想配列) カレンダー
+	 * @return 正常時：(連想配列の配列)作成した工程のID
+	 * 								 搭載日のオブジェクトのID
+	 * 								 供給日のオブジェクトのID
+	 * 								 総組日のオブジェクトのID
+	 * 		   エラー時:エラーメッセージ(string)
+	 * @create 2021/01/07　S.Tanaka
+	 * @update 
+	 */
+	function insertKotei($projectID, $orderNo, $koteis, $calendar = null)
+	{
+		// $timeTrackerCommon = new TimeTrackerCommon;
+
+		// $userID = config('system_config.webapi_username');
+		// $password = config('system_config.webapi_password');
+
+		// //トークン取得
+		// $token = $timeTrackerCommon->getWebApiToken($userID, $password);
+
+		// //トークン取得でエラーの場合
+		// if(isset($token['error'])){
+		// 	return $token['message'];
+		// }
+
+		// //カレンダーが省略された場合
+		// if(is_null($calendar)){
+		// 	$calendar = $timeTrackerCommon->getCalendar($projectID, $orderNo, $token);
+
+		// 	if(is_string($calendar)){
+		// 		return $calendar;
+		// 	}
+		// }
+
+		// //配列の初期化
+		// $ret = [];
+
+		// foreach($koteis as $kotei){
+		// 	//稼働日チェックする日付
+		// 	$dateNames = ['tDate', 'kDate', 'sg_SDate', 'sg_EDate'];
+
+		// 	foreach($dateNames as $dateName){
+		// 		//稼働日チェック
+		// 		$resultDate = $timeTrackerCommon->checkWorkDate($kotei[$dateName], $calendar);
+				
+		// 		if(is_string($resultDate)){
+		// 			return $resultDate;
+		// 		}elseif(!$resultDate){
+		// 			return config('message.msg_timetracker_009').config('system_const.timetracker_error_msg');
+		// 		}
+		// 	}
+
+		// 	//配列の初期化
+		// 	$judgeResult = [];
+
+		// 	//本体の処理判定
+		// 	if(is_null($kotei['workItemID'])){
+		// 		$judgeResult['hontai'] = 'insert';
+		// 	}else{
+		// 		$judgeResult['hontai'] .= 'update';
+		// 	}
+
+		// 	//総組の処理判定
+		// 	if(is_null($kotei['sg_SDate']) || is_null($kotei['sg_EDate'])){
+		// 		if(is_null($kotei['workItemID_S'])){
+		// 			$judgeResult['sogumi'] = 'insert';
+		// 		}else{
+		// 			$judgeResult['sogumi'] = 'update';
+		// 		}
+		// 	}
+
+		// 	//搭載の処理判定
+		// 	if(!is_null($kotei['tDate'])){
+		// 		if(is_null($kotei['workItemID_T'])){
+		// 			$judgeResult['tosai'] = 'insert';
+		// 		}else{
+		// 			$judgeResult['tosai'] = 'update';
+		// 		}
+		// 	}
+
+		// 	//供給の処理判定
+		// 	if(!is_null($kotei['kDate'])){
+		// 		if(is_null($kotei['workItemID_K'])){
+		// 			$judgeResult['kyokyu'] = 'insert';
+		// 		}else{
+		// 			$judgeResult['kyokyu'] = 'update';
+		// 		}
+		// 	}
+
+		// 	foreach($judgeResult as $target => $method){
+		// 		if($method === 'update'){
+		// 			$qParam = '?fields='.config('system_const_timetracker.workitem_id').','
+		// 								.config('system_const_timetracker.workitem_isdeleted').','
+		// 								.config('system_const_timetracker.workitem_parentid').','
+		// 								.config('system_const_timetracker.workitem_managedid').','
+		// 								.config('system_const_timetracker.workitem_name').','
+		// 								.config('system_const_timetracker.workitem_blockname').','
+		// 								.config('system_const_timetracker.workitem_def_parentid');
+
+		// 			$workItemID = '';
+		// 			switch($target){
+		// 				case 'hontai':
+		// 					$workItemID = $kotei['workItemID'];
+		// 					break;
+		// 				case 'sogumi':
+		// 					$workItemID = $kotei['workItemID_S'];
+		// 					break;
+		// 				case 'tosai':
+		// 					$workItemID = $kotei['workItemID_T'];
+		// 					break;
+		// 				case 'kyokyu':
+		// 					$workItemID = $kotei['workItemID_K'];
+		// 					break;
+		// 			}
+
+		// 			$result = $timeTrackerCommon->runWebApi($token, 'GET', '/workitem/workItems/'.$workItemID, $qParam);
+
+		// 			if(isset($result['error'])){
+		// 				return $result['message'];
+		// 			}
+
+		// 			//TimeTrackerNX側で該当データが削除された場合
+		// 			if($result[0]["fields"][config('system_const_timetracker.workitem_isdeleted')]){
+		// 				return config('message.msg_timetracker_005').config('system_const.timetracker_error_msg');
+		// 			}
+
+		// 			//C_BlockName, C_WorkItemPID, C_WorkItemListIDの何れかが定義されていない場合
+		// 			$customFields = [config('system_const_timetracker.workitem_blockname'),
+		// 							 config('system_const_timetracker.workitem_parentid'),
+		// 							 config('system_const_timetracker.workitem_managedid')];
+		// 			foreach($customFields as $customField){
+		// 				if(empty($result[0]["fields"][$customField])){
+		// 					return sprintf(config('message.msg_timetracker_013'), $customField)
+		// 						   .config('system_const.timetracker_error_msg');
+		// 				}
+		// 			}
+
+		// 			//C_WorkItemPIDと$kotei[parent]が異なるまたはParentIdと$kotei[parent]が異なる場合
+		// 			if(valueUrlDecode($result[0]["fields"][config('system_const_timetracker.workitem_parentid')])
+		// 			!= $kotei['parent']
+		// 			|| $result[0]["fields"][config('system_const_timetracker.workitem_def_parentid')]
+		// 			!= $kotei['parent']){
+		// 				return config('message.msg_timetracker_004').config('system_const.timetracker_error_msg');
+		// 			}
+
+		// 			$workItemIdList = WorkItemIDList::where('WorkItemID', $workItemID)
+		// 											->get();
+
+		// 			//該当のワークアイテムIDが[WorkItemIDList]にない場合
+		// 			if(count($workItemIdList) == 0){
+		// 				return sprintf(config('message.msg_cmn_db_030'), '[WorkItemIDList]')
+		// 					.config('system_const.timetracker_error_msg');
+		// 			}
+
+		// 			$listID = $value['ID'];
+
+		// 			//複合化したC_WorkItemListIDと$listIDが異なる場合
+		// 			if(valueUrlDecode($result[0]["fields"][config('system_const_timetracker.workitem_managedid')])
+		// 			!= $listID){
+		// 				return config('message.msg_timetracker_014').config('system_const.timetracker_error_msg');
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+		$returnArr = array();
+		for ($i = 0; $i<count($koteis); $i++) {
+			$newId['WorkItemID'] = $i.'1' ;
+			$newId['WorkItemID_T'] = $i.'200' ;
+			$newId['WorkItemID_K'] = $i.'300' ;
+			$newId['WorkItemID_S'] = $i.'400' ;
+
+			array_push($returnArr, $newId);
+		}
+
+		return $returnArr;
+	}
+
+	// サンプル。実際の実装時は仕様通りにしてください。サンプルコードはコメントにも残さず削除してください。
+	static function insertBlock($projectID, $orderNo, $parentWorkItemID, $workItemID, $name, $bkumiku)
+	{
+		return 999999;
+	}
+
+	// サンプル。実際の実装時は仕様通りにしてください。サンプルコードはコメントにも残さず削除してください。
+	static function updatePlan($projectID, $orderNo, $workItemID, $days, $name)
+	{
+		return null;
+	}
+
+	/**
+	 * プラン作成
+	 *
+	 * @param  integer プロジェクトID
+	 * @param  string オーダNo
+	 * @param  integer 親WorkItemID
+	 * @param  integer WorkItemID
+	 * @param  date 着工日
+	 * @param  date 完工日
+	 * @param  string 名称
+	 * @param  array(連想配列) カレンダー
+	 * @return 正常時：作成したオブジェクトのID(integer)　エラー時:エラーメッセージ(string)
+	 * @create 2021/02/05　S.Tanaka
+	 * @update 
+	 */
+	function insertPlan($projectID, $orderNo, $parentWorkItemID, $workItemID, $sDate, $eDate, $name, $calendar = null)
+	{
+		$timeTrackerCommon = new TimeTrackerCommon;
+
+		//カレンダーが省略された場合
+		if(is_null($calendar)){
+			$calendar = $timeTrackerCommon->getCalendar($projectID, null);
+
+			if(is_string($calendar)){
+				return $calendar;
+			}
+		}
+
+		//着工日の稼働日チェック
+		$resultSDate = $timeTrackerCommon->checkWorkDate($sDate, $calendar);
+		
+		if(is_string($resultSDate)){
+			return $resultSDate;
+		}
+
+		//完工日の稼働日チェック
+		$resultEDate = $timeTrackerCommon->checkWorkDate($eDate, $calendar);
+
+		if(is_string($resultEDate)){
+			return $resultEDate;
+		}
+
+		//着工日と完工日のどちらか一方でも非稼働日の場合
+		if(!$resultSDate || !$resultEDate){
+			return config('message.msg_timetracker_009').config('system_const.timetracker_error_msg');
+		}
+
+		$userID = config('system_config.webapi_username');
+		$password = config('system_config.webapi_password');
+
+		//トークン取得
+		$token = $timeTrackerCommon->getWebApiToken($userID, $password);
+
+		//トークン取得でエラーの場合
+		if(isset($token['error'])){
+			return $token['message'];
+		}
+
+		if(!is_null($workItemID)){
+			$workItemIdList = WorkItemIDList::where('WorkItemID', $workItemID)
+											->get();
+
+			//該当のワークアイテムIDが[WorkItemIDList]にない場合
+			if(count($workItemIdList) == 0){
+				return sprintf(config('message.msg_cmn_db_030'), '[WorkItemIDList]')
+					   .config('system_const.timetracker_error_msg');
+			}
+
+			$listID = $workItemIdList[0]['ID'];
+
+			//クエリパラメータの代入
+			$qParam = '?fields='.config('system_const_timetracker.workitem_id').','
+								.config('system_const_timetracker.workitem_name').','
+								.config('system_const_timetracker.workitem_isdeleted').','
+								.config('system_const_timetracker.workitem_def_parentid').','
+								.config('system_const_timetracker.workitem_blockname').','
+								.config('system_const_timetracker.workitem_managedid').','
+								.config('system_const_timetracker.workitem_parentid');
+
+			$result = $timeTrackerCommon->runWebApi($token, 'GET', '/workitem/workItems/'.$workItemID, $qParam);
+
+			if(isset($result['error'])){
+				return $result['message'];
+			}
+
+			//TimeTrackerNX側で該当データが削除された場合
+			if($result[0]["fields"][config('system_const_timetracker.workitem_isdeleted')]){
+				return config('message.msg_timetracker_005').config('system_const.timetracker_error_msg');
+			}
+
+			//C_BlockName, C_WorkItemPID, C_WorkItemListIDの何れかが定義されていない場合
+			$customFields = [config('system_const_timetracker.workitem_blockname'),
+							 config('system_const_timetracker.workitem_parentid'),
+							 config('system_const_timetracker.workitem_managedid')];
+			foreach($customFields as $customField){
+				if(empty($result[0]["fields"][$customField])){
+					return sprintf(config('message.msg_timetracker_013'), $customField)
+							.config('system_const.timetracker_error_msg');
+				}
+			}
+
+			//C_WorkItemPIDとParentIdが異なる場合
+			if(valueUrlDecode($result[0]["fields"][config('system_const_timetracker.workitem_parentid')])
+			!= $result[0]["fields"][config('system_const_timetracker.workitem_def_parentid')]){
+				return config('message.msg_timetracker_004').config('system_const.timetracker_error_msg');
+			}
+
+			//C_BlockNameとNameが異なる場合
+			if($result[0]["fields"][config('system_const_timetracker.workitem_blockname')]
+			!= $result[0]["fields"][config('system_const_timetracker.workitem_name')]){
+				return config('message.msg_timetracker_012').config('system_const.timetracker_error_msg');
+			}
+			
+			//複合化したC_WorkItemListIDと$listIDが異なる場合
+			if(valueUrlDecode($result[0]["fields"][config('system_const_timetracker.workitem_managedid')])
+			!= $listID){
+				return config('message.msg_timetracker_014').config('system_const.timetracker_error_msg');
+			}
+
+			$json = '';
+			$json .= '{"fields":';
+			$json .= '{"'.config('system_const_timetracker.workitem_sdate').'":"';
+			$json .= $sDate.'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_edate').'":"';
+			$json .= $eDate.'"}}';
+
+			$api = '/workitem/workItems/20890,'.$workItemID;
+
+			$result = $timeTrackerCommon->runWebApi($token, 'PUT', $api, '', $json);
+
+			if(isset($result['error'])){
+				return $result['message'];
+			}
+
+			return (int)$workItemID;
+		}else{
+			//シーケンスのnextval取得
+			$nextval = DB::select('select next value for seq_WorkItemIDList');
+			$nextval = $nextval[0]->{""};
+
+			$json = '';
+			$json .= '{"fields":';
+			$json .= '{"'.config('system_const_timetracker.workitem_name').'":"';
+			$json .= $name.'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_sdate').'":"';
+			$json .= $sDate.'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_edate').'":"';
+			$json .= $eDate.'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_itemtypeid').'":"';
+			$json .= config('system_const_timetracker.itemtypeid_cyn_child').'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_blockname').'":"';
+			$json .= $name.'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_managedid').'":"';
+			$json .= valueUrlEncode($nextval).'"';
+			$json .= ',"'.config('system_const_timetracker.workitem_parentid').'":"';
+			$json .= valueUrlEncode($parentWorkItemID).'"}}';
+
+			$api = '/workitem/workItems/'.$parentWorkItemID.'/subItems';
+
+			$result = $timeTrackerCommon->runWebApi($token, 'POST', $api, '', $json);
+
+			if(isset($result['error'])){
+				return $result['message'];
+			}
+
+			$id = $result["items"][0]["id"];
+
+			$result = $timeTrackerCommon->registWorkItemID($nextval, $id);
+
+			if(!$result){
+				$timeTrackerCommon->runWebApi($token, 'DELETE', '/workitem/workitems/'.$id);
+				return config('message.msg_cmn_db_029').config('system_const.timetracker_error_msg');
+			}
+
+			return (int)$id;
+		}
+	}
+}
+?>

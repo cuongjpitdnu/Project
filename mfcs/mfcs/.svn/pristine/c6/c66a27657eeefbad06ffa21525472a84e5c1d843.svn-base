@@ -1,0 +1,17 @@
+<?php
+/*
+ * @sches.php
+ * 小日程関連ルーティング用ファイル
+ *
+ * @create 2020/07/09 KBS K.Yoshihara
+ *
+ * @update
+ */
+
+Route::get('/Dist/index', 'Sches\DistController@index');
+Route::post('/Dist/delete', 'Sches\DistController@delete');
+Route::get('/Dist/create', 'Sches\DistController@create');
+Route::get('/Dist/edit', 'Sches\DistController@edit');
+Route::get('/Dist/show', 'Sches\DistController@show');
+Route::post('/Dist/save', 'Sches\DistController@save');
+

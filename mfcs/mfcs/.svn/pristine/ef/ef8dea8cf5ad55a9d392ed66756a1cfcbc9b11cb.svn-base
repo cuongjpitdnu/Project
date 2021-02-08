@@ -1,0 +1,723 @@
+<?php
+/*
+ * @ExcelImportController.php
+ * 日程取込の各画面コントローラーファイル
+ *
+ * @create 2020/10/13 Dung
+ *
+ * @update
+ */
+
+namespace App\Http\Controllers\Schem;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\Schem\ExcelImportOutputRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Librarys\FuncCommon;
+use App\Librarys\MenuInfo;
+use App\Librarys\MissingUpdateException;
+use App\Librarys\TimeTrackerFuncSchem;
+use App\Models\MstProject;
+use App\Models\MstOrderNo;
+use App\Models\Cyn_TosaiData;
+use App\Models\Cyn_mstKotei_STR_P;
+use App\Models\Cyn_mstKotei_STR_C;
+use App\Models\Cyn_mstKotei;
+use App\Models\Cyn_BlockKukaku;
+use App\Models\Cyn_C_BlockKukaku;
+use App\Models\Cyn_Plan;
+use App\Models\Cyn_C_Plan;
+use App\Models\mstFloor;
+use App\Models\mstBDCode;
+use App\Models\Cyn_Temp_Excel_LogData;
+use App\Models\WorkItemIDList;
+use App\Librarys\TimeTrackerCommon;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Font;
+use PhpOffice\PhpSpreadsheet\Reader\IReader;
+use PhpOffice\PhpSpreadsheet\Writer\IWriter;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+
+/*
+ * 日程取込の各画面コントローラー
+ *
+ * @create 2020/10/13 Dung
+ *
+ * @update
+ */
+class ExcelImportController extends Controller
+{
+	/**
+	 * construct
+	 * @param
+	 * @return mixed
+	 * @create 2020/10/13 Dung
+	 * @update
+	 */
+	public function __construct() {
+
+	}
+	/**
+	 * 日程取込条件設定画面
+	 *
+	 * @param Request 呼び出し元リクエストオブジェクト
+	 * @return View ビュー
+	 *
+	 * @create 2020/10/13 Dung
+	 * @update
+	 */
+	public function index(Request $request) {
+		return $this->initialize($request);
+	}
+	/**
+	 * initial display processing
+	 *
+	 * @param Request
+	 * @return View
+	 *
+	 * @create 2020/10/13 Dung
+	 * @update
+	 */
+	private function initialize(Request $request) {
+		$menuInfo = $this->checkLogin($request, config('system_const.authority_editable'));
+
+		// 戻り値のデータ型をチェック
+		if ($this->isRedirectMenuInfo($menuInfo)) {
+			// エラーが起きたのでリダイレクト
+			return $menuInfo;
+		}
+		$this->data['menuInfo'] = $menuInfo;
+		//initialize $originalError
+		$originalError = [];
+		//initialize $itemData
+
+		$itemShow = array(
+			'val1' => isset($request->val1) ? valueUrlDecode($request->val1) : ((trim(old('val1')) != '') 
+																		? valueUrlDecode(old('val1')) : 0),
+			'val2' => isset($request->val2) ? valueUrlDecode($request->val2) : ((trim(old('val2')) != '') 
+																		? valueUrlDecode(old('val2')) : 1),
+			'val3' => isset($request->val3) ? valueUrlDecode($request->val3) : ((trim(old('val3')) != '') 
+																		? valueUrlDecode(old('val3')) : ''),
+			'val4' => isset($request->val4) ? valueUrlDecode($request->val4) : ((trim(old('val4')) != '') 
+																		? valueUrlDecode(old('val4')) : ''),
+			'val5' => isset($request->val5) ? valueUrlDecode($request->val5) : ((trim(old('val5')) != '') 
+																		? valueUrlDecode(old('val5')) : ''),
+			'val6' => isset($request->val6) ? valueUrlDecode($request->val6) : ((trim(old('val6')) != '') 
+																		? valueUrlDecode(old('val6')) : ''),
+			'val7' => isset($request->val7) ? $request->val7 : (trim(old('val7') != '') ? old('val7') : ''),
+			'val8' => isset($request->val8) ? $request->val8 : (trim(old('val8') != '') ? old('val8') : ''),
+		);
+		// data 2 for val 2
+		$data_val3 = $this->getDataVal3($menuInfo, $itemShow['val1']);
+		if(count($data_val3) > 0) {
+			$arrUnique = array();
+			foreach($data_val3 as $key => &$item) {
+				if(count($arrUnique) == 0) {
+					$arrUnique[] = $item->val3Name;
+				} else {
+					if(!in_array($item->val3Name, $arrUnique)) {
+						$arrUnique[] = $item->val3Name;
+					} else {
+						unset($data_val3[$key]);
+					}
+				}
+			}
+		}
+
+		$this->data['dataView']['data_3'] = $data_val3;
+		$this->data['dataView']['data_3_all'] = $this->getDataVal3($menuInfo, '', true);
+		$tempVal3 = ($itemShow['val3'] == config('system_const.project_listkind_tosai')) ?
+					((count($data_val3) > 0) ? valueUrlDecode($data_val3->first()->val3) : 
+					config('system_const.project_listkind_tosai')) :
+					$itemShow['val3'];
+		$data_val4 = $this->getDataVal4($itemShow['val1'], $tempVal3);
+		if(count($data_val4) > 0) {
+			$arrUnique = array();
+			foreach($data_val4 as $key => &$item) {
+				if(count($arrUnique) == 0) {
+					$arrUnique[] = $item->val4Name;
+				} else {
+					if(!in_array($item->val4Name, $arrUnique)) {
+						$arrUnique[] = $item->val4Name;
+					} else {
+						unset($data_val4[$key]);
+					}
+				}
+			}
+		}
+		// data 4 for val 4
+		$this->data['dataView']['data_4'] = $data_val4;
+		$this->data['dataView']['data_4_all'] = $this->getDataVal4('', '', true);
+		// data 4 for val 5
+		$this->data['dataView']['data_5'] = $this->getDataVal5($itemShow['val1']);
+		$this->data['dataView']['data_5_all'] = $this->getDataVal5('', true);
+		if (isset($request->err1)) {
+			$originalError[] = valueUrlDecode($request->err1);
+		}else {
+			$itemShow['val2'] = 1;
+			$itemShow['val1'] = 0;
+		}
+		$itemShow['val1'] = valueUrlEncode($itemShow['val1']);
+		$itemShow['val2'] = valueUrlEncode($itemShow['val2']);
+		$itemShow['val3'] = valueUrlEncode($itemShow['val3']);
+		$itemShow['val4'] = valueUrlEncode($itemShow['val4']);
+		$itemShow['val5'] = valueUrlEncode($itemShow['val5']);
+		//request
+		$this->data['request'] = $request;
+		$this->data['originalError'] = $originalError;
+		$this->data['itemShow'] = $itemShow;
+		$this->data['msgTimeOut'] = valueUrlEncode(config('message.msg_cmn_err_002'));
+		//return view with all data
+		return view('Schem/ExcelImport/index', $this->data);
+	}
+	/**
+	 * get data value 3
+	 *
+	 * @param String $val3
+	 * @return Object mixed
+	 *
+	 * @create 2020/10/23 Dung
+	 * @update
+	 */
+	private function getDataVal3($menuInfo, $value = 0, $loadAll = false) {
+		$data = MstProject::select('ID as val3', 'ProjectName as val3Name', 'ListKind')
+							->where('SysKindID', '=', $menuInfo->KindID);
+		$data = ($value !== '' && is_numeric($value)) ? $data->where('ListKind', '=', $value) : $data;
+		$data = $data->orderBy('ProjectName')->get();
+
+		if (count($data) > 0) {
+			foreach ($data as &$row) {
+				$row->val3 = valueUrlEncode($row->val3);
+				$row->ListKind = valueUrlEncode($row->ListKind);
+				$row->val3Name = ($loadAll) ? htmlentities($row->val3Name) : $row->val3Name;
+			}
+		}
+		return $data;
+	}
+	/* load ajax when change projectId at val3 */
+	/**
+	 * get data value 4
+	 *
+	 * @param String $val4
+	 * @return Object mixed
+	 *
+	 * @create 2020/10/23 Dung
+	 * @update
+	 */
+	private function getDataVal4($val1 = 0, $val3 = '', $loadAll = false) {
+		$data = mstOrderNo::select('mstOrderNo.OrderNo as val4', 'Cyn_TosaiData.CKind', 'Cyn_TosaiData.ProjectID')
+								->join('Cyn_TosaiData', 'mstOrderNo.OrderNo', '=', 'Cyn_TosaiData.OrderNo');
+								
+		$data = ($val1 !== '' && is_numeric($val1)) ? $data->where('Cyn_TosaiData.CKind', '=', $val1) : $data;
+
+		$data = ($val3 !== '' && is_numeric($val3)) ? $data->where('Cyn_TosaiData.ProjectID', '=', $val3) : $data;
+
+
+		
+
+		$data = $data->where('mstOrderNo.DispFlag', '=', 0)->orderBy('mstOrderNo.OrderNo')->distinct()->get();
+
+		if (count($data) > 0) {
+			foreach ($data as &$row) {
+				$row->ProjectID = valueUrlEncode($row->ProjectID);
+				$row->CKind = valueUrlEncode($row->CKind);
+				$row->val4Name = ($loadAll) ? htmlentities($row->val4) : $row->val4;
+				$row->val4 = valueUrlEncode($row->val4);
+			}
+		}
+
+		return $data;
+	}
+
+	 /**
+	 * get data value 5
+	 *
+	 * @param String $val5
+	 * @return Object mixed
+	 *
+	 * @create 2020/10/23 Dung
+	 * @update
+	 */
+	private function getDataVal5($val1 = 0, $loadAll = false) {
+		$data = Cyn_mstKotei_STR_P::select('Cyn_mstKotei_STR_P.Name as val5', 
+											'Cyn_mstKotei_STR_P.Code', 'Cyn_mstKotei_STR_P.CKind');
+		$data = ($val1 !== ''  && is_numeric($val1)) ? $data->where('Cyn_mstKotei_STR_P.CKind', '=', $val1) : $data;
+
+		$data = $data->where('Cyn_mstKotei_STR_P.DelFlag', '=', 0)->orderBy('Cyn_mstKotei_STR_P.Name')->get();
+		if (count($data) > 0) {
+			foreach ($data as &$row) {
+				$row->CKind = valueUrlEncode($row->CKind);
+				$row->Code = valueUrlEncode($row->Code);
+				// $row->Name = valueUrlEncode($row->Name);
+				$row->val5Name = ($loadAll) ? htmlentities($row->val5) : $row->val5;
+			}
+		}
+		return $data;
+	}
+	/**
+	 * POST
+	 *
+	 * @param ExcelImportOutputRequest
+	 * @return View
+	 *
+	 * @create 2020/11/23　Dung
+	 * @update
+	 */
+	public function ExcelImport(ExcelImportOutputRequest $request) {
+		// 初期処理
+		$menuInfo = $this->checkLogin($request, config('system_const.authority_all'));
+
+		// 戻り値のデータ型をチェック
+		if ($this->isRedirectMenuInfo($menuInfo)) {
+			// エラーが起きたのでリダイレクト
+			return $menuInfo;
+		}
+		//validate form
+		$validated = $request->validated();
+		// data header
+		$data_header = Cyn_mstKotei_STR_C::select(
+										'Cyn_mstKotei_STR_C.Kotei',
+										'Cyn_mstKotei_STR_C.KKumiku',
+										'Cyn_mstKotei_STR_C.No',
+										'Cyn_mstKotei.Name',
+									)
+									->join('Cyn_mstKotei', function($join) {
+										$join->on('Cyn_mstKotei_STR_C.Kotei', '=', 'Cyn_mstKotei.Code')
+											->on('Cyn_mstKotei_STR_C.Ckind', '=', 'Cyn_mstKotei.Ckind');
+									})
+									->where('Cyn_mstKotei_STR_C.Ckind','=',$validated['val1']);
+
+		$data_header = ( trim($request['val5']) != '') ? $data_header
+						->where('Cyn_mstKotei_STR_C.Code', '=' ,$validated['val5'])
+						: $data_header;
+		 $header = $data_header->distinct()->orderBy('Cyn_mstKotei_STR_C.No', 'ASC')->get();
+
+		$timeTrackerCommon = new TimeTrackerCommon();
+
+		$projectCalendar = $timeTrackerCommon->getCalendar($validated['val3']);
+		//$projectCalendar = array();
+
+		// error
+		if($projectCalendar != '' && is_string($projectCalendar)) {
+			throw new MissingUpdateException(valueUrlEncode($projectCalendar));
+		}
+		// desing header
+		$koteiPattern = array();
+		$indexColE = Coordinate::columnIndexFromString('E');
+		$indexColF = Coordinate::columnIndexFromString('F');
+		$indexColG = Coordinate::columnIndexFromString('G');
+		$indexColH = Coordinate::columnIndexFromString('H');
+		$indexColJ = Coordinate::columnIndexFromString('J');
+		$nextCol = $indexColE;
+
+		if(count($header) > 0) {
+			foreach ($header as $obj) {
+				if(!isset($koteiPattern[$obj->Kotei.'_'.$obj->KKumiku])) {
+					$koteiPattern[$obj->Kotei.'_'.$obj->KKumiku] = array(
+						'Kotei' => $obj->Kotei,
+						'KKumiku' => $obj->KKumiku,
+						'Name' => $obj->Name,
+						'col' => $nextCol,
+					);
+				}
+				$nextCol += 6;
+			}
+		}
+		$data_1 = Cyn_TosaiData::select(
+			'Cyn_TosaiData.Name as T_Name',
+			'Cyn_TosaiData.BKumiku as T_BKumiku',
+
+			'Cyn_BlockKukaku.Name',
+			'Cyn_BlockKukaku.BKumiku',
+			'Cyn_BlockKukaku.No',
+
+			 'Cyn_Plan.WorkItemID',
+			 'Cyn_Plan.Kotei',
+			 'Cyn_Plan.KKumiku',
+			'Cyn_Plan.Floor',
+			'Cyn_Plan.BD_Code',
+			'Cyn_Plan.KoteiNo',
+			'Cyn_Plan.N_KoteiNo',
+
+			'mstFloor.Name as FloorName',
+
+			'mstBDCode.Name as BDName',
+
+			'WorkItemIDList.ID as ListID'
+		)
+		->selectRaw('\'1\' as GroupData')
+		->join('Cyn_BlockKukaku', function($join) {
+			$join->on('Cyn_TosaiData.ProjectID', '=', 'Cyn_BlockKukaku.ProjectID')
+				 ->on('Cyn_TosaiData.OrderNo', '=', 'Cyn_BlockKukaku.OrderNo')
+			 	 ->on('Cyn_TosaiData.CKind', '=', 'Cyn_BlockKukaku.CKind')
+				 ->on('Cyn_TosaiData.Name', '=', 'Cyn_BlockKukaku.T_Name')
+				 ->on('Cyn_TosaiData.BKumiku', '=', 'Cyn_BlockKukaku.T_BKumiku');
+			})
+		->join('Cyn_Plan', function($join) {
+			$join->on('Cyn_BlockKukaku.ProjectID', '=', 'Cyn_Plan.ProjectID')
+				 ->on('Cyn_BlockKukaku.OrderNo', '=', 'Cyn_Plan.OrderNo')
+				 ->on('Cyn_BlockKukaku.No', '=', 'Cyn_Plan.No');
+			})
+		->join('mstFloor','Cyn_Plan.Floor', '=', 'mstFloor.Code')
+		->join('mstBDCode','Cyn_Plan.BD_Code', '=', 'mstBDCode.Code')
+
+		->join('WorkItemIDList','Cyn_Plan.WorkItemID', '=', 'WorkItemIDList.WorkItemID')
+
+		->where('Cyn_TosaiData.ProjectID', '=', $validated['val3'])
+		->where('Cyn_TosaiData.OrderNo', '=', $validated['val4'])
+		->where('Cyn_TosaiData.CKind', '=', $validated['val1']);
+
+		$data_2 = Cyn_BlockKukaku::select(
+			'Cyn_BlockKukaku.Name as T_Name',
+			'Cyn_BlockKukaku.BKumiku as T_BKumiku',
+
+			'Cyn_C_BlockKukaku.Name',
+			'Cyn_C_BlockKukaku.BKumiku',
+			'Cyn_C_BlockKukaku.No',
+
+			'Cyn_C_Plan.WorkItemID',
+			'Cyn_C_Plan.Kotei',
+			'Cyn_C_Plan.KKumiku',
+			'Cyn_C_Plan.Floor',
+			'Cyn_C_Plan.BD_Code',
+			'Cyn_C_Plan.KoteiNo',
+			'Cyn_C_Plan.N_KoteiNo',
+
+			'mstFloor.Name as FloorName',
+
+			'mstBDCode.Name as BDName',
+
+			'WorkItemIDList.ID as ListID',
+		)
+		->selectRaw('\'2\' as GroupData')
+		->join('Cyn_C_BlockKukaku', function($join) {
+			$join->on('Cyn_BlockKukaku.ProjectID', '=', 'Cyn_C_BlockKukaku.ProjectID')
+				->on('Cyn_BlockKukaku.OrderNo', '=', 'Cyn_C_BlockKukaku.OrderNo')
+				->on('Cyn_BlockKukaku.CKind', '=', 'Cyn_C_BlockKukaku.CKind')
+				->on('Cyn_BlockKukaku.Name', '=', 'Cyn_C_BlockKukaku.T_Name')
+				->on('Cyn_BlockKukaku.BKumiku', '=', 'Cyn_C_BlockKukaku.T_BKumiku');
+		})
+		->join('Cyn_C_Plan', function($join) {
+			$join->on('Cyn_BlockKukaku.ProjectID', '=', 'Cyn_C_Plan.ProjectID')
+				->on('Cyn_BlockKukaku.OrderNo', '=', 'Cyn_C_Plan.OrderNo')
+				->on('Cyn_BlockKukaku.No', '=', 'Cyn_C_Plan.No');
+		})
+		->join('mstFloor', 'Cyn_C_Plan.Floor', '=', 'mstFloor.Code')
+		->join('mstBDCode', 'Cyn_C_Plan.BD_Code', '=', 'mstBDCode.Code')
+
+		->join('WorkItemIDList','Cyn_C_Plan.WorkItemID', '=', 'WorkItemIDList.WorkItemID')
+
+		->where('Cyn_BlockKukaku.ProjectID', '=', $validated['val3'])
+		->where('Cyn_BlockKukaku.OrderNo', '=', $validated['val4'])
+		->where('Cyn_BlockKukaku.CKind', '=', $validated['val1']);
+
+		$data = $data_1->union($data_2)
+						->orderBy('T_Name', 'asc')
+						->orderBy('T_BKumiku', 'asc')
+						->orderBy('Name', 'asc')
+						->orderBy('BKumiku', 'asc')
+						->get();
+		// start header
+		$blockInformation = array();
+		$processInformation = array();
+		$nextProcessInformation = array();
+		if(count($data) > 0) {
+			foreach($data as $record) {
+				$nameOfTBKumiku = FuncCommon::getKumikuData($record->T_BKumiku);
+				$nameOfBKumiku = FuncCommon::getKumikuData($record->BKumiku);
+
+				$blockInformation[$record->No] = array(
+					'A' => $record->T_Name,
+					'B' => is_array($nameOfTBKumiku) ? $nameOfTBKumiku[2] : null,
+					'C' => $record->Name,
+					'D' => is_array($nameOfBKumiku) ? $nameOfBKumiku[2] : null,
+				);
+				$processInformation[$record->No.'_'.$record->Kotei.'_'.$record->BKumiku] = $record->toArray();
+				$nextProcessInformation[$record->No.'_'.$record->KoteiNo] = array(
+					'N_KoteiNo' => $record->N_KoteiNo,
+					'WorkItemID' => $record->WorkItemID,
+				);
+			}
+		}
+		// initial url
+		$url = url('/');
+		$url .= '/' . $menuInfo->KindURL;
+		$url .= '/' . $menuInfo->MenuURL;
+		$url .= '/index';
+		$url .= '?cmn1=' . $request->cmn1;
+		$url .= '&cmn2=' . $request->cmn2;
+		$url .= '&val1=' . valueUrlEncode($request->val1);
+		$url .= '&val2=' . valueUrlEncode($request->val2);
+		$url .= '&val3=' . valueUrlEncode($request->val3);
+		$url .= '&val4=' . valueUrlEncode($request->val4);
+		$url .= '&val5=' . valueUrlEncode($request->val5);
+		$url .= '&val6=' . valueUrlEncode($request->val6);
+		$url .= '&val7=' . $request->val7;
+		$url .= '&val8=' . valueUrlEncode($request->val8);
+
+		if (count($data) == 0) {
+			// has error
+			$url .= '&err1=' . valueUrlEncode(config('message.msg_cmn_db_001'));
+			return redirect($url);
+		}
+
+		// read file excel template
+		$inputFileType = 'Xlsx';
+		$inputFileName = config('system_const_schem.export_template_path');
+
+		if ($inputFileName != '') {
+			$arrPath = explode('/', $inputFileName);
+			$arrLength = count($arrPath);
+
+			if ($arrLength > 2) {
+				$inputFileName = public_path().'\\'.$arrPath[$arrLength - 2].'\\'.$arrPath[$arrLength - 1];
+
+				if(!file_exists($inputFileName)) {
+					// has error
+					$url .= '&err1=' . valueUrlEncode(config('message.msg_cmn_db_001'));
+					return redirect($url);
+				}
+
+				// setting header
+				$reader = IOFactory::createReader($inputFileType);
+				$spreadsheet = $reader->load($inputFileName);
+				$worksheet = $spreadsheet->getActiveSheet();
+
+				//set value header
+				$arrRangeBorderHeaderAllBorder = array();
+				$arrRangeBorderHeaderHair = array();
+				$arrFormatMD = array();
+				$firstCol = '';
+				$lastCol = '';
+
+				foreach($koteiPattern as $koteiGroup) {
+					if($firstCol == '') {
+						$firstCol = $koteiGroup['col'];
+					}
+					//set value header
+					$dataKKumiku = FuncCommon::getKumikuData($koteiGroup['KKumiku']);
+					// E1
+					$worksheet->setCellValueByColumnAndRow($koteiGroup['col'], 1, '工程');
+					// F1
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+1), 1,
+					$koteiGroup['Kotei'].config('system_const.code_name_separator').$koteiGroup['Name']);
+					// G1
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+2), 1, '工程組区');
+					// h1
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+3), 1, $dataKKumiku[2]);
+					// E2
+					$worksheet->setCellValueByColumnAndRow($koteiGroup['col'], 2, '着工日');
+					// F2
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+1), 2, '完工日');
+					// G2
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+2), 2, '工期');
+					// H2
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+3), 2, 'リンク日数');
+					// I2
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+4), 2, '棟');
+					// J2
+					$worksheet->setCellValueByColumnAndRow(($koteiGroup['col']+5), 2, '物量');
+					//set border header
+					// E1 -> E2
+					$arrRangeBorderHeaderHair[] = Coordinate::stringFromColumnIndex($koteiGroup['col']).'1:'.
+												Coordinate::stringFromColumnIndex($koteiGroup['col']).'2';
+					// F1 -> F2
+					$arrRangeBorderHeaderHair[] = Coordinate::stringFromColumnIndex(($koteiGroup['col']+1)).'1:'.
+												Coordinate::stringFromColumnIndex(($koteiGroup['col']+1)).'2';
+					// G1 -> G2
+					$arrRangeBorderHeaderHair[] = Coordinate::stringFromColumnIndex(($koteiGroup['col']+2)).'1:'.
+												Coordinate::stringFromColumnIndex(($koteiGroup['col']+2)).'2';
+					// H1 -> H2
+					$arrRangeBorderHeaderHair[] = Coordinate::stringFromColumnIndex(($koteiGroup['col']+3)).'1:'.
+												Coordinate::stringFromColumnIndex(($koteiGroup['col']+3)).'2';
+					// I2 -> I2
+					$arrRangeBorderHeaderHair[] = Coordinate::stringFromColumnIndex(($koteiGroup['col']+4)).'1:'.
+												Coordinate::stringFromColumnIndex(($koteiGroup['col']+4)).'2';
+					//caculator number coppy kotei
+					$lastCol = $koteiGroup['col']+5;
+				}
+
+				$totalData = $data->toArray();
+
+
+				if(count($blockInformation) > 0) {
+					$baseRow = 3;
+					$rowIncrement = $baseRow;
+					foreach($blockInformation as $no => $objData) {
+						// Set data into column A~D
+						foreach($objData as $colName => $colData) {
+							$worksheet->setCellValue($colName.$rowIncrement, $colData);
+						}
+						// Get workitemId
+						$koteiInfo = array_filter($totalData, function($item) use ($no, $objData){
+							return $item['No'] == $no;
+						});
+
+						// get koteirange
+						if(count($koteiInfo) > 0) {
+							$arrWorkItemID = array_column($koteiInfo, 'WorkItemID','ListID');
+							// time tracker getKoteiRange
+							
+							$koteiRangeData = $timeTrackerCommon->getKoteiRange($arrWorkItemID, false);
+
+							foreach($koteiInfo as $obj) {
+								if(isset($koteiPattern[$obj['Kotei'].'_'.$obj['KKumiku']])) {
+									$col = $koteiPattern[$obj['Kotei'].'_'.$obj['KKumiku']]['col'];
+									// format date
+									$plannedStartDate = Date::PHPToExcel(date("Y-m-d", 
+													strtotime($koteiRangeData[$obj['WorkItemID']]['plannedStartDate'])));
+									$plannedFinishDate = Date::PHPToExcel(date("Y-m-d", 
+													strtotime($koteiRangeData[$obj['WorkItemID']]['plannedFinishDate'])));
+									// N_KoteiNo data
+									$N_Kotei = $obj['N_KoteiNo'];
+									// workItemID
+									$Nkotei_workItemID = (isset($nextProcessInformation[$no.'_'.$N_Kotei])) ? 
+														$nextProcessInformation[$no.'_'.$N_Kotei]['WorkItemID'] : '';
+									
+									// time tracker getDateDiff to G3
+									$dataGetDiffDateG3 = $timeTrackerCommon->getDateDiff($projectCalendar, 
+															$koteiRangeData[$obj['WorkItemID']]['plannedStartDate'], 
+															$koteiRangeData[$obj['WorkItemID']]['plannedFinishDate']);
+									
+									
+									// time tracker getDateDiff to H3
+									$plannedStartDateNKotei = isset($koteiRangeData[$Nkotei_workItemID]) ? 
+															$koteiRangeData[$Nkotei_workItemID]['plannedStartDate'] : null;
+
+									$dataGetDiffDateH3 = isset($plannedStartDateNKotei) ? 
+														$timeTrackerCommon->getDateDiff($projectCalendar, 
+														$koteiRangeData[$obj['WorkItemID']]['plannedFinishDate'], 
+														$plannedStartDateNKotei) : 0;
+									// get first col
+									// E3
+									$worksheet->setCellValueByColumnAndRow($col, $rowIncrement, $plannedStartDate);
+									// F3
+									$worksheet->setCellValueByColumnAndRow(($col+1), $rowIncrement, $plannedFinishDate);
+									// G3
+									$worksheet->setCellValueByColumnAndRow(($col+2), $rowIncrement, $dataGetDiffDateG3);
+									// H3
+									$worksheet->setCellValueByColumnAndRow(($col+3), $rowIncrement, $dataGetDiffDateH3);
+									// I3
+									$worksheet->setCellValueByColumnAndRow(($col+4), $rowIncrement,
+									$obj['Floor'].config('system_const.code_name_separator').$obj['FloorName']);
+									// J3
+									$worksheet->setCellValueByColumnAndRow(($col+5), $rowIncrement,
+									$obj['BD_Code'].config('system_const.code_name_separator').$obj['BDName']);
+								}
+							}
+						}
+						$rowIncrement++;
+					}
+					// fomat date col E +F
+					foreach($koteiPattern as $koteiGroup) {
+						$arrFormatMD[] = Coordinate::stringFromColumnIndex($koteiGroup['col']).'3:'.
+										Coordinate::stringFromColumnIndex($koteiGroup['col']).($rowIncrement-1);
+						$arrFormatMD[] = Coordinate::stringFromColumnIndex(($koteiGroup['col']+1)).'3:'.
+										Coordinate::stringFromColumnIndex(($koteiGroup['col']+1)).($rowIncrement-1);
+					}
+				}
+				// set style
+				// all border header
+				if($firstCol != '' && $lastCol != '') {
+					$arrRangeBorderHeaderAllBorder = array(
+						Coordinate::stringFromColumnIndex($firstCol).'1:'.Coordinate::stringFromColumnIndex($lastCol).'1',
+						Coordinate::stringFromColumnIndex($firstCol).'2:'.Coordinate::stringFromColumnIndex($lastCol).'2',
+					);
+				}
+				if(count($arrRangeBorderHeaderAllBorder) > 0) {
+					foreach($arrRangeBorderHeaderAllBorder as $range) {
+						$worksheet->getStyle($range)->applyFromArray([
+							'borders' => [
+								'outline' => [
+									'borderStyle' => Border::BORDER_THIN,
+									'color' => ['argb' => '000000'],
+								],
+							],
+						]);
+					}
+				}
+				// set border hair header
+				if(count($arrRangeBorderHeaderHair) > 0) {
+					foreach($arrRangeBorderHeaderHair as $range) {
+						$worksheet->getStyle($range)->applyFromArray([
+							'borders' => [
+								'right' => [
+									'borderStyle' => Border::BORDER_HAIR,
+									'color' => ['argb' => '000000'],
+								],
+							],
+						]);
+					}
+				}
+				// set formatdate M/D
+				if(count($arrFormatMD) > 0) {
+					foreach($arrFormatMD as $range) {
+						$worksheet->getStyle($range)
+									->getNumberFormat()
+									->setFormatCode('M/D');
+					}
+				}
+				//export excel
+				$strFilename = $menuInfo->MenuNick .'.xlsx';
+				header("Content-Type: application/force-download");
+				header("Content-Type: application/octet-stream");
+				header("Content-Type: application/download");
+				header('Content-Type:application/octet-stream; charset=Shift_JIS');
+				header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+				header('Content-Disposition: attachment; filename="'.$strFilename);
+				header("Content-Transfer-Encoding: binary");
+				header('Expires: 0');
+				header('Cache-Control: no-cache, no-store');
+				header('Pragma: no-cache');
+				if (isset($_COOKIE['export']) && $_COOKIE['export'] == 0) {
+					unset($_COOKIE['export']);
+					setcookie("export", 1, -1, '/');
+				}
+				$writer = IOFactory::createWriter($spreadsheet, "Xlsx");
+				ob_end_clean();
+				flush();
+				$writer->save("php://output");
+			}
+		}
+	}
+/**
+	 * POST
+	 *
+	 * @param Request
+	 * @return View
+	 *
+	 * @create 2020/11/23 Dung
+	 * @update
+	 */
+	public function accept(ExcelImportOutputRequest $request) {
+		// 初期処理
+		$menuInfo = $this->checkLogin($request, config('system_const.authority_all'));
+
+		// 戻り値のデータ型をチェック
+		if ($this->isRedirectMenuInfo($menuInfo)) {
+			// エラーが起きたのでリダイレクト
+			return $menuInfo;
+		}
+		//try lock
+
+		//Timetracker
+		//$timeTrackerCommon = new TimeTrackerCommon();
+
+		//TryLock
+		$originalError  = $this->tryLock($menuInfo->KindID, config('system_const_schem.sys_menu_id_plan'),
+											 $menuInfo->UserID, $menuInfo->SessionID, $request->val1, true);
+		// calendar
+		//$projectCalendar = $timeTrackerCommon->getCalendar($validated['val3']);
+		$projectCalendar = array();
+		//validate form
+		$validated = $request->validated();
+
+
+	}
+}

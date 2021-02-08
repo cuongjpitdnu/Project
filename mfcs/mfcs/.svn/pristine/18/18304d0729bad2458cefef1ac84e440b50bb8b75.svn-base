@@ -1,0 +1,31 @@
+function fncJsonParse(json) {
+	var rst = [];
+	try { rst = JSON.parse(json.replace(/&amp;quot;/g, '\\"')
+								.replace(/&quot;/g, '\"')
+								.replace(/&amp;/g, '&')
+								.replace(/&lt;/g, '<')
+								.replace(/&gt;/g, '>')
+								.replace(/&apos;/g, '\'')); } catch (err) { }
+	return rst;
+}
+
+function convertHTML(str) {
+	htmlEntities = {
+		'&':'&amp;',
+		'<':'&lt;',
+		'>':'&gt;',
+		'"':'&quot;',
+		'\'':"&apos;"
+	};
+	return str.split('').map(entity => htmlEntities[entity] || entity).join('').replace(/&amp;nbsp;/g, '&nbsp;');
+}
+
+$(function() {
+	$('ul.pagination li.page-item').each(function(i, e) {
+		const valueHref = $(this).find('a.page-link').attr('href');
+		if (typeof valueHref !== 'undefined') {
+			const arrSplit = valueHref.split('&err1=');
+			$(this).find('a.page-link').attr('href', arrSplit[0]);
+		}
+	});
+});

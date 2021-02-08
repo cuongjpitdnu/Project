@@ -1,0 +1,78 @@
+@extends('layouts/mainmenu/menu')
+@section('content')
+
+<style>
+	.table-order tr th, .table-order tr td{
+		text-align: left;
+		vertical-align: middle;
+	}
+	.table-order tr th.align-center, .table-order tr td.align-center{
+		text-align: center;
+		vertical-align: middle;
+	}
+	.align-right{
+		text-align: right!important;
+	}
+</style>
+<form action="" method="POST" id="mainform">
+	@csrf
+	<div class="row ml-4">
+		<div class="col-xs-12">
+			<div class="row align-items-center">
+				<div class="col-xs-1 text-left m-2 p-2 rounded border">
+					■　物量定義 - 詳細
+				</div>
+			</div>
+			
+			@if (isset($originalError) && count($originalError))
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($originalError as $item)
+							<li>{{ $item }}</li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
+			</div>
+			@endif
+
+			<div class="row">
+
+				<div class="col-sm-12" style="padding-left:1rem !important;">
+					<div class="info-circle"><i class="fas fa-info icon-small"></i></div> 取り込めなかった物量は次の通りです
+					<table class="table table-row">
+						<tbody>
+							<tr class="set-color">
+								<th class="align-center">@sortablelink('fld1', '搭載名')</th>
+								<th class="align-center">@sortablelink('fld2', '搭載組区')</th>
+								<th class="align-center">@sortablelink('fld3', '中日程名')</th>
+								<th class="align-center">@sortablelink('fld4', '中日程組区')</th>
+								<th class="align-center">@sortablelink('fld5', '工程')</th>
+								<th class="align-center">@sortablelink('fld6', '工程組区')</th>
+								<th class="align-center">@sortablelink('fld7', '内容')</th>
+							</tr>
+
+							@foreach($rows as $row)
+							<tr>
+								<td class="real-space">{{ $row['fld1'] }}</td>
+								<td class="real-space">{{ $row['fld2'] }}</td>
+								<td class="real-space">{{ $row['fld3'] }}</td>
+								<td class="real-space">{{ $row['fld4'] }}</td>
+								<td class="real-space">{{ $row['fld5'] }}</td>
+								<td class="real-space">{{ $row['fld6'] }}</td>
+								<td class="real-space">{{ $row['fld7'] }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>   
+				</div>
+			</div>
+			<div class="row">
+				{{ $rows->appends(request()->query())->links() }}
+			</div>
+		</div>
+	</div>
+</form>
+@endsection

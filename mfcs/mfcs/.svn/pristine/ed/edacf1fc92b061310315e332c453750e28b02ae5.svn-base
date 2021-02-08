@@ -1,0 +1,25 @@
+.indicator{
+	background-color: rgb(204, 255, 85);
+	padding: 10px;
+	min-height: 200px;
+}
+
+.indicator-half{
+	background-color: rgb(204, 255, 85);
+	padding: 10px;
+	min-height: 200px;
+}
+
+.h5-indicator.orange-theme.overlay {
+	background-color: orange;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+.dump{
+	border: solid 1px gray;
+	padding: 10px;
+	height: 200px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
