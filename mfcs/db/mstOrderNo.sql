@@ -1,0 +1,2 @@
+INSERT INTO [mstOrderNo] VALUES ('2020-01-09 09:11:47.000', N'kbs189', N'55552', N'   ', N'  ', N'        ', N'        ', N'        ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'0', N'0', NULL, N'', N'0', 0, '0', NULL, 0, N'   ', N'', N''); GO
+INSERT INTO [mstOrderNo] VALUES ('2020-01-09 09:11:47.000', N'kbs189', N'ChienTest', N'   ', N'  ', N'        ', N'        ', N'        ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'0', N'0', NULL, N'', N'0', 0, '0', NULL, 0, N'   ', N'', N''); GO

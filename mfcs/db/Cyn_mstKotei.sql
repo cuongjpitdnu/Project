@@ -1,0 +1,14 @@
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-09-01 15:50:00.000', 0, N'10', N'マーキン', N'マ', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-09-01 15:50:00.000', 0, N'11', N'NC切断', N'NC', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:48:19.000', 0, N'20', N'組立', N'組立', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'30', N'先行艤装', N'先行艤装', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z0', N'テストZ0', N'テZ0', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z1', N'テストZ1', N'テZ1', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z2', N'テストZ2', N'テZ2', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z3', N'テストZ3', N'テZ3', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z4', N'テストZ4', N'テZ4', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z5', N'テストZ5', N'テZ5', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z6', N'テストZ6', N'テZ6', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z7', N'テストZ7', N'テZ7', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z8', N'テストZ8', N'テZ8', '0', 0); GO
+INSERT INTO [Cyn_mstKotei] VALUES ('2020-11-10 15:49:11.000', 0, N'Z9', N'テストZ9', N'テZ9', '0', 0); GO

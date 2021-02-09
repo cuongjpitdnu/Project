@@ -1,0 +1,12 @@
+INSERT INTO [mstDist] VALUES ('2020-10-16 19:29:18.277', N'1    ', N'code1', N'1', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-10-16 19:29:47.413', N'10   ', N'code10', N'10', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'11   ', N'code11', N'11', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-10-16 19:30:11.567', N'12   ', N'code12', N'12', 0, 0, 0); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'2    ', N'code2', N'2', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'3    ', N'code3', N'3', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'4    ', N'code4', N'4', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'5    ', N'code5', N'5', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'6    ', N'code6', N'6', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'7    ', N'code7', N'7', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'8    ', N'code8', N'8', 1, 2, 1); GO
+INSERT INTO [mstDist] VALUES ('2020-09-08 11:55:21.000', N'9    ', N'code9', N'9', 1, 2, 1); GO

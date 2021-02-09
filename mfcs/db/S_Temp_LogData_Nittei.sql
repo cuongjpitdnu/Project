@@ -1,0 +1,2 @@
+INSERT INTO [S_Temp_LogData_Nittei] VALUES ('2021-01-26 19:26:14.657', 113, N'55552', 1, N'test', N'test4', N'test5', N'1', N'11', N'MA      ', N'10   ', N'1007', NULL, '2020-06-06', '2020-06-06', N'1    ', NULL, NULL, NULL, NULL, NULL, N'追加されました。', 0, 0, 2); GO
+INSERT INTO [S_Temp_LogData_Nittei] VALUES ('2021-01-26 19:26:14.683', 113, N'55552', 2, N'test', N'test6', N'test7', N'6', N'11', N'MA      ', N'10   ', N'1007', NULL, '2020-06-07', '2020-06-07', N'1    ', NULL, NULL, NULL, NULL, NULL, N'追加されました。', 0, 0, 2); GO

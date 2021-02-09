@@ -1,0 +1,2 @@
+INSERT INTO [mstProject] VALUES ('2020-01-09 09:11:47.000', N'kbs189', 14, 30, 0, 375, N'0314'); GO
+INSERT INTO [mstProject] VALUES ('2020-01-09 09:11:47.000', N'kbs189', 375, 50, 0, 375, N'0314試験用'); GO

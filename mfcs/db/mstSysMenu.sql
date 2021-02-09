@@ -1,0 +1,17 @@
+INSERT INTO [mstSysMenu] VALUES ('2020-07-08 16:02:08.587', 1010, 10, N'オーダマスタ', N'オーダ', N'order', 1010); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-07-08 16:02:57.383', 1020, 10, N'職制マスタ', N'職制', N'org', 1020); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-07-08 16:03:20.690', 1030, 10, N'人員マスタ', N'人員', N'member', 1030); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-07-08 16:03:44.387', 1040, 10, N'物量マスタ', N'物量', N'bdata', 1040); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-07-08 16:04:10.243', 1050, 10, N'棟マスタ', N'棟', N'floor', 1050); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-01 10:58:24.000', 1060, 10, N'能力時間マスタ', N'能力時間', N'ability', 1060); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-01 10:58:52.000', 1070, 40, N'工程パターンマスタ', N'工程パターン', N'pattern', 1070); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-03 09:40:34.000', 1080, 40, N'工程定義マスタ', N'工程定義', N'kotei', 1080); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-03 09:40:34.000', 1090, 40, N'搭載日程展開マスタ', N'搭載日程展開', N'import', 1090); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-18 13:26:18.000', 2010, 30, N'日程表取込マスタ', N'日程表取込', N'Import', 2010); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-18 15:26:43.640', 2020, 30, N'検討ケース作成マスタ', N'検討ケース作成', N'case', 2020); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-30 09:55:10.623', 2030, 40, N'中日程表出力マスタ', N'中日程表出力', N'output', 2030); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-10-09 10:24:07.237', 2040, 50, N'工程定義マスタ', N'工程定義', N'Dist', 2040); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-18 15:26:43.640', 2041, 20, N'汎用集計表マスタ', N'汎用集計表', N'summary', 2041); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-10-13 13:36:49.000', 2050, 40, N'日程取込画面マスタ', N'日程取込画面', N'excelimport', 2050); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-18 15:26:43.640', 2090, 40, N'物量定義マスタ', N'物量定義', N'bdata', 2090); GO
+INSERT INTO [mstSysMenu] VALUES ('2020-09-18 15:26:43.640', 5010, 50, N'日程取込マスタ', N'日程取込', N'makenittei', 5010); GO

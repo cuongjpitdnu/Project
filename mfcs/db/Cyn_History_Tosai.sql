@@ -1,0 +1,11 @@
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-19 17:02:06.453', 1, N'MyComputer-PC', '2020-10-19 17:02:06.027', 0, N'Maimai', 0, N'Maimai', 1); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-19 17:03:03.190', 2, N'MyComputer-PC', '2020-10-19 17:03:02.947', 0, N'Maimai', 0, N'Maimai', 1); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-19 17:15:50.700', 3, N'DESKTOP-KUM5O04', '2020-10-19 17:15:49.590', 0, N'Maimai', 1, N'Maimai', 1); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-19 17:16:59.773', 4, N'DESKTOP-KUM5O04', '2020-10-19 17:16:58.997', 0, N'Maimai', 0, N'Maimai', 0); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:28:59.087', 5, N'2NF004-PC', '2020-10-27 18:28:49.753', 0, N'Maimai', 0, N'Maimai', -1); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:30:01.837', 6, N'2NF004-PC', '2020-10-27 18:30:01.830', 0, N'Maimai', 0, N'Maimai', 0); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:33:58.667', 7, N'2NF004-PC', '2020-10-27 18:33:36.937', 0, N'Maimai', 0, N'Maimai', -1); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:34:18.293', 8, N'2NF004-PC', '2020-10-27 18:34:18.287', 0, N'Maimai', 0, N'Maimai', 0); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:36:40.153', 9, N'2NF004-PC', '2020-10-27 18:36:40.150', 0, N'Maimai', 0, N'Maimai', 0); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:37:53.117', 10, N'2NF004-PC', '2020-10-27 18:37:53.113', 0, N'Maimai', 0, N'Maimai', 0); GO
+INSERT INTO [Cyn_History_Tosai] VALUES ('2020-10-27 20:39:42.837', 11, N'2NF004-PC', '2020-10-27 18:39:42.833', 0, N'Maimai', 0, N'Maimai', 0); GO
